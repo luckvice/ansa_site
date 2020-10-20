@@ -35,7 +35,7 @@
               </a>
               <a href="#" data-toggle="modal" data-target="#signupModal"
                 class="dropdown-item">
-                <i class="material-icons">lock</i> Registrar - se
+                <i class="material-icons">lock</i> Cadastrar - se
               </a>
             </div>
           </li>

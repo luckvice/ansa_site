@@ -17,7 +17,10 @@
   <div class="main">
   <?= $this->renderSection('content') ?>
   </div>
+    <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
   <?= $this->include('site/templates/footer') ?>
+  <script src="https://demos.creative-tim.com/material-kit-pro/assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
+
 </body>
 
 </html>

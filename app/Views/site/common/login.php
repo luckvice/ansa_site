@@ -24,8 +24,9 @@
               </div>
             </div>
           </div>
+          <form class="form" method="POST" action="<?= base_url('auth/login'); ?>">
           <div class="modal-body">
-            <form class="form" method="" action="">
+            
               <p class="description text-center">Insira suas credenciais</p>
               <div class="card-body">
 
@@ -48,11 +49,12 @@
                   </div>
                 </div>
               </div>
-            </form>
+            
           </div>
           <div class="modal-footer justify-content-center">
-            <a href="#pablo" class="btn btn-primary btn-link btn-wd btn-lg">Acessar meu perfil</a>
+            <button type="submit" class="btn btn-primary btn-link btn-wd btn-lg">Acessar meu perfil</button>
           </div>
+          </form>
         </div>
       </div>
     </div>
