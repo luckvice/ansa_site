@@ -2,8 +2,8 @@
 
 <?= $this->section('content') ?>
   <!-- FILTROS -->
-  <div class="page-header header-filter"
-    style="background-image: url('https://template94868.motopreview.com//mt-demo/94800/94868/mt-content/uploads/2020/01/mt-1962-content-bg01.jpg');">
+  <div class="page-header"
+    style="background-image: url('assets/img/dog1.jpg');">
     <!-- https://cdn.hipwallpaper.com/i/45/92/MdvtEQ.jpg-->
     <div class="container">
       <div class="row">

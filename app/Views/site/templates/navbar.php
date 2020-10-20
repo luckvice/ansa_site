@@ -16,12 +16,12 @@
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="https://www.creative-tim.com/product/material-kit-pro" target="_blank">
+            <a class="nav-link" href="" target="_blank">
               <i class="material-icons">text_snippet</i> Sobre o projeto
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://www.creative-tim.com/product/material-kit-pro" target="_blank">
+            <a class="nav-link" href="" target="_blank">
               <i class="material-icons">pets</i> Quero adotar
             </a>
           </li>

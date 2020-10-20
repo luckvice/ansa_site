@@ -3,22 +3,22 @@
       <nav class="float-left">
         <ul>
           <li>
-            <a href="https://www.creative-tim.com/">
+            <a href="#">
               A.N.S.A Project
             </a>
           </li>
           <li>
-            <a href="https://www.creative-tim.com/presentation">
+            <a href="#">
               Sobre nós
             </a>
           </li>
           <li>
-            <a href="https://www.creative-tim.com/blog">
+            <a href="#">
               Noticias
             </a>
           </li>
           <li>
-            <a href="https://www.creative-tim.com/license">
+            <a href="#">
               Fale conosco
             </a>
           </li>
@@ -29,7 +29,7 @@
         <script>
           document.write(new Date().getFullYear())
         </script> By
-        <a href="https://www.creative-tim.com/" target="_blank">Lucas M. & Felipe</a>
+        <a href="#" target="_blank">Lucas M. & Felipe</a>
       </div>
     </div>
   </footer>
