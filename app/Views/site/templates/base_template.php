@@ -8,18 +8,16 @@
 
 <?= $this->include('site/templates/header') ?>
 
-<body class="landing-page sidebar-collapse">
+<body class="<?php if(!isset($bodyPageProfile)) : echo 'landing-page'; elseif($bodyPageProfile == true): echo 'profile-page'; endif;?> sidebar-collapse">
   <!-- Autenticação Inicio -->
   <?= $this->include('site/common/login') ?>
   <?= $this->include('site/common/registrar') ?>
   <!-- Autenticação FIM-->
   <?= $this->include('site/templates/navbar') ?>
-  <div class="main">
+
   <?= $this->renderSection('content') ?>
-  </div>
-    <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+
   <?= $this->include('site/templates/footer') ?>
-  <script src="https://demos.creative-tim.com/material-kit-pro/assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
 
 </body>
 

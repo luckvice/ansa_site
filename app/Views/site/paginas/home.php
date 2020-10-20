@@ -17,6 +17,8 @@
       </div>
     </div>
   </div>
-<?= $this->include('site/paginas/home_content/ongs') ?>
+  <div class="main">
+  <?= $this->include('site/paginas/home_content/ongs') ?>
+  </div>
 <?= $this->endSection() ?>
 

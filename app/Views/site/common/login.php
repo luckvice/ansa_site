@@ -10,24 +10,12 @@
               </button>
 
               <h4 class="card-title">Log in</h4>
-              <div class="social-line">
-                <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
-                  <i class="fa fa-facebook-square"></i>
-                </a>
-                <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
-                  <i class="fa fa-twitter"></i>
-                  <div class="ripple-container"></div>
-                </a>
-                <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
-                  <i class="fa fa-google-plus"></i>
-                </a>
-              </div>
             </div>
           </div>
           <form class="form" method="POST" action="<?= base_url('auth/login'); ?>">
           <div class="modal-body">
             
-              <p class="description text-center">Insira suas credenciais</p>
+              <p class="description text-center"><br>Insira suas credenciais</p>
               <div class="card-body">
 
 

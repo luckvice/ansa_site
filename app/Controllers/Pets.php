@@ -11,7 +11,7 @@ class Pets extends BaseController
 	}
 	public function listar($especie = 'ALL', $tamanho = 'ALL')
 	{
-        echo 'lista pets '.$especie.' Tamanho '.$tamanho;
+        echo 'lista pets Tipo '.$especie.' Tamanho '.$tamanho;
     }
 	//--------------------------------------------------------------------
 

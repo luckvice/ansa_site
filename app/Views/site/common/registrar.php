@@ -50,7 +50,7 @@
               </div>
 
               <div class="col-md-5 mr-auto">
-                <form class="form" method="" action="">
+                <form class="form" method="POST" action="<?= base_url('auth/cadstrar'); ?>">
                   <div class="card-body">
                     <div class="form-group">
                       <div class="input-group">
@@ -105,7 +105,7 @@
                     </div>
                   </div>
                   <div class="modal-footer justify-content-center">
-                    <a href="#pablo" class="btn btn-primary btn-round">Cadastrar - se</a>
+                    <button type="submit" href="#pablo" class="btn btn-primary btn-round">Cadastrar - se</button>
                   </div>
                 </form>
               </div>

@@ -9,7 +9,7 @@ class Auth extends BaseController
 
     public function cadastrar()
 	{
-
+        echo 'cadastrar';
     }
 
 }
