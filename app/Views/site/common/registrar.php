@@ -4,7 +4,7 @@
       <div class="modal-content">
         <div class="card card-signup card-plain">
           <div class="modal-header">
-            <h5 class="modal-title card-title">Register</h5>
+            <h5 class="modal-title card-title">Cadastre - se para usar todos recursos!</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <i class="material-icons">clear</i>
             </button>
@@ -14,55 +14,42 @@
               <div class="col-md-5 ml-auto">
                 <div class="info info-horizontal">
                   <div class="icon icon-rose">
-                    <i class="material-icons">timeline</i>
+                    <i class="material-icons">comment</i>
                   </div>
                   <div class="description">
-                    <h4 class="info-title">Marketing</h4>
+                    <h4 class="info-title">Comente sua experiência</h4>
                     <p class="description">
-                      We've created the marketing campaign of the website. It was a very interesting collaboration.
+                      Faça um depoimento sobre sua adoção.
                     </p>
                   </div>
                 </div>
 
                 <div class="info info-horizontal">
                   <div class="icon icon-primary">
-                    <i class="material-icons">code</i>
+                    <i class="material-icons">favorite</i>
                   </div>
                   <div class="description">
-                    <h4 class="info-title">Fully Coded in HTML5</h4>
+                    <h4 class="info-title">Faça parte deste projeto</h4>
                     <p class="description">
-                      We've developed the website with HTML5 and CSS3. The client has access to the code using GitHub.
+                      Cadastre um animalzinho Perdido ou abondonado.
                     </p>
                   </div>
                 </div>
 
                 <div class="info info-horizontal">
                   <div class="icon icon-info">
-                    <i class="material-icons">group</i>
+                    <i class="material-icons">loyalty</i>
                   </div>
                   <div class="description">
-                    <h4 class="info-title">Built Audience</h4>
+                    <h4 class="info-title">Maior privacidade e mais chances de adotar</h4>
                     <p class="description">
-                      There is also a Fully Customizable UI Kit for this product.
+                    Veja perfils privados para adotar um animalzinho
                     </p>
                   </div>
                 </div>
               </div>
 
               <div class="col-md-5 mr-auto">
-                <div class="social text-center">
-                  <button class="btn btn-just-icon btn-round btn-twitter">
-                    <i class="fa fa-twitter"></i>
-                  </button>
-                  <button class="btn btn-just-icon btn-round btn-dribbble">
-                    <i class="fa fa-dribbble"></i>
-                  </button>
-                  <button class="btn btn-just-icon btn-round btn-facebook">
-                    <i class="fa fa-facebook"> </i>
-                  </button>
-                  <h4> or be classical </h4>
-                </div>
-
                 <form class="form" method="" action="">
                   <div class="card-body">
                     <div class="form-group">
@@ -70,7 +57,7 @@
                         <div class="input-group-prepend">
                           <div class="input-group-text"><i class="material-icons">face</i></div>
                         </div>
-                        <input type="text" class="form-control" placeholder="First Name...">
+                        <input type="text" class="form-control" placeholder="Seu nome">
                       </div>
                     </div>
 
@@ -79,7 +66,23 @@
                         <div class="input-group-prepend">
                           <div class="input-group-text"><i class="material-icons">email</i></div>
                         </div>
-                        <input type="text" class="form-control" placeholder="Email...">
+                        <input type="text" class="form-control" placeholder="Seu E-mail.">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text"><i class="material-icons">phone</i></div>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Telefone/Whats">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text"><i class="material-icons">lock_outline</i></div>
+                        </div>
+                        <input type="password" placeholder="Senha" class="form-control" />
                       </div>
                     </div>
 
@@ -88,22 +91,21 @@
                         <div class="input-group-prepend">
                           <div class="input-group-text"><i class="material-icons">lock_outline</i></div>
                         </div>
-                        <input type="password" placeholder="Password..." class="form-control" />
+                        <input type="password" placeholder="Repita a senha" class="form-control" />
                       </div>
                     </div>
-
                     <div class="form-check">
                       <label class="form-check-label">
                         <input class="form-check-input" type="checkbox" value="" checked>
                         <span class="form-check-sign">
                           <span class="check"></span>
                         </span>
-                        I agree to the <a href="#something">terms and conditions</a>.
+                        Concordo com os <a href="#something">termos de uso</a>.
                       </label>
                     </div>
                   </div>
                   <div class="modal-footer justify-content-center">
-                    <a href="#pablo" class="btn btn-primary btn-round">Get Started</a>
+                    <a href="#pablo" class="btn btn-primary btn-round">Cadastrar - se</a>
                   </div>
                 </form>
               </div>
