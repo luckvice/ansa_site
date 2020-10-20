@@ -2,12 +2,13 @@
 
 <?= $this->section('content') ?>
 
-<div class="page-header profile-page header-filter" style="height: 380px;background-image: url(&quot;../assets/img/dog_perfil.jpg&quot;);"></div>
+<div class="page-header profile-page" data-parallax="true" style="height: 480px;background-image: url(&quot;../assets/img/dog_perfil.jpg&quot;);"></div>
+
 <div class="main">
   <div class="container">
     <div class="section">
-      <div id="nav-tabs">
-                <h3>Minhas informações</h3>
+      <div id="nav-tabs" style="margin-top:-200px;">
+                <h3></h3>
                 <div class="row">
                   <div class="col-md-12">
                     <h3><small> </small></h3>
