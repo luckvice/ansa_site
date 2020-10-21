@@ -18,6 +18,8 @@
   <?= $this->renderSection('content') ?>
 
   <?= $this->include('site/templates/footer') ?>
+  <!-- Abre Modal Caso Tenha Falha na validação -->
+  <?= $this->renderSection('openLoginModal') ?>
 
 </body>
 

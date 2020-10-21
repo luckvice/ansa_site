@@ -1,5 +1,5 @@
   <!-- LOGIN -->
-  <div class="modal fade" id="loginModal" tabindex="-1" role="">
+  <div class="modal fade" id="loginModal" tabindex="-1" role="" >
     <div class="modal-dialog modal-login" role="document">
       <div class="modal-content">
         <div class="card card-signup card-plain">
@@ -12,7 +12,8 @@
               <h4 class="card-title">Log in</h4>
             </div>
           </div>
-          <form class="form" method="POST" action="<?= base_url('auth/login'); ?>">
+     
+         <?= form_open('auth/login')?>
           <div class="modal-body">
             
               <p class="description text-center"><br>Insira suas credenciais</p>
@@ -24,7 +25,7 @@
                     <div class="input-group-prepend">
                       <div class="input-group-text"><i class="material-icons">email</i></div>
                     </div>
-                    <input type="text" class="form-control" placeholder="Email...">
+                    <input type="text" name="email" class="form-control" placeholder="Email..." value="<?= old('email'); ?>">
                   </div>
                 </div>
 
@@ -33,17 +34,30 @@
                     <div class="input-group-prepend">
                       <div class="input-group-text"><i class="material-icons">lock_outline</i></div>
                     </div>
-                    <input type="password" placeholder="Senha" class="form-control">
+                    <input type="password" name="senha" placeholder="Senha" class="form-control" value="<?= old('senha'); ?>">
                   </div>
                 </div>
+                <!-- Exibe Mensagem de erro Abre Modal -->
+                <?php if(isset($erro)): ?>
+                  <div class="alert alert-danger" role="alert">
+                    <?= $erro->listErrors()?>
+                  </div>
+                <?= $this->section('openLoginModal') ?>
+                <script>
+                  $('#loginModal').modal();
+                </script>
+                <?= $this->endSection() ?>
+                <?php endif;?>
               </div>
             
           </div>
           <div class="modal-footer justify-content-center">
             <button type="submit" class="btn btn-primary btn-link btn-wd btn-lg">Acessar meu perfil</button>
           </div>
-          </form>
+
+          <?= form_close();?>
         </div>
       </div>
     </div>
   </div>
+

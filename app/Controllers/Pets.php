@@ -1,6 +1,8 @@
 <?php namespace App\Controllers;
 
-class Pets extends BaseController
+use CodeIgniter\Controller;
+
+class Pets extends Controller
 {
 	public function index()
 	{

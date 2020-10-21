@@ -1,10 +1,30 @@
 <?php namespace App\Controllers;
 
-class Auth extends BaseController
+use CodeIgniter\Controller;
+
+class Auth extends Controller
 {
     public function login()//Realizar Login do usuario
 	{
-        return redirect()->route('perfil');
+
+        if($this->request->getMethod() !== 'post'){//Valida se página veio de um POST | Proteção contra direct Access
+            return redirect()->to('/');
+        }else{
+            //LOGICA DE LOGIN
+
+            $validacao = $this->validate([//Validação Server Side Form
+                'email'   => 'required',//Obriga o preeenchimento do Form
+                'senha'   => 'required',
+            ]);
+
+            if(!$validacao){
+                //Cria uma Sessao chamada 'erro' com a mensagem de erro padrão do validator
+                return redirect()->back()->withInput()->with('erro', $this->validator);
+            }else{
+                return redirect()->route('perfil');//Redireciona para rota perfil
+            }
+           
+        }
     }
 
     public function cadastrar()

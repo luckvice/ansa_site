@@ -1,9 +1,12 @@
 <?php namespace App\Controllers;
 
-class Perfil extends BaseController
+use CodeIgniter\Controller;
+
+class Perfil extends Controller
 {
 	public function index()
 	{
+        helper('form');
         $data['title'] = 'Página Inicial';
         $data['teste'] = 'teste';
         $data['bodyPageProfile'] = True;
