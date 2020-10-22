@@ -13,8 +13,12 @@ class Auth extends Controller
             //LOGICA DE LOGIN
 
             $validacao = $this->validate([//Validação Server Side Form
-                'email'   => 'required',//Obriga o preeenchimento do Form
+                'email'   => 'required|valid_email',//Obriga o preeenchimento do Form
                 'senha'   => 'required',
+            ],[
+                'email' => [//Exemplo de msg Custom
+                    'required' => 'Campo E-Mail É Obrigatório',
+                ]
             ]);
 
             if(!$validacao){

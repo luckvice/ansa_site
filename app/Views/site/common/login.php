@@ -39,14 +39,16 @@
                 </div>
                 <!-- Exibe Mensagem de erro Abre Modal -->
                 <?php if(isset($erro)): ?>
+
                   <div class="alert alert-danger" role="alert">
                     <?= $erro->listErrors()?>
                   </div>
                 <?= $this->section('openLoginModal') ?>
-                <script>
-                  $('#loginModal').modal();
-                </script>
+                  <script>
+                    $('#loginModal').modal();
+                  </script>
                 <?= $this->endSection() ?>
+
                 <?php endif;?>
               </div>
             
