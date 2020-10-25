@@ -12,7 +12,7 @@
               <h4 class="card-title">Log in</h4>
             </div>
           </div>
-     
+  
          <?= form_open('auth/login')?>
           <div class="modal-body">
             

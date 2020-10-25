@@ -6,12 +6,10 @@ class Auth extends Controller
 {
     public function login()//Realizar Login do usuario
 	{
-
         if($this->request->getMethod() !== 'post'){//Valida se página veio de um POST | Proteção contra direct Access
             return redirect()->to('/');
         }else{
             //LOGICA DE LOGIN
-
             $validacao = $this->validate([//Validação Server Side Form
                 'email'   => 'required|valid_email',//Obriga o preeenchimento do Form
                 'senha'   => 'required',
@@ -26,8 +24,7 @@ class Auth extends Controller
                 return redirect()->back()->withInput()->with('erro', $this->validator);
             }else{
                 return redirect()->route('perfil');//Redireciona para rota perfil
-            }
-           
+            } 
         }
     }
 
@@ -35,5 +32,4 @@ class Auth extends Controller
 	{
         echo 'cadastrar';
     }
-
 }

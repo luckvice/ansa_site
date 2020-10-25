@@ -26,15 +26,21 @@
                                 <div class="ripple-container"></div></a>
                               </li>
                               <li class="nav-item">
-                                <a class="nav-link" href="#messages" data-toggle="tab">
+                                <a class="nav-link" href="#cadastrarPet" data-toggle="tab">
                                   <i class="material-icons">chat</i>
                                   Cadastrar um Pet
                                 <div class="ripple-container"></div></a>
                               </li>
                               <li class="nav-item">
-                                <a class="nav-link" href="#settings" data-toggle="tab">
+                                <a class="nav-link" href="#listarPetsCadastrados" data-toggle="tab">
                                 <i class="fas fa-cat"></i>
                                   Listar pets
+                                <div class="ripple-container"></div></a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="#criarDepoimento" data-toggle="tab">
+                                <i class="fas fa-cat"></i>
+                                  Criar depoimento
                                 <div class="ripple-container"></div></a>
                               </li>
                             </ul>
@@ -52,8 +58,8 @@
                                 <input type="email" class="form-control" name="email" id="email" placeholder="E-mail" value="">
                               </div>
                               <div class="form-group col-md-6">
-                                <label for="inputPassword4">Senha</label>
-                                <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                                <label for="senha">Senha</label>
+                                <input type="password" class="form-control" id="senha" placeholder="Senha">
                               </div>
                             </div>
                             <div class="form-row">
@@ -77,11 +83,29 @@
                             <button type="submit" class="btn btn-primary">Salvar</button>
                           </form>
                           </div>
-                          <div class="tab-pane" id="messages">
-                            <p> I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.</p>
+                          <div class="tab-pane" id="cadastrarPet">
+                            Aqui cadastrar Pet
                           </div>
-                          <div class="tab-pane" id="settings">
-                            <p>I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. So when you get something that has the name Kanye West on it, it’s supposed to be pushing the furthest possibilities. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus.</p>
+                          <div class="tab-pane" id="listarPetsCadastrados">
+                            Aqui listagem
+                          </div>
+                          <div class="tab-pane" id="criarDepoimento">
+                            <div class="form-row">
+                              <div class="form-group col-md-3">
+                                <select class="selectpicker" data-style="select-with-transition" title="Selecione um pet" data-size="7">
+                                    <option selected>Escolha o pet</option>
+                                    <option value="2">Bruce</option>
+                                    <option value="3">Spike</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="form-col">
+                              <div class="form-group">
+                              <label for="depoimento">Faça um depoimento sobre o Pet Adotado</label>
+                              <textarea class="form-control" id="depoimento" rows="10"></textarea>
+                              </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Enviar depoimento</button>
                           </div>
                         </div>
                       </div>

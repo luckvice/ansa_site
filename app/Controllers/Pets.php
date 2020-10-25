@@ -6,6 +6,7 @@ class Pets extends Controller
 {
 	public function index()
 	{
+		helper('form');
 		//Configurações de pagina
 		$data['title'] = 'Ver Pets';
 		$data['menuTransparent'] = False;
@@ -14,7 +15,19 @@ class Pets extends Controller
 	public function listar($especie = 'ALL', $tamanho = 'ALL')
 	{
         echo 'lista pets Tipo '.$especie.' Tamanho '.$tamanho;
-    }
-	//--------------------------------------------------------------------
+	}
+	
+	public function adicionarPet()
+	{
+       
+	}
+	
+	public function removerPet()
+	{
+       
+	}
 
+
+
+	//--------------------------------------------------------------------
 }
