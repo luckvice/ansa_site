@@ -17,9 +17,9 @@ class Pets extends Controller
         echo 'lista pets Tipo '.$especie.' Tamanho '.$tamanho;
 	}
 	
-	public function adicionarPet()
+	public function cadastrarPet()
 	{
-       
+		echo 'Cadastrou!';
 	}
 	
 	public function removerPet()
