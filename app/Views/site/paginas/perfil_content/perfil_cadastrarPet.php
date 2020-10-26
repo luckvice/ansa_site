@@ -146,6 +146,6 @@
                               <h3>Cuidados veterinários</h3>
                               </div>
                             </div>
-                            <button class="btn-primary">Salvar</button>
+                            <button type="submit" class="btn btn-primary">Cadastrar Pet</button>
                           </form>
                           </div>

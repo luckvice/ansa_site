@@ -1,4 +1,6 @@
                         <div class="tab-pane active show" id="profile">
+                        <h3 class="text-left">Suas informações</h3>
+                        <hr>
                           <form method="POST" action="pets/cadastrar">
                             <div class="form-row">
                               <div class="form-group col-md-6">
