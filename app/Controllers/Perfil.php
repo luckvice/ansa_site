@@ -10,7 +10,10 @@ class Perfil extends Controller
         $data['title'] = 'Página Inicial';
         $data['teste'] = 'teste';
         $data['bodyPageProfile'] = True;
-		$data['menuTransparent'] = False;
+        $data['menuTransparent'] = False;
+        if(session()->has('erro')){//se na sessao tem a variavel erro.
+			$data['erro_perfilCadPet'] = session('erro');
+		}
         echo view('site/paginas/perfil', $data);
 
 	}

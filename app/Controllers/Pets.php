@@ -19,7 +19,23 @@ class Pets extends Controller
 	
 	public function cadastrarPet()
 	{
-		echo 'Cadastrou!';
+		if($this->request->getMethod() !== 'post'){//Valida se página veio de um POST | Proteção contra direct Access
+            return redirect()->to('/');
+        }else{
+			$validacao = $this->validate([//Validação Server Side Form
+				'especie'   => 'required',//Obriga o preeenchimento do Form
+			]);
+
+			if(!$validacao){
+				return redirect()->to('/perfil#cadastrarPet')->withInput()->with('erro', $this->validator);
+            }else{
+				echo '<pre>';
+				print_r($this->request->getPostGet());
+                //return redirect()->route('perfil');//Redireciona para rota perfil
+            } 
+
+		}
+
 	}
 	
 	public function removerPet()
