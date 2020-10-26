@@ -1,5 +1,23 @@
                         <div class="tab-pane active show" id="profile">
                         <h3 class="text-left">Suas informações</h3>
+                        <div class="row">
+                          <div class="col md-6">
+                            <div class="card" style="width: 20rem;">
+                              <div class="card-body">
+                                <h4 class="card-title">Pets Divulgados</h4>
+                                <p class="card-text"><h3>0</h3></p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col md-6">
+                            <div class="card" style="width: 20rem;">
+                              <div class="card-body">
+                                <h4 class="card-title">Pets Adotados</h4>
+                                <p class="card-text"><h3>0</h3></p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                         <hr>
                           <form method="POST" action="pets/cadastrar">
                             <div class="form-row">
