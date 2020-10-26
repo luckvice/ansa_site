@@ -25,25 +25,20 @@ class Pets extends Controller
 			$validacao = $this->validate([//Validação Server Side Form
 				'especie'   => 'required',//Obriga o preeenchimento do Form
 			]);
-
 			if(!$validacao){
 				return redirect()->to('/perfil/cadastrarpet')->withInput()->with('erro', $this->validator);
             }else{
 				echo '<pre>';
 				print_r($this->request->getPostGet());
+				$post = $this->request->getPostGet();
+				echo $post['docil'];
                 //return redirect()->route('perfil');//Redireciona para rota perfil
             } 
-
 		}
-
 	}
 	
 	public function removerPet()
 	{
        
 	}
-
-
-
-	//--------------------------------------------------------------------
 }
