@@ -43,9 +43,6 @@
                                   Criar depoimento
                                 <div class="ripple-container"></div></a>
                               </li>
-                              <li class="nav-item">
-                                <a class="nav-link">0 pets divulgados | 0 Pets Adotados</a>
-                              </li>
                             </ul>
                           </div>
                         </div>
