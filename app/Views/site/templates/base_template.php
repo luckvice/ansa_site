@@ -20,6 +20,8 @@
   <?= $this->include('site/templates/footer') ?>
   <!-- Abre Modal Caso Tenha Falha na validação -->
   <?= $this->renderSection('openLoginModal') ?>
+  <!-- Seleciona a Tab em caso de erro Perfil/cadastrarPet -->
+
 
 </body>
 

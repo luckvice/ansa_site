@@ -1,8 +1,8 @@
                         <div class="tab-pane" id="cadastrarPet">
-                          <form method="POST" action="pets/cadastrar">
+                          <form method="POST" action="pets/cadastrarPet">
                             <div class="row">
                               <div class="col">
-                              <h3>Informações básicas</h3>
+                              <h3 class="text-left">Informações básicas</h3>
                                 <div class="form-group">
                                   <div class="row">
                                     <div class="col-md-3">
@@ -11,7 +11,7 @@
                                     <div class="col-md-5 text-left">
                                       <div class="form-check form-check-radio form-check-inline">
                                           <label class="form-check-label">
-                                            <input class="form-check-input" type="radio" name="especie" id="inlineRadio1" value="option1"> Gato
+                                            <input class="form-check-input" type="radio" name="especie" id="gato" value="1"> Gato
                                             <span class="circle">
                                                 <span class="check"></span>
                                             </span>
@@ -19,7 +19,7 @@
                                         </div>
                                         <div class="form-check form-check-radio form-check-inline">
                                           <label class="form-check-label">
-                                            <input class="form-check-input" type="radio" name="especie" id="inlineRadio2" value="option2"> Cachorro
+                                            <input class="form-check-input" type="radio" name="especie" id="cachorro" value="2"> Cachorro
                                             <span class="circle">
                                                 <span class="check"></span>
                                             </span>
@@ -29,12 +29,12 @@
                                   </div>
                                   <div class="row">
                                     <div class="col-md-3">
-                                      <label class="bmd-form-group" for="exampleFormControlInput1">Tamanho*</label>
+                                      <label class="bmd-form-group" for="exampleFormControlInput1">Porte*</label>
                                     </div>
                                     <div class="col-md-7 text-left">
                                       <div class="form-check form-check-radio form-check-inline">
                                           <label class="form-check-label">
-                                            <input class="form-check-input" type="radio" name="tamanho" id="inlineRadio1" value="option1"> Pequeno
+                                            <input class="form-check-input" type="radio" name="tamanho" id="pequeno" value="1"> Pequeno
                                             <span class="circle">
                                                 <span class="check"></span>
                                             </span>
@@ -42,7 +42,7 @@
                                         </div>
                                         <div class="form-check form-check-radio form-check-inline">
                                           <label class="form-check-label">
-                                            <input class="form-check-input" type="radio" name="tamanho" id="inlineRadio2" value="option2"> Médio
+                                            <input class="form-check-input" type="radio" name="tamanho" id="medio" value="2"> Médio
                                             <span class="circle">
                                                 <span class="check"></span>
                                             </span>
@@ -50,7 +50,7 @@
                                         </div>
                                         <div class="form-check form-check-radio form-check-inline">
                                           <label class="form-check-label">
-                                            <input class="form-check-input" type="radio" name="tamanho" id="inlineRadio2" value="option2"> Grande
+                                            <input class="form-check-input" type="radio" name="tamanho" id="grande" value="3"> Grande
                                             <span class="circle">
                                                 <span class="check"></span>
                                             </span>
@@ -60,12 +60,12 @@
                                   </div>
                                   <div class="row">
                                     <div class="col-md-3">
-                                      <label class="bmd-form-group" for="exampleFormControlInput1">Sexo*</label>
+                                      <label class="bmd-form-group" for="sexo">Sexo*</label>
                                     </div>
                                     <div class="col-md-5 text-left">
                                       <div class="form-check form-check-radio form-check-inline">
                                           <label class="form-check-label">
-                                            <input class="form-check-input" type="radio" name="sexo" id="inlineRadio1" value="option1"> Macho
+                                            <input class="form-check-input" type="radio" name="sexo" id="macho" value="1"> Macho
                                             <span class="circle">
                                                 <span class="check"></span>
                                             </span>
@@ -73,7 +73,7 @@
                                         </div>
                                         <div class="form-check form-check-radio form-check-inline">
                                           <label class="form-check-label">
-                                            <input class="form-check-input" type="radio" name="sexo" id="inlineRadio2" value="option2"> Fêmea
+                                            <input class="form-check-input" type="radio" name="sexo" id="femea" value="2"> Fêmea
                                             <span class="circle">
                                                 <span class="check"></span>
                                             </span>
@@ -88,7 +88,7 @@
                                 </div>
                                 <div class="form-group bmd-form-group">
                                 <label for="nomePet">Qual a idade do pet:</label>
-                                <select class="selectpicker text-left" data-style="select-with-transition" title="Idade" data-size="7">
+                                <select class="selectpicker text-left" data-style="select-with-transition" name="idade" title="Idade" data-size="7">
                                     <option Select>Idade</option>
                                     <option value="2">Filhote</option>
                                     <option value="3">Jovem</option>
@@ -99,16 +99,16 @@
                                 </div>
                                 <div class="form-group">
                                   <label for="descricao">Uma breve descrição do pet</label>
-                                  <textarea class="form-control" id="descricao" rows="3"></textarea>
+                                  <textarea class="form-control" name="descricao" id="descricao" rows="3"></textarea>
                                 </div>
                               </div>
                               <div class="col">
-                              <h3>Personalidade</h3>
-                                <div class="form-group">
+                              <h3 class="text-left">Personalidade</h3>
+                                <div class="form-group text-left">
                                  
                                   <div class="form-check">
                                       <label class="form-check-label">
-                                          <input class="form-check-input" type="checkbox" name="personalidade[]" value="">
+                                          <input class="form-check-input" type="checkbox" name="docil" value="1">
                                             Dócil
                                           <span class="form-check-sign">
                                               <span class="check"></span>
@@ -117,8 +117,8 @@
                                   </div>
                                   <div class="form-check">
                                       <label class="form-check-label">
-                                          <input class="form-check-input" type="checkbox" name="personalidade[]" value="">
-                                            Dócil
+                                          <input class="form-check-input" type="checkbox" name="agressivo" value="1">
+                                            Agressivo
                                           <span class="form-check-sign">
                                               <span class="check"></span>
                                           </span>
@@ -126,8 +126,8 @@
                                   </div>
                                   <div class="form-check">
                                       <label class="form-check-label">
-                                          <input class="form-check-input" type="checkbox" name="personalidade[]" value="">
-                                            Dócil
+                                          <input class="form-check-input" type="checkbox" name="calmo" value="1">
+                                            Calmo
                                           <span class="form-check-sign">
                                               <span class="check"></span>
                                           </span>
@@ -135,15 +135,78 @@
                                   </div>
                                   <div class="form-check">
                                       <label class="form-check-label">
-                                          <input class="form-check-input" type="checkbox" name="personalidade[]" value="">
-                                            Dócil
+                                          <input class="form-check-input" type="checkbox" name="sociavel" value="1">
+                                            Sociavel
+                                          <span class="form-check-sign">
+                                              <span class="check"></span>
+                                          </span>
+                                      </label>
+                                  </div>
+                                  <div class="form-check">
+                                      <label class="form-check-label">
+                                          <input class="form-check-input" type="checkbox" name="arisco" value="1">
+                                            Arisco
+                                          <span class="form-check-sign">
+                                              <span class="check"></span>
+                                          </span>
+                                      </label>
+                                  </div>
+                                  <div class="form-check">
+                                      <label class="form-check-label">
+                                          <input class="form-check-input" type="checkbox" name="independente" value="1">
+                                            Independente
+                                          <span class="form-check-sign">
+                                              <span class="check"></span>
+                                          </span>
+                                      </label>
+                                  </div>
+                                  <div class="form-check">
+                                      <label class="form-check-label">
+                                          <input class="form-check-input" type="checkbox" name="carente" value="1">
+                                            Carente
+                                          <span class="form-check-sign">
+                                              <span class="check"></span>
+                                          </span>
+                                      </label>
+                                  </div>
+                                  <div class="form-check">
+                                      <label class="form-check-label">
+                                          <input class="form-check-input" type="checkbox" name="tenso" value="1">
+                                            Tenso
+                                          <span class="form-check-sign">
+                                              <span class="check"></span>
+                                          </span>
+                                      </label>
+                                  </div>
+                                  <div class="form-check">
+                                      <label class="form-check-label">
+                                          <input class="form-check-input" type="checkbox" name="assustado" value="1">
+                                            Assustado
+                                          <span class="form-check-sign">
+                                              <span class="check"></span>
+                                          </span>
+                                      </label>
+                                  </div>
+                                  <div class="form-check">
+                                      <label class="form-check-label">
+                                          <input class="form-check-input" type="checkbox" name="casa" value="1">
+                                            Casa
+                                          <span class="form-check-sign">
+                                              <span class="check"></span>
+                                          </span>
+                                      </label>
+                                  </div>
+                                  <div class="form-check">
+                                      <label class="form-check-label">
+                                          <input class="form-check-input" type="checkbox" name="apartamento" value="1">
+                                            Apartamento
                                           <span class="form-check-sign">
                                               <span class="check"></span>
                                           </span>
                                       </label>
                                   </div>
                                 </div>
-                              <h3>Cuidados veterinários</h3>
+                              <h3 class="text-left">Cuidados veterinários</h3>
                               </div>
                             </div>
                             <!-- Galeria Adicionar fotos -->
@@ -151,9 +214,16 @@
                               <div class="col">
                                 <h3>Adicione fotos do Pet</h3>
                                 <hr>
-                                
+
                               </div>
                             </div>
+                            <?php if(isset($erro_perfilCadPet)): ?>
+
+                            <div class="alert alert-danger" role="alert">
+                              <?= $erro_perfilCadPet->listErrors()?>
+                              <?php echo 'DEBUG:'; var_dump($erro_perfilCadPet->listErrors())?>
+                            </div>
+                            <?php endif;?>
                             <button type="submit" class="btn btn-primary">Cadastrar Pet</button>
                           </form>
                           </div>
