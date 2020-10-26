@@ -1,4 +1,6 @@
-                        <div class="tab-pane active show" id="profile">
+<?= $this->extend('site/paginas/perfil_content/perfil_template') ?>
+<?php $this->section('content_perfil'); ?>
+                    <div class="tab-pane active show" id="profile">
                         <h3 class="text-left">Suas informações</h3>
                         <div class="row">
                           <div class="col md-6">
@@ -60,4 +62,5 @@
                             </div>
                             <button type="submit" class="btn btn-primary">Salvar</button>
                           </form>
-                          </div>
+                    </div>
+<?php $this->endSection() ?>

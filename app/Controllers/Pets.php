@@ -27,7 +27,7 @@ class Pets extends Controller
 			]);
 
 			if(!$validacao){
-				return redirect()->to('/perfil#cadastrarPet')->withInput()->with('erro', $this->validator);
+				return redirect()->to('/perfil/cadastrarpet')->withInput()->with('erro', $this->validator);
             }else{
 				echo '<pre>';
 				print_r($this->request->getPostGet());

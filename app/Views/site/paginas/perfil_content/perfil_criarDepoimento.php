@@ -1,4 +1,6 @@
-                        <div class="tab-pane" id="criarDepoimento"> 
+<?= $this->extend('site/paginas/perfil_content/perfil_template') ?>
+<?php $this->section('content_perfil'); ?>
+                        <div class="tab-pane active show" id="criarDepoimento"> 
                             <form>
                                 <div class="form-row">
                                 <div class="form-group col-md-3">
@@ -18,3 +20,4 @@
                                 <button type="submit" class="btn btn-primary">Enviar depoimento</button>
                             </form>
                         </div>
+<?php $this->endSection(); ?>

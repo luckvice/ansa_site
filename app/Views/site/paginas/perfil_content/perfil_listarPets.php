@@ -1,3 +1,5 @@
+<?= $this->extend('site/paginas/perfil_content/perfil_template') ?>
+<?php $this->section('content_perfil'); ?>
 <!-- Vou criar o CSS aqui e depois a gente vê onde coloca -->
 <style type="text/css">
 
@@ -28,7 +30,7 @@
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
 
-<div class="tab-pane" id="listarPetsCadastrados">
+<div class="tab-pane active show" id="listarPetsCadastrados">
 <form>
     <div class="container">
     	<div class="row">
@@ -92,3 +94,5 @@
     </div>
 </form>
 </div>
+
+<?= $this->endSection() ?>

@@ -1,5 +1,7 @@
-                        <div class="tab-pane" id="cadastrarPet">
-                          <form method="POST" action="pets/cadastrarPet">
+<?= $this->extend('site/paginas/perfil_content/perfil_template') ?>
+<?php $this->section('content_perfil'); ?>
+<div class="tab-pane active show" id="cadastrarPet">
+                          <form method="POST" action="/pets/cadastrarPet">
                             <div class="row">
                               <div class="col">
                               <h3 class="text-left">Informações básicas</h3>
@@ -227,3 +229,4 @@
                             <button type="submit" class="btn btn-primary">Cadastrar Pet</button>
                           </form>
                           </div>
+<?php $this->endSection() ?>

@@ -1,7 +1,6 @@
+
 <?= $this->extend('site/templates/base_template') ?>
-
-<?= $this->section('content') ?>
-
+<?php $this->section('content'); ?>
 <div class="page-header profile-page" data-parallax="true" style="height: 480px;background-image: url(&quot;../assets/img/dog_perfil.jpg&quot;);"></div>
 <div class="main">
   <div class="container">
@@ -19,25 +18,25 @@
                           <div class="nav-tabs-wrapper">
                             <ul class="nav nav-tabs" data-tabs="tabs">
                               <li class="nav-item">
-                                <a class="nav-link active show" href="#profile" data-toggle="tab">
+                                <a class="nav-link <?php if(isset($tabPerfil)): echo $tabPerfil; endif; ?>" href="/perfil">
                                   <i class="material-icons">face</i>
                                   Meu Perfil
                                 <div class="ripple-container"></div></a>
                               </li>
                               <li class="nav-item">
-                                <a class="nav-link" href="#cadastrarPet" data-toggle="tab">
+                                <a class="nav-link <?php if(isset($tabCadastrarPet)): echo $tabCadastrarPet; endif; ?>" href="/perfil/cadastrarpet">
                                   <i class="material-icons">forum</i>
                                   Cadastrar um Pet
                                 <div class="ripple-container"></div></a>
                               </li>
                               <li class="nav-item">
-                                <a class="nav-link" href="#listarPetsCadastrados" data-toggle="tab">
+                                <a class="nav-link <?php if(isset($tabListarPets)): echo $tabListarPets; endif; ?>" href="/perfil/listarpets">
                                 <i class="material-icons">pets</i>
                                   Meus Pets Cadastrados
                                 <div class="ripple-container"></div></a>
                               </li>
                               <li class="nav-item">
-                                <a class="nav-link" href="#criarDepoimento" data-toggle="tab">
+                                <a class="nav-link <?php if(isset($tabCriarDepoimento)): echo $tabCriarDepoimento; endif; ?>" href="/perfil/criardepoimento">
                                 <i class="material-icons">comment</i>
                                   Criar depoimento
                                 <div class="ripple-container"></div></a>
@@ -48,14 +47,7 @@
                       </div>
                       <div class="card-body ">
                         <div class="tab-content text-center">
-                          <!-- Include Tab Content Perfil Usuario -->
-                          <?= $this->include('site/paginas/perfil_content/perfil_usuario') ?>
-                          <!-- Include Tab Content Cadastrar Pet-->
-                          <?= $this->include('site/paginas/perfil_content/perfil_cadastrarPet') ?>
-                          <!-- Include Tab Content Listar Pets-->
-                          <?= $this->include('site/paginas/perfil_content/perfil_listarPets') ?>
-                          <!-- Include Tab Content Criar depoimento-->
-                          <?= $this->include('site/paginas/perfil_content/perfil_criarDepoimento') ?>
+                        <?= $this->renderSection('content_perfil') ?>
                         </div>
                       </div>
                     </div>
@@ -67,4 +59,5 @@
     </div>
   </div>
 </div>
-<?= $this->endSection() ?>
+
+<?php $this->endSection(); ?>
