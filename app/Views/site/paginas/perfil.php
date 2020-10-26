@@ -3,7 +3,6 @@
 <?= $this->section('content') ?>
 
 <div class="page-header profile-page" data-parallax="true" style="height: 480px;background-image: url(&quot;../assets/img/dog_perfil.jpg&quot;);"></div>
-
 <div class="main">
   <div class="container">
     <div class="section">
@@ -27,19 +26,19 @@
                               </li>
                               <li class="nav-item">
                                 <a class="nav-link" href="#cadastrarPet" data-toggle="tab">
-                                  <i class="material-icons">chat</i>
+                                  <i class="material-icons">forum</i>
                                   Cadastrar um Pet
                                 <div class="ripple-container"></div></a>
                               </li>
                               <li class="nav-item">
                                 <a class="nav-link" href="#listarPetsCadastrados" data-toggle="tab">
-                                <i class="fas fa-cat"></i>
+                                <i class="material-icons">pets</i>
                                   Meus Pets Cadastrados
                                 <div class="ripple-container"></div></a>
                               </li>
                               <li class="nav-item">
                                 <a class="nav-link" href="#criarDepoimento" data-toggle="tab">
-                                <i class="fas fa-cat"></i>
+                                <i class="material-icons">comment</i>
                                   Criar depoimento
                                 <div class="ripple-container"></div></a>
                               </li>

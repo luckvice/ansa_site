@@ -20,32 +20,43 @@
                         </div>
                         <hr>
                           <form method="POST" action="pets/cadastrar">
+                          
                             <div class="form-row">
                               <div class="form-group col-md-6">
-                                <label for="inputEmail4">E-mail</label>
-                                <input type="email" class="form-control" name="email" id="email" placeholder="E-mail" value="">
+                                <label for="email">E-mail</label>
+                                <input type="email" readonly class="form-control" name="email" id="email" placeholder="E-mail" value="">
                               </div>
                               <div class="form-group col-md-6">
                                 <label for="senha">Senha</label>
-                                <input type="password" class="form-control" id="senha" placeholder="Senha">
+                                <input type="password" class="form-control" name="senha" id="senha" placeholder="Senha">
                               </div>
                             </div>
                             <div class="form-row">
-                            <div class="form-group col-md-2 ml-auto">
-                                <label for="inputZip">CEP</label>
-                                <input type="text" class="form-control" id="inputZip">
+                            <div class="form-group col-md-2">
+                                <label for="cep">CEP</label>
+                                <input type="text" class="form-control" name="cep" id="cep">
                               </div>
-                              <div class="form-group col-md-6">
-                                <label for="inputCity">Cidade</label>
-                                <input type="text" class="form-control" id="inputCity">
+                              <div class="form-group col-md-2">
+                                <label for="estado">Estado</label>
+                                <input type="text" class="form-control" name="estado" id="estado">
                               </div>
-                              <div class="form-group col-md-3">
-                                <label for="inputState">Estado</label>
-                                <select id="inputState" class="form-control">
-                                  <option selected>Selecione..</option>
-                                  <option>...</option>
-                                </select>
+                              <div class="form-group col-md-4">
+                                <label for="cidade">Cidade</label>
+                                <input type="text" class="form-control" name="cidade" id="cidade">
                               </div>
+                              <div class="form-group col-md-4">
+                                <label for="telefone">Telefone/whats</label>
+                                <input type="tel" class="form-control" name="telefone" id="telefone">
+                              </div>
+                            </div>
+                            <div class="form-group form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" name="dadosPrivados" value="">
+                                      Deixar visível meus dados <br> (Maiores chances de adoção)
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
                             </div>
                             <button type="submit" class="btn btn-primary">Salvar</button>
                           </form>

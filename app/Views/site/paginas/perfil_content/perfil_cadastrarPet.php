@@ -146,6 +146,14 @@
                               <h3>Cuidados veterinários</h3>
                               </div>
                             </div>
+                            <!-- Galeria Adicionar fotos -->
+                            <div class="row">
+                              <div class="col">
+                                <h3>Adicione fotos do Pet</h3>
+                                <hr>
+                                
+                              </div>
+                            </div>
                             <button type="submit" class="btn btn-primary">Cadastrar Pet</button>
                           </form>
                           </div>
