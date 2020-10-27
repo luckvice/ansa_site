@@ -24,7 +24,7 @@
 					</div>
 					<hr>
 					<div class="pet-buttons">
-						<button type="button" class="btn btn-primary">Ver</button>
+						<a href="/perfil/pet/1" class="btn btn-primary">Ver</a>
 						<button type="button" class="btn btn-success">Adotado</button>
 						<button type="button" class="btn btn-danger">Deletar</button>
 					</div>
