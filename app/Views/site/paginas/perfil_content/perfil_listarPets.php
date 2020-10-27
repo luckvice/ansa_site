@@ -11,11 +11,11 @@
     		<div class="col-12 col-lg-6">
     			<div class="card">
     				<div class="pet-item">
-						<img class="card-img-top pet-pic" src="https://www.specialdog.com.br/assets/imgs/cao.png" alt="Card image cap">
+						<img class="card-img-top pet-pic" src="<?= base_url('assets/img/belinha.jpeg'); ?>" alt="Card image cap">
 						<div class="card-body text-left">
-							<h5 class="card-title"><i class="fas fa-dog"></i>Nico</h5>
+							<h5 class="card-title"><i class="fas fa-dog"></i>Belinha</h5>
 							<hr>
-							<p class="card-text"><i class="fas fa-mars"></i>Macho</p>
+							<p class="card-text"><i class="fas fa-venus"></i>Fêmea</p>
 							<p class="card-text"><i class="fas fa-paw"></i>Dócil</p>
 							<p class="card-text"><i class="fas fa-dumbbell"></i>Pequeno</p>
 							<p class="card-text"><i class="fas fa-history"></i>Jovem</p>
