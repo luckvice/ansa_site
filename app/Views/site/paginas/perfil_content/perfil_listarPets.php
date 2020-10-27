@@ -3,7 +3,6 @@
 
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
-
 <div class="tab-pane active show" id="listarPetsCadastrados">
 <form>
     <div class="container">
@@ -11,9 +10,14 @@
     		<div class="col-12 col-lg-6">
     			<div class="card">
     				<div class="pet-item">
-						<img class="card-img-top pet-pic" src="<?= base_url('assets/img/belinha.jpeg'); ?>" alt="Card image cap">
+    					<div class="pet-pic">
+							<img class="card-img-top" src="<?= base_url('assets/img/belinha.jpeg'); ?>" alt="Card image cap">
+    					</div>
 						<div class="card-body text-left">
-							<h5 class="card-title"><i class="fas fa-dog"></i>Belinha</h5>
+							<div class="pet-title">
+								<h5 class="card-title"><i class="fas fa-dog"></i> Belinha</h5>
+								<span class="badge badge-success">Adotado</span>
+							</div>
 							<hr>
 							<p class="card-text"><i class="fas fa-venus"></i>Fêmea</p>
 							<p class="card-text"><i class="fas fa-paw"></i>Dócil</p>
@@ -33,11 +37,14 @@
     		<div class="col-12 col-lg-6">
     			<div class="card">
     				<div class="pet-item">
-						<img class="card-img-top pet-pic" src="https://www.specialdog.com.br/assets/imgs/cao.png" alt="Card image cap">
+						<div class="pet-pic">
+							<img class="card-img-top" src="https://www.specialdog.com.br/assets/imgs/cao.png" alt="Card image cap">
+    					</div>
 						<div class="card-body text-left">
-							<h5 class="card-title"><i class="fas fa-dog"></i>Nico <span class="badge badge-success">Adotado</span></h5>
+
+							<h5 class="card-title"><i class="fas fa-dog"></i>Sophia</h5>
 							<hr>
-							<p class="card-text"><i class="fas fa-mars"></i>Macho</p>
+							<p class="card-text"><i class="fas fa-venus"></i>Fêmea</p>
 							<p class="card-text"><i class="fas fa-paw"></i>Dócil</p>
 							<p class="card-text"><i class="fas fa-dumbbell"></i>Pequeno</p>
 							<p class="card-text"><i class="fas fa-history"></i>Jovem</p>
@@ -55,11 +62,13 @@
     		<div class="col-12 col-lg-6">
     			<div class="card">
     				<div class="pet-item">
-						<img class="card-img-top pet-pic" src="https://www.specialdog.com.br/assets/imgs/cao.png" alt="Card image cap">
+						<div class="pet-pic">
+							<img class="card-img-top" src="https://www.specialdog.com.br/assets/imgs/cao.png" alt="Card image cap">
+    					</div>
 						<div class="card-body text-left">
-							<h5 class="card-title"><i class="fas fa-dog"></i>Nico</h5>
+							<h5 class="card-title"><i class="fas fa-dog"></i>Belinha</h5>
 							<hr>
-							<p class="card-text"><i class="fas fa-mars"></i>Macho</p>
+							<p class="card-text"><i class="fas fa-venus"></i>Fêmea</p>
 							<p class="card-text"><i class="fas fa-paw"></i>Dócil</p>
 							<p class="card-text"><i class="fas fa-dumbbell"></i>Pequeno</p>
 							<p class="card-text"><i class="fas fa-history"></i>Jovem</p>
@@ -77,11 +86,13 @@
     		<div class="col-12 col-lg-6">
     			<div class="card">
     				<div class="pet-item">
-						<img class="card-img-top pet-pic" src="https://www.specialdog.com.br/assets/imgs/cao.png" alt="Card image cap">
+						<div class="pet-pic">
+							<img class="card-img-top" src="https://www.specialdog.com.br/assets/imgs/cao.png" alt="Card image cap">
+    					</div>
 						<div class="card-body text-left">
-							<h5 class="card-title"><i class="fas fa-dog"></i>Nico</h5>
+							<h5 class="card-title"><i class="fas fa-dog"></i>Belinha</h5>
 							<hr>
-							<p class="card-text"><i class="fas fa-mars"></i>Macho</p>
+							<p class="card-text"><i class="fas fa-venus"></i>Fêmea</p>
 							<p class="card-text"><i class="fas fa-paw"></i>Dócil</p>
 							<p class="card-text"><i class="fas fa-dumbbell"></i>Pequeno</p>
 							<p class="card-text"><i class="fas fa-history"></i>Jovem</p>
