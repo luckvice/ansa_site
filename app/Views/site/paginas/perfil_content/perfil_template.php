@@ -29,7 +29,7 @@
                               </li>
                               <li class="nav-item">
                                 <a class="nav-link <?php if(isset($tabCadastrarPet)): echo $tabCadastrarPet; endif; ?>" href="/perfil/cadastrarpet">
-                                  <i class="material-icons">forum</i>
+                                  <i class="material-icons">add</i>
                                   Cadastrar um Pet
                                 <div class="ripple-container"></div></a>
                               </li>
