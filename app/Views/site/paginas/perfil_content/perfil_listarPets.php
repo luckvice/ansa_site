@@ -24,9 +24,9 @@
 					</div>
 					<hr>
 					<div class="pet-buttons">
-						<a href="/perfil/pet/1" class="btn btn-primary">Ver</a>
-						<button type="button" class="btn btn-success">Adotado</button>
-						<button type="button" class="btn btn-danger">Deletar</button>
+						<a href="/perfil/pet/1" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Visualizar informações do pet">Ver</a>
+						<button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Marcar como adotado">Adotado</button>
+						<button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="remover pet do site">Deletar</button>
 					</div>
 				</div>
     		</div>
