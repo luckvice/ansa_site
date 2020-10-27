@@ -9,10 +9,13 @@
 <?= $this->include('site/templates/header') ?>
 
 <body class="<?php if(!isset($bodyPageProfile)) : echo 'landing-page'; elseif($bodyPageProfile == true): echo 'profile-page'; endif;?> sidebar-collapse">
+  
+  <?php if(!session()->has('logado')): ?>
   <!-- Autenticação Inicio -->
   <?= $this->include('site/common/login') ?>
   <?= $this->include('site/common/registrar') ?>
   <!-- Autenticação FIM-->
+  <?php endif;?>
   <?= $this->include('site/templates/navbar') ?>
 
   <?= $this->renderSection('content') ?>

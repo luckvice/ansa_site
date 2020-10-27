@@ -9,10 +9,11 @@ use CodeIgniter\Controller;
         tabListarPets
         tabCriarDepoimento
 */
-class Perfil extends Controller
+class Perfil extends Auth
 {
 	public function index()
 	{
+        if(!session()->has('logado')){ return redirect()->to(base_url('/'));}
         helper('form');
         $data['title']              = 'Página Inicial';
         $data['tabPerfil']          = 'active now'; //Fica selecionado a Tab
@@ -26,12 +27,13 @@ class Perfil extends Controller
     
     public function cadastrarPet()//Lista Informações de de pets cadastrados
 	{
+        if(!session()->has('logado')){ return redirect()->to(base_url('/'));}
         helper('form');
         $data['title']           = 'Cadastrar um pet';
         $data['tabCadastrarPet'] = 'active now'; //Fica selecionado a Tab
         $data['bodyPageProfile'] = True;
         $data['menuTransparent'] = False;
-        if(session()->has('erro')){//se na sessao tem a variavel erro.
+        if(session()->has('erro')){
 			$data['erro'] = session('erro');
 		}
         echo view('site/paginas/perfil_content/perfil_cadastrarPet', $data);
@@ -39,13 +41,14 @@ class Perfil extends Controller
 
     public function pet($id = " ")//Lista Informações de de pets cadastrados
 	{
+        if(!session()->has('logado')){ return redirect()->to(base_url('/'));}
         helper('form');
         $data['title']              = 'Listar pets';
-        $data['tabListarPets']      = 'active now'; //Fica selecionado a Tab
+        $data['tabListarPets']      = 'active now';
         $data['bodyPageProfile']    = True;
         $data['menuTransparent']    = False;
 
-        if(session()->has('erro')){//se na sessao tem a variavel erro.
+        if(session()->has('erro')){
 			$data['erro'] = session('erro');
 		}
         echo view('site/paginas/perfil_content/perfil_verPet', $data);
@@ -53,25 +56,27 @@ class Perfil extends Controller
 
     public function listarPets()//Lista Informações de de pets cadastrados
 	{
+        if(!session()->has('logado')){ return redirect()->to(base_url('/'));}
         helper('form');
         $data['title']              = 'Listar pets';
-        $data['tabListarPets']      = 'active now'; //Fica selecionado a Tab
+        $data['tabListarPets']      = 'active now'; 
         $data['bodyPageProfile']    = True;
         $data['menuTransparent']    = False;
-        if(session()->has('erro')){//se na sessao tem a variavel erro.
+        if(session()->has('erro')){
 			$data['erro'] = session('erro');
 		}
         echo view('site/paginas/perfil_content/perfil_listarPets', $data);
     }
 
-    public function criarDepoimento()//Lista Informações de de pets cadastrados
+    public function criarDepoimento()
 	{
+        if(!session()->has('logado')){ return redirect()->to(base_url('/'));}
         helper('form');
         $data['title']              = 'Criar depoimento';
-        $data['tabCriarDepoimento'] = 'active now'; //Fica selecionado a Tab
+        $data['tabCriarDepoimento'] = 'active now'; 
         $data['bodyPageProfile']    = True;
         $data['menuTransparent']    = False;
-        if(session()->has('erro')){//se na sessao tem a variavel erro.
+        if(session()->has('erro')){
 			$data['erro'] = session('erro');
 		}
         echo view('site/paginas/perfil_content/perfil_criarDepoimento', $data);
