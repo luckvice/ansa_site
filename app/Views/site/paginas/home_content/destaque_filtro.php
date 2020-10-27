@@ -2,63 +2,50 @@
           <div class="card card-raised card-form-horizontal">
             <div class="card-body ">
               <form method="" action="">
-                <div class="row">
-                  <div class="col-md-3">
-                    <div id="accordion" role="tablist">
-                      <div class="card card-collapse">
-                        <div class="card-header" role="tab" id="headingTwo">
-                          <h5 class="mb-0">
-                            <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false"
-                              aria-controls="collapseTwo">
-                              Porte
-                              <i class="material-icons">keyboard_arrow_down</i>
-                            </a>
-                          </h5>
-                        </div>
-                        <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
-                          <div class="card-body">
-                            <div class="form-check">
-                              <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" value="" checked="">
-                                Pequeno
-                                <span class="form-check-sign">
-                                  <span class="check"></span>
-                                </span>
-                              </label>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                <div class="container">
+                  <div class="row align-items-center">
+                    <div class="form-group col-sm-3 col-xs-6">
+                      <select class="selectpicker " data-style="select-with-transition" title="Single Select" data-size="7">
+                        <option selected>Especie</option>
+                        <option value="2">Gato</option>
+                        <option value="3">Cachorro</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-sm-3 col-xs-6">
+                      <select class="selectpicker " data-style="select-with-transition" title="Single Select" data-size="7">
+                        <option selected>Tamanho</option>
+                        <option value="2">Pequeno</option>
+                        <option value="3">Medio</option>
+                        <option value="3">Grande</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-sm-3 col-xs-6">
+                      <select class="selectpicker " data-style="select-with-transition" title="Single Select" data-size="7">
+                        <option selected>Especie</option>
+                        <option value="2">Gato</option>
+                        <option value="3">Cachorro</option>
+                      </select>
                     </div>
                   </div>
-                  <div class="col-md-3">
-                    <div class="form-group">
-                      <div class="form-check">
-                        <label class="form-check-label">
-                          <input class="form-check-input" type="checkbox" value="" checked="">
-                          Pequeno
-                          <span class="form-check-sign">
-                            <span class="check"></span>
-                          </span>
-                        </label>
-                      </div>
+                  <hr>
+                  <div class="row">
+                    <div class="form-group col-sm-3 col-xs-6">
+                      <select class="selectpicker " data-style="select-with-transition" title="Single Select" data-size="7">
+                        <option selected>Estado</option>
+                        <option value="2">Gato</option>
+                        <option value="3">Cachorro</option>
+                      </select>
                     </div>
-                  </div>
-                  <div class="col-md-3">
-                    <div class="form-group">
-                      <div class="form-check">
-                        <label class="form-check-label">
-                          <input class="form-check-input" type="checkbox" value="" checked="false">
-                          Pequeno
-                          <span class="form-check-sign">
-                            <span class="check"></span>
-                          </span>
-                        </label>
-                      </div>
+                    <div class="form-group col-sm-3 col-xs-6">
+                      <select class="selectpicker " data-style="select-with-transition" title="Single Select" data-size="7">
+                        <option selected>Cidade</option>
+                        <option value="2">Gato</option>
+                        <option value="3">Cachorro</option>
+                      </select>
                     </div>
-                  </div>
-                  <div class="col-md-3">
-                    <button type="button" class="btn btn-primary btn-block">Procurar</button>
+                    <div class="form-group col-sm-3 col-xs-6">
+                      <button class="btn btn-info">Encontrar</button>
+                    </div>
                   </div>
                 </div>
               </form>
