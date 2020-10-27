@@ -9,7 +9,7 @@ class Ongs extends Controller
 
     }
 
-    public function ver($id = ""){
+    public function ong($id = ""){
         echo $id;
     }
 }
