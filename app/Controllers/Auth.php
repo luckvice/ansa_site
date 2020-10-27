@@ -4,6 +4,7 @@ use CodeIgniter\Controller;
 
 class Auth extends Controller
 {
+    
     public function login()//Realizar Login do usuario
 	{
         if($this->request->getMethod() !== 'post'){//Valida se página veio de um POST | Proteção contra direct Access
@@ -23,13 +24,17 @@ class Auth extends Controller
                 //Cria uma Sessao chamada 'erro' com a mensagem de erro padrão do validator
                 return redirect()->back()->withInput()->with('erro', $this->validator);
             }else{
+                session()->set([
+                    'logado' => 1
+                ]);
                 return redirect()->route('perfil');//Redireciona para rota perfil
             } 
         }
     }
 
-    public function cadastrar()
-	{
-        echo 'cadastrar';
+    public function sair(){
+        session()->destroy();
+        return redirect()->to(base_url('/'));
     }
+
 }

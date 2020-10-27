@@ -30,6 +30,23 @@
               <i class="material-icons">account_circle</i> Minha conta
             </a>
             <div class="dropdown-menu dropdown-with-icons">
+            <?php if(session()->has('logado')): ?>
+              <a href="/perfil" class="dropdown-item">
+                <i class="material-icons">face</i> Perfil
+              </a>
+              <a href="/perfil/cadastrarpet" class="dropdown-item">
+                <i class="material-icons">add</i> Cadastrar pet
+              </a>
+              <a href="/perfil/listarpets" class="dropdown-item">
+                <i class="material-icons">pets</i> Meus pets cadastrados
+              </a>
+              <a href="/perfil/criardepoimento" class="dropdown-item">
+                <i class="material-icons">comment</i> Criar depoimento
+              </a>
+              <a href="/auth/sair" class="dropdown-item">
+                <i class="material-icons">clear</i> Sair
+              </a>
+            <?php  else:?>
               <a href="#" class="dropdown-item" data-toggle="modal" data-target="#loginModal">
                 <i class="material-icons">lock_open</i> Realizar Login
               </a>
@@ -37,6 +54,7 @@
                 class="dropdown-item">
                 <i class="material-icons">lock</i> Cadastrar - se
               </a>
+            <?php endif;?>
             </div>
           </li>
           <li class="nav-item">

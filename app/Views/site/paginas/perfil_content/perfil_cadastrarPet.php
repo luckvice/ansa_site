@@ -265,7 +265,7 @@
 
                             <div class="alert alert-danger" role="alert">
                               <?= $erro->listErrors()?>
-                              <?php echo 'DEBUG:'; var_dump($erro->listErrors())?>
+                              <?php echo $erro->listErrors()?>
                             </div>
                             <?php endif;?>
                             <button type="submit" class="btn btn-primary">Cadastrar Pet</button>
