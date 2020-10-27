@@ -4,8 +4,11 @@
 
 
 /* CUSTOM COLORS */
+.info p.purple{
+    color:#9c27b0;
+}
 .purple{
-    color:#9842f5;
+    color:#9c27b0;
 }
 
 

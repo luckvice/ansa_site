@@ -12,13 +12,13 @@
           <div class="modal-body">
             <div class="row">
               <div class="col-md-5 ml-auto">
-                <div class="info info-horizontal">
+                <div class="info info-horizontal ansa">
                   <div class="icon icon-rose">
                     <i class="material-icons">comment</i>
                   </div>
                   <div class="description">
                     <h4 class="info-title">Comente sua experiência</h4>
-                    <p class="description">
+                    <p class="description purple">
                       Faça um depoimento sobre sua adoção.
                     </p>
                   </div>
@@ -30,7 +30,7 @@
                   </div>
                   <div class="description">
                     <h4 class="info-title">Faça parte deste projeto</h4>
-                    <p class="description">
+                    <p class="description purple">
                       Cadastre um animalzinho Perdido ou abondonado.
                     </p>
                   </div>
@@ -42,7 +42,7 @@
                   </div>
                   <div class="description">
                     <h4 class="info-title">Maior privacidade e mais chances de adotar</h4>
-                    <p class="description">
+                    <p class="description purple">
                     Veja perfils privados para adotar um animalzinho
                     </p>
                   </div>
