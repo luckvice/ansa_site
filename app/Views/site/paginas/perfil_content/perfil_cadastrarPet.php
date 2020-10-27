@@ -188,7 +188,7 @@
                                             </span>
                                         </label>
                                     </div>
-                                    <h3>Vive Bem</h3>
+                                    <h3>Se adapta bem</h3>
                                     <div class="form-check">
                                         <label class="form-check-label">
                                             <input class="form-check-input" type="checkbox" name="casa" value="1">
@@ -210,7 +210,7 @@
                                   </div>
                                   <div class="row">
                                     <div class="col">
-                                    <h3 class="text-left">Cuidados veterinários</h3>
+                                    <h3 class="text-left">Saúde do Pet</h3>
                                     <div class="form-group text-left">
                                       <div class="form-check">
                                           <label class="form-check-label">
@@ -261,11 +261,11 @@
 
                               </div>
                             </div>
-                            <?php if(isset($erro_perfilCadPet)): ?>
+                            <?php if(isset($erro)): ?>
 
                             <div class="alert alert-danger" role="alert">
-                              <?= $erro_perfilCadPet->listErrors()?>
-                              <?php echo 'DEBUG:'; var_dump($erro_perfilCadPet->listErrors())?>
+                              <?= $erro->listErrors()?>
+                              <?php echo 'DEBUG:'; var_dump($erro->listErrors())?>
                             </div>
                             <?php endif;?>
                             <button type="submit" class="btn btn-primary">Cadastrar Pet</button>

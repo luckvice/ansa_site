@@ -19,12 +19,10 @@ class Perfil extends Controller
         $data['bodyPageProfile']    = True;
         $data['menuTransparent']    = False;
         if(session()->has('erro')){//se na sessao tem a variavel erro.
-			$data['erro_perfilCadPet'] = session('erro');
+			$data['erro'] = session('erro');
 		}
         echo view('site/paginas/perfil_content/perfil_usuario', $data);
-
     }
-    
     
     public function cadastrarPet()//Lista Informações de de pets cadastrados
 	{
@@ -34,9 +32,23 @@ class Perfil extends Controller
         $data['bodyPageProfile'] = True;
         $data['menuTransparent'] = False;
         if(session()->has('erro')){//se na sessao tem a variavel erro.
-			$data['erro_perfilCadPet'] = session('erro');
+			$data['erro'] = session('erro');
 		}
         echo view('site/paginas/perfil_content/perfil_cadastrarPet', $data);
+    }
+
+    public function pet($id = " ")//Lista Informações de de pets cadastrados
+	{
+        helper('form');
+        $data['title']              = 'Listar pets';
+        $data['tabListarPets']      = 'active now'; //Fica selecionado a Tab
+        $data['bodyPageProfile']    = True;
+        $data['menuTransparent']    = False;
+
+        if(session()->has('erro')){//se na sessao tem a variavel erro.
+			$data['erro'] = session('erro');
+		}
+        echo view('site/paginas/perfil_content/perfil_verPet', $data);
     }
 
     public function listarPets()//Lista Informações de de pets cadastrados
@@ -47,7 +59,7 @@ class Perfil extends Controller
         $data['bodyPageProfile']    = True;
         $data['menuTransparent']    = False;
         if(session()->has('erro')){//se na sessao tem a variavel erro.
-			$data['erro_perfilCadPet'] = session('erro');
+			$data['erro'] = session('erro');
 		}
         echo view('site/paginas/perfil_content/perfil_listarPets', $data);
     }
@@ -60,7 +72,7 @@ class Perfil extends Controller
         $data['bodyPageProfile']    = True;
         $data['menuTransparent']    = False;
         if(session()->has('erro')){//se na sessao tem a variavel erro.
-			$data['erro_perfilCadPet'] = session('erro');
+			$data['erro'] = session('erro');
 		}
         echo view('site/paginas/perfil_content/perfil_criarDepoimento', $data);
     }

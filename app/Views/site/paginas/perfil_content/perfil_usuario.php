@@ -60,6 +60,13 @@
                                     </span>
                                 </label>
                             </div>
+                            <?php if(isset($erro)): ?>
+
+                            <div class="alert alert-danger" role="alert">
+                              <?= $erro->listErrors()?>
+                              <?php echo $erro->listErrors()?>
+                            </div>
+                            <?php endif;?>
                             <button type="submit" class="btn btn-primary">Salvar</button>
                           </form>
                     </div>
