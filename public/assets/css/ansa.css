@@ -1,0 +1,41 @@
+/*
+            [ANSA] CUSTOM STYLES
+*/
+
+
+/* CUSTOM COLORS */
+.purple{
+    color:#9842f5;
+}
+
+
+/* LISTAGEM DE PETS */
+
+
+i {
+    margin-right: 5px;
+}
+
+.pet-item {
+    display: flex;
+    flex-direction: row !important;
+}
+
+.pet-pic {
+    width: 250px;
+}
+
+.pet-buttons {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+    .pet-item {
+        flex-direction: column !important;
+    }
+
+    .pet-pic {
+        margin: 0 auto;
+    }
+}

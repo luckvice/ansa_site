@@ -1,37 +1,5 @@
 <?= $this->extend('site/paginas/perfil_content/perfil_template') ?>
 <?php $this->section('content_perfil'); ?>
-<!-- Vou criar o CSS aqui e depois a gente vê onde coloca -->
-<style type="text/css">
-
-	i {
-		margin-right: 5px;
-	}
-
-	.pet-item {
-		display: flex;
-		flex-direction: row !important;
-	}
-
-	.pet-pic {
-		width: 250px;
-	}
-
-	.pet-buttons {
-		margin-bottom: 1rem;
-		text-align: center;
-	}
-
-	@media only screen and (max-width: 768px) {
-		.pet-item {
-			flex-direction: column !important;
-		}
-
-		.pet-pic {
-			margin: 0 auto;
-		}
-	}
-
-</style>
 
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
