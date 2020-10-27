@@ -30,7 +30,11 @@ i {
 }
 
 .pet-title .badge {
-    margin-left: 5px;
+    margin: 0px 5px !important;
+}
+
+.pet-title h5 {
+    white-space: nowrap;
 }
 
 .pet-pic {
@@ -48,6 +52,10 @@ i {
 .pet-buttons {
     margin-bottom: 1rem;
     text-align: center;
+}
+
+.pet-title-divisor {
+    margin-top: 0px;
 }
 
 @media only screen and (max-width: 768px) {

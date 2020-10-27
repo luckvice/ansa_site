@@ -16,9 +16,11 @@
 						<div class="card-body text-left">
 							<div class="pet-title">
 								<h5 class="card-title"><i class="fas fa-dog"></i> Belinha</h5>
-								<span class="badge badge-success">Adotado</span>
+								<span class="badge badge-warning">em espera</span>
 							</div>
-							<hr>
+
+							<hr class="pet-title-divisor">
+
 							<p class="card-text"><i class="fas fa-venus"></i>Fêmea</p>
 							<p class="card-text"><i class="fas fa-paw"></i>Dócil</p>
 							<p class="card-text"><i class="fas fa-dumbbell"></i>Pequeno</p>
@@ -41,9 +43,13 @@
 							<img class="card-img-top" src="https://www.specialdog.com.br/assets/imgs/cao.png" alt="Card image cap">
     					</div>
 						<div class="card-body text-left">
+							<div class="pet-title">
+								<h5 class="card-title"><i class="fas fa-dog"></i> Belinha</h5>
+								<span class="badge badge-success">Adotado</span>
+							</div>
+							
+							<hr class="pet-title-divisor">
 
-							<h5 class="card-title"><i class="fas fa-dog"></i>Sophia</h5>
-							<hr>
 							<p class="card-text"><i class="fas fa-venus"></i>Fêmea</p>
 							<p class="card-text"><i class="fas fa-paw"></i>Dócil</p>
 							<p class="card-text"><i class="fas fa-dumbbell"></i>Pequeno</p>
@@ -66,8 +72,13 @@
 							<img class="card-img-top" src="https://www.specialdog.com.br/assets/imgs/cao.png" alt="Card image cap">
     					</div>
 						<div class="card-body text-left">
-							<h5 class="card-title"><i class="fas fa-dog"></i>Belinha</h5>
-							<hr>
+							<div class="pet-title">
+								<h5 class="card-title"><i class="fas fa-dog"></i> Belinha</h5>
+								<span class="badge badge-warning">em espera</span>
+							</div>
+							
+							<hr class="pet-title-divisor">
+
 							<p class="card-text"><i class="fas fa-venus"></i>Fêmea</p>
 							<p class="card-text"><i class="fas fa-paw"></i>Dócil</p>
 							<p class="card-text"><i class="fas fa-dumbbell"></i>Pequeno</p>
@@ -90,8 +101,13 @@
 							<img class="card-img-top" src="https://www.specialdog.com.br/assets/imgs/cao.png" alt="Card image cap">
     					</div>
 						<div class="card-body text-left">
-							<h5 class="card-title"><i class="fas fa-dog"></i>Belinha</h5>
-							<hr>
+							<div class="pet-title">
+								<h5 class="card-title"><i class="fas fa-dog"></i> Belinha</h5>
+								<span class="badge badge-warning">em espera</span>
+							</div>
+
+							<hr class="pet-title-divisor">
+
 							<p class="card-text"><i class="fas fa-venus"></i>Fêmea</p>
 							<p class="card-text"><i class="fas fa-paw"></i>Dócil</p>
 							<p class="card-text"><i class="fas fa-dumbbell"></i>Pequeno</p>
