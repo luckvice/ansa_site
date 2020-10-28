@@ -44,7 +44,7 @@
                       </select>
                     </div>
                     <div class="form-group col-sm-3 col-xs-6">
-                      <button class="btn btn-info">Encontrar</button>
+                      <a class="btn btn-info" href="/pets">Encontrar</a>
                     </div>
                   </div>
                 </div>

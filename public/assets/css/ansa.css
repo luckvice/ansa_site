@@ -3,7 +3,7 @@
 */
 
 
-/* CUSTOM COLORS */
+/* CUSTOM Styles */
 .info p.purple{
     color:#9c27b0;
 }
@@ -11,7 +11,19 @@
     color:#9c27b0;
 }
 
+.mainPurple{
+    background: #7336a9;
+}
+footer{
+    background-color: #7336a9;
+	color:white;
+}
 
+.navbar{
+    color:#fff;
+	background-color: #7336a9!important;
+	box-shadow: 0 4px 18px 0 rgba(0, 0, 0, .12), 0 7px 10px -5px rgba(0, 0, 0, .15)
+}
 /* LISTAGEM DE PETS */
 
 
@@ -76,6 +88,13 @@ i {
 .pet-cover {
     height: 50vh !important;
     background-image:url('https://fbcover.com/covers-images/download/funny_cute_dog.jpg');
+}
+
+.pet-cover2{
+  
+    background-repeat: no-repeat;
+    background-position: 0px -98px;
+    background-image:url('https://images.ctfassets.net/440y9b545yd9/7cABSHg3Tcytg6tWDj0Pfa/51129a114bbf13d2fd5fcc1790d596a7/Adopt-mixed-breed-hero850.jpg');
 }
 
 .pet-profile {

@@ -1,8 +1,4 @@
-<div class="section">
-      <div class="container">
-        <h2 class="section-title">Encontre o fofuxo perfeito</h2>
-        <div class="row">
-          <div class="col-md-3">
+<div class="col-md-3">
             <div class="card card-refine card-plain card-rose">
               <div class="card-body">
                 <h4 class="card-title">
@@ -104,20 +100,3 @@
               </div>
             </div>
           </div>
-          <div class="col-md-9">
-            <div class="row">
-              <div class="col-md-4">
-
-              </div>
-
-              <div class="col-md-3 ml-auto mr-auto">
-                <button rel="tooltip" class="btn btn-rose btn-round" data-original-title="" title="">Mostrar Mais
-                  pets...</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <br>
-
-      </div>
-</div><!-- section -->
