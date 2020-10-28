@@ -18,9 +18,9 @@
 								<h5 class="card-title"><i class="fas fa-dog"></i> Belinha</h5>
 								<span class="badge badge-warning">em espera</span>
 							</div>
-
+							
 							<hr class="pet-title-divisor">
-
+							
 							<p class="card-text"><i class="fas fa-venus"></i>Fêmea</p>
 							<p class="card-text"><i class="fas fa-paw"></i>Dócil</p>
 							<p class="card-text"><i class="fas fa-dumbbell"></i>Pequeno</p>

@@ -70,3 +70,34 @@ i {
         display: flex;
     }
 }
+
+/* ---------- PERFIL DO PET ----------- */
+
+.pet-cover {
+    height: 50vh !important;
+    background-image:url('https://fbcover.com/covers-images/download/funny_cute_dog.jpg');
+}
+
+.pet-profile {
+    margin-top: -100px;
+    text-align: center;
+}
+
+.pet-profile-pic {
+    background-color: #aaa;
+    display: flex;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.pet-profile-pic img {
+    height: 100%;
+}
+
+.pet-description {
+    margin: 2rem;
+}
