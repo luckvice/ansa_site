@@ -21,7 +21,7 @@
                     </div>
                     <div class="form-group col-sm-3 col-xs-6">
                       <select class="selectpicker " data-style="select-with-transition" title="Single Select" data-size="7">
-                        <option selected>Especie</option>
+                        <option selected>Sexo</option>
                         <option value="2">Gato</option>
                         <option value="3">Cachorro</option>
                       </select>

@@ -2,18 +2,18 @@
     <div class="col">
         <ul class="nav nav-pills nav-pills-icons" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" href="/pets#todos" role="tab" data-toggle="tab">
+                <a class="nav-link" href="/pets#todos" data-toggle="tooltip" data-placement="top" title="Listar Todos">
                     <i class="fas fa-paw"></i>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/pets/teste#caes" role="tab" data-toggle="tab">
+                <a class="nav-link active" href="/pets/teste#caes" data-toggle="tooltip" data-placement="top" title="Listar cães">
                     <i class="fas fa-dog"></i>
 
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/pets#gatos" role="tab" data-toggle="tab">
+                <a class="nav-link" href="/pets#gatos" data-toggle="tooltip" data-placement="top" title="Listar Gatos">
                     <i class="fas fa-cat"></i>
 
                 </a>
