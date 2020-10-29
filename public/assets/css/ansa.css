@@ -111,6 +111,7 @@ i {
     overflow: hidden;
     margin: 0 auto;
     justify-content: center;
+    border: 9px solid white;
 }
 
 .pet-profile-pic img {
