@@ -96,6 +96,15 @@
                     </div>
                     <div class="form-check">
                       <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="">
+                        <span class="form-check-sign">
+                          <span class="check"></span>
+                        </span>
+                        Sou proprietário/responsável por Ong <br> <small>Poderá cadastrar sua ong em seu perfil</small>
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <label class="form-check-label">
                         <input class="form-check-input" type="checkbox" value="" checked>
                         <span class="form-check-sign">
                           <span class="check"></span>
