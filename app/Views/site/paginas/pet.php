@@ -10,7 +10,7 @@
 		<div style="position: absolute; right: 0px; top: 15px;">	
 			<ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#studio" role="tab" data-toggle="tab">
+                    <a class="nav-link active" href="https://wa.me/+55519620-3669?text=ANSA Quero adotar o Niko, http://amigonaoseabandona.com.br/pets/niko, Meu Nome é Lucas Soares">
                 		<i class="material-icons">favorite</i>
                         Adotar
                     </a>

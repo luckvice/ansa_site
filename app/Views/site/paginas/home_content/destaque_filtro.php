@@ -22,8 +22,8 @@
                     <div class="form-group col-sm-3 col-xs-6">
                       <select class="selectpicker " data-style="select-with-transition" title="Single Select" data-size="7">
                         <option selected>Sexo</option>
-                        <option value="2">Gato</option>
-                        <option value="3">Cachorro</option>
+                        <option value="2">Macho</option>
+                        <option value="3">Fêmea</option>
                       </select>
                     </div>
                   </div>
@@ -32,15 +32,14 @@
                     <div class="form-group col-sm-3 col-xs-6">
                       <select class="selectpicker " data-style="select-with-transition" title="Single Select" data-size="7">
                         <option selected>Estado</option>
-                        <option value="2">Gato</option>
-                        <option value="3">Cachorro</option>
+                        <option value="2">Rio Grande do Sul</option>
+                      
                       </select>
                     </div>
                     <div class="form-group col-sm-3 col-xs-6">
                       <select class="selectpicker " data-style="select-with-transition" title="Single Select" data-size="7">
                         <option selected>Cidade</option>
-                        <option value="2">Gato</option>
-                        <option value="3">Cachorro</option>
+                        <option value="2">Porto Alegre</option>
                       </select>
                     </div>
                     <div class="form-group col-sm-3 col-xs-6">
