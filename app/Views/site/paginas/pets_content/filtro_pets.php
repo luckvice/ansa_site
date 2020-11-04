@@ -2,18 +2,21 @@
     <div class="col">
         <ul class="nav nav-pills nav-pills-icons" role="tablist">
             <li class="nav-item">
-                <a class="nav-link" href="/pets#todos" data-toggle="tooltip" data-placement="top" title="Listar Todos">
+                <a class="nav-link <?php if (isset($all)) : echo 'active';
+                                    endif; ?>" href="/pets/estados/cidades/todos" data-toggle="tooltip" data-placement="top" title="Listar Todos">
                     <i class="fas fa-paw"></i>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="/pets/teste#caes" data-toggle="tooltip" data-placement="top" title="Listar cães">
+                <a class="nav-link <?php if (isset($dogs)) : echo 'active';
+                                    endif; ?>" href="/pets/estados/cidades/caes" data-toggle="tooltip" data-placement="top" title="Listar cães">
                     <i class="fas fa-dog"></i>
 
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/pets#gatos" data-toggle="tooltip" data-placement="top" title="Listar Gatos">
+                <a class="nav-link <?php if (isset($cats)) : echo 'active';
+                                    endif; ?>" href="/pets/estados/cidades/gatos" data-toggle="tooltip" data-placement="top" title="Listar Gatos">
                     <i class="fas fa-cat"></i>
 
                 </a>
@@ -21,6 +24,13 @@
 
         </ul>
         <hr>
+        <?php
+
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $details = json_decode(file_get_contents("http://ipinfo.io/187.113.226.25/json"));
+        echo $details->region . ' | ' . $details->city;
+
+        ?>
         <a data-toggle="collapse" href="#buscaavancada" aria-expanded="false" aria-controls="buscaavancada">
             <i class="far fa-search"></i> Busca Avançada
         </a>

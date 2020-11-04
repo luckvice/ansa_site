@@ -57,7 +57,7 @@
           <div class="row">
             <div class="col-md-4">
               <div class="card" style="width: 20rem;">
-                <a href="/pets/pet">
+                <a href="/pet/1">
                   <div class="content">
                     <div class="content-overlay"></div>
                     <img class="card-img-top content-image" src="<?= base_url('assets/img/belinha.jpeg') ?>" alt="Card image cap">

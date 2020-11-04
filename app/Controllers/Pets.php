@@ -6,12 +6,24 @@ use CodeIgniter\Controller;
 
 class Pets extends Controller
 {
-	public function index()
+	public function index($estado = '', $cidade = '', $especie = '', $tamanho = '', $sexo = '')
 	{
 		helper('form');
 		//Configurações de pagina
 		$data['title'] = 'Ver Pets';
 		$data['menuTransparent'] = False;
+
+		/* Filtros consulta */
+		if ($especie == 'caes') {
+			$data['dogs'] = true;
+		} else if ($especie == 'gatos') {
+			$data['cats'] = true;
+		} else if ($especie == 'todos') {
+			$data['all'] = true;
+		}
+		//Consulta no banco
+		// Criar consulta aqui
+		// End Consulta
 		echo view('site/paginas/pets', $data);
 	}
 
@@ -22,29 +34,5 @@ class Pets extends Controller
 		$data['title'] = 'Ver Pets';
 		$data['menuTransparent'] = False;
 		echo view('site/paginas/pet', $data);
-	}
-
-	public function cadastrarPet()
-	{
-		if ($this->request->getMethod() !== 'post') { //Valida se página veio de um POST | Proteção contra direct Access
-			return redirect()->to('/');
-		} else {
-			$validacao = $this->validate([ //Validação Server Side Form
-				'especie'   => 'required', //Obriga o preeenchimento do Form
-			]);
-			if (!$validacao) {
-				return redirect()->to('/perfil/cadastrarpet')->withInput()->with('erro', $this->validator);
-			} else {
-				echo '<pre>';
-				print_r($this->request->getPostGet());
-				$post = $this->request->getPostGet();
-				echo $post['docil'];
-				//return redirect()->route('perfil');//Redireciona para rota perfil
-			}
-		}
-	}
-
-	public function removerPet()
-	{
 	}
 }
