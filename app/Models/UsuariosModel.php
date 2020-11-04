@@ -17,7 +17,7 @@ class UsuariosModel extends Model
         if ($id === false) {
             return $this->findAll();
         } else {
-            return $this->asArray()->where(['id_usuarios' => $id])->first();
+            return $this->asObject()->where(['id_usuarios' => $id])->first();
         }
     }
 }
