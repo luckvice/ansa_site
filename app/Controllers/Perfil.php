@@ -47,23 +47,39 @@ class Perfil extends Controller
         echo view('site/paginas/perfil_content/perfil_cadastrarPet', $data);
     }
 
-    public function pet($id = " ") //Lista Informações de de pets cadastrados
+    public function addPet()
     {
-        if (!session()->has('logado')) {
-            return redirect()->to(base_url('/'));
-        }
-        helper('form');
-        $data['title']              = 'Visualizar pets';
-        $data['tabListarPets']      = 'active now';
-        $data['bodyPageProfile']    = True;
-        $data['menuTransparent']    = False;
+        if ($this->request->getMethod() !== 'post') { //Valida se página veio de um POST | Proteção contra direct Access
+            return redirect()->to('/');
+        } else {
+            $validacao = $this->validate([ //Validação Server Side Form
+                'especie'   => 'required', //Obriga o preeenchimento do Form
+            ]);
+            if (!$validacao) {
+                return redirect()->to('/perfil/cadastrarpet')->withInput()->with('erro', $this->validator);
+            } else {
+                echo '<pre>';
+                //    print_r($this->request->getPostGet());
+                //  $post = $this->request->getPostGet();
+                // echo $post['docil'];
 
-        if (session()->has('erro')) {
-            $data['erro'] = session('erro');
+                $base = file_get_contents($this->request->getFile('galeria'));
+
+                $binary = base64_encode($base);
+
+                echo "<img src='data:image/jpeg;base64,{$binary}'>";
+                //return redirect()->route('perfil');//Redireciona para rota perfil
+            }
         }
-        echo view('site/paginas/perfil_content/perfil_verPet', $data);
     }
 
+    public function removerPet()
+    {
+    }
+
+    public function marcarAdotado()
+    {
+    }
     public function listarPets() //Lista Informações de de pets cadastrados
     {
         if (!session()->has('logado')) {
