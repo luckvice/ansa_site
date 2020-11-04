@@ -59,9 +59,9 @@ class Perfil extends Controller
                 return redirect()->to('/perfil/cadastrarpet')->withInput()->with('erro', $this->validator);
             } else {
                 echo '<pre>';
-                //    print_r($this->request->getPostGet());
-                //  $post = $this->request->getPostGet();
-                // echo $post['docil'];
+                print_r($this->request->getPostGet());
+                $post = $this->request->getPostGet();
+                echo $post['docil'];
 
                 $base = file_get_contents($this->request->getFile('galeria'));
 
