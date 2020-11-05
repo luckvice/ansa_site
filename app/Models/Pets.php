@@ -4,6 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class FiltrarModel extends Model
+class Pets extends Model
 {
+    
 }

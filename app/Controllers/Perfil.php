@@ -45,7 +45,7 @@ class Perfil extends Controller
         } else{
             $dados = $this->request->getPostGet();
             $usuario   = new Usuarios;
-            
+            var_dump($dados);
         }
     }
 
@@ -62,7 +62,7 @@ class Perfil extends Controller
             ]);
             if (!$validacao) {
                 $mensagem = ['codigo' => 2, 'mensagem' => 'Verifique se os campos estão completos'];
-                return redirect()->to(base_url('/perfil'))->withInput()->with('mensagem', $mensagem);
+                return redirect()->to(base_url('perfil'))->withInput()->with('mensagem', $mensagem);
             } else {
                 $dados      = $this->request->getPostGet();
                 $usuario    = new Usuarios;
