@@ -58,7 +58,8 @@ class Perfil extends Controller
             $dados      = $this->request->getPostGet();
             $usuario    = new Usuarios;
             $usuario->updateSenha(session()->get('id_usuario'), $dados['senha']);
-           return redirect()->to(base_url('perfil'))->with('mensagem', 'Senha aleterada com sucesso');
+            $mensagem = ['codigo' => 1, 'mensagem' => 'Senha alterada com sucesso'];
+           return redirect()->to(base_url('perfil'))->with('mensagem', $mensagem);
         }
     }
 

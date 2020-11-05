@@ -59,6 +59,19 @@
       </div>
     </div>
   </div>
+  <?php $mensagem = session()->get('mensagem');
+  if(!isset($mensagem['codigo']) == 0): 
+  
+  ?>
+  <div class="row">
+    <div class="col">
+      <div class="alert alert-success" role="alert">
+      <?= $mensagem['mensagem'] ?>
+      </div>
+    </div>
+
+  </div>
+  <?php endif;?>
   <hr>
   <form method="POST" action="<?= base_url('perfil/alterar') ?>">
 
