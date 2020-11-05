@@ -115,15 +115,10 @@
                     <!-- Exibe Mensagem de erro Abre Modal -->
                     <?php
                     $erroeMail = session()->get('erro_mail');
-
                     if (isset($erroeMail['codigo']) == 1) :
-
-
                     ?>
-
                       <div class="alert alert-danger" role="alert">
                         <?= $erroeMail['mensagem']; ?>
-
                       </div>
                       <?= $this->section('openRegistrarModal') ?>
                       <script>
@@ -138,14 +133,12 @@
 
                       <div class="alert alert-danger" role="alert">
                         <?= $erroeRegistrar['mensagem'] ?>
-
                       </div>
                       <?= $this->section('openRegistrarModal') ?>
                       <script>
                         $('#signupModal').modal();
                       </script>
                       <?= $this->endSection() ?>
-
                     <?php endif; ?>
                   </div>
                   <div class="modal-footer justify-content-center">

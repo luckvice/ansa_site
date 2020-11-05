@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 use App\Models\ModelTest; //Carrega Model SQL
-
+use App\Models\Usuarios; //Carrega Model SQL
 class Debug extends Controller
 {
 
@@ -40,6 +40,12 @@ class Debug extends Controller
         $usuarios = new ModelTest;
         $resultados = $usuarios->updateUsuario('testandoupdate', 'outrasenhaupdate', 'outro@aa.com', 2);
         echo '<pre>';
+        print_r($resultados);
+    }
+
+    public function atualizaSenha(){
+        $usuarios   = new Usuarios;
+        $resultados = $usuarios->updateSenha(2, 'novasenha');
         print_r($resultados);
     }
 }

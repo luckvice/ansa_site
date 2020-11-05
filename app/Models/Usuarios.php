@@ -27,6 +27,26 @@ class Usuarios
         return $resultados;
     }
 
+    public function updateSenha($id_usuario, $senha){
+        $db = db_connect();
+        $data = ['senha' => $senha];
+        $db->table('usuario')->where('id_usuario', $id_usuario)->update($data);
+        $db->close();
+    }
+
+    public function updateUsuario($id_usuario, $email, $telefone, $data_alteracao)
+    {
+        $db = db_connect();
+        $data = [
+            'login'             => $email,
+            'email'             => $email,
+            'telefone'          => $telefone,
+            'data_alteracao'    => $data_alteracao
+        ];
+        $db->table('usuario')->where('id_usuario', $id_usuario)->update($data);
+        $db->close();
+    }
+
     public function getUsuarioById($id_usuario)
     {
         $db = db_connect();

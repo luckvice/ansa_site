@@ -36,6 +36,31 @@ class Perfil extends Controller
         echo view('site/paginas/perfil_content/perfil_usuario', $data);
     }
 
+    public function alterar(){
+        if (!session()->has('logado')) {
+            return redirect()->to(base_url('/'));
+        }
+        if ($this->request->getMethod() !== 'post') { //Valida se página veio de um POST | Proteção contra direct Access
+            return redirect()->to('/');
+        } else{
+            $usuario   = new Usuarios;
+            print_r($this->request->getPostGet());
+        }
+    }
+
+    public function alterarSenha(){
+        if (!session()->has('logado')) {
+            return redirect()->to(base_url('/'));
+        }
+        if ($this->request->getMethod() !== 'post') { //Valida se página veio de um POST | Proteção contra direct Access
+            return redirect()->to('/');
+        } else{
+            $dados = $this->request()->getPostGet();
+            $usuario  = new Usuarios;
+            $usuario->updateSenha($dados->id_senha, $dados->senha);
+        }
+    }
+
     public function cadastrarPet() //View
     {
         if (!session()->has('logado')) {
