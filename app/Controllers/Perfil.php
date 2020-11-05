@@ -57,9 +57,14 @@ class Perfil extends Controller
         } else{
             $dados      = $this->request->getPostGet();
             $usuario    = new Usuarios;
-            $usuario->updateSenha(session()->get('id_usuario'), md5($dados['senha']));
-            $mensagem = ['codigo' => 1, 'mensagem' => 'Senha alterada com sucesso'];
-           return redirect()->to(base_url('perfil'))->with('mensagem', $mensagem);
+            if($dados['senha'] == $dados['senha_r']){
+                $usuario->updateSenha(session()->get('id_usuario'), md5($dados['senha']));
+                $mensagem = ['codigo' => 1, 'mensagem' => 'Senha alterada com sucesso'];
+                return redirect()->to(base_url('perfil'))->with('mensagem', $mensagem);
+            }
+            $mensagem = ['codigo' => 2, 'mensagem' => 'As senhas não são iguais'];
+            return redirect()->to(base_url('perfil'))->with('mensagem', $mensagem);
+          
         }
     }
 

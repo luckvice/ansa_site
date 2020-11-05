@@ -14,8 +14,8 @@
       <div class="modal-body">
         <div class="form-row">
           <div class="form-group col-md-8">
-            <label for="senha">Preencha os campos com a nova senha</label>
-              <input type="password" class="form-control" name="senha" required>
+            <label class="control-label" for="senha">Preencha os campos com a nova senha</label>
+              <input type="password" class="form-control is-invalid" name="senha" required>
           </div>
           <div class="form-group col-md-8">
             <label for="senha">Digite a senha novamente</label>
@@ -60,7 +60,9 @@
     </div>
   </div>
   <?php $mensagem = session()->get('mensagem');
-  if(!isset($mensagem['codigo']) == 0): 
+
+if(isset($mensagem)): 
+  if($mensagem['codigo'] == 1): 
   
   ?>
   <div class="row">
@@ -71,7 +73,16 @@
     </div>
 
   </div>
-  <?php endif;?>
+  <?php elseif($mensagem['codigo'] == 2): ?>
+    <div class="row">
+    <div class="col">
+      <div class="alert alert-danger" role="alert">
+      <?= $mensagem['mensagem'] ?>
+      </div>
+    </div>
+
+  </div>
+  <?php endif; endif;?>
   <hr>
   <form method="POST" action="<?= base_url('perfil/alterar') ?>">
 
