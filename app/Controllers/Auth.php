@@ -42,8 +42,9 @@ class Auth extends Controller
                 }
                 $usuario = $usuarios->checkLogin($dados['email'], $dados['senha']);
                 session()->set([
-                    'logado' => 1,
-                    'id_usuario' => $usuario->id_usuario
+                    'logado'     => 1,
+                    'id_usuario' => $usuario->id_usuario,
+                    'id_nivel'   => $usuario->id_nivel
                 ]);
                 return redirect()->route('perfil'); //Redireciona para rota perfil
             }
@@ -73,7 +74,8 @@ class Auth extends Controller
 
             if (!$validacao) {
                 //Cria uma Sessao chamada 'erro' com a mensagem de erro padrão do validator
-                return redirect()->back()->withInput()->with('erro', $this->validator);
+                $erro = 'Verifique todos os campos';
+                return redirect()->back()->withInput()->with('erro_registrar', $erro);
             } else {
                 $dados = $this->request->getPostGet();
                 $usuarios = new Usuarios;
@@ -105,8 +107,9 @@ class Auth extends Controller
                 );
 
                 session()->set([
-                    'logado' => 1,
-                    'id_usuario' => $id_usuario
+                    'logado'        => 1,
+                    'id_usuario'    => $id_usuario,
+                    'id_nivel'      => $nivel
                 ]);
 
                 return redirect()->route('perfil'); //Redireciona para rota perfil*/

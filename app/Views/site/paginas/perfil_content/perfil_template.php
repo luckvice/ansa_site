@@ -24,7 +24,7 @@
                           <div class="ripple-container"></div></a>
                       </li>
 
-                      <?php if ($usuario->id_nivel == 3) : ?>
+                      <?php if (session()->get('id_nivel') == 3) : ?>
                         <li class="nav-item">
                           <a class="nav-link <?php if (isset($tabOng)) : echo $tabOng;
                                               endif; ?>" href="/perfil">
