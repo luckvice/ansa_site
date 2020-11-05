@@ -21,7 +21,9 @@ class Usuarios
         $db->table('usuario')->insert($data);
         $resultados = $db->error();
         if ($resultados['code'] == 0) { //Se nao teve erros
-            return $db->insertID();
+            $lastId = $db->insertID();
+            $db->close();
+            return $lastId;
         }
         $db->close();
         return $resultados;

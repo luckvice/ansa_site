@@ -15,7 +15,6 @@
         <div class="form-row">
           <div class="form-group col-md-8">
             <label for="senha">Preencha os campos com a nova senha</label>
-              <input type="hidden" name="id_usuario" id="id_usuario" value="<?= $usuario->id_usuario?>">
               <input type="password" class="form-control" name="senha" required>
           </div>
           <div class="form-group col-md-8">

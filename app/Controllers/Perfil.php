@@ -43,7 +43,7 @@ class Perfil extends Controller
         if ($this->request->getMethod() !== 'post') { //Valida se página veio de um POST | Proteção contra direct Access
             return redirect()->to('/');
         } else{
-            $usuario   = new Usuarios;
+          //  $usuario   = new Usuarios;
             print_r($this->request->getPostGet());
         }
     }
@@ -55,9 +55,10 @@ class Perfil extends Controller
         if ($this->request->getMethod() !== 'post') { //Valida se página veio de um POST | Proteção contra direct Access
             return redirect()->to('/');
         } else{
-            $dados = $this->request()->getPostGet();
-            $usuario  = new Usuarios;
-            $usuario->updateSenha($dados->id_senha, $dados->senha);
+            $dados      = $this->request->getPostGet();
+            $usuario    = new Usuarios;
+            $usuario->updateSenha(session()->get('id_usuario'), $dados['senha']);
+           return redirect()->to(base_url('perfil'))->with('mensagem', 'Senha aleterada com sucesso');
         }
     }
 
