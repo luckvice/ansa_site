@@ -43,21 +43,21 @@
                   <div class="description">
                     <h4 class="info-title">Maior privacidade e mais chances de adotar</h4>
                     <p class="description purple">
-                    Veja perfils privados para adotar um animalzinho
+                      Veja perfils privados para adotar um animalzinho
                     </p>
                   </div>
                 </div>
               </div>
 
               <div class="col-md-5 mr-auto">
-                <form class="form" method="POST" action="<?= base_url('auth/cadstrar'); ?>">
+                <form class="form" method="POST" action="<?= base_url('auth/cadastrarusuario'); ?>">
                   <div class="card-body">
                     <div class="form-group">
                       <div class="input-group">
                         <div class="input-group-prepend">
                           <div class="input-group-text"><i class="material-icons">face</i></div>
                         </div>
-                        <input type="text" class="form-control" placeholder="Seu nome">
+                        <input type="text" class="form-control" name="nome" id="nome" placeholder="Seu nome" value="<?= old('nome'); ?>">
                       </div>
                     </div>
 
@@ -66,7 +66,7 @@
                         <div class="input-group-prepend">
                           <div class="input-group-text"><i class="material-icons">email</i></div>
                         </div>
-                        <input type="text" class="form-control" placeholder="Seu E-mail.">
+                        <input type="mail" class="form-control" name="email" id="email" placeholder="Seu E-mail." value="<?= old('email'); ?>" required>
                       </div>
                     </div>
                     <div class="form-group">
@@ -74,7 +74,7 @@
                         <div class="input-group-prepend">
                           <div class="input-group-text"><i class="material-icons">phone</i></div>
                         </div>
-                        <input type="text" class="form-control" placeholder="Telefone/Whats">
+                        <input type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone/Whats" value="<?= old('telefone'); ?>" required>
                       </div>
                     </div>
                     <div class="form-group">
@@ -82,7 +82,7 @@
                         <div class="input-group-prepend">
                           <div class="input-group-text"><i class="material-icons">lock_outline</i></div>
                         </div>
-                        <input type="password" placeholder="Senha" class="form-control" />
+                        <input type="password" placeholder="Senha" class="form-control" name="senha" id="senha" value="<?= old('senha'); ?>" required />
                       </div>
                     </div>
 
@@ -91,12 +91,12 @@
                         <div class="input-group-prepend">
                           <div class="input-group-text"><i class="material-icons">lock_outline</i></div>
                         </div>
-                        <input type="password" placeholder="Repita a senha" class="form-control" />
+                        <input type="password" placeholder="Repita a senha" class="form-control" name="senha_r" id="senha_r" value="<?= old('senha_r'); ?>" required />
                       </div>
                     </div>
                     <div class="form-check">
                       <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="">
+                        <input class="form-check-input" type="checkbox" name="ong" id="ong">
                         <span class="form-check-sign">
                           <span class="check"></span>
                         </span>
@@ -105,13 +105,46 @@
                     </div>
                     <div class="form-check">
                       <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="" checked>
+                        <input class="form-check-input" type="checkbox" nome="termos" id="termos" value="" checked required>
                         <span class="form-check-sign">
                           <span class="check"></span>
                         </span>
                         Concordo com os <a href="#something">termos de uso</a>.
                       </label>
                     </div>
+                    <!-- Exibe Mensagem de erro Abre Modal -->
+                    <?php
+                    $erroeMail = session()->get('erro_mail');
+
+                    if ($erroeMail['codigo'] == 1) :
+
+
+                    ?>
+
+                      <div class="alert alert-danger" role="alert">
+                        <?= $erroeMail['mensagem']; ?>
+
+                      </div>
+                      <?= $this->section('openRegistrarModal') ?>
+                      <script>
+                        $('#signupModal').modal();
+                      </script>
+                      <?= $this->endSection() ?>
+                    <?php endif; ?>
+
+                    <?php if (isset($erro)) : ?>
+
+                      <div class="alert alert-danger" role="alert">
+                        <?= $erro->listErrors() ?>
+
+                      </div>
+                      <?= $this->section('openRegistrarModal') ?>
+                      <script>
+                        $('#signupModal').modal();
+                      </script>
+                      <?= $this->endSection() ?>
+
+                    <?php endif; ?>
                   </div>
                   <div class="modal-footer justify-content-center">
                     <button type="submit" href="#pablo" class="btn btn-primary btn-round">Cadastrar - se</button>

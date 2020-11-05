@@ -44,10 +44,12 @@
 <!--  Google Maps Plugin    -->
 <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
 <script src="<?= base_url('assets/js/'); ?>/material-kit.js?v=2.0.7" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 <script>
   $(function() {
     var hash = window.location.hash;
     hash && $('ul.nav a[href="' + hash + '"]').tab('show');
+    $('#telefone').mask('(00) 00000-00009');
   });
 </script>
 <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker 

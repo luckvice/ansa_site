@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
+use App\Models\Usuarios; //Carrega Model SQL
 /*
 
     [CONFIGURAÇÕES]
@@ -15,23 +16,27 @@ use CodeIgniter\Controller;
 
 class Perfil extends Controller
 {
-    public function index()
+    public function index() //View
     {
         if (!session()->has('logado')) {
             return redirect()->to(base_url('/'));
         }
+        $usuario   = new Usuarios;
+        $dados = $usuario->getUsuarioById(session()->get('id_usuario'));
         helper('form');
         $data['title']              = 'Meu Perfil';
         $data['tabPerfil']          = 'active now'; //Fica selecionado a Tab
         $data['bodyPageProfile']    = True;
         $data['menuTransparent']    = False;
+        $data['usuario']            = $dados;
+
         if (session()->has('erro')) { //se na sessao tem a variavel erro.
             $data['erro'] = session('erro');
         }
         echo view('site/paginas/perfil_content/perfil_usuario', $data);
     }
 
-    public function cadastrarPet() //Lista Informações de de pets cadastrados
+    public function cadastrarPet() //View
     {
         if (!session()->has('logado')) {
             return redirect()->to(base_url('/'));
@@ -47,7 +52,7 @@ class Perfil extends Controller
         echo view('site/paginas/perfil_content/perfil_cadastrarPet', $data);
     }
 
-    public function addPet()
+    public function addPet() //function
     {
         if ($this->request->getMethod() !== 'post') { //Valida se página veio de um POST | Proteção contra direct Access
             return redirect()->to('/');
@@ -73,14 +78,14 @@ class Perfil extends Controller
         }
     }
 
-    public function removerPet()
+    public function removerPet() //function
     {
     }
 
-    public function marcarAdotado()
+    public function marcarAdotado() //function
     {
     }
-    public function listarPets() //Lista Informações de de pets cadastrados
+    public function listarPets() //View
     {
         if (!session()->has('logado')) {
             return redirect()->to(base_url('/'));
@@ -96,7 +101,7 @@ class Perfil extends Controller
         echo view('site/paginas/perfil_content/perfil_listarPets', $data);
     }
 
-    public function criarDepoimento()
+    public function criarDepoimento() //View
     {
         if (!session()->has('logado')) {
             return redirect()->to(base_url('/'));
