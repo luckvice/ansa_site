@@ -43,8 +43,9 @@ class Perfil extends Controller
         if ($this->request->getMethod() !== 'post') { //Valida se página veio de um POST | Proteção contra direct Access
             return redirect()->to('/');
         } else{
-          //  $usuario   = new Usuarios;
-            print_r($this->request->getPostGet());
+            $dados = $this->request->getPostGet();
+            $usuario   = new Usuarios;
+            
         }
     }
 
@@ -55,16 +56,24 @@ class Perfil extends Controller
         if ($this->request->getMethod() !== 'post') { //Valida se página veio de um POST | Proteção contra direct Access
             return redirect()->to('/');
         } else{
-            $dados      = $this->request->getPostGet();
-            $usuario    = new Usuarios;
-            if($dados['senha'] == $dados['senha_r']){
-                $usuario->updateSenha(session()->get('id_usuario'), md5($dados['senha']));
-                $mensagem = ['codigo' => 1, 'mensagem' => 'Senha alterada com sucesso'];
+            $validacao = $this->validate([ //Validação Server Side Form
+                'senha'     => 'required',
+                'senha_r'   => 'required' //Obriga o preeenchimento do Form
+            ]);
+            if (!$validacao) {
+                $mensagem = ['codigo' => 2, 'mensagem' => 'Verifique se os campos estão completos'];
+                return redirect()->to(base_url('/perfil'))->withInput()->with('mensagem', $mensagem);
+            } else {
+                $dados      = $this->request->getPostGet();
+                $usuario    = new Usuarios;
+                if($dados['senha'] == $dados['senha_r']){
+                    $usuario->updateSenha(session()->get('id_usuario'), md5($dados['senha']));
+                    $mensagem = ['codigo' => 1, 'mensagem' => 'Senha alterada com sucesso'];
+                    return redirect()->to(base_url('perfil'))->with('mensagem', $mensagem);
+                }
+                $mensagem = ['codigo' => 2, 'mensagem' => 'As senhas não são iguais'];
                 return redirect()->to(base_url('perfil'))->with('mensagem', $mensagem);
             }
-            $mensagem = ['codigo' => 2, 'mensagem' => 'As senhas não são iguais'];
-            return redirect()->to(base_url('perfil'))->with('mensagem', $mensagem);
-          
         }
     }
 
