@@ -116,7 +116,7 @@
                     <?php
                     $erroeMail = session()->get('erro_mail');
 
-                    if ($erroeMail['codigo'] == 1) :
+                    if (isset($erroeMail['codigo']) == 1) :
 
 
                     ?>
@@ -134,7 +134,7 @@
 
                     <?php
                     $erroeRegistrar = session()->get('erro_registrar');
-                    if ($erroeRegistrar['codigo'] == 1) : ?>
+                    if (isset($erroeRegistrar['codigo']) == 1) : ?>
 
                       <div class="alert alert-danger" role="alert">
                         <?= $erroeRegistrar['mensagem'] ?>

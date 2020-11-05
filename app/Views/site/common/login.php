@@ -40,7 +40,7 @@
               <!-- Exibe Mensagem de erro Abre Modal -->
               <?php
               $erroLogin = session()->get('erro_login');
-              if ($erroLogin['codigo'] == 1) :
+              if (isset($erroLogin['codigo']) == 1) :
               ?>
                 <div class="alert alert-danger" role="alert">
                   <?= $erroLogin['mensagem']; ?>
