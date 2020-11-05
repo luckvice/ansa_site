@@ -111,6 +111,8 @@
                         </span>
                         Concordo com os <a href="#something">termos de uso</a>.
                       </label>
+                      <br>
+                      <div class="g-recaptcha" name="g-recaptcha" data-sitekey="6LfkfN8ZAAAAAP2Ga-3TPRIOlUqVCYiAkOPMoh-i"></div>
                     </div>
                     <!-- Exibe Mensagem de erro Abre Modal -->
                     <?php

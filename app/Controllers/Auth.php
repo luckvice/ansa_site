@@ -82,41 +82,62 @@ class Auth extends Controller
                 return redirect()->back()->withInput()->with('erro_registrar', $error);
             } else {
                 $dados = $this->request->getPostGet();
-                $usuarios = new Usuarios;
+                $url = "https://www.google.com/recaptcha/api/siteverify";
 
-                if (!$usuarios->checkExistsEmail($dados['email']) == null) {
+                $secretkey = "6LfkfN8ZAAAAAMv3y4JQLInyMBNBM8EcnYfGY322";
+            
+                $response = file_get_contents($url."?secret=".$secretkey."&response=".$dados['g-recaptcha-response']."&remoteip=".$_SERVER["REMOTE_ADDR"]);
+            
+                $data = json_decode($response);
+                print_r($data);
+            
+                if (isset($data->success) && $data->success=="true") {
+                    $usuarios = new Usuarios;
+
+                    if (!$usuarios->checkExistsEmail($dados['email']) == null) {
+                        $error = [
+                            'codigo' => 1,
+                            'mensagem' =>
+                            'Esse E-mail já se encontra cadastrado.'
+                        ];
+    
+                        return redirect()->back()->withInput()->with('erro_mail', $error);
+                    }
+    
+                    if (isset($dados['ong']) == 'on') :
+                        $nivel = 3;
+                    else :
+                        $nivel = 2;
+                    endif;
+    
+                    $id_usuario = $usuarios->inserirUsuario(
+                        $nivel,
+                        $dados['nome'],
+                        $dados['email'],
+                        md5($dados['senha']),
+                        $dados['email'],
+                        $dados['telefone'],
+                        date("Y-m-d H:i:s")
+                    );
+    
+                    session()->set([
+                        'logado'        => 1,
+                        'id_usuario'    => $id_usuario,
+                        'id_nivel'      => $nivel
+                    ]);
+    
+                    return redirect()->route('perfil'); //Redireciona para rota perfil
+                }
+                else{
                     $error = [
                         'codigo' => 1,
                         'mensagem' =>
-                        'Esse E-mail já se encontra cadastrado.'
+                        'Por favor marque a opção não sou um robô.'
                     ];
-
-                    return redirect()->back()->withInput()->with('erro_mail', $error);
+                    return redirect()->back()->withInput()->with('erro_registrar', $error);
                 }
 
-                if (isset($dados['ong']) == 'on') :
-                    $nivel = 3;
-                else :
-                    $nivel = 2;
-                endif;
-
-                $id_usuario = $usuarios->inserirUsuario(
-                    $nivel,
-                    $dados['nome'],
-                    $dados['email'],
-                    md5($dados['senha']),
-                    $dados['email'],
-                    $dados['telefone'],
-                    date("Y-m-d H:i:s")
-                );
-
-                session()->set([
-                    'logado'        => 1,
-                    'id_usuario'    => $id_usuario,
-                    'id_nivel'      => $nivel
-                ]);
-
-                return redirect()->route('perfil'); //Redireciona para rota perfil*/
+                         
             }
         }
     }

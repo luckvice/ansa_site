@@ -38,6 +38,7 @@
 <script src="<?= base_url('assets/js/core'); ?>/popper.min.js" type="text/javascript"></script>
 <script src="<?= base_url('assets/js/core'); ?>/bootstrap-material-design.min.js" type="text/javascript"></script>
 <script src="<?= base_url('assets/js'); ?>/plugins/moment.min.js"></script>
+<script src="<?= base_url('assets/js'); ?>/recaptcha.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.18/dist/js/bootstrap-select.min.js"></script>
 <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
 <script src="<?= base_url('assets/js'); ?>/plugins/nouislider.min.js" type="text/javascript"></script>
@@ -45,6 +46,7 @@
 <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
 <script src="<?= base_url('assets/js/'); ?>/material-kit.js?v=2.0.7" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
 <script>
   $(function() {
     var hash = window.location.hash;
