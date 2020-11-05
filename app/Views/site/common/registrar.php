@@ -132,10 +132,12 @@
                       <?= $this->endSection() ?>
                     <?php endif; ?>
 
-                    <?php if (isset($erro_registrar)) : ?>
+                    <?php
+                    $erroeRegistrar = session()->get('erro_registrar');
+                    if ($erroeRegistrar['codigo'] == 1) : ?>
 
                       <div class="alert alert-danger" role="alert">
-                        <?= $erro_registrar ?>
+                        <?= $erroeRegistrar['mensagem'] ?>
 
                       </div>
                       <?= $this->section('openRegistrarModal') ?>

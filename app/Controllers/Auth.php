@@ -74,8 +74,12 @@ class Auth extends Controller
 
             if (!$validacao) {
                 //Cria uma Sessao chamada 'erro' com a mensagem de erro padrão do validator
-                $erro = 'Verifique todos os campos';
-                return redirect()->back()->withInput()->with('erro_registrar', $erro);
+                $error = [
+                    'codigo' => 1,
+                    'mensagem' =>
+                    'Verifique se todos os campos estão preenchidos.'
+                ];
+                return redirect()->back()->withInput()->with('erro_registrar', $error);
             } else {
                 $dados = $this->request->getPostGet();
                 $usuarios = new Usuarios;
