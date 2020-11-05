@@ -30,7 +30,7 @@ class Auth extends Controller
                 $dados      = $this->request->getPostGet();
                 $usuarios   = new Usuarios;
 
-                if ($usuarios->checkLogin($dados['email'], $dados['senha']) == null) {
+                if ($usuarios->checkLogin($dados['email'], md5($dados['senha'])) == null) {
                     $error = [
                         'codigo'    => 1,
                         'mensagem'  => 'E-mail ou Senha Incorretos'
@@ -40,7 +40,7 @@ class Auth extends Controller
                         ->withInput()
                         ->with('erro_login', $error);
                 }
-                $usuario = $usuarios->checkLogin($dados['email'], $dados['senha']);
+                $usuario = $usuarios->checkLogin($dados['email'], md5($dados['senha']));
                 session()->set([
                     'logado'     => 1,
                     'id_usuario' => $usuario->id_usuario,
@@ -104,7 +104,7 @@ class Auth extends Controller
                     $nivel,
                     $dados['nome'],
                     $dados['email'],
-                    $dados['senha'],
+                    md5($dados['senha']),
                     $dados['email'],
                     $dados['telefone'],
                     date("Y-m-d H:i:s")
