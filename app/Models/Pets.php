@@ -10,7 +10,6 @@ class Pets extends Model
         $db = db_connect();
         $resultados = $db->table('pet')
             ->select('pet.*')
-            ->select('galeria.id_pet            as galeria_id_pet, galeria.imagem')
             ->select('saude.id_pet              as saude_id_pet, vermifugado, vacinado, castrado, cuidados_especiais')
             ->select('personalidade.id_pet      as personalidade_id_pet, docil, agressivo, calmo, brincalhao, sociavel, arisco, independente, carente, tenso, assustado, casa, apartamento')
             ->select('porte.descricao           as porte_descricao')
@@ -18,7 +17,6 @@ class Pets extends Model
             ->select('sexo.descricao            as sexo_descricao')
             ->select('faixa_etaria.descricao    as faixa_etaria_descricao')
             ->select('municipio.nome            as municipio_nome, municipio.uf')
-                ->join('galeria',               'galeria.id_pet                 = pet.id_pet ',        )
                 ->join('porte',                 'porte.id_porte                 = pet.id_porte',        'left')
                 ->join('especie',               'especie.id_especie             = pet.id_especie',      'left')
                 ->join('sexo',                  'sexo.id_sexo                   = pet.id_sexo',         'left')
