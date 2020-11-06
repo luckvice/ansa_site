@@ -36,10 +36,16 @@
 
 <?php $this->section('content_perfil'); ?>
 <div class="tab-pane active show" id="profile">
-  <h3 class="text-left">Ola! <?= $usuario->nome ?> | suas informações</h3>
+  <h3 class="text-left">Olá, <?= $usuario->nome ?>!</h3>
+  <hr>
   <div class="row">
-    <div class="col md-6">
-      <div class="card" style="width: 20rem;">
+    <div class="col-12 col-lg-4 perfil-cabecalho-item">
+      <div class="perfil-pic">
+        <img src="https://blog.humanesociety.org/wp-content/uploads/2017/12/india-dog-e1512757920691.jpg">
+      </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4 perfil-cabecalho-item">
+      <div class="card" style="width: 20rem; margin: 0 auto;">
         <div class="card-body">
           <h4 class="card-title">Pets Divulgados</h4>
           <p class="card-text">
@@ -48,8 +54,8 @@
         </div>
       </div>
     </div>
-    <div class="col md-6">
-      <div class="card" style="width: 20rem;">
+    <div class="col-12 col-md-6 col-lg-4 perfil-cabecalho-item">
+      <div class="card" style="width: 20rem; margin: 0 auto;">
         <div class="card-body">
           <h4 class="card-title">Pets Adotados</h4>
           <p class="card-text">
@@ -87,23 +93,31 @@ if(isset($mensagem)):
   <form method="POST" action="<?= base_url('perfil/alterar') ?>">
 
     <div class="form-row">
-      <div class="form-group col-md-6">
+
+      <div class="form-group col-12 col-md-4">
+        <label for="nome">Nome</label>
+        <input type="text" class="form-control" name="nome" id="nome" value="<?= $usuario->nome ?>">
+      </div>
+
+      <div class="form-group col-12 col-md-4">
         <label for="email">E-mail</label>
         <input type="hidden" name="id_usuario" id="id_usuario" value="<?= $usuario->id_usuario ?>">
-        <input type="email" readonly class="form-control" name="email" id="email" placeholder="E-mail" value="<?= $usuario->email ?>" required>
+        <input type="email" class="form-control" name="email" id="email" placeholder="E-mail" value="<?= $usuario->email ?>" required>
       </div>
-      <div class="form-group col-md-6">
-        <label for="senha">Senha</label>
-        <p>Para alterar a senha</p>
-        <a href="#" data-toggle="modal" data-target="#trocarsenha">Clique aqui</a>
+      
+      <div class="form-group col-12 col-md-4">
+        <label for="telefone">Telefone/WhatsApp</label>
+        <input type="tel" class="form-control" name="telefone" id="telefone" value="<?= $usuario->telefone ?>">
       </div>
+    
     </div>
+    
     <div class="form-row">
-      <div class="form-group col-md-2">
+      <div class="form-group col-md-4">
         <label for="cep">CEP</label>
         <input type="text" class="form-control" name="cep" id="cep">
       </div>
-      <div class="form-group col-md-2">
+      <div class="form-group col-md-4">
         <label for="estado">Estado</label>
         <input type="text" class="form-control" name="estado" id="estado">
       </div>
@@ -111,20 +125,17 @@ if(isset($mensagem)):
         <label for="cidade">Cidade</label>
         <input type="text" class="form-control" name="cidade" id="cidade">
       </div>
-      <div class="form-group col-md-4">
-        <label for="telefone">Telefone/whats</label>
-        <input type="tel" class="form-control" name="telefone" id="telefone" value="<?= $usuario->telefone ?>">
-      </div>
     </div>
-    <div class="form-group form-check">
+    <div class="form-check">
       <label class="form-check-label">
-        <input class="form-check-input" type="checkbox" name="dadosPrivados" value="">
-        Deixar visível meus dados <br> (Maiores chances de adoção)
-        <span class="form-check-sign">
-          <span class="check"></span>
-        </span>
+          <input class="form-check-input" type="checkbox" name="dadosPrivados" value="">
+          Deixar meus dados de contato visíveis (Maiores chances de adoção)
+          <span class="form-check-sign">
+              <span class="check"></span>
+          </span>
       </label>
     </div>
+    
     <?php if (isset($erro)) : ?>
 
       <div class="alert alert-danger" role="alert">
@@ -132,7 +143,10 @@ if(isset($mensagem)):
         <?php echo $erro->listErrors() ?>
       </div>
     <?php endif; ?>
+    <br>
     <button type="submit" class="btn btn-primary">Salvar</button>
+    <a href="#" data-toggle="modal" data-target="#trocarsenha"><button type="button" class="btn btn-primary">Alterar Senha</button></a>
+  
   </form>
 </div>
 <?php $this->endSection() ?>

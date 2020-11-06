@@ -87,7 +87,7 @@
 
 								<p class="card-text"><i class="fas fa-syringe"></i>Vacinado</p>
 								<p class="card-text"><i class="fas fa-capsules"></i>Vermifugado</p>
-								<p class="card-text"><i class="fas fa-briefcase-medical"></i>Cadastrado</p>
+								<p class="card-text"><i class="fas fa-briefcase-medical"></i>Castrado</p>
 
 							</div>
 						</div>

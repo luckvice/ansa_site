@@ -19,8 +19,7 @@
                   <div class="nav-tabs-wrapper">
                     <ul class="nav nav-tabs" data-tabs="tabs">
                       <li class="nav-item">
-                        <a class="nav-link <?php if (isset($tabPerfil)) : echo $tabPerfil;
-                                            endif; ?>" href="/perfil">
+                        <a class="nav-link <?php if (isset($tabPerfil)) : echo $tabPerfil; endif; ?>" href="/perfil">
                           <i class="material-icons">face</i>
                           Meu Perfil
                           <div class="ripple-container"></div></a>
@@ -31,7 +30,7 @@
                           <a class="nav-link <?php if (isset($tabOng)) : echo $tabOng;
                                               endif; ?>" href="/perfil">
                             <i class="material-icons">house</i>
-                            Minha ong
+                            Minha ONG
                             <div class="ripple-container"></div></a>
                         </li>
                       <?php endif ?>
