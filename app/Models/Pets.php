@@ -6,5 +6,7 @@ use CodeIgniter\Model;
 
 class Pets extends Model
 {
-    
+    public function getPets(){
+        
+    }
 }

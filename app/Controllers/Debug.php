@@ -5,8 +5,33 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use App\Models\ModelTest; //Carrega Model SQL
 use App\Models\Usuarios; //Carrega Model SQL
+use App\Models\Cidades; //Carrega Model SQL
+use App\Models\Estados; //Carrega Model SQL
+
 class Debug extends Controller
 {
+
+    public function listarEstados()
+    {
+        $estados = new Estados;
+        $resultados = $estados->getEstados();
+        echo '<pre>';
+        print_r($resultados);
+    }
+
+    public function listarEstadoByid(){
+        $estados = new Estados;
+        $resultados = $estados->getEstadosById(1);
+        echo '<pre>';
+        print_r($resultados);
+    }
+
+    public function listarCidadesByEstadoId(){
+        $cidades = new Cidades;
+        $resultados = $cidades->getCidadesByEstadoId(24);
+        echo '<pre>';
+        print_r($resultados);
+    }
 
     public function inserirUsuario()
     {

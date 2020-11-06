@@ -5,9 +5,16 @@ namespace App\Controllers;
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\Usuarios; //Carrega Model SQL
+use App\Models\Cidades; //Carrega Model SQL
 
 class Api extends ResourceController
 {
+
+  public function getCidadesByEstadoId($id_estado){
+    $model = new Cidades();
+    $data  = $model->getCidadesByEstadoId($id_estado);
+    return $this->respond($data);
+  }
 
   public function index()
   {
