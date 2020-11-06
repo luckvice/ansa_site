@@ -6,9 +6,21 @@ use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\Usuarios; //Carrega Model SQL
 use App\Models\Cidades; //Carrega Model SQL
-
+use App\Models\Pets; //Carrega Model SQL
 class Api extends ResourceController
 {
+
+  public function getPets($limit){
+    $model = new Pets();
+    $data  = $model->getPets($limit);
+    return $this->respond($data);
+  }
+
+  public function getGaleriaPet($id_pet){
+    $model = new Pets();
+    $data  = $model->getGaleriaPet($id_pet);
+    return $this->respond($data);
+  }
 
   public function getCidadesByEstadoId($id_estado){
     $model = new Cidades();

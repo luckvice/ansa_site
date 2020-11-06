@@ -7,10 +7,18 @@ use App\Models\ModelTest; //Carrega Model SQL
 use App\Models\Usuarios; //Carrega Model SQL
 use App\Models\Cidades; //Carrega Model SQL
 use App\Models\Estados; //Carrega Model SQL
+use App\Models\Pets; //Carrega Model SQL
 
 class Debug extends Controller
 {
 
+
+    public function listarPets(){
+        $pets = new Pets(); 
+        $resultados = $pets->getPets();
+        echo '<pre>';
+        print_r($resultados);
+    }
     public function listarEstados()
     {
         $estados = new Estados;
