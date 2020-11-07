@@ -85,12 +85,12 @@
                 </table>
                 <div class="form-group text-left" style="margin-top: 15px;">
             
-                <select class="selectpicker" data-style="select-with-transition" title="Selecione um pet" data-size="7">
+                <select class="selectpicker" data-style="select-with-transition" name="estado" title="Selecione um pet" data-size="7">
                 <option selected>Selecione o Estado</option>
                 <option value="<?= $estados->id_estado?>"><?= $estados->nome?></option>
   
                 </select>
-                <select class="selectpicker" data-style="select-with-transition" title="Selecione um pet" data-size="7">
+                <select class="selectpicker" data-style="select-with-transition" name="cidade" title="Selecione um pet" data-size="7">
                     <option selected>Selecione a cidade</option>
                    <?php
                     foreach($cidades as $row){

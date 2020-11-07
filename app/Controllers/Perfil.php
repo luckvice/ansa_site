@@ -144,7 +144,7 @@ class Perfil extends Controller
                ];
 
 
-               $pet->insertPet($dados, $galeria, $id_usuario);
+               $pet->insertPet($dados, $galeria, $id_usuario, date("Y-m-d H:i:s"));
 
                /*
                $mensagem = ['codigo' => 1, 'mensagem' => 'Pet Cadastrado com sucesso!'];

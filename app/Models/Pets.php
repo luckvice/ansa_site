@@ -31,20 +31,52 @@ class Pets extends Model
 
     }
 
-    public function insertPet($dados, $galeria, $id_usuario){
+    public function insertPet($dados, $galeria, $id_usuario, $data_cadastro){
         $db = db_connect();
+        //Insert Table pets
         $data = [
-            'id_nivel'      => $id_nivel,
-            'nome'          => $nome,
-            'login'         => $login,
-            'senha'         => $senha,
-            'email'         => $email,
-            'telefone'      => $telefone,
-            'data_cadastro' => $data_cadastro
+            'id_usuario'        => $id_usuario,
+            'nome'              => $dados['nome'],
+            'descricao'         => $dados['descricao'],
+            'id_porte'          => $dados['porte'],
+            'id_especie'        => $dados['especie'],
+            'id_sexo'           => $dados['sexo'],
+            'id_faixa_etaria'   => $dados['idade'],
+            'id_estado'         => $dados['estado'],    
+            'id_municipio'      => $dados['cidade'],
+            'data_cadastro'     => $data_cadastro,  
         ];
 
-        $db->close();
+        $db->table('pet')->insert($data);
+        $lastId = $db->insertID();
 
+        $colNames = $db->getFieldNames('personalidade');
+        $data = [];
+        foreach($colNames as $key=>$value){
+          if(!isset($dados[$value])){
+             $dados[$value] = 0;
+        
+          }
+          echo $value.' '.$dados[$value].'<br>';
+          $data[$value] = $dados[$value];
+        }
+        $data['id_pet'] = $lastId;
+        $db->table('personalidade')->insert($data);
+
+        $colNames = $db->getFieldNames('saude');
+        $data = [];
+        foreach($colNames as $key=>$value){
+          if(!isset($dados[$value])){
+             $dados[$value] = 0;
+          }
+          echo $value.' '.$dados[$value].'<br>';
+          $data[$value] = $dados[$value];
+        }
+        $data['id_pet'] = $lastId;
+
+        $db->table('saude')->insert($data);
+        $db->close();
+         
     }
 
     public function getGaleriaPet($id_pet){
@@ -75,6 +107,10 @@ class Pets extends Model
         $resultados = $db->table('saude')->where('id_saude', $id_saude)->get()->getResultObject();
         $db->close();
         return $resultados;
+    }
+
+    public function insertSaude($dados){
+        echo $dados['docil'];
     }
 
     public function getSexoById($id_sexo){
