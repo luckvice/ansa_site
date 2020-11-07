@@ -100,6 +100,10 @@ img {
     top: 80%
 }
 
+.readonly-input {
+    background-color: white !important;
+}
+
 /* LISTAGEM DE PETS PERFIL*/
 
 
@@ -210,7 +214,6 @@ i {
     overflow: hidden;
     margin: 0 auto;
     justify-content: center;
-    border: 4px solid #834fb1b8;
 }
 
 .perfil-pic img {
@@ -222,4 +225,10 @@ i {
     align-items: center;
     padding: 1rem;
     color: #3c4858;
+}
+
+.shadow {
+    -moz-box-shadow:    3px 3px 5px 6px #ccc;
+    -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+    box-shadow:         3px 3px 5px 6px #ccc;
 }
