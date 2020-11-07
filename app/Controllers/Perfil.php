@@ -4,6 +4,9 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 use App\Models\Usuarios; //Carrega Model SQL
+use App\Models\Pets; //Carrega Model SQL
+use App\Models\Estados; //Carrega Model SQL
+use App\Models\Cidades; //Carrega Model SQL
 /*
 
     [CONFIGURAÇÕES]
@@ -82,11 +85,16 @@ class Perfil extends Controller
         if (!session()->has('logado')) {
             return redirect()->to(base_url('/'));
         }
+        $estados = new Estados();
+        $cidades = new Cidades();
         helper('form');
         $data['title']           = 'Cadastrar um pet';
         $data['tabCadastrarPet'] = 'active now'; //Fica selecionado a Tab
         $data['bodyPageProfile'] = True;
         $data['menuTransparent'] = False;
+        $data['estados']         = $estados->getEstadoById(21);
+        $data['cidades']         = $cidades->getCidadesByEstadoId(21);   
+
         if (session()->has('erro')) {
             $data['erro'] = session('erro');
         }
@@ -99,21 +107,53 @@ class Perfil extends Controller
             return redirect()->to('/');
         } else {
             $validacao = $this->validate([ //Validação Server Side Form
-                'especie'   => 'required', //Obriga o preeenchimento do Form
+                'nome'      => 'required', 
+                'especie'   => 'required', 
+                'porte'     => 'required', 
+                'sexo'      => 'required', 
+                'idade'     => 'required', 
+                'descricao' => 'required', 
+                'imagem1'   => 'uploaded[imagem1]|is_image[imagem1]|max_size[imagem1, 8048]|ext_in[imagem1,jpg,png]',
+                'imagem2'   => 'is_image[imagem2]|max_size[imagem2, 2048]|ext_in[imagem2,jpg,png]',
+                'imagem3'   => 'is_image[imagem3]|max_size[imagem3, 2048]|ext_in[imagem3,jpg,png]',
             ]);
             if (!$validacao) {
-                return redirect()->to('/perfil/cadastrarpet')->withInput()->with('erro', $this->validator);
+            $data['validator'] = $this->validator;
+            
+            return redirect()->to('/perfil/cadastrarpet')->withInput()->with('erro', $data['validator']->listErrors());
             } else {
-                echo '<pre>';
-                print_r($this->request->getPostGet());
-                $post = $this->request->getPostGet();
-                echo $post['docil'];
+                
+               $pet = new Pets();
+               $id_usuario = session()->get('id_usuario');
+             
+               $dados = $this->request->getPostGet();
 
-                $base = file_get_contents($this->request->getFile('galeria'));
+               $imagem1 = base64_encode(file_get_contents($this->request->getFile('imagem1')));//Primeira imagem é obrigatoria
+               $imagem2 = $this->request->getFile('imagem2');
+               $imagem3 = $this->request->getFile('imagem3');
 
-                $binary = base64_encode($base);
+               //Outras imagens não são obrigatorias
+               if(empty($imagem2->getName())): $imagem2 = null;
+                else: $imagem2 = base64_encode((file_get_contents($imagem2))); endif;
+               if(empty($imagem3->getName())): $imagem3 = null;
+                else: $imagem3 = base64_encode((file_get_contents($imagem3))); endif; 
+               $galeria = [
+                   'imagem1' => $imagem1,
+                   'imagem2' => $imagem2,
+                   'imagem3' => $imagem3,
+               ];
 
-                echo "<img src='data:image/jpeg;base64,{$binary}'>";
+
+               $pet->insertPet($dados, $galeria, $id_usuario);
+
+               /*
+               $mensagem = ['codigo' => 1, 'mensagem' => 'Pet Cadastrado com sucesso!'];
+                    return redirect()->to(base_url('perfil'))->with('mensagem', $mensagem);
+               */
+             /*   echo "<img src='data:image/jpeg;base64,".$galeria['imagem1']."'>";
+                echo "<img src='data:image/jpeg;base64,".$galeria['imagem2']."'>";
+                echo "<img src='data:image/jpeg;base64,".$galeria['imagem3']."'>";*/
+
                 //return redirect()->route('perfil');//Redireciona para rota perfil
             }
         }

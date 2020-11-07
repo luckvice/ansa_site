@@ -7,6 +7,7 @@ use CodeIgniter\API\ResponseTrait;
 use App\Models\Usuarios; //Carrega Model SQL
 use App\Models\Cidades; //Carrega Model SQL
 use App\Models\Pets; //Carrega Model SQL
+
 class Api extends ResourceController
 {
 
@@ -38,14 +39,46 @@ class Api extends ResourceController
   public function testApi()
   {
     $client = \Config\Services::curlrequest();
-
     $teste = $client->request('GET', 'http://34.74.113.195:5000/contact/isregistereduser/5551999930495', ['allow_redirects' => true]);
     $teste = json_decode($teste->getBody());
     var_dump($teste->{'status'});
   
   }
 
-  public function enviarMensagem($telefone = '5551999930495', $mensagem = '', $foto = '', $temFoto = false)
+  public function disparaSugestoes(){
+
+  }
+  public function verificaTelefone($id_interessado, $token){
+
+  }
+
+  public function enviarVerificaTelefone(){
+
+    $lastID = 1;
+    $telefone = '5551999930495';  
+    //$link = base_url('confirmar').'/'.$lastID;
+    $link = 'http://amigonaoseabandona.com.br/confirmarsugestoes/1';
+    $client = \Config\Services::curlrequest();
+    $response = $client->request('POST', "http://34.74.113.195:5000/chat/sendmessage/{$telefone}",   
+    ['form_params' => ['message'=>
+    "-----------🐾[ANSA]🐾----------
+Oiiiieee 
+      
+Para confirmar que você quer receber sugestões de até 3 pets 
+*gatos, pequeno porte, macho*
+que residem em Viamão / RS
+
+      Acesse o link abaixo:
+
+      {$link}
+    "
+    ]]);
+
+    $response = json_decode($response->getBody());
+    echo $response->status.' | '.$response->message;
+  }
+
+  public function enviarMensagem($telefone = '555196203669', $mensagem = '', $foto = '', $temFoto = false)
   {
     $client = \Config\Services::curlrequest();
 

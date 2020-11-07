@@ -31,6 +31,22 @@ class Pets extends Model
 
     }
 
+    public function insertPet($dados, $galeria, $id_usuario){
+        $db = db_connect();
+        $data = [
+            'id_nivel'      => $id_nivel,
+            'nome'          => $nome,
+            'login'         => $login,
+            'senha'         => $senha,
+            'email'         => $email,
+            'telefone'      => $telefone,
+            'data_cadastro' => $data_cadastro
+        ];
+
+        $db->close();
+
+    }
+
     public function getGaleriaPet($id_pet){
         $db = db_connect();
         $resultados = $db->table('galeria')->select('galeria.*')

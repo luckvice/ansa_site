@@ -14,7 +14,16 @@ class Estados extends Model
         return $resultados;
     }
 
-    public function getEstadosById($id_estado){
+    public function getEstadosByNome($nome){
+        
+        $db = db_connect();
+        $resultados = $db->table('estado')->where('nome',$nome)->get()->getRowObject();
+        $db->close();
+        return $resultados;
+    }
+
+
+    public function getEstadoById($id_estado){
         
         $db = db_connect();
         $resultados = $db->table('estado')->where('id_estado',$id_estado)->get()->getRowObject();

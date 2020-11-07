@@ -12,6 +12,15 @@ use App\Models\Pets; //Carrega Model SQL
 class Debug extends Controller
 {
 
+    public function getEstadoByIp(){
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $details = json_decode(file_get_contents("http://ipinfo.io/170.239.232.46/json"));
+       // echo $details->region . ' | ' . $details->city;
+       $estados = new Estados;
+       $resultados = $estados->getEstadosByNome($details->region);
+       echo '<pre>';
+       print_r($resultados);
+    }
 
     public function listarPets(){
         $pets = new Pets(); 

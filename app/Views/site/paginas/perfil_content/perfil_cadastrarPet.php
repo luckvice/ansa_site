@@ -8,7 +8,7 @@
                 <br>
                 <div class="form-group">
                     <label for="nomePet">Nome do Pet</label>
-                    <input type="text" class="form-control" id="nomePet" placeholder="Informe o nome do Pet">
+                    <input type="text" class="form-control" name="nome" id="nomePet" placeholder="Informe o nome do Pet" required>
                 </div>
                 <table style="text-align: left;">
                     <tr>
@@ -16,7 +16,7 @@
                         <td>
                             <div class="form-check form-check-radio form-check-inline" style="margin-bottom: 15px;">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="especie" id="gato" value="1"> Gato
+                                    <input class="form-check-input" type="radio" name="especie" id="gato" value="1" required> Gato
                                     <span class="circle">
                                         <span class="check"></span>
                                     </span>
@@ -33,11 +33,11 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><label for="exampleFormControlInput1" style="margin-bottom: 0px !important;">Porte:</label></td>
+                        <td><label for="porte" style="margin-bottom: 0px !important;">Porte:</label></td>
                         <td>
                             <div class="form-check form-check-radio form-check-inline" style="margin-bottom: 15px;">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="tamanho" id="pequeno" value="1"> Pequeno
+                                    <input class="form-check-input" type="radio" name="porte" id="pequeno" value="1" required> Pequeno
                                     <span class="circle">
                                         <span class="check"></span>
                                     </span>
@@ -45,7 +45,7 @@
                             </div>
                             <div class="form-check form-check-radio form-check-inline" style="margin-bottom: 15px;">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="tamanho" id="medio" value="2"> Médio
+                                    <input class="form-check-input" type="radio" name="porte" id="medio" value="2"> Médio
                                     <span class="circle">
                                         <span class="check"></span>
                                     </span>
@@ -53,7 +53,7 @@
                             </div>
                             <div class="form-check form-check-radio form-check-inline" style="margin-bottom: 15px;">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="tamanho" id="grande" value="3"> Grande
+                                    <input class="form-check-input" type="radio" name="porte" id="grande" value="3"> Grande
                                     <span class="circle">
                                         <span class="check"></span>
                                     </span>
@@ -62,11 +62,11 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><label for="exampleFormControlInput1" style="margin-bottom: 0px !important;">Sexo:</label></td>
+                        <td><label for="sexo" style="margin-bottom: 0px !important;">Sexo:</label></td>
                         <td>
                             <div class="form-check form-check-radio form-check-inline" style="margin-bottom: 15px;">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="radio" name="sexo" id="macho" value="1"> Macho
+                                    <input class="form-check-input" type="radio" name="sexo" id="macho" value="1" required> Macho
                                     <span class="circle">
                                         <span class="check"></span>
                                     </span>
@@ -83,10 +83,25 @@
                         </td>
                     </tr>
                 </table>
-
+                <div class="form-group text-left" style="margin-top: 15px;">
+            
+                <select class="selectpicker" data-style="select-with-transition" title="Selecione um pet" data-size="7">
+                <option selected>Selecione o Estado</option>
+                <option value="<?= $estados->id_estado?>"><?= $estados->nome?></option>
+  
+                </select>
+                <select class="selectpicker" data-style="select-with-transition" title="Selecione um pet" data-size="7">
+                    <option selected>Selecione a cidade</option>
+                   <?php
+                    foreach($cidades as $row){
+                   ?>
+                     <option value="<?= $row->id_municipio?>"><?=$row->nome?></option>
+                   <?php }?>
+                </select> 
+                </div>
                 <div class="form-group text-left" style="margin-top: 15px;">
                     <label for="idade">Qual a idade do pet:</label>
-                    <select class="selectpicker text-left" data-style="select-with-transition" name="idade" title="Idade" data-size="7">
+                    <select class="selectpicker text-left" data-style="select-with-transition" name="idade" title="Idade" data-size="7" required>
                         <option Select>Idade</option>
                         <option value="2">Filhote</option>
                         <option value="3">Jovem</option>
@@ -97,7 +112,7 @@
 
                 <div class="form-group">
                     <label for="descricao">Uma breve descrição do pet</label>
-                    <textarea class="form-control" name="descricao" id="descricao" rows="3"></textarea>
+                    <textarea class="form-control" name="descricao" id="descricao" rows="3" required></textarea>
                 </div>
             </div>
             <div class="col">
@@ -274,7 +289,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active show" href="#favorite" role="tab" data-toggle="tab" aria-selected="true">
+                            <a class="nav-link" href="#favorite" role="tab" data-toggle="tab" aria-selected="true">
                                 <i class="material-icons">photo</i>
                                 Amei essa!
                             </a>
@@ -290,22 +305,21 @@
                     <div class="tab-pane text-center gallery" id="studio">
                         <div class="row">
                             <div class="col-md-12">
-                                <input type='file' name="galeria" id="galeria" />
+                                <input type='file' name="imagem1" id="imagem1" required/>
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane text-center gallery" id="works">
                         <div class="row">
                             <div class="col-md-12">
-                                <input type='file' id="asde" />
-                                <img id="img" src="" />
-                                <div id="base"></div>
+                                <input type='file' name="imagem2" id="imagem2" />
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane text-center gallery" id="favorite">
                         <div class="row">
                             <div class="col-md-12">
+                            <input type='file' name="imagem3" id="imagem3" />
                                 <img src="https://m.hindustantimes.com/rf/image_size_1200x900/HT/p2/2020/04/28/Pictures/_c238d9a8-8930-11ea-804e-137f71f5151d.jpg" class="rounded" style="width: 100%;">
                             </div>
                         </div>
@@ -317,8 +331,7 @@
         <?php if (isset($erro)) : ?>
 
             <div class="alert alert-danger" role="alert">
-                <?= $erro->listErrors() ?>
-                <?php echo $erro->listErrors() ?>
+                <?= $erro ?>
             </div>
         <?php endif; ?>
         <button type="submit" class="btn btn-primary">Cadastrar Pet</button>

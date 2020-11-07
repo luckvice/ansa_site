@@ -15,10 +15,13 @@ class Pets extends Controller
 
 		/* Filtros consulta */
 		if ($especie == 'caes') {
+			session()->set('especie', 1);
 			$data['dogs'] = true;
 		} else if ($especie == 'gatos') {
+			session()->set('especie', 2);
 			$data['cats'] = true;
 		} else if ($especie == 'todos') {
+			session()->set('especie', $especie);
 			$data['all'] = true;
 		}
 		//Consulta no banco
