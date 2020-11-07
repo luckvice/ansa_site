@@ -34,6 +34,53 @@
 </div>
 <?php $this->endSection(); ?>
 
+<?php $this->section('modalEditarPerfil'); ?>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="editarPerfil">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title font-weight-bold">Meus Dados</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form method="POST" action="perfil/editarperfil">
+				<div class="modal-body">
+					<div class="form-row">
+						<div class="form-group col-12">
+							<label class="control-label" for="nome">Nome</label>
+							<input type="text" class="form-control is-invalid" name="nome" id="nome" required>
+						</div>
+						<div class="form-group col-6">
+							<label class="control-label" for="telefone">Telefone/WhatsApp</label>
+							<input type="text" class="form-control is-invalid" name="telefone" id="telefone" required>
+						</div>
+						<div class="form-group col-6">
+							<label class="control-label" for="cep">CEP</label>
+							<input type="text" class="form-control is-invalid" name="cep" id="cep" required>
+						</div>
+						<div class="form-group col-6">
+							<label class="control-label" for="cidade">Cidade</label>
+							<input type="text" class="form-control is-invalid" name="cidade" id="cidade" required>
+						</div>
+						<div class="form-group col-6">
+							<label class="control-label" for="estado">Estado</label>
+							<input type="text" class="form-control is-invalid" name="estado" id="estado" required>
+						</div>
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">Salvar</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<?php $this->endSection(); ?>
+
 <?php $this->section('content_perfil'); ?>
 <div class="tab-pane active show" id="profile">
 	<h3 class="text-left font-weight-bold">Olá, <?= $usuario->nome ?>!</h3>
@@ -147,7 +194,7 @@
 			</div>
 		<?php endif; ?>
 		<br>
-		<button type="submit" class="btn btn-primary">Editar</button>
+		<a href="#" data-toggle="modal" data-target="#editarPerfil"><button type="button" class="btn btn-primary">Editar</button></a>
 		<a href="#" data-toggle="modal" data-target="#trocarsenha"><button type="button" class="btn btn-primary">Alterar Senha</button></a>
 
 	</form>

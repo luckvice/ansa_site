@@ -2,6 +2,7 @@
 
 <?php $this->section('content'); ?>
 <?= $this->renderSection('modalsenha') ?>
+<?= $this->renderSection('modalEditarPerfil') ?>
 <div class="page-header profile-page" data-parallax="true" style="height: 480px;background-image: url('<?= base_url('assets/img/dog_perfil.jpg'); ?>')"></div>
 <div class="main mainPurple">
   <div class="container">
