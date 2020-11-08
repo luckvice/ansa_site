@@ -163,6 +163,11 @@ i {
     }
 }
 
+.flex-justify-center {
+    display: flex;
+    justify-content: center;
+}
+
 /* ---------- PERFIL DO PET ----------- */
 
 .pet-cover {

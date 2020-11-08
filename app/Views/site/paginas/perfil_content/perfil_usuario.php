@@ -94,7 +94,7 @@
 		<div class="col-12 col-md-6 col-lg-4 perfil-cabecalho-item">
 			<div class="card" style="width: 20rem; margin: 0 auto;">
 				<div class="card-body">
-					<h4 class="card-title">Pets Divulgados</h4>
+					<h4 class="card-title flex-justify-center"><i class="material-icons">check</i>Pets Divulgados</h4>
 					<p class="card-text">
 						<h3>0</h3>
 					</p>
@@ -104,7 +104,7 @@
 		<div class="col-12 col-md-6 col-lg-4 perfil-cabecalho-item">
 			<div class="card" style="width: 20rem; margin: 0 auto;">
 				<div class="card-body">
-					<h4 class="card-title">Pets Adotados</h4>
+					<h4 class="card-title flex-justify-center"><i class="material-icons">pets</i>Pets Adotados</h4>
 					<p class="card-text">
 						<h3>0</h3>
 					</p>
@@ -146,18 +146,18 @@
 
 			<div class="form-group col-12 col-md-4">
 				<label for="nome" class="font-weight-bold">Nome</label>
-				<input type="text" readonly class="form-control readonly-input" name="nome" id="nome" value="<?= $usuario->nome ?>">
+				<input type="text" readonly class="form-control readonly-input" id="nome" value="<?= $usuario->nome ?>">
 			</div>
 
 			<div class="form-group col-12 col-md-4">
 				<label for="email" class="font-weight-bold">E-mail</label>
-				<input type="hidden" name="id_usuario" id="id_usuario" value="<?= $usuario->id_usuario ?>">
-				<input type="email" readonly class="form-control readonly-input  readonlyreadonly-input" name="email" id="email" placeholder="E-mail" value="<?= $usuario->email ?>" required>
+				<input type="hidden" id="id_usuario" value="<?= $usuario->id_usuario ?>">
+				<input type="email" readonly class="form-control readonly-input  readonlyreadonly-input" id="email" placeholder="E-mail" value="<?= $usuario->email ?>" required>
 			</div>
 
 			<div class="form-group col-12 col-md-4">
 				<label for="telefone" class="font-weight-bold">Telefone/WhatsApp</label>
-				<input type="tel" class="form-control readonly-input" readonly name="telefone" id="telefone" value="<?= $usuario->telefone ?>">
+				<input type="tel" class="form-control readonly-input" readonly id="telefone" value="<?= $usuario->telefone ?>">
 			</div>
 
 		</div>
@@ -165,20 +165,20 @@
 		<div class="form-row">
 			<div class="form-group col-md-4">
 				<label for="cep" class="font-weight-bold">CEP</label>
-				<input type="text" class="form-control readonly-input" readonly name="cep" id="cep">
+				<input type="text" class="form-control readonly-input" readonly id="cep">
 			</div>
 			<div class="form-group col-md-4">
 				<label for="estado" class="font-weight-bold">Estado</label>
-				<input type="text" class="form-control readonly-input" readonly name="estado" id="estado">
+				<input type="text" class="form-control readonly-input" readonly id="estado">
 			</div>
 			<div class="form-group col-md-4">
 				<label for="cidade" class="font-weight-bold">Cidade</label>
-				<input type="text" class="form-control readonly-input" readonly name="cidade" id="cidade">
+				<input type="text" class="form-control readonly-input" readonly id="cidade">
 			</div>
 		</div>
 		<div class="form-check">
 			<label class="form-check-label">
-				<input class="form-check-input" type="checkbox" name="dadosPrivados" value="">
+				<input class="form-check-input" type="checkbox" name="dadosPrivados" value="" onclick="return false;">
 				Deixar meus dados de contato visíveis (Maiores chances de adoção)
 				<span class="form-check-sign">
 					<span class="check"></span>

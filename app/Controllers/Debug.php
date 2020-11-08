@@ -12,6 +12,19 @@ use App\Models\Pets; //Carrega Model SQL
 class Debug extends Controller
 {
 
+
+    public function setAdotado(){
+        $pets = new Pets;
+        $dados = $pets->setAdotado(9);
+        
+    }
+    public function listarPetByid(){
+        $pets = new Pets;
+        $dados = $pets->getPetsByUsuario(2);
+
+        echo '<pre>';
+        var_dump($dados);
+    }
     public function getEstadoByIp(){
         $ip = $_SERVER['REMOTE_ADDR'];
         $details = json_decode(file_get_contents("http://ipinfo.io/170.239.232.46/json"));

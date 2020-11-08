@@ -7,6 +7,9 @@ use App\Models\Usuarios; //Carrega Model SQL
 use App\Models\Pets; //Carrega Model SQL
 use App\Models\Estados; //Carrega Model SQL
 use App\Models\Cidades; //Carrega Model SQL
+use App\Libraries\Icons;
+use App\Libraries\Galeria;
+
 /*
 
     [CONFIGURAÇÕES]
@@ -128,33 +131,33 @@ class Perfil extends Controller
              
                $dados = $this->request->getPostGet();
 
+               
                $imagem1 = base64_encode(file_get_contents($this->request->getFile('imagem1')));//Primeira imagem é obrigatoria
                $imagem2 = $this->request->getFile('imagem2');
                $imagem3 = $this->request->getFile('imagem3');
-
+               $imagem4 = $this->request->getFile('imagem4');
                //Outras imagens não são obrigatorias
                if(empty($imagem2->getName())): $imagem2 = null;
                 else: $imagem2 = base64_encode((file_get_contents($imagem2))); endif;
                if(empty($imagem3->getName())): $imagem3 = null;
                 else: $imagem3 = base64_encode((file_get_contents($imagem3))); endif; 
+                if(empty($imagem4->getName())): $imagem4 = null;
+                else: $imagem4 = base64_encode((file_get_contents($imagem4))); endif; 
                $galeria = [
                    'imagem1' => $imagem1,
                    'imagem2' => $imagem2,
                    'imagem3' => $imagem3,
+                   'imagem4' => $imagem4,
                ];
 
-
+          //    $teste =  $this->request->getFile('imagem1');
+            //   echo $teste->guessExtension('imagem1');
                $pet->insertPet($dados, $galeria, $id_usuario, date("Y-m-d H:i:s"));
 
-               /*
-               $mensagem = ['codigo' => 1, 'mensagem' => 'Pet Cadastrado com sucesso!'];
-                    return redirect()->to(base_url('perfil'))->with('mensagem', $mensagem);
-               */
-             /*   echo "<img src='data:image/jpeg;base64,".$galeria['imagem1']."'>";
-                echo "<img src='data:image/jpeg;base64,".$galeria['imagem2']."'>";
-                echo "<img src='data:image/jpeg;base64,".$galeria['imagem3']."'>";*/
+               $mensagem = ['codigo' => 1,'mensagem'=>'Sucesso!'];
+                return redirect()->to(base_url('perfil/listarpets'))->with('mensagem', $mensagem);//Redireciona para rota perfil
 
-                //return redirect()->route('perfil');//Redireciona para rota perfil
+
             }
         }
     }
@@ -165,21 +168,48 @@ class Perfil extends Controller
 
     public function marcarAdotado() //function
     {
+        if (!session()->has('logado')) {
+            return redirect()->to(base_url('/'));
+        }
+        if ($this->request->getMethod() !== 'post') { //Valida se página veio de um POST | Proteção contra direct Access
+            return redirect()->to('/');
+        } else {
+            $id_pet = $this->request->getPostGet('id_pet');
+
+            $pets = new Pets;
+            $dados = $pets->setAdotado($id_pet, session()->get('id_usuario'));
+
+            if($dados == 1){
+                $mensagem = ['codigo' => 1, 'mensagem'=>'Pet Marcado como adotado com sucesso.'];
+                return redirect()->to(base_url('/perfil/cadastrarpet')->with('mensagem', $mensagem));
+            }
+        }
+    }
+
+    public function getCapa($id_pet){
+        $teste = 'testando';
+        return $teste;
     }
     public function listarPets() //View
     {
         if (!session()->has('logado')) {
             return redirect()->to(base_url('/'));
         }
+        $pets = new Pets;
         helper('form');
         $data['title']              = 'Listar pets';
         $data['tabListarPets']      = 'active now';
         $data['bodyPageProfile']    = True;
         $data['menuTransparent']    = False;
+        $data['listaPets']          = $pets->getPetsByUsuario(session()->get('id_usuario'));     
+      
         if (session()->has('erro')) {
             $data['erro'] = session('erro');
         }
-        echo view('site/paginas/perfil_content/perfil_listarPets', $data);
+        $icons = new Icons();
+     
+       // echo $icons->teste();
+      echo view('site/paginas/perfil_content/perfil_listarPets', $data);
     }
 
     public function criarDepoimento() //View
