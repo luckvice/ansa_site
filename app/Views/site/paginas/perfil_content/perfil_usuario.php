@@ -68,6 +68,17 @@
 							<label class="control-label" for="estado">Estado</label>
 							<input type="text" class="form-control is-invalid" name="estado" id="estado" required>
 						</div>
+						<div class="form-group col-12" style="margin-top: 15px;">
+							<div class="form-check">
+								<label class="form-check-label">
+									<input class="form-check-input" type="checkbox" name="dadosPrivados" value="">
+									Deixar meus dados de contato visíveis (Maiores chances de adoção)
+									<span class="form-check-sign">
+										<span class="check"></span>
+									</span>
+								</label>
+							</div>
+						</div>
 					</div>
 
 				</div>

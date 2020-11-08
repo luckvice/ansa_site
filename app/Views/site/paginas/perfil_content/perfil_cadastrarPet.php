@@ -285,7 +285,7 @@
 
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="margin: 20px;">
             <div class="col-md-6 ml-auto mr-auto">
                 <div class="profile-tabs" style="margin-top: 0px;">
                     <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
@@ -319,30 +319,30 @@
         </div>
         <div class="row">
             <div class="col-12 col-md-6 ml-auto mr-auto">
-                <div class="tab-content tab-space">
+                <div class="tab-content">
                     <!-- Array Images Gallery -->
-                    <div class="tab-pane text-center gallery" id="pic1">
+                    <div class="tab-pane text-center" id="pic1">
                         <div class="row">
                             <div class="col-md-12">
                                 <input type='file' name="imagem1" id="imagem1" required/>
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane text-center gallery" id="pic2">
+                    <div class="tab-pane text-center" id="pic2">
                         <div class="row">
                             <div class="col-md-12">
                                 <input type='file' name="imagem2" id="imagem2" />
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane text-center gallery" id="pic3">
+                    <div class="tab-pane text-center" id="pic3">
                         <div class="row">
                             <div class="col-md-12">
                                 <input type='file' name="imagem3" id="imagem3" />
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane text-center gallery" id="pic4">
+                    <div class="tab-pane text-center" id="pic4">
                         <div class="row">
                             <div class="col-md-12">
                                 <input type='file' name="imagem4" id="imagem3" />
@@ -359,7 +359,7 @@
                 <?= $erro ?>
             </div>
         <?php endif; ?>
-        <button type="submit" class="btn btn-primary">Cadastrar Pet</button>
+        <button type="submit" class="btn btn-primary" style="margin: 20px;">Cadastrar Pet</button>
     </form>
 </div>
 <?php $this->endSection() ?>
