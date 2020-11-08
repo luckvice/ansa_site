@@ -287,7 +287,7 @@
         </div>
         <div class="row">
             <div class="col-md-6 ml-auto mr-auto">
-                <div class="profile-tabs">
+                <div class="profile-tabs" style="margin-top: 0px;">
                     <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link" href="#pic1" role="tab" data-toggle="tab" aria-selected="false">
