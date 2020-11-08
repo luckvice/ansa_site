@@ -7,122 +7,47 @@
 <form>
     <div class="container">
     	<div class="row">
+
+		<?php if(empty($listaPets)):
+		?>
+			<div class="col">
+
+			<div class="alert alert-primary" role="alert">
+			Nenhum pet cadastrado no momento.
+			</div>
+			</div>
+			<?php endif; ?>
+		<?php foreach($listaPets as $key=>$value){?>
+
     		<div class="col-12 col-lg-6">
     			<div class="card">
     				<div class="pet-item">
     					<div class="pet-pic">
-							<img class="card-img-top" src="<?= base_url('assets/img/belinha.jpeg'); ?>" alt="Card image cap">
+							<img class="card-img-top" src="data:image/jpeg;base64,<?= $value->imagem;?>" alt="Card image cap">
     					</div>
 						<div class="card-body text-left">
 							<div class="pet-title">
-								<h5 class="card-title"><i class="fas fa-dog"></i> Belinha</h5>
-								<span class="badge badge-warning">em espera</span>
+								<h5 class="card-title"><i class="fas <?php if($value->id_especie == 1): echo 'fa-dog'; else: echo 'fa-cat'; endif; ?>"></i> <?= $value->nome;?></h5>
+								<span class="badge <?php if($value->adotado == 0): echo 'badge-warning'; $status = 'Em espera'; else:  echo 'badge-success'; $status = 'Adotado'; endif;?>"><?= $status?></span>
 							</div>
 							
 							<hr class="pet-title-divisor">
 							
-							<p class="card-text"><i class="fas fa-venus"></i>Fêmea</p>
-							<p class="card-text"><i class="fas fa-paw"></i>Dócil</p>
-							<p class="card-text"><i class="fas fa-dumbbell"></i>Pequeno</p>
-							<p class="card-text"><i class="fas fa-history"></i>Jovem</p>
-							<p class="card-text"><i class="fas fa-map-marker-alt"></i>Porto Alegre/RS</p>
+							<p class="card-text"><i class="fas <?php if($value->id_sexo == 1): echo 'fa-mars'; else: echo 'fa-venus'; endif; ?>"></i>Fêmea</p>
+							<p class="card-text"><i class="fas fa-dumbbell"></i><?= $value->porte_descricao ?></p>
+							<p class="card-text"><i class="fas fa-history"></i><?= $value->faixa_etaria_descricao ?></p>
+							<p class="card-text"><i class="fas fa-map-marker-alt"></i><?= $value->municipio_nome ?>/<?= $value->uf ?></p>
 						</div>
 					</div>
 					<hr>
 					<div class="pet-buttons">
-						<a href="/perfil/pet/1" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Visualizar informações do pet">Ver</a>
+						<a href="<?= base_url('pet')."/".$value->id_pet?>" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Visualizar informações do pet">Ver</a>
 						<button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Marcar como adotado">Adotado</button>
 						<button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="remover pet do site">Remover</button>
 					</div>
 				</div>
     		</div>
-    		<div class="col-12 col-lg-6">
-    			<div class="card">
-    				<div class="pet-item">
-						<div class="pet-pic">
-							<img class="card-img-top" src="https://www.specialdog.com.br/assets/imgs/cao.png" alt="Card image cap">
-    					</div>
-						<div class="card-body text-left">
-							<div class="pet-title">
-								<h5 class="card-title"><i class="fas fa-dog"></i> Belinha</h5>
-								<span class="badge badge-success">Adotado</span>
-							</div>
-							
-							<hr class="pet-title-divisor">
-
-							<p class="card-text"><i class="fas fa-venus"></i>Fêmea</p>
-							<p class="card-text"><i class="fas fa-paw"></i>Dócil</p>
-							<p class="card-text"><i class="fas fa-dumbbell"></i>Pequeno</p>
-							<p class="card-text"><i class="fas fa-history"></i>Jovem</p>
-							<p class="card-text"><i class="fas fa-map-marker-alt"></i>Porto Alegre/RS</p>
-						</div>
-					</div>
-					<hr>
-					<div class="pet-buttons">
-					<a href="/perfil/pet/1" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Visualizar informações do pet">Ver</a>
-						<button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Marcar como adotado" disabled>Adotado</button>
-						<button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="remover pet do site" disabled>Remover</button>
-					</div>
-				</div>
-    		</div>
-    		<div class="col-12 col-lg-6">
-    			<div class="card">
-    				<div class="pet-item">
-						<div class="pet-pic">
-							<img class="card-img-top" src="https://www.specialdog.com.br/assets/imgs/cao.png" alt="Card image cap">
-    					</div>
-						<div class="card-body text-left">
-							<div class="pet-title">
-								<h5 class="card-title"><i class="fas fa-dog"></i> Belinha</h5>
-								<span class="badge badge-warning">em espera</span>
-							</div>
-							
-							<hr class="pet-title-divisor">
-
-							<p class="card-text"><i class="fas fa-venus"></i>Fêmea</p>
-							<p class="card-text"><i class="fas fa-paw"></i>Dócil</p>
-							<p class="card-text"><i class="fas fa-dumbbell"></i>Pequeno</p>
-							<p class="card-text"><i class="fas fa-history"></i>Jovem</p>
-							<p class="card-text"><i class="fas fa-map-marker-alt"></i>Porto Alegre/RS</p>
-						</div>
-					</div>
-					<hr>
-					<div class="pet-buttons">
-						<button type="button" class="btn btn-primary">Ver</button>
-						<button type="button" class="btn btn-success">Adotado</button>
-						<button type="button" class="btn btn-danger">Remover</button>
-					</div>
-				</div>
-    		</div>
-    		<div class="col-12 col-lg-6">
-    			<div class="card">
-    				<div class="pet-item">
-						<div class="pet-pic">
-							<img class="card-img-top" src="https://www.specialdog.com.br/assets/imgs/cao.png" alt="Card image cap">
-    					</div>
-						<div class="card-body text-left">
-							<div class="pet-title">
-								<h5 class="card-title"><i class="fas fa-dog"></i> Belinha</h5>
-								<span class="badge badge-warning">em espera</span>
-							</div>
-
-							<hr class="pet-title-divisor">
-
-							<p class="card-text"><i class="fas fa-venus"></i>Fêmea</p>
-							<p class="card-text"><i class="fas fa-paw"></i>Dócil</p>
-							<p class="card-text"><i class="fas fa-dumbbell"></i>Pequeno</p>
-							<p class="card-text"><i class="fas fa-history"></i>Jovem</p>
-							<p class="card-text"><i class="fas fa-map-marker-alt"></i>Porto Alegre/RS</p>
-						</div>
-					</div>
-					<hr>
-					<div class="pet-buttons">
-						<button type="button" class="btn btn-primary">Ver</button>
-						<button type="button" class="btn btn-success">Adotado</button>
-						<button type="button" class="btn btn-danger">Remover</button>
-					</div>
-				</div>
-    		</div>
+		<?php }?>
     	</div>
     </div>
 </form>
