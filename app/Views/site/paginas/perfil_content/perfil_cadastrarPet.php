@@ -14,7 +14,7 @@
                     <label style="margin-bottom: 0px !important; width: 70px;">Especie:</label>
                     <div class="form-check form-check-radio form-check-inline" style="margin-bottom: 15px;">
                         <label class="form-check-label">
-                            <input class="form-check-input" type="radio" name="especie" id="gato" value="1" required> Gato
+                            <input class="form-check-input" type="radio" name="especie" id="gato" value="2" required> Gato
                             <span class="circle">
                                 <span class="check"></span>
                             </span>
@@ -22,7 +22,7 @@
                     </div>
                     <div class="form-check form-check-radio form-check-inline" style="margin-bottom: 15px;">
                         <label class="form-check-label">
-                            <input class="form-check-input" type="radio" name="especie" id="cachorro" value="2"> Cachorro
+                            <input class="form-check-input" type="radio" name="especie" id="cachorro" value="1"> Cachorro
                             <span class="circle">
                                 <span class="check"></span>
                             </span>
