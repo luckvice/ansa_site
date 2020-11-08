@@ -41,10 +41,10 @@
 							</div>
 
 							<h6>Mostre Nico aos seus amigos!</h6>
-
-							<a href="#pablo" class="btn btn-just-icon btn-link btn-facebook"><i class="fab fa-facebook"></i></a>
+							<div class="sharethis-inline-share-buttons"></div>
+						<!--	<a href="#pablo" class="btn btn-just-icon btn-link btn-facebook"><i class="fab fa-facebook"></i></a>
                             <a href="#pablo" class="btn btn-just-icon btn-link btn-twitter"><i class="fab fa-twitter"></i></a>
-                            <a href="#pablo" class="btn btn-just-icon btn-link btn-instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#pablo" class="btn btn-just-icon btn-link btn-instagram"><i class="fab fa-instagram"></i></a> -->
                         </div>
                     </div>
 	            </div>

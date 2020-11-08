@@ -1,6 +1,3 @@
-<?= $this->extend('site/paginas/perfil_content/perfil_template') ?>
-<?php $this->section('content_perfil'); ?>
-
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
 <div class="tab-pane active show" id="listarPetsCadastrados">
@@ -32,7 +29,7 @@
 							
 							<hr class="pet-title-divisor">
 							
-							<p class="card-text"><i class="fas <?php if($value->id_sexo == 1): echo 'fa-mars'; else: echo 'fa-venus'; endif; ?>"></i><?= $value->sexo_descricao ?></p>
+							<p class="card-text"><i class="fas <?php if($value->id_sexo == 1): echo 'fa-mars'; else: echo 'fa-venus'; endif; ?>"></i>Fêmea</p>
 							<p class="card-text"><i class="fas fa-dumbbell"></i>		<?= $value->porte_descricao ?></p>
 							<p class="card-text"><i class="fas fa-history"></i>			<?= $value->faixa_etaria_descricao ?></p>
 							<p class="card-text"><i class="fas fa-map-marker-alt"></i>	<?= $value->municipio_nome ?>/<?= $value->uf ?></p>
@@ -65,5 +62,3 @@
     </div>
 </form>
 </div>
-
-<?= $this->endSection() ?>

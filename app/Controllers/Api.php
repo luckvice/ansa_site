@@ -51,6 +51,26 @@ class Api extends ResourceController
   public function verificaTelefone($id_interessado, $token){
 
   }
+  public function solicitarAdocao(){//DisparaMensagem para Protetor
+
+    $lastID = 1;
+    $telefone = '5551999930495';  
+    //$link = base_url('confirmar').'/'.$lastID;
+    $link = 'http://amigonaoseabandona.com.br/debug/enviacontato';
+    $client = \Config\Services::curlrequest();
+    $response = $client->request('POST', "http://34.74.113.195:5000/chat/sendmessage/{$telefone}",   
+    ['form_params' => ['message'=>'
+    "-----------🐾[ANSA]🐾----------
+    Oiiiieee 
+
+    Aline gostaria de adotar o Dogão
+    
+    Mande uma mensagem para o solicitante no link abaixo.
+    
+    '.$link]]);
+    $response = json_decode($response->getBody());
+    echo $response->status.' | '.$response->message;
+  }
 
   public function enviarVerificaTelefone(){
 

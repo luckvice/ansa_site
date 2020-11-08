@@ -54,37 +54,39 @@
         </div>
 
         <div class="col-md-12">
+       
           <div class="row">
+          <?php foreach($listaPets as $key=>$value){ ?>
             <div class="col-md-4">
               <div class="card" style="width: 20rem;">
                 <a href="/pet/1">
                   <div class="content">
                     <div class="content-overlay"></div>
-                    <img class="card-img-top content-image" src="<?= base_url('assets/img/belinha.jpeg') ?>" alt="Card image cap">
+                    <img class="card-img-top content-image" src="data:image/jpeg;base64,<?= $value->imagem?>" alt="Card image cap">
                     <div class="content-details fadeIn-bottom">
-                      <h3 class="content-title">Belinha</h3>
+                      <h3 class="content-title"><?= $value->nome?></h3>
                       <p class="content-text">Conhecer</p>
                     </div>
                   </div>
                 </a>
                 <div class="card-body">
                   <div class="pet-title">
-                    <h5 class="card-title"><i class="fas fa-dog"></i> Belinha </h5>
+                    <h5 class="card-title"><i class="fas fa-dog"></i> <?= $value->nome?> </h5>
                   </div>
                   <hr>
                   <div class="row">
                     <div class="col">
-                      <p class="card-text"><i class="fas fa-history"></i>Jovem</p>
+                      <p class="card-text"><i class="fas fa-history"></i><?= $value->faixa_etaria_descricao?></p>
                     </div>
                     <div class="col">
                       <p class="card-text">
-                        <i class="fas fa-venus" style="color:pink"></i> Fêmea
+                        <i class="fas fa-venus" style="color:pink"></i> <?=  $value->sexo_descricao?>
                       </p>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col">
-                      <p class="card-text"><i class="fas fa-dumbbell"></i>Pequeno</p>
+                      <p class="card-text"><i class="fas fa-dumbbell"></i><?= $value->porte_descricao?></p>
                     </div>
                     <div class="col">
 
@@ -92,14 +94,14 @@
                   </div>
                   <div class="row">
                     <div class="col"><br>
-                      <p class="card-text text-center"> <i class="fas fa-map-marker-alt"></i>Porto Alegre/RS</p>
+                      <p class="card-text text-center"> <i class="fas fa-map-marker-alt"></i><?= $value->municipio_nome?>/<?= $value->uf?></p>
                     </div>
                   </div>
                 </div>
               </div>
 
             </div>
-
+          <?php }?>
           </div>
           <div class="row">
             <div class="col text-center">

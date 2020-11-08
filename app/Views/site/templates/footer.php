@@ -51,7 +51,25 @@
   $(function() {
     var hash = window.location.hash;
     hash && $('ul.nav a[href="' + hash + '"]').tab('show');
+    var host = window.location.origin;
     $('#telefone').mask('(00) 00000-00009');
+    var hash = window.location.hash;
+
+   if(hash == '#minhaong'){
+
+    $("#ajax").html('CARREGANDO...')
+    setInterval(function(){
+      $("#ajax").load(host+"/debug/listaPetsAjax");
+}, 2000) 
+   }
+    $("#minhaong").click(function(){
+        $("#ajax").load(host+"/debug/listaPetsAjax");
+    });
+
+    $("#minhaong_teste").click(function(){
+        $("#ajax").load(host+"/debug/cadastrarPetAjax");
+    });
+
   });
 </script>
 <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker 

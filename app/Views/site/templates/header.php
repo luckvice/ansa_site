@@ -14,5 +14,5 @@
   <!-- ANSA CUSTOM CSS -->
   <link href="<?= base_url('assets/css') ?>/ansa.css" rel="stylesheet" />
   <!--<link href="../assets/demo/demo.css" rel="stylesheet" />-->
-
+  <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5fa762f2413ed100120cd896&product=inline-share-buttons" async="async"></script>
 </head>

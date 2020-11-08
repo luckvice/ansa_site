@@ -162,34 +162,65 @@ class Perfil extends Controller
         }
     }
 
-    public function removerPet() //function
-    {
-    }
-
-    public function marcarAdotado() //function
+    public function removerPet($id_pet) //function
     {
         if (!session()->has('logado')) {
             return redirect()->to(base_url('/'));
         }
-        if ($this->request->getMethod() !== 'post') { //Valida se página veio de um POST | Proteção contra direct Access
-            return redirect()->to('/');
-        } else {
-            $id_pet = $this->request->getPostGet('id_pet');
+        $pets = new Pets;
+        $dados = $pets->setExcluido($id_pet, session()->get('id_usuario'),1);
 
-            $pets = new Pets;
-            $dados = $pets->setAdotado($id_pet, session()->get('id_usuario'));
-
-            if($dados == 1){
-                $mensagem = ['codigo' => 1, 'mensagem'=>'Pet Marcado como adotado com sucesso.'];
-                return redirect()->to(base_url('/perfil/cadastrarpet')->with('mensagem', $mensagem));
-            }
+        if($dados == 1){
+            $mensagem = ['codigo' => 1, 'mensagem'=>'Pet Excluido com sucesso'];
+            return redirect()->to(base_url('/perfil/listarpets'))->with('mensagem', $mensagem);
+        }else{
+            return redirect()->to(base_url('/perfil/listarpets'));
         }
     }
 
-    public function getCapa($id_pet){
-        $teste = 'testando';
-        return $teste;
+    public function marcarAdotado($id_pet) //function
+    {
+        if (!session()->has('logado')) {
+            return redirect()->to(base_url('/'));
+        }
+
+            $pets = new Pets;
+            $dados = $pets->setAdotado($id_pet, session()->get('id_usuario'),1);
+
+            if($dados == 1){
+                $mensagem = ['codigo' => 1, 'mensagem'=>'Pet Marcado como adotado com sucesso.'];
+                return redirect()->to(base_url('/perfil/listarpets'))->with('mensagem', $mensagem);
+            }else{
+                return redirect()->to(base_url('/perfil/listarpets'));
+            }
+        
     }
+    public function desmarcarAdotado($id_pet) //function
+    {
+        if (!session()->has('logado')) {
+            return redirect()->to(base_url('/'));
+        }
+
+            $pets = new Pets;
+            $dados = $pets->setAdotado($id_pet, session()->get('id_usuario'), 0);
+
+            if($dados == 1){
+                $mensagem = ['codigo' => 1, 'mensagem'=>'Pet desmarcado como adotado com sucesso.'];
+                return redirect()->to(base_url('/perfil/listarpets'))->with('mensagem', $mensagem);
+            }else{
+                return redirect()->to(base_url('/perfil/listarpets'));
+            }
+        
+    }
+    public function getPaginaAjax(){
+        $data['title']              = 'Ajax';
+        $data['tabListarPets']      = '';
+        $data['bodyPageProfile']    = True;
+        $data['menuTransparent']    = False;
+       // echo $icons->teste();
+      echo view('site/paginas/perfil_content/perfil_ajax',$data);
+    }
+
     public function listarPets() //View
     {
         if (!session()->has('logado')) {

@@ -6,7 +6,15 @@ use CodeIgniter\Model;
 
 class Pets extends Model
 {
-    public function getPets($limit = 1){//get de todas as informações de todos os pets
+    /*
+        getPets Filtro Avançado de busca
+        get de todas as informações de todos os pets com filtros
+
+        $estado_cidade Pode ser id ou nome de estado e cidade
+        $limiteEstado tipo bool True lista pets por estado False lista pets por municipio
+        $filtros tipo bool True ativa modo filtro Por ID Municipio ou ID Estado  
+    */
+    public function getPets($estado_cidade, $limiteEstado = true, $filtros = false ,$todasEspecies = true, $especie = null, $todosSexos = true, $sexo = null, $todosTamanhos = true, $tamanho = null, $adotado = 0){
         $db = db_connect();
         $resultados = $db->table('pet')
             ->select('pet.*')
@@ -18,19 +26,45 @@ class Pets extends Model
             ->select('sexo.descricao            as sexo_descricao')
             ->select('faixa_etaria.descricao    as faixa_etaria_descricao')
             ->select('municipio.nome            as municipio_nome, municipio.uf')
+            ->select('estado.nome               as estado_nome')
                 ->join('porte',                 'porte.id_porte                 = pet.id_porte',        'left')
                 ->join('especie',               'especie.id_especie             = pet.id_especie',      'left')
                 ->join('sexo',                  'sexo.id_sexo                   = pet.id_sexo',         'left')
                 ->join('faixa_etaria',          'faixa_etaria.id_faixa_etaria   = pet.id_faixa_etaria', 'left')
                 ->join('municipio',             'municipio.id_municipio         = pet.id_municipio',    'left')
+                ->join('estado',                'estado.id_estado               = pet.id_estado',    'left')
                 ->join('saude',                 'saude.id_pet                   = pet.id_pet',          'left')
                 ->join('personalidade',         'personalidade.id_pet           = pet.id_pet',          'left')
                 ->join('galeria',               'galeria.id_pet                 = pet.id_pet',          'left')
-                ->limit($limit)
-                ->get()->getResultObject();
+                ->where('capa',1)
+                ->where('adotado',$adotado)
+                ->where('pet.excluido',0);
+                
+                if($limiteEstado == true):
+                    if($filtros == true):
+                        $resultados = $resultados->where('pet.id_estado',$estado_cidade);
+                    else:
+                        $resultados = $resultados->like('estado.nome',$estado_cidade);
+                    endif;   
+                else: 
+                    if($filtros == true):
+                        $resultados = $resultados->where('pet.id_municipio',$estado_cidade);
+                    else:
+                        $resultados = $resultados->like('municipio.nome',$estado_cidade);
+                    endif;
+                endif;
+                if($todasEspecies == false):
+                    $resultados = $resultados->where('pet.id_especie',$especie);
+                endif;    
+                if($todosSexos == false):
+                    $resultados = $resultados->where('pet.id_sexo',$sexo);
+                endif;   
+                if($todosTamanhos == false):
+                    $resultados = $resultados->where('pet.id_porte',$tamanho);
+                endif;              
+                    $resultados = $resultados->get()->getResultObject();
         $db->close();
         return $resultados;
-
     }
 
     public function insertPet($dados, $galeria, $id_usuario, $data_cadastro){
@@ -47,6 +81,7 @@ class Pets extends Model
             'id_estado'         => $dados['estado'],    
             'id_municipio'      => $dados['cidade'],
             'data_cadastro'     => $data_cadastro,  
+            'excluido'          => 0
         ];
         $db->transStart();
         $db->table('pet')->insert($data);
@@ -164,19 +199,30 @@ class Pets extends Model
                 ->join('galeria',               'galeria.id_pet                 = pet.id_pet',          'left')
                 ->where('pet.id_usuario', $id_usuario)
                 ->where('galeria.capa',1)
+                ->where('pet.excluido',0)
                 ->get()->getResultObject();
         $db->close();
         return $resultados;   
     }
 
-    public function setAdotado($id_pet, $id_usuario){
+    public function setAdotado($id_pet, $id_usuario, $status){
         $db = db_connect();
-        $data = ['adotado' => 1];
+        $data = ['adotado' => $status];
         $db->table('pet')->where('id_pet', $id_pet)->where('id_usuario', $id_usuario)->update($data);
         $resultados = $db->affectedRows();
         $db->close();
         return $resultados;
     }
+
+    public function setExcluido($id_pet, $id_usuario){
+        $db = db_connect();
+        $data = ['excluido' => 1];
+        $db->table('pet')->where('id_pet', $id_pet)->where('id_usuario', $id_usuario)->update($data);
+        $resultados = $db->affectedRows();
+        $db->close();
+        return $resultados;
+    }
+
 
     public function getPorteById($id_porte){
         $db = db_connect();
