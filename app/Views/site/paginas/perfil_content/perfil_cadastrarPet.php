@@ -147,7 +147,7 @@
                             <div class="form-check">
                                 <label class="form-check-label">
                                     <input class="form-check-input" type="checkbox" name="sociavel" value="1">
-                                    Sociavel
+                                    Sociável
                                     <span class="form-check-sign">
                                         <span class="check"></span>
                                     </span>
@@ -280,7 +280,7 @@
         <!-- Galeria Adicionar fotos -->
         <div class="row">
             <div class="col">
-                <h3>Adicione fotos do Pet</h3>
+                <h3 class="font-weight-bold">Adicione fotos do Pet</h3>
                 <hr>
 
             </div>

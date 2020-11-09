@@ -108,16 +108,16 @@ class Pets extends Controller
 		elseif($pet->id_sexo 	== 2){$data['sexo']  = 'Fêmea'; $data['icon'] = 'fas fa-venus';}
 
 		$caracteristica = [
-			'Docil' 		=> ['fas fa-paw'					,$pet->docil],
-			'Sociavel'		=> ['fas fa-hand-peace'				,$pet->sociavel],
-			'Brincalhao' 	=> ['fas fa-bone'					,$pet->brincalhao],
+			'Dócil' 		=> ['fas fa-paw'					,$pet->docil],
+			'Sociável'		=> ['fas fa-hand-peace'				,$pet->sociavel],
+			'Brincalhão' 	=> ['fas fa-bone'					,$pet->brincalhao],
 			'Agressivo' 	=> ['fas fa-exclamation-triangle'	,$pet->agressivo],
 			'Indepedente' 	=> ['fas fa-running'				,$pet->independente],
 			'Carente' 		=> ['fas fa-heart-broken'			,$pet->carente],
-			'Calmo' 		=> ['fas fa-sad-tear'				,$pet->calmo],
-			'Tenso'			=> ['fas fa-sad-tear'				,$pet->tenso],
+			'Calmo' 		=> ['fas fa-mug-hot'				,$pet->calmo],
+			'Tenso'			=> ['fas fa-meh'				,$pet->tenso],
 			'Assustado'		=> ['fas fa-sad-tear'				,$pet->assustado],	
-			'Arisco'		=> ['fas fa-sad-tear'				,$pet->arisco],	
+			'Arisco'		=> ['fas fa-rocket'				,$pet->arisco],	
 		];
 
 		$saude = [
