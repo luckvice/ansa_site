@@ -7,7 +7,7 @@
 <div class="page-header pet-cover" data-parallax="true"></div>
 <div class="main main-raised">
 	<div class="profile-content">
-		<div style="position: absolute; right: 0px; top: 15px;">	
+		<div class="botao-adotar">	
 			<ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" href="https://wa.me/+55519620-3669?text=ANSA Quero adotar o Niko, http://amigonaoseabandona.com.br/pets/niko, Meu Nome é Lucas Soares">
