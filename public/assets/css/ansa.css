@@ -131,8 +131,10 @@ i {
 
 .pet-pic {
     width: 260px;
+    height: 210px;
     padding: 20px;
     align-items: center;
+    justify-content: center;
     display: flex;
 }
 
@@ -250,4 +252,20 @@ i {
     -moz-box-shadow:    3px 3px 5px 6px #ccc;
     -webkit-box-shadow: 3px 3px 5px 6px #ccc;
     box-shadow:         3px 3px 5px 6px #ccc;
+}
+
+/* ----- LISTA DE PETS ------- */
+
+.pet-full-pic {
+    height: 210px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.pet-full-pic img {
+    box-shadow: 0 0 0 black;;
+    border-radius: 0px;
+    max-width: 100%;
+    max-height: 100%;
 }

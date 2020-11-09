@@ -62,7 +62,9 @@
                 <a href="<?=base_url("pet/".$value->id_pet)?>">
                   <div class="content">
                     <div class="content-overlay"></div>
-                    <img class="card-img-top content-image" src="data:image/jpeg;base64,<?= $value->imagem?>" alt="Card image cap">
+                    <div class="pet-full-pic">
+                      <img src="data:image/jpeg;base64,<?= $value->imagem?>" alt="Card image cap">
+                    </div>
                     <div class="content-details fadeIn-bottom">
                       <h3 class="content-title"><?= $value->nome?></h3>
                       <p class="content-text">Conhecer</p>
@@ -104,8 +106,8 @@
           <?php }?>
           </div>
           <div class="row">
-            <div class="col text-center">
-              <nav aria-label="Page navigation">
+            <div class="col text-center" style="display: flex;">
+              <nav aria-label="Page navigation" style="margin: 0 auto;">
                 <ul class="pagination">
                   <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
                   <li class="page-item"><a class="page-link" href="#">1</a></li>
