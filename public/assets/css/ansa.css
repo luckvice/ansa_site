@@ -170,6 +170,20 @@ i {
 
 /* ---------- PERFIL DO PET ----------- */
 
+.botao-adotar {
+    position: absolute; 
+    right: 0px;
+    margin-top: 15px;
+    z-index: 100;
+}
+
+@media only screen and (max-width: 600px) {
+    .botao-adotar {
+        position: fixed;
+        bottom: 15px;
+    }
+}
+
 .pet-cover {
     height: 50vh !important;
     background-image:url('https://fbcover.com/covers-images/download/funny_cute_dog.jpg');
