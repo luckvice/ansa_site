@@ -59,7 +59,7 @@
           <?php foreach($listaPets as $key=>$value){ ?>
             <div class="col-md-4">
               <div class="card" style="width: 20rem;">
-                <a href="/pet/1">
+                <a href="<?=base_url("pet/".$value->id_pet)?>">
                   <div class="content">
                     <div class="content-overlay"></div>
                     <img class="card-img-top content-image" src="data:image/jpeg;base64,<?= $value->imagem?>" alt="Card image cap">
