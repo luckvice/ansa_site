@@ -155,7 +155,7 @@ class Pets extends Controller
 		endif;
 		
 		
-		//echo view('site/paginas/pet', $data);
+		echo view('site/paginas/pet', $data);
 	}
 
 	public function adotarPet(){
