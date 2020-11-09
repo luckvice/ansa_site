@@ -22,10 +22,10 @@
                 <div class="col-md-7 ml-auto mr-auto">
     	           <div class="pet-profile">
                         <div class="pet-profile-pic">
-                        	<img src="https://blog.humanesociety.org/wp-content/uploads/2017/12/india-dog-e1512757920691.jpg">
+                        	<img src="data:image/jpeg;base64,<?=$imagem?>">
                         </div>
                         <div class="name">
-                            <h2 class="title">Nico</h2>
+                            <h2 class="title"><?=$nome?></h2>
 							<div class="card">
 			    				<div class="pet-item">
 									<div class="card-body text-left ">
@@ -60,17 +60,14 @@
 								<div class="pet-title">
 									<h5 class="card-title"><i class="fas fa-paw"></i> Características</h5>
 								</div>
-								
 								<hr>
-								
-								<p class="card-text"><i class="fas fa-paw"></i>Dócil</p>
-								<!--<p class="card-text"><i class="fas fa-exclamation-triangle"></i>Agressivo</p>-->
-								<!--<p class="card-text"><i class="fas fa-couch"></i>Calmo</p>-->
-								<p class="card-text"><i class="fas fa-hand-peace"></i>Sociável</p>
-								<!--<p class="card-text"><i class="fas fa-running"></i>Independente</p>-->
-								<!--<p class="card-text"><i class="fas fa-heart-broken"></i>Carente</p>-->
-								<!--<p class="card-text"><i class="fas fa-sad-tear"></i>Assustado</p>-->
-								<p class="card-text"><i class="fas fa-bone"></i>Brincalhão</p>
+								<?php
+								foreach($caracteristica as $key=>$value){
+									if($value[1] == 1){ ?>
+										<p class="card-text"><i class="<?=$value[0]?>"></i><?=$key?></p>		
+						    <?php	}
+								}
+								?>
 							</div>
 						</div>
 					</div>
@@ -85,9 +82,13 @@
 								
 								<hr>
 
-								<p class="card-text"><i class="fas fa-syringe"></i>Vacinado</p>
-								<p class="card-text"><i class="fas fa-capsules"></i>Vermifugado</p>
-								<p class="card-text"><i class="fas fa-briefcase-medical"></i>Castrado</p>
+								<?php
+								foreach($saude as $key=>$value){
+									if($value[1] == 1){ ?>
+										<p class="card-text"><i class="<?=$value[0]?>"></i><?=$key?></p>		
+						    <?php	}
+								}
+								?>
 
 							</div>
 						</div>
