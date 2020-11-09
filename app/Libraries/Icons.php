@@ -7,9 +7,14 @@ class Icons
 
     public function mostraIcon($tipo)
     {
-        if($tipo['dog'] == 1){
-            
-        }
-        return $debug;
+ 
+        $icons = [
+            'docil'         => 'fas fa-paw',
+            'sociavel'      => 'fas fa-hand-peace',
+            'brincalhao'    => 'fas fa-bone',
+        ];
+
+
+        return $$icon;
     }
 } 

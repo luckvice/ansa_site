@@ -59,13 +59,22 @@ class Debug extends Controller
         $dados = $pets->setAdotado(9);
 
     }
-    public function listarPetByid(){
+    public function listarPetByidUsuario(){
         $pets = new Pets;
         $dados = $pets->getPetsByUsuario(2);
 
         echo '<pre>';
         var_dump($dados);
     }
+
+    public function listarPetByid($id_pet){
+        $pets = new Pets;
+        $dados = $pets->getPet($id_pet);
+
+        echo '<pre>';
+        var_dump($dados);
+    }
+
     public function getEstadoByIp(){
         $ip = $_SERVER['REMOTE_ADDR'];
         $details = json_decode(file_get_contents("http://ipinfo.io/170.239.232.46/json"));

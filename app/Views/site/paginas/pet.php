@@ -104,9 +104,7 @@
 								
 								<hr>
 								
-								<p class="card-text"><i class="fas fa-map-marker-alt"></i>Porto Alegre/RS</p>
-								<p class="card-text"><i class="fas fa-user"></i>Felipe Pereira</p>
-								<p class="card-text"><i class="fas fa-phone-alt"></i>(51) 99999-8888</p>
+								<p class="card-text"><i class="fas fa-map-marker-alt"></i><?=$cidade?>/<?=$uf?></p>
 							</div>
 						</div>
 					</div>
@@ -114,7 +112,7 @@
             	<div class="col-md-8 ml-auto mr-auto">
             		<h4 class="text-center title">Um pouco sobre mim!</h4>
             		<div class="description text-center pet-description">
-		                <p>"Oi gente! Quando eu fui resgatada, estava em um estado bem ruinzinho, me coçando muito e com uma fome do cão! Como vivi na rua, não sabia ao certo em quem confiar, então era bem arisca. Mas aos poucos, com um petisco aqui e outro ali, os voluntários foram me conquistando. Agora o que eu mais preciso é de uma família que me encha de amor e me mostre como é bom passear no parque, receber carinhos e dormir de conchinha! Você pode ser minha família? Vem me conhecer!"</p>
+		                <p>"<?=$descricao?>"</p>
 		            </div>
             	</div>
             </div>

@@ -153,7 +153,8 @@ class Pets extends Model
         $db = db_connect();
         $resultados = $db->table('pet')
             ->select('pet.*')
-            ->select('usuario.nome, usuario.telefone, usuario.email')
+            ->select('galeria.imagem')
+            ->select('usuario.nome              as usuario_nome, usuario.telefone, usuario.email')
             ->select('saude.id_pet              as saude_id_pet, vermifugado, vacinado, castrado, cuidados_especiais')
             ->select('personalidade.id_pet      as personalidade_id_pet, docil, agressivo, calmo, brincalhao, sociavel, arisco, independente, carente, tenso, assustado, casa, apartamento')
             ->select('porte.descricao           as porte_descricao')
@@ -169,8 +170,11 @@ class Pets extends Model
                 ->join('municipio',             'municipio.id_municipio         = pet.id_municipio',    'left')
                 ->join('saude',                 'saude.id_pet                   = pet.id_pet',          'left')
                 ->join('personalidade',         'personalidade.id_pet           = pet.id_pet',          'left')
+                ->join('galeria',               'galeria.id_pet                 = pet.id_pet',          'left')
+                ->where('capa',1)
+                ->where('pet.excluido',0)
                 ->where('pet.id_pet', $id_pet)
-                ->get()->getResultObject();
+                ->get()->getRowObject();
         $db->close();
         return $resultados;
     }
@@ -180,7 +184,7 @@ class Pets extends Model
         $resultados = $db->table('pet')
             ->select('pet.*')
             ->select('galeria.imagem')
-            ->select('usuario.nome as nome_usuario, usuario.telefone, usuario.email')
+            ->select('usuario.nome              as nome_usuario, usuario.telefone, usuario.email')
             ->select('saude.id_pet              as saude_id_pet, vermifugado, vacinado, castrado, cuidados_especiais')
             ->select('personalidade.id_pet      as personalidade_id_pet, docil, agressivo, calmo, brincalhao, sociavel, arisco, independente, carente, tenso, assustado, casa, apartamento')
             ->select('porte.descricao           as porte_descricao')
