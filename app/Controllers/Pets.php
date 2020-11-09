@@ -138,12 +138,21 @@ class Pets extends Controller
 		$data['uf']				= $pet->uf;
 		$data['nome_protetor']	= $pet->usuario_nome;
 
-		if(!empty($petGaleria)){
-			$data['img_opcional1']	= $petGaleria[0]->imagem;
-			$data['img_opcional2']	= $petGaleria[1]->imagem;
-			$data['img_opcional3']	= $petGaleria[2]->imagem;
-		}
-	
+		if(!empty($petGaleria)):
+
+			if(isset($petGaleria[0]->imagem)):
+					$data['img_opcional1'] = $petGaleria[0]->imagem;
+				endif;
+			if(isset($petGaleria[1]->imagem)):
+					$data['img_opcional2'] = $petGaleria[1]->imagem;
+				endif;
+				if(isset($petGaleria[2]->imagem)):
+					$data['img_opcional3'] = $petGaleria[2]->imagem;
+				endif;
+		endif;
+			
+		
+		
 		//'fas fa-paw'
 	
 		echo view('site/paginas/pet', $data);
