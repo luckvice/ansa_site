@@ -3,7 +3,7 @@
 <?= $this->section('content') ?>
   <!-- FILTROS -->
   <div class="page-header"
-    style="background-image: url('<?= base_url('assets/img/dog1.jpg') ?>');">
+    style="background-image: url('<?= $backgroud ?>');">
     <!-- https://cdn.hipwallpaper.com/i/45/92/MdvtEQ.jpg-->
     <div class="container">
       <div class="row">

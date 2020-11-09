@@ -89,7 +89,7 @@ class Auth extends Controller
                 $response = file_get_contents($url."?secret=".$secretkey."&response=".$dados['g-recaptcha-response']."&remoteip=".$_SERVER["REMOTE_ADDR"]);
             
                 $data = json_decode($response);
-                print_r($data);
+              
             
                 if (isset($data->success) && $data->success=="true") {
                     $usuarios = new Usuarios;
@@ -125,8 +125,26 @@ class Auth extends Controller
                         'id_usuario'    => $id_usuario,
                         'id_nivel'      => $nivel
                     ]);
-    
-                    return redirect()->route('perfil'); //Redireciona para rota perfil
+                    $telefone = preg_replace("/[^0-9]/", "", $dados['telefone']);
+                    $client = \Config\Services::curlrequest();
+                    $response = $client->request('POST', "http://34.74.113.195:5000/chat/sendmessage/55".$telefone,   
+                ['form_params' => ['message'=>'
+-----------🐾[ANSA]🐾----------
+
+Oiiiieee Bem vindo(a) '.$dados['nome'].'
+
+Seu cadastro foi efetuado com sucesso! 
+
+Agora você pode cadastrar um Pet para adoção!
+Acelere o processo de adoção usando nossa plataforma.
+
+Agradecemos seu interesse.
+
+Att. Equipe ANSA.
+                
+']]);
+
+                   return redirect()->route('perfil'); //Redireciona para rota perfil
                 }
                 else{
                     $error = [

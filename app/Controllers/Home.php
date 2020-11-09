@@ -21,7 +21,21 @@ class Home extends Controller
 		if (session()->has('erro')) { //se na sessao tem a variavel erro.
 			$data['erro'] = session('erro');
 		}
-		echo view('site/paginas/home', $data);
+		$imagens = [
+			base_url('assets/img/dog1.jpg'),
+			base_url('assets/img/dog2.jpg'),
+			base_url('assets/img/dog3.jpg'),
+			base_url('assets/img/dog4.jpg'),
+			base_url('assets/img/gato1.jpg'),
+			base_url('assets/img/gato2.jpg'),
+			
+		];
+			
+		$numRamdom = array_rand($imagens);
+		
+		$data['backgroud'] = $imagens[$numRamdom];
+
+			echo view('site/paginas/home', $data);
 	}
 
 
