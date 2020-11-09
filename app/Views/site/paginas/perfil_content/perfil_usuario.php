@@ -13,11 +13,11 @@
 			<form method="POST" action="perfil/alterarsenha">
 				<div class="modal-body">
 					<div class="form-row">
-						<div class="form-group col-md-8">
+						<div class="form-group col-md-12">
 							<label class="control-label" for="senha">Preencha os campos com a nova senha</label>
 							<input type="password" class="form-control is-invalid" name="senha" required>
 						</div>
-						<div class="form-group col-md-8">
+						<div class="form-group col-md-12">
 							<label for="senha">Digite a senha novamente</label>
 							<input type="password" class="form-control" name="senha_r" required>
 						</div>

@@ -2,6 +2,38 @@
 
 <?= $this->section('content') ?>
 
+<div class="modal fade" tabindex="-1" role="dialog" id="solicitarAdocao">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title font-weight-bold">Adote o Nico!</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form method="POST" action="">
+				<div class="modal-body">
+					<div class="form-row">
+						<div class="form-group col-md-12">
+							<label class="control-label" for="senha">Informe seu número para o tutor do Nico</label>
+							<input type="text" class="form-control is-invalid" name="telefone" id="telefone" required>
+						</div>
+						<div class="form-group col-md-12">
+							<label class="control-label" for="senha">Recado (Opcional)</label>
+							<textarea class="form-control" name="descricao" id="descricao" rows="3"></textarea>
+						</div>
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">Solicitar Adoção</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
 <div class="page-header pet-cover" data-parallax="true"></div>
@@ -10,7 +42,8 @@
 		<div class="botao-adotar">	
 			<ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" href="https://wa.me/+55519620-3669?text=ANSA Quero adotar o Niko, http://amigonaoseabandona.com.br/pets/niko, Meu Nome é Lucas Soares">
+                    <!--<a class="nav-link active" href="https://wa.me/+55519620-3669?text=ANSA Quero adotar o Niko, http://amigonaoseabandona.com.br/pets/niko, Meu Nome é Lucas Soares">-->
+					<a class="nav-link active" href="#" data-toggle="modal" data-target="#solicitarAdocao">
                 		<i class="material-icons">favorite</i>
                         Adotar
                     </a>
@@ -41,7 +74,7 @@
 							</div>
 
 							<h6>Mostre <?=$nome?> aos seus amigos!</h6>
-							<div class="sharethis-inline-share-buttons"></div>
+							<div class="sharethis-inline-share-buttons" style="display: flex; justify-content: center; margin: 20px;"></div>
 						<!--	<a href="#pablo" class="btn btn-just-icon btn-link btn-facebook"><i class="fab fa-facebook"></i></a>
                             <a href="#pablo" class="btn btn-just-icon btn-link btn-twitter"><i class="fab fa-twitter"></i></a>
                             <a href="#pablo" class="btn btn-just-icon btn-link btn-instagram"><i class="fab fa-instagram"></i></a> -->
