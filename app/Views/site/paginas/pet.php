@@ -6,7 +6,7 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title font-weight-bold">Adote o Nico!</h5>
+				<h5 class="modal-title font-weight-bold">Adote <?= $nome?></h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -15,7 +15,7 @@
 				<div class="modal-body">
 					<div class="form-row">
 						<div class="form-group col-md-12">
-							<label class="control-label" for="senha">Informe seu número para o tutor do Nico</label>
+							<label class="control-label" for="senha">Informe seu Whatsapp para o contato do tutor do(a) <?= $nome?></label>
 							<input type="text" class="form-control is-invalid" name="telefone" id="telefone" required>
 						</div>
 						<div class="form-group col-md-12">
@@ -23,7 +23,11 @@
 							<textarea class="form-control" name="descricao" id="descricao" rows="3"></textarea>
 						</div>
 					</div>
-
+					<div class="row">
+						<div class="col">
+						<p></p>
+						</div>
+					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="submit" class="btn btn-primary">Solicitar Adoção</button>

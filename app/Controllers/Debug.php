@@ -8,13 +8,27 @@ use App\Models\Usuarios; //Carrega Model SQL
 use App\Models\Cidades; //Carrega Model SQL
 use App\Models\Estados; //Carrega Model SQL
 use App\Models\Pets; //Carrega Model SQL
+use App\Libraries\Sima;
 
 class Debug extends Controller
 {
+    public function  enviarMensagemEmail(){
+        $mensagem = new Sima;
+      
+        return $mensagem->enviarMensagemEmail('Teste',$html,'lucasmarcelo93@gmail.com');
+    }
+    
+    public function adotar(){
+        $mensagem = new Sima;
 
+        $texto = 'Ola';
+        
+        return $mensagem->enviarMensagemWa('51999930495', '$texto');
+    }
 
-    public function enviaContato($numero = '+5551999930495'){
-        return redirect()->to('https://wa.me/'.$numero);
+    public function enviarContato(){
+        $mensagem = new Sima;
+        return $mensagem->enviarContato('51999930495', 'Alguma coisa');
     }
 
     public function listaPetsAjax(){

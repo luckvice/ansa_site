@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 use App\Models\Usuarios; //Carrega Model SQL
+use App\Libraries\Sima; 
 
 class Auth extends Controller
 {
@@ -93,6 +94,7 @@ class Auth extends Controller
             
                 if (isset($data->success) && $data->success=="true") {
                     $usuarios = new Usuarios;
+                    $mensagem = new Sima;
 
                     if (!$usuarios->checkExistsEmail($dados['email']) == null) {
                         $error = [
@@ -125,10 +127,7 @@ class Auth extends Controller
                         'id_usuario'    => $id_usuario,
                         'id_nivel'      => $nivel
                     ]);
-                    $telefone = preg_replace("/[^0-9]/", "", $dados['telefone']);
-                    $client = \Config\Services::curlrequest();
-                    $response = $client->request('POST', "http://34.74.113.195:5000/chat/sendmessage/55".$telefone,   
-                ['form_params' => ['message'=>'
+                    $wa_message = '
 -----------🐾[ANSA]🐾----------
 
 Oiiiieee Bem vindo(a) '.$dados['nome'].'
@@ -141,8 +140,9 @@ Acelere o processo de adoção usando nossa plataforma.
 Agradecemos seu interesse.
 
 Att. Equipe ANSA.
-                
-']]);
+';
+                   $mensagem->enviarMensagemWa($dados['telefone'],$wa_message);
+                   $mensagem->enviarMensagemEmail('Cadastro Efetuado com sucesso!',view('site/templates/email/sucesso_cadastro'), $dados['email']);
 
                    return redirect()->route('perfil'); //Redireciona para rota perfil
                 }

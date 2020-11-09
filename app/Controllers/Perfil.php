@@ -7,8 +7,6 @@ use App\Models\Usuarios; //Carrega Model SQL
 use App\Models\Pets; //Carrega Model SQL
 use App\Models\Estados; //Carrega Model SQL
 use App\Models\Cidades; //Carrega Model SQL
-use App\Libraries\Icons;
-use App\Libraries\Galeria;
 
 /*
 
@@ -237,7 +235,7 @@ class Perfil extends Controller
         if (session()->has('erro')) {
             $data['erro'] = session('erro');
         }
-        $icons = new Icons();
+
      
        // echo $icons->teste();
       echo view('site/paginas/perfil_content/perfil_listarPets', $data);

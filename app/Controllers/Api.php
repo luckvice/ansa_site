@@ -98,7 +98,7 @@ que residem em Viamão / RS
     echo $response->status.' | '.$response->message;
   }
 
-  public function enviarMensagem($telefone = '555196203669', $mensagem = '', $foto = '', $temFoto = false)
+  public function enviarMensagem($telefone = '5551999930495', $mensagem = '', $foto = '', $temFoto = false)
   {
     $client = \Config\Services::curlrequest();
 

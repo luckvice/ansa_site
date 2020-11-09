@@ -4,13 +4,12 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 use App\Models\Pets as Pets_model; //Carrega Model SQL | alias para não repetir o nome da Classe
+use App\Libraries\Waintegracao;
 
 class Pets extends Controller
 {
 	public function index($especie = '', $tamanho = '', $sexo = '')
 	{
-
-
 		$ip = $_SERVER['REMOTE_ADDR'];
         $details = json_decode(file_get_contents("http://ipinfo.io/187.113.226.25/json"));
 		//echo $details->region . ' | ' . $details->city;
@@ -40,8 +39,6 @@ class Pets extends Controller
 			$data['listaPets'] = $pets->getPets($details->city, false, false, true, null, true, null, true, null);
 
 		}
-
-
 		echo view('site/paginas/pets', $data);
 	}
 
@@ -91,6 +88,8 @@ class Pets extends Controller
 		}
 		echo view('site/paginas/pets', $data);
 	}
+
+
 	public function pet($id_pet)
 	{
 		$pet = new Pets_model;
@@ -151,10 +150,11 @@ class Pets extends Controller
 				endif;
 		endif;
 			
-		
-		
-		//'fas fa-paw'
 	
 		echo view('site/paginas/pet', $data);
+	}
+
+	public function adotarPet(){
+
 	}
 }
