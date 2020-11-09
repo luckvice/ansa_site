@@ -63,7 +63,6 @@ class Auth extends Controller
         if ($this->request->getMethod() !== 'post') {
             return redirect()->to('/');
         } else {
-
             $validacao = $this->validate([ //Validação Server Side Form
                 'nome'      => 'required',
                 'email'     => 'required|valid_email', //Obriga o preeenchimento do Form
@@ -72,7 +71,6 @@ class Auth extends Controller
                 'senha_r'   => 'required',
 
             ]);
-
             if (!$validacao) {
                 //Cria uma Sessao chamada 'erro' com a mensagem de erro padrão do validator
                 $error = [
@@ -84,14 +82,10 @@ class Auth extends Controller
             } else {
                 $dados = $this->request->getPostGet();
                 $url = "https://www.google.com/recaptcha/api/siteverify";
-
                 $secretkey = "6LfkfN8ZAAAAAMv3y4JQLInyMBNBM8EcnYfGY322";
-            
                 $response = file_get_contents($url."?secret=".$secretkey."&response=".$dados['g-recaptcha-response']."&remoteip=".$_SERVER["REMOTE_ADDR"]);
-            
                 $data = json_decode($response);
-              
-            
+
                 if (isset($data->success) && $data->success=="true") {
                     $usuarios = new Usuarios;
                     $mensagem = new Sima;
@@ -102,7 +96,6 @@ class Auth extends Controller
                             'mensagem' =>
                             'Esse E-mail já se encontra cadastrado.'
                         ];
-    
                         return redirect()->back()->withInput()->with('erro_mail', $error);
                     }
     

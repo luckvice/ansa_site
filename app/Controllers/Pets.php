@@ -94,6 +94,10 @@ class Pets extends Controller
 	{
 		$pet = new Pets_model;
 		helper('form');
+		helper('text');
+		session()->set('criptopost',random_string('sha1',150));//Cria sessão criptografada
+		session()->markAsFlashdata('criptopost');//marca como sessao temporaria
+
 		//Configurações de pagina
 		$data['title'] 				= 	'Ver Pets';
 		$data['menuTransparent'] 	= 	False;
@@ -149,9 +153,9 @@ class Pets extends Controller
 					$data['img_opcional3'] = $petGaleria[2]->imagem;
 				endif;
 		endif;
-			
-	
-		echo view('site/paginas/pet', $data);
+		
+		
+		//echo view('site/paginas/pet', $data);
 	}
 
 	public function adotarPet(){
