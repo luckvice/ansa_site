@@ -96,23 +96,17 @@ class Pets extends Controller
 		$pet = new Pets_model;
 		helper('form');
 		//Configurações de pagina
-		$data['title'] 				= 'Ver Pets';
-		$data['menuTransparent'] 	= False;
-		$pet						= $pet->getPet($id_pet);
-		//Popula infos
-		$data['nome'] 		= $pet->nome;
-		$data['imagem']		= $pet->imagem;
+		$data['title'] 				= 	'Ver Pets';
+		$data['menuTransparent'] 	= 	False;
+		$petGaleria					=	$pet->getGaleria($id_pet);
+		$pet						= 	$pet->getPet($id_pet);
 		
-		/*
-							    <!--<p class="card-text"><i class="fas fa-paw"></i></p>-->
-								<!--<p class="card-text"><i class="fas fa-exclamation-triangle"></i>Agressivo</p>-->
-								<!--<p class="card-text"><i class="fas fa-couch"></i>Calmo</p>-->
-								<!--<p class="card-text"><i class="fas fa-hand-peace"></i>Sociável</p>-->
-								<!--<p class="card-text"><i class="fas fa-running"></i>Independente</p>-->
-								<!--<p class="card-text"><i class="fas fa-heart-broken"></i>Carente</p>-->
-								<!--<p class="card-text"><i class="fas fa-sad-tear"></i>Assustado</p>-->
-								<!--<p class="card-text"><i class="fas fa-bone"></i>Brincalhão</p>-->
-		*/
+		if($pet->id_porte 		== 1){$data['porte'] = 'P';}
+		elseif($pet->id_porte 	== 2){$data['porte'] = 'M';}
+		elseif($pet->id_porte 	== 3){$data['porte'] = 'G';}
+		if($pet->id_sexo 		== 1){$data['sexo']  = 'Macho'; $data['icon'] = 'fas fa-mars';}
+		elseif($pet->id_sexo 	== 2){$data['sexo']  = 'Fêmea'; $data['icon'] = 'fas fa-venus';}
+
 		$caracteristica = [
 			'Docil' 		=> ['fas fa-paw'					,$pet->docil],
 			'Sociavel'		=> ['fas fa-hand-peace'				,$pet->sociavel],
@@ -120,8 +114,10 @@ class Pets extends Controller
 			'Agressivo' 	=> ['fas fa-exclamation-triangle'	,$pet->agressivo],
 			'Indepedente' 	=> ['fas fa-running'				,$pet->independente],
 			'Carente' 		=> ['fas fa-heart-broken'			,$pet->carente],
-			'Calmo' 		=> ['fas fa-sad-tear'				,$pet->assustado],
-
+			'Calmo' 		=> ['fas fa-sad-tear'				,$pet->calmo],
+			'Tenso'			=> ['fas fa-sad-tear'				,$pet->tenso],
+			'Assustado'		=> ['fas fa-sad-tear'				,$pet->assustado],	
+			'Arisco'		=> ['fas fa-sad-tear'				,$pet->arisco],	
 		];
 
 		$saude = [
@@ -131,11 +127,25 @@ class Pets extends Controller
 			'Cuidados Especiais'	=> ['fas fa-capsules'				,$pet->cuidados_especiais]
 		];
 		
+		//Popula infos
+		$data['nome'] 			= $pet->nome;
+		$data['imagem']			= $pet->imagem;
+		$data['faixa_etaria']	= $pet->faixa_etaria_descricao;
 		$data['caracteristica'] = $caracteristica;
 		$data['saude'] 			= $saude;
 		$data['descricao']		= $pet->descricao;
-		//'fas fa-paw'
+		$data['cidade']			= $pet->municipio_nome;
+		$data['uf']				= $pet->uf;
+		$data['nome_protetor']	= $pet->usuario_nome;
 
+		if(!empty($petGaleria)){
+			$data['img_opcional1']	= $petGaleria[0]->imagem;
+			$data['img_opcional2']	= $petGaleria[1]->imagem;
+			$data['img_opcional3']	= $petGaleria[2]->imagem;
+		}
+	
+		//'fas fa-paw'
+	
 		echo view('site/paginas/pet', $data);
 	}
 }

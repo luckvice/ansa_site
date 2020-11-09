@@ -30,17 +30,17 @@
 			    				<div class="pet-item">
 									<div class="card-body text-left ">
 										<div class="pet-title justify-content-between">
-											<h4 class="card-title"><i class="fas fa-dumbbell"></i> Porte: M</h4>
+											<h4 class="card-title"><i class="fas fa-dumbbell"></i> Porte: <?=$porte?></h4>
 											<span>|</span>
-											<h4 class="card-title"><i class="fas fa-venus"></i> Fêmea</h4>
+											<h4 class="card-title"><i class="<?=$icon?>"></i> <?=$sexo?></h4>
 											<span>|</span>
-											<h4 class="card-title" style="margin-bottom: .75rem !important;"><i class="fas fa-birthday-cake"></i> Jovem</h4>
+											<h4 class="card-title" style="margin-bottom: .75rem !important;"><i class="fas fa-birthday-cake"></i> <?=$faixa_etaria?></h4>
 										</div>
 									</div>
 								</div>
 							</div>
 
-							<h6>Mostre Nico aos seus amigos!</h6>
+							<h6>Mostre <?=$nome?> aos seus amigos!</h6>
 							<div class="sharethis-inline-share-buttons"></div>
 						<!--	<a href="#pablo" class="btn btn-just-icon btn-link btn-facebook"><i class="fab fa-facebook"></i></a>
                             <a href="#pablo" class="btn btn-just-icon btn-link btn-twitter"><i class="fab fa-twitter"></i></a>
@@ -105,6 +105,7 @@
 								<hr>
 								
 								<p class="card-text"><i class="fas fa-map-marker-alt"></i><?=$cidade?>/<?=$uf?></p>
+								<p class="card-text"><i class="fas fa-user"></i>Protetor: <?=$nome_protetor?></p>
 							</div>
 						</div>
 					</div>
@@ -155,21 +156,39 @@
 						<div class="tab-pane active text-center gallery" id="studio">
 							<div class="row">
 								<div class="col-md-12">
-									<img src="https://www.specialdog.com.br/assets/imgs/cao.png" class="rounded" style="width: 100%;">
+									<?php 
+									if(!isset($img_opcional1)):
+										echo '<p><h4><b>ohh :( O protetor não postou mais fotos</b></h4></p>';
+									else:
+									?>
+										<img src="data:image/jpeg;base64,<?= $img_opcional1?>" class="rounded" style="width: 100%;">
+									<?php endif?>
 								</div>
 							</div>
 						</div>
 						<div class="tab-pane text-center gallery" id="works">
 							<div class="row">
 								<div class="col-md-12">
-									<img src="https://www.deccanherald.com/sites/dh/files/article_images/2020/05/19/iStock-475989065-1115790551-1586363528.jpg" class="rounded" style="width: 100%;">
+								<?php 
+									if(!isset($img_opcional2)):
+										echo '<p><h4><b>ohh :( O protetor não postou mais fotos</b></h4></p>';
+									else:
+									?>
+										<img src="data:image/jpeg;base64,<?= $img_opcional2?>" class="rounded" style="width: 100%;">
+									<?php endif?>
 								</div>
 							</div>
 						</div>
 						<div class="tab-pane text-center gallery" id="favorite">
 							<div class="row">
 								<div class="col-md-12">
-									<img src="https://m.hindustantimes.com/rf/image_size_1200x900/HT/p2/2020/04/28/Pictures/_c238d9a8-8930-11ea-804e-137f71f5151d.jpg" class="rounded" style="width: 100%;">
+								<?php 
+									if(!isset($img_opcional3)):
+										echo '<p><h4><b>ohh :( O protetor não postou mais fotos</b></h4></p>';
+									else:
+									?>
+										<img src="data:image/jpeg;base64,<?= $img_opcional3?>" class="rounded" style="width: 100%;">
+									<?php endif?>
 								</div>
 							</div>
 						</div>

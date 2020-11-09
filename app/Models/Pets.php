@@ -265,7 +265,7 @@ class Pets extends Model
 
     public function getGaleria($id_pet){
         $db = db_connect();
-        $resultados = $db->table('galeria')->where('id_pet', $id_pet)->get()->getResultObject();
+        $resultados = $db->table('galeria')->where('id_pet', $id_pet)->where('capa',0)->get()->getResultObject();
         $db->close();
         return $resultados;
     }
