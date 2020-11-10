@@ -82,7 +82,7 @@
                     </div>
                     <div class="col">
                       <p class="card-text">
-                        <i class="fas fa-venus" style="color:pink"></i> <?=  $value->sexo_descricao?>
+                        <i class="fas <?php if($value->id_sexo == 1): echo 'fa-mars'; $color='#42c5f5'; else: echo 'fa-venus';$color='#c242f5'; endif; ?>" style="color:<?=$color?>"></i> <?=  $value->sexo_descricao?>
                       </p>
                     </div>
                   </div>
