@@ -73,7 +73,7 @@
     $(".solicitar_adocao").click(function(){
       $(".solicitar_adocao").text('enviando...');
       $(".solicitar_adocao").prop('disabled', true);
-      var telefone  = $("input[name='telefone']").val();
+      var telefone  = $("input[id='telefone_interessado']").val();
       var msg_opcional = $("textarea[name='msg_opcional']").val();
       var id_pet    = $("input[name='id_pet']").val();
       var nome_pet  = $("input[name='nome_pet']").val();

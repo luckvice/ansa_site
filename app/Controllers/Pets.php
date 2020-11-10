@@ -154,7 +154,7 @@ class Pets extends Controller
 				endif;
 		endif;
 		session()->set('email_usuario',$pet->email);
-		session()->markAsFlashdata('telefone_usuario');
+		session()->markAsFlashdata('email_usuario');
 		session()->set('telefone_usuario',$pet->telefone);
 		session()->markAsFlashdata('telefone_usuario');
 

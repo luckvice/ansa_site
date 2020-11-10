@@ -19,8 +19,8 @@
 							<input type="text" class="form-control is-invalid" name="nome_interessado" id="nome_interessado" required>
 						</div>
 						<div class="form-group col-md-12">
-							<label class="control-label" for="senha">Informe seu Whatsapp para o contato do tutor do(a) <?= $nome?></label>
-							<input type="text" class="form-control is-invalid" name="telefone" id="telefone" required>
+							<label class="control-label" for="telefone_interessado">Informe seu Whatsapp para o contato do tutor do(a) <?= $nome?></label>
+							<input type="text" class="form-control is-invalid" name="telefone" id="telefone_interessado" required>
 							<input type="hidden" name="id_pet" id="id_pet" value="<?= $id_pet?>"/>
 							<input type="hidden" name="nome_pet" id="nome_pet" value="<?= $nome?>"/>
 							<input type="hidden" name="nome_protetor" id="nome_protetor" value="<?= $nome_protetor?>"/>
