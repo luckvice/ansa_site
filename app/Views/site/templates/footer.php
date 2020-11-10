@@ -70,6 +70,13 @@
         $("#ajax").load(host+"/debug/cadastrarPetAjax");
     });
 
+    $("#btn_adotar").click(function(){
+      $(this).text("RESTAURAR");
+
+     //$(this).parent().parent().parent().find('.badge').text('Mudouu');
+      $(this).closest('.pet-buttons').find('.pet-item').find('.badge').text('alterado');
+    });
+
     $(".solicitar_adocao").click(function(){
       $(".solicitar_adocao").text('enviando...');
       $(".solicitar_adocao").prop('disabled', true);
@@ -95,6 +102,8 @@
           error: function() {
             $(".alert-danger").fadeIn();
             $(".solicitar_adocao").prop('disabled', false);
+            $(".response_erro").text('Ocorreu um erro em sua Solicitação com a API');
+            $(".solicitar_adocao").text('Tentar novamente!');
           },
           success: function(data) {
             if(data.status == 1){

@@ -54,8 +54,9 @@
 								$mark 		= 'btn-success';
 							}
 					?>	
-						<a href="<?= base_url('pet')."/".$value->id_pet?>" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Visualizar informações do PET">Ver</a>
-						<a href="<?= base_url('/perfil')."/{$status}"."/".$value->id_pet?>" class="btn <?= $mark ?>" data-toggle="tooltip" data-placement="top" title="<?= $tootip ?>"><?=$btnstatus?></a>
+						<a href="<?= base_url('pet')."/".$value->id_pet?>" id="btn_teste" class="btn btn-primary teste" data-toggle="tooltip" data-placement="top" title="Visualizar informações do PET">Ver</a>
+						<?php  //base_url('/perfil')."/{$status}"."/".$value->id_pet?>
+						<a href="#" id="btn_adotar" class="btn <?= $mark ?>" data-toggle="tooltip" data-placement="top" title="<?= $tootip ?>"><?=$btnstatus?></a>
 						<a href="<?= base_url('/perfil/removerpet')."/".$value->id_pet?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="remover pet do site">Remover</a>
 					</div>
 				</div>
