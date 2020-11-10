@@ -70,11 +70,18 @@
         $("#ajax").load(host+"/debug/cadastrarPetAjax");
     });
 
-    $("#btn_adotar").click(function(){
-      $(this).text("RESTAURAR");
+    $(".btn-success").click(function(){
+    
+      $(this).removeClass('btn-success').addClass('btn-warning').text("RESTAURAR");
 
-     //$(this).parent().parent().parent().find('.badge').text('Mudouu');
-      $(this).closest('.pet-buttons').find('.pet-item').find('.badge').text('alterado');
+      status = $(this).parent().parent().find('.badge').removeClass('badge-warning').addClass('badge-success').text('ADOTADO');
+
+//      $('.'+status).removeClass('badge-warning').addClass('badge-success').text('ADOTADO');
+
+    //  $(this).prop('title', 'Listar novamente para adoção');
+   
+    $(this).attr('data-original-title', 'olaaa');
+      console.log(status);
     });
 
     $(".solicitar_adocao").click(function(){
