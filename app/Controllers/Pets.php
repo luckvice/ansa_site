@@ -118,9 +118,9 @@ class Pets extends Controller
 			'Indepedente' 	=> ['fas fa-running'				,$pet->independente],
 			'Carente' 		=> ['fas fa-heart-broken'			,$pet->carente],
 			'Calmo' 		=> ['fas fa-mug-hot'				,$pet->calmo],
-			'Tenso'			=> ['fas fa-meh'				,$pet->tenso],
+			'Tenso'			=> ['fas fa-meh'					,$pet->tenso],
 			'Assustado'		=> ['fas fa-sad-tear'				,$pet->assustado],	
-			'Arisco'		=> ['fas fa-rocket'				,$pet->arisco],	
+			'Arisco'		=> ['fas fa-rocket'					,$pet->arisco],	
 		];
 
 		$saude = [
@@ -153,6 +153,7 @@ class Pets extends Controller
 					$data['img_opcional3'] = $petGaleria[2]->imagem;
 				endif;
 		endif;
+
 		session()->set('email_usuario',$pet->email);
 		session()->markAsFlashdata('email_usuario');
 		session()->set('telefone_usuario',$pet->telefone);

@@ -13,8 +13,12 @@
       </div>
       <div class="row">
         <div class="col-md-12 ml-auto mr-auto text-center">
-          <img class="home-pet-button" src="<?=base_url('assets/img/dog.png')?>" alt="Botão de Cachorro" data-toggle="tooltip" data-placement="top" title="Cachorrinho">
-          <img class="home-pet-button" src="<?=base_url('assets/img/cat.png')?>" alt="Botão de Gato" data-toggle="tooltip" data-placement="top" title="Gatinho">
+          <a href="<?= base_url('pets/caes')?>">
+            <img class="home-pet-button" src="<?=base_url('assets/img/dog.png')?>" alt="Botão de Cachorro" data-toggle="tooltip" data-placement="top" title="Cachorrinho">
+          </a>
+          <a href="<?= base_url('pets/gatos')?>">
+            <img class="home-pet-button" src="<?=base_url('assets/img/cat.png')?>" alt="Botão de Gato" data-toggle="tooltip" data-placement="top" title="Gatinho">
+          </a>
         </div>
       </div>
       <div class="row" style="margin-top: 20px;">
