@@ -14,23 +14,37 @@
 			<form method="POST" action="">
 				<div class="modal-body">
 					<div class="form-row">
+					<div class="form-group col-md-12">
+							<label class="control-label" for="senha">Informe seu Nome </label>
+							<input type="text" class="form-control is-invalid" name="nome_interessado" id="nome_interessado" required>
+						</div>
 						<div class="form-group col-md-12">
 							<label class="control-label" for="senha">Informe seu Whatsapp para o contato do tutor do(a) <?= $nome?></label>
 							<input type="text" class="form-control is-invalid" name="telefone" id="telefone" required>
+							<input type="hidden" name="id_pet" id="id_pet" value="<?= $id_pet?>"/>
+							<input type="hidden" name="nome_pet" id="nome_pet" value="<?= $nome?>"/>
+							<input type="hidden" name="nome_protetor" id="nome_protetor" value="<?= $nome_protetor?>"/>
 						</div>
 						<div class="form-group col-md-12">
-							<label class="control-label" for="senha">Recado (Opcional)</label>
-							<textarea class="form-control" name="descricao" id="descricao" rows="3"></textarea>
+							<label class="control-label" for="msg_opcional">Recado (Opcional)</label>
+							<textarea class="form-control" name="msg_opcional" id="msg_opcional" rows="3"></textarea>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col">
-						<p></p>
+							<div class="alert alert-success" style="display:none" role="alert">
+								<div class="response_sucesso">
+							
+								</div>
+							</div>
+							<div class="alert alert-danger" style="display:none" role="alert">
+								<div class="response_erro"></div>
+							</div>
 						</div>
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-primary">Solicitar Adoção</button>
+					<button type="button" class="btn btn-primary solicitar_adocao">Solicitar Adoção</button>
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
 				</div>
 			</form>

@@ -131,6 +131,7 @@ class Pets extends Controller
 		];
 		
 		//Popula infos
+		$data['id_pet'] 		= $pet->id_pet;
 		$data['nome'] 			= $pet->nome;
 		$data['imagem']			= $pet->imagem;
 		$data['faixa_etaria']	= $pet->faixa_etaria_descricao;
@@ -142,7 +143,6 @@ class Pets extends Controller
 		$data['nome_protetor']	= $pet->usuario_nome;
 
 		if(!empty($petGaleria)):
-
 			if(isset($petGaleria[0]->imagem)):
 					$data['img_opcional1'] = $petGaleria[0]->imagem;
 				endif;
@@ -153,8 +153,11 @@ class Pets extends Controller
 					$data['img_opcional3'] = $petGaleria[2]->imagem;
 				endif;
 		endif;
-		
-		
+		session()->set('email_usuario',$pet->email);
+		session()->markAsFlashdata('telefone_usuario');
+		session()->set('telefone_usuario',$pet->telefone);
+		session()->markAsFlashdata('telefone_usuario');
+
 		echo view('site/paginas/pet', $data);
 	}
 

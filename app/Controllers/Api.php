@@ -7,9 +7,43 @@ use CodeIgniter\API\ResponseTrait;
 use App\Models\Usuarios; //Carrega Model SQL
 use App\Models\Cidades; //Carrega Model SQL
 use App\Models\Pets; //Carrega Model SQL
+use App\Libraries\Sima; //Carrega Model SQL
 
 class Api extends ResourceController
 {
+
+  public function solicitarAdocao(){
+
+    $data['telefone']           = $this->request->getPostGet('telefone');
+    $data['telefone_protetor']  = session()->get('telefone_usuario');
+    $data['email_usuario']      = session()->get('email_usuario');
+    $data['nome_protetor']      = $this->request->getPostGet('nome_protetor');
+    $data['id_pet']             = $this->request->getPostGet('id_pet');
+    $data['nome_pet']           = $this->request->getPostGet('nome_pet');
+    $data['nome_interessado']   = $this->request->getPostGet('nome_interessado');
+    $data['msg_opcional']       = $this->request->getPostGet('msg_opcional');
+
+    if(empty($data['msg_opcional'])){
+      $data['msg_opcional'] = 'Não deixou recado.';
+    }
+    if(empty($data['telefone'])){
+      $data['status']   = 2;
+      $data['mensagem'] = '* É Obrigatorio o Telefone';  
+    }else if(session()->has('criptopost')){
+
+      $mensagem = new Sima;
+      $mensagem->enviarMensagemWa($data['telefone_protetor'] , 'Oieeee '.$data['nome_protetor'].' a(o) '.$data['nome_interessado'].' está interessado em adotar o pet '.$data['nome_pet'].' Telefone: '.$data['telefone'].' Mensagem: '.$data['msg_opcional']);
+
+      $mensagem->enviarMensagemEmail('Solicitação de Adoção','Oieeee '.$data['nome_protetor'].' a(o) '.$data['nome_interessado'].' está interessado em adotar o pet '.$data['nome_pet'].' Telefone: '.$data['telefone'].' Mensagem: '.$data['msg_opcional'],$data['email_usuario']);
+      $data['status']   = 1;
+      $data['mensagem'] = 'Mensagem enviada com sucesso!';
+      
+    }
+
+
+    return $this->respond($data);
+  }
+
 
   public function getPets($limit){
     $model = new Pets();
@@ -51,6 +85,7 @@ class Api extends ResourceController
   public function verificaTelefone($id_interessado, $token){
 
   }
+  /*
   public function solicitarAdocao(){//DisparaMensagem para Protetor
 
     $lastID = 1;
@@ -71,7 +106,7 @@ class Api extends ResourceController
     $response = json_decode($response->getBody());
     echo $response->status.' | '.$response->message;
   }
-
+*/
   public function enviarVerificaTelefone(){
 
     $lastID = 1;

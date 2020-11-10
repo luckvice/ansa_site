@@ -58,9 +58,9 @@
    if(hash == '#minhaong'){
 
     $("#ajax").html('CARREGANDO...')
-    setInterval(function(){
+      setInterval(function(){
       $("#ajax").load(host+"/debug/listaPetsAjax");
-}, 2000) 
+      }, 2000) 
    }
     $("#minhaong").click(function(){
         $("#ajax").load(host+"/debug/listaPetsAjax");
@@ -70,6 +70,44 @@
         $("#ajax").load(host+"/debug/cadastrarPetAjax");
     });
 
+    $(".solicitar_adocao").click(function(){
+      $(".solicitar_adocao").val('enviando...');
+      $(".solicitar_adocao").prop('disabled', true);
+      var telefone  = $("input[name='telefone']").val();
+      var msg_opcional = $("textarea[name='msg_opcional']").val();
+      var id_pet    = $("input[name='id_pet']").val();
+      var nome_pet  = $("input[name='nome_pet']").val();
+      var nome_interessado  = $("input[name='nome_interessado']").val();
+      var nome_protetor  = $("input[name='nome_protetor']").val();
+      nome_protetor
+      
+      $.ajax({
+          url: host+'/api/solicitarAdocao',
+          type: 'POST',
+          data: {
+                  telefone        : telefone, 
+                  msg_opcional    : msg_opcional,
+                  id_pet          : id_pet,
+                  nome_pet        : nome_pet,
+                  nome_interessado: nome_interessado,
+                  nome_protetor   : nome_protetor
+                },
+          error: function() {
+            $(".alert-danger").fadeIn();
+            $(".solicitar_adocao").prop('disabled', false);
+          },
+          success: function(data) {
+            if(data.status == 1){
+              $(".alert-success").fadeIn();
+              $(".response_sucesso").text(data.mensagem);
+            }else if(data.status == 2){
+              $(".alert-danger").fadeIn();
+              $(".response_erro").text(data.mensagem);
+              $(".solicitar_adocao").prop('disabled', false);
+            }
+          }
+      });
+    });
   });
 </script>
 <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker 
