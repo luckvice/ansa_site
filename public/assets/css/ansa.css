@@ -276,3 +276,25 @@ i {
 .fa-venus{
     color:#c242f5;
 }
+
+/* ======= Home ========= */
+
+.home-pet-button {
+
+    box-shadow: 0 0 black;
+    width: 150px;
+    transition: transform .2s;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.home-pet-button:hover {
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    transform: scale(1.5); 
+}
+
+.logo-nav {
+    height: 80px;
+    border-radius: 20px;
+}
