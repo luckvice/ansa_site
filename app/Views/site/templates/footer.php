@@ -71,7 +71,7 @@
     });
 
     $(".solicitar_adocao").click(function(){
-      $(".solicitar_adocao").val('enviando...');
+      $(".solicitar_adocao").text('enviando...');
       $(".solicitar_adocao").prop('disabled', true);
       var telefone  = $("input[name='telefone']").val();
       var msg_opcional = $("textarea[name='msg_opcional']").val();
@@ -100,6 +100,7 @@
             if(data.status == 1){
               $(".alert-success").fadeIn();
               $(".response_sucesso").text(data.mensagem);
+              $(".solicitar_adocao").text('Enviado!');
             }else if(data.status == 2){
               $(".alert-danger").fadeIn();
               $(".response_erro").text(data.mensagem);

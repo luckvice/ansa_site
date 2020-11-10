@@ -37,7 +37,10 @@ class Api extends ResourceController
       $mensagem->enviarMensagemEmail('Solicitação de Adoção','Oieeee '.$data['nome_protetor'].' a(o) '.$data['nome_interessado'].' está interessado em adotar o pet '.$data['nome_pet'].' Telefone: '.$data['telefone'].' Mensagem: '.$data['msg_opcional'],$data['email_usuario']);
       $data['status']   = 1;
       $data['mensagem'] = 'Mensagem enviada com sucesso!';
-      
+
+    }else{
+      $data['status']   = 4;
+      $data['mensagem'] = 'Espertinho você não ? Vá Hackear em outro lugar';
     }
 
 
