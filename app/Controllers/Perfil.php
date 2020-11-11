@@ -256,4 +256,27 @@ class Perfil extends Controller
         }
         echo view('site/paginas/perfil_content/perfil_criarDepoimento', $data);
     }
+
+    public function ong() //View
+    {
+        if (!session()->has('logado')) {
+            return redirect()->to(base_url('/'));
+        }
+        
+        $usuario   = new Usuarios;
+
+        $dados = $usuario->getUsuarioById(session()->get('id_usuario'));
+
+        helper('form');
+        $data['title']              = 'Minha ONG';
+        $data['tabOng']          = 'active now'; //Fica selecionado a Tab
+        $data['bodyPageProfile']    = True;
+        $data['menuTransparent']    = False;
+        $data['usuario']            = $dados;
+
+        if (session()->has('erro')) { //se na sessao tem a variavel erro.
+            $data['erro'] = session('erro');
+        }
+        echo view('site/paginas/perfil_content/perfil_ong', $data);
+    }
 }

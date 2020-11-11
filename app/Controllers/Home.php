@@ -26,9 +26,7 @@ class Home extends Controller
 			base_url('assets/img/dog2.jpg'),
 			base_url('assets/img/dog3.jpg'),
 			base_url('assets/img/dog4.jpg'),
-			base_url('assets/img/gato1.jpg'),
-			base_url('assets/img/gato2.jpg'),
-			
+			base_url('assets/img/gato1.jpg')			
 		];
 			
 		$numRamdom = array_rand($imagens);

@@ -28,15 +28,7 @@
 
                       <?php if (session()->get('id_nivel') == 3) : ?>
                         <li class="nav-item">
-                          <a class="nav-link <?php if (isset($tabOng)) : echo $tabOng;
-                                              endif; ?>" href="#" id="minhaong">
-                            <i class="material-icons">house</i>
-                            Minha ONG
-                            <div class="ripple-container"></div></a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link <?php if (isset($tabOng)) : echo $tabOng;
-                                              endif; ?>" href="#" id="minhaong_teste">
+                          <a class="nav-link <?php if (isset($tabOng)) : echo $tabOng; endif; ?>" href="/perfil/ong" id="ong">
                             <i class="material-icons">house</i>
                             Minha ONG
                             <div class="ripple-container"></div></a>
