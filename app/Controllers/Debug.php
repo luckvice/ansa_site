@@ -13,6 +13,7 @@ use App\Libraries\Sima;
 class Debug extends Controller
 {
 
+
     public function conversarComInteressado($id_pet){
         //Montar a mensagem aqui
         $usuario = new Pets;
@@ -27,7 +28,7 @@ class Debug extends Controller
         $pet = new Pets;
        
       
-        var_dump($pet->getAdotado(3));
+        var_dump($pet->getAdotado(67));
     }
     public function  enviarMensagemEmail(){
         $mensagem = new Sima;

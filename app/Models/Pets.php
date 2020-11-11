@@ -216,6 +216,16 @@ class Pets extends Model
         return $resultados;
     }
 
+<<<<<<< HEAD
+=======
+    public function getUserByIdPet($id_pet){
+        $db = db_connect();
+        $resultados = $db->table('pet')->select('pet.id_usuario')->where('id_pet', $id_pet)->get()->getRowArray();
+        $db->close();
+        return $resultados;
+    }
+    
+>>>>>>> bff26e4195ed1b1f2110f1a23e7f0e9cd792f10f
     public function getAdotado($id_pet){
         $db = db_connect();
         $resultados = $db->table('pet')->select('pet.adotado')->where('id_pet', $id_pet)->get()->getRowObject();
