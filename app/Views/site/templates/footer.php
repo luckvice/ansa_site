@@ -73,30 +73,33 @@
    // $(".btn-success").click(function(){
       $(document).on("click", ".adotar", function(e){
       
-      var id_pet = $(this).attr('id');
-    //  console.log(id_pet);*/
-   
-      
+    var id_pet = $(this).attr('id');
+    var valor = $('#'+id_pet).closest('.card').attr('class');
+    console.log(valor);
+    
     $.ajax({
           url: host+'/api/alterarStatusPet/'+id_pet,
           type: 'GET',
 
           error: function() {
-
+            alert('Ocorreu um erro com a comunicação da API');
           },
           success: function(data) {
-
+              
+              const $el = $(`#${id_pet}`);
               if(data.status == 1){
-                $('#'+id_pet).removeClass('btn-success').addClass('btn-warning').text("RESTAURAR");
-                $('#'+id_pet).attr('data-original-title', 'Listar novamente para adoção');
-                $('#'+id_pet).parent()
-                        .parent().find('.badge')
-                        .removeClass('badge-warning')
-                        .addClass('badge-success')
-                        .text('ADOTADO');
+
+              $el.data('original-title','Listar novamente para adoção')
+                  .removeClass(['btn-success', 'badge-warning'])
+                  .addClass('btn-warning')
+                  .text("RESTAURAR")
+                      .closest('.card')
+                      .find('.badge')
+                      .addClass('badge-success')
+                      .text('ADOTADO');
               }else if(data.status == 0){
                 $('#'+id_pet).removeClass('btn-warning').addClass('btn-success').text("ADOTADO");
-                $('#'+id_pet).attr('data-original-title', 'Marcar como adotado');
+                $('#'+id_pet).data('original-title','Marcar como Adotado');
                 $('#'+id_pet).parent()
                         .parent().find('.badge')
                         .removeClass('badge-warning')

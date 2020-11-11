@@ -39,6 +39,7 @@ class Pets extends Controller
 			$data['listaPets'] = $pets->getPets($details->city, false, false, true, null, true, null, true, null);
 
 		}
+	
 		echo view('site/paginas/pets', $data);
 	}
 	public function alterarPetStatus($status)
@@ -104,9 +105,14 @@ class Pets extends Controller
 		//Configurações de pagina
 		$data['title'] 				= 	'Ver Pets';
 		$data['menuTransparent'] 	= 	False;
+		
+		if(empty($pet)){
+			return view('errors/html/production');
+		}
 		$petGaleria					=	$pet->getGaleria($id_pet);
 		$pet						= 	$pet->getPet($id_pet);
 		
+
 		if($pet->id_porte 		== 1){$data['porte'] = 'P';}
 		elseif($pet->id_porte 	== 2){$data['porte'] = 'M';}
 		elseif($pet->id_porte 	== 3){$data['porte'] = 'G';}
