@@ -26,8 +26,9 @@ class Sima
         return $response->status.' | '.$response->message;
     }
     
-    public function conversarComProtetor($numero ,$mensagem){   
-        return redirect()->to('https://wa.me/+55'.$numero.'?text='.$mensagem);
+    public function conversarComInteressado($numero ,$mensagem){   
+
+     return redirect()->to('https://wa.me/+55'.$numero.'?text='.$mensagem);
     }
 
     public function enviarMensagemImagemWa($telefone, $mensagem, $base64Imagem){

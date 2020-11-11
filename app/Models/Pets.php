@@ -208,10 +208,16 @@ class Pets extends Model
         $db->close();
         return $resultados;   
     }
-
+    public function getUsuarioByIdPet($id_pet){
+        $db = db_connect();
+        $resultados = $db->table('pet')->where('id_pet', $id_pet)->get()->getRowArray();
+        $db->close();
+        echo '<pre>';
+        var_dump($resultados);
+    }
     public function getAdotado($id_pet){
         $db = db_connect();
-        $resultados= $db->table('pet')->select('pet.adotado')->where('id_pet', $id_pet)->get()->getRowObject();;
+        $resultados = $db->table('pet')->select('pet.adotado')->where('id_pet', $id_pet)->get()->getRowObject();
         $db->close();
         return $resultados;
     }

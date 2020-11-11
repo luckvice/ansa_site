@@ -53,6 +53,7 @@
     hash && $('ul.nav a[href="' + hash + '"]').tab('show');
     var host = window.location.origin;
     $('#telefone').mask('(00) 00000-00009');
+    $('#telefone_interessado').mask('(00) 00000-00009');
     var hash = window.location.hash;
 
    if(hash == '#minhaong'){

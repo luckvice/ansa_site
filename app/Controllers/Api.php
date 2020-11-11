@@ -60,7 +60,15 @@ class Api extends ResourceController
     }else if(session()->has('criptopost')){
 
       $mensagem = new Sima;
-      $mensagem->enviarMensagemWa($data['telefone_protetor'] , 'Oieeee '.$data['nome_protetor'].' a(o) '.$data['nome_interessado'].' está interessado em adotar o pet '.$data['nome_pet'].' Telefone: '.$data['telefone'].' Mensagem: '.$data['msg_opcional']);
+      $mensagem->enviarMensagemWa($data['telefone_protetor'] , 
+      'Oieeee '.$data['nome_protetor'].' a(o) '.$data['nome_interessado'].' está interessado em adotar o pet 
+      '.$data['nome_pet'].'
+      Telefone: '.$data['telefone'].' 
+      Mensagem: '.$data['msg_opcional'].'
+      Para conversar com o protedor clique no link abaixo:
+
+      
+      ');
 
       $mensagem->enviarMensagemEmail('Solicitação de Adoção','Oieeee '.$data['nome_protetor'].' a(o) '.$data['nome_interessado'].' está interessado em adotar o pet '.$data['nome_pet'].' Telefone: '.$data['telefone'].' Mensagem: '.$data['msg_opcional'],$data['email_usuario']);
       $data['status']   = 1;
@@ -75,7 +83,16 @@ class Api extends ResourceController
     return $this->respond($data);
   }
 
-
+  public function conversarComInteressado($id_pet){
+    //Montar a mensagem aqui
+    $pet_usuario = new Pets;
+    $mensagem = new Sima;
+   
+    $id_usuario = $pet_usuario->getAdotado($id_pet);
+   echo $id_usuario;
+   //$mensagem->conversarComInteressado($telefone, $mensagem_pronta);
+}
+  
   public function getPets($limit){
     $model = new Pets();
     $data  = $model->getPets($limit);
