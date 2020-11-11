@@ -84,11 +84,10 @@
           error: function() {
             alert('Ocorreu um erro com a comunicação da API');
           },
-          success: function(data) {
-              
+          success: function(data) { 
               const $el = $(`#${id_pet}`);
               if(data.status == 1){
-              $el.data('original-title','Listar novamente para adoção')
+                $el.attr('data-original-title', 'Listar novamente para adoção').tooltip('show')
                   .removeClass('btn-success')
                   .addClass('btn-warning')
                   .text("RESTAURAR")
@@ -98,7 +97,7 @@
                       .addClass('badge-success')
                       .text('ADOTADO');
               }else if(data.status == 0){
-                $el.data('original-title','Marcar como adotado')
+                $el.attr('data-original-title', 'Marcar como adotado').tooltip('show')
                   .removeClass('btn-warning')
                   .addClass('btn-success')
                   .text("ADOTADO")
