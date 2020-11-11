@@ -1,3 +1,4 @@
+
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
 <div class="tab-pane active show" id="listarPetsCadastrados">
@@ -19,7 +20,7 @@
     			<div class="card">
     				<div class="pet-item">
     					<div class="pet-pic">
-							<img class="card-img-top" src="data:image/jpeg;base64,<?= $value->imagem;?>" alt="Card image cap">
+							<img src="data:image/jpeg;base64,<?= $value->imagem;?>" alt="Foto do PET">
     					</div>
 						<div class="card-body text-left">
 							<div class="pet-title">
@@ -29,7 +30,7 @@
 							
 							<hr class="pet-title-divisor">
 							
-							<p class="card-text"><i class="fas <?php if($value->id_sexo == 1): echo 'fa-mars'; else: echo 'fa-venus'; endif; ?>"></i>Fêmea</p>
+							<p class="card-text"><i class="fas <?php if($value->id_sexo == 1): echo 'fa-mars'; else: echo 'fa-venus'; endif; ?>"></i><?= $value->sexo_descricao ?></p>
 							<p class="card-text"><i class="fas fa-dumbbell"></i>		<?= $value->porte_descricao ?></p>
 							<p class="card-text"><i class="fas fa-history"></i>			<?= $value->faixa_etaria_descricao ?></p>
 							<p class="card-text"><i class="fas fa-map-marker-alt"></i>	<?= $value->municipio_nome ?>/<?= $value->uf ?></p>
@@ -51,8 +52,9 @@
 								$mark 		= 'btn-success';
 							}
 					?>	
-						<a href="<?= base_url('pet')."/".$value->id_pet?>" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Visualizar informações do pet">Ver</a>
-						<a href="<?= base_url('/perfil')."/{$status}"."/".$value->id_pet?>" class="btn <?= $mark ?>" data-toggle="tooltip" data-placement="top" title="<?= $tootip ?>"><?=$btnstatus?></a>
+						<a href="<?= base_url('pet')."/".$value->id_pet?>" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Visualizar informações do PET">Ver</a>
+						<?php  //base_url('/perfil')."/{$status}"."/".$value->id_pet?>
+						<span id="<?= $value->id_pet?>" class="btn <?= $mark ?> adotar" data-toggle="tooltip" data-placement="top" title="<?= $tootip ?>"><?=$btnstatus?></span>
 						<a href="<?= base_url('/perfil/removerpet')."/".$value->id_pet?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="remover pet do site">Remover</a>
 					</div>
 				</div>
