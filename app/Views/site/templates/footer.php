@@ -88,23 +88,25 @@
               
               const $el = $(`#${id_pet}`);
               if(data.status == 1){
-
               $el.data('original-title','Listar novamente para adoção')
-                  .removeClass(['btn-success', 'badge-warning'])
+                  .removeClass('btn-success')
                   .addClass('btn-warning')
                   .text("RESTAURAR")
                       .closest('.card')
                       .find('.badge')
+                      .removeClass('badge-warning')
                       .addClass('badge-success')
                       .text('ADOTADO');
               }else if(data.status == 0){
-                $('#'+id_pet).removeClass('btn-warning').addClass('btn-success').text("ADOTADO");
-                $('#'+id_pet).data('original-title','Marcar como Adotado');
-                $('#'+id_pet).parent()
-                        .parent().find('.badge')
-                        .removeClass('badge-warning')
-                        .addClass('badge-warning')
-                        .text('Em espera');
+                $el.data('original-title','Marcar como adotado')
+                  .removeClass('btn-warning')
+                  .addClass('btn-success')
+                  .text("ADOTADO")
+                      .closest('.card')
+                      .find('.badge')
+                      .removeClass('badge-success')
+                      .addClass('badge-warning')
+                      .text('Em espera');
               }
           }
       });
