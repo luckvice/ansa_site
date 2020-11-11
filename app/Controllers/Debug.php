@@ -12,6 +12,13 @@ use App\Libraries\Sima;
 
 class Debug extends Controller
 {
+
+    public function getAdotado(){
+        $pet = new Pets;
+        $adotado = $pet->getAdotado(60);
+
+        var_dump($adotado);
+    }
     public function  enviarMensagemEmail(){
         $mensagem = new Sima;
       

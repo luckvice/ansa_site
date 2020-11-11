@@ -36,6 +36,7 @@ $routes->add('ong(:num)', 'Home::ong/$1');
 $routes->get('pets/(:any)', 'Pets::index/$1');
 $routes->get('pet/(:num)', 'Pets::pet/$1');
 $routes->post('buscar/filtrar', 'Pets::buscar');
+
 $routes->get('perfil', 'Perfil::index');
 /**
  * --------------------------------------------------------------------

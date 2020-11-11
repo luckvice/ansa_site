@@ -70,18 +70,41 @@
         $("#ajax").load(host+"/debug/cadastrarPetAjax");
     });
 
-    $(".btn-success").click(function(){
-    
-      $(this).removeClass('btn-success').addClass('btn-warning').text("RESTAURAR");
-
-      status = $(this).parent().parent().find('.badge').removeClass('badge-warning').addClass('badge-success').text('ADOTADO');
-
-//      $('.'+status).removeClass('badge-warning').addClass('badge-success').text('ADOTADO');
-
-    //  $(this).prop('title', 'Listar novamente para adoção');
+   // $(".btn-success").click(function(){
+      $(document).on("click", ".adotar", function(e){
+      
+      var id_pet = $(this).attr('id');
+    //  console.log(id_pet);*/
    
-    $(this).attr('data-original-title', 'olaaa');
-      console.log(status);
+      
+    $.ajax({
+          url: host+'/api/alterarStatusPet/'+id_pet,
+          type: 'GET',
+
+          error: function() {
+
+          },
+          success: function(data) {
+
+              if(data.status == 1){
+                $('#'+id_pet).removeClass('btn-success').addClass('btn-warning').text("RESTAURAR");
+                $('#'+id_pet).attr('data-original-title', 'Listar novamente para adoção');
+                $('#'+id_pet).parent()
+                        .parent().find('.badge')
+                        .removeClass('badge-warning')
+                        .addClass('badge-success')
+                        .text('ADOTADO');
+              }else if(data.status == 0){
+                $('#'+id_pet).removeClass('btn-warning').addClass('btn-success').text("ADOTADO");
+                $('#'+id_pet).attr('data-original-title', 'Marcar como adotado');
+                $('#'+id_pet).parent()
+                        .parent().find('.badge')
+                        .removeClass('badge-warning')
+                        .addClass('badge-warning')
+                        .text('Em espera');
+              }
+          }
+      });
     });
 
     $(".solicitar_adocao").click(function(){
@@ -93,7 +116,7 @@
       var nome_pet  = $("input[name='nome_pet']").val();
       var nome_interessado  = $("input[name='nome_interessado']").val();
       var nome_protetor  = $("input[name='nome_protetor']").val();
-      nome_protetor
+      
       
       $.ajax({
           url: host+'/api/solicitarAdocao',

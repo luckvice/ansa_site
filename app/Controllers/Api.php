@@ -11,7 +11,20 @@ use App\Libraries\Sima; //Carrega Model SQL
 
 class Api extends ResourceController
 {
+  public function alterarStatusPet($id_pet){
+    $pet = new Pets;
+    $data['usuario']  =  session()->get('id_usuario');
+    $status = $pet->getAdotado($id_pet);
 
+    if($status->adotado == 0){
+      $pet->setAdotado($id_pet,$data['usuario'],1);
+      $data['status']   = 1;
+    }elseif($status->adotado  == 1){
+      $pet->setAdotado($id_pet,$data['usuario'],0);
+      $data['status']   = 0;
+    }
+   return $this->respond($data);
+  }
   public function solicitarAdocao(){
 
     $data['telefone']           = $this->request->getPostGet('telefone');

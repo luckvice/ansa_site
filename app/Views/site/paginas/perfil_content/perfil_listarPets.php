@@ -27,7 +27,7 @@
 						<div class="card-body text-left">
 							<div class="pet-title">
 								<h5 class="card-title"><i class="fas <?php if($value->id_especie == 1): echo 'fa-dog'; else: echo 'fa-cat'; endif; ?>"></i> <?= $value->nome;?></h5>
-								<span id="labelstatus" class="badge <?php if($value->adotado == 0): echo 'badge-warning'; $status = 'Em espera'; else:  echo 'badge-success'; $status = 'Adotado'; endif;?>"><?= $status?></span>
+								<span class="badge <?php if($value->adotado == 0): echo 'badge-warning'; $status = 'Em espera'; else:  echo 'badge-success'; $status = 'Adotado'; endif;?>"><?= $status?></span>
 							</div>
 							
 							<hr class="pet-title-divisor">
@@ -56,7 +56,7 @@
 					?>	
 						<a href="<?= base_url('pet')."/".$value->id_pet?>" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Visualizar informações do PET">Ver</a>
 						<?php  //base_url('/perfil')."/{$status}"."/".$value->id_pet?>
-						<span id="btn_adotar" class="btn <?= $mark ?>" data-toggle="tooltip" data-placement="top" title="<?= $tootip ?>"><?=$btnstatus?></span>
+						<span id="<?= $value->id_pet?>" class="btn <?= $mark ?> adotar" data-toggle="tooltip" data-placement="top" title="<?= $tootip ?>"><?=$btnstatus?></span>
 						<a href="<?= base_url('/perfil/removerpet')."/".$value->id_pet?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="remover pet do site">Remover</a>
 					</div>
 				</div>

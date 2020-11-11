@@ -209,6 +209,13 @@ class Pets extends Model
         return $resultados;   
     }
 
+    public function getAdotado($id_pet){
+        $db = db_connect();
+        $resultados= $db->table('pet')->select('pet.adotado')->where('id_pet', $id_pet)->get()->getRowObject();;
+        $db->close();
+        return $resultados;
+    }
+
     public function setAdotado($id_pet, $id_usuario, $status){
         $db = db_connect();
         $data = ['adotado' => $status];

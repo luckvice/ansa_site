@@ -41,7 +41,10 @@ class Pets extends Controller
 		}
 		echo view('site/paginas/pets', $data);
 	}
+	public function alterarPetStatus($status)
+	{
 
+	}
 	public function buscar($especie = '')
 	{
 		$estado 	= $this->request->getPostGet('estado_pet');
