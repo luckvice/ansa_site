@@ -11,11 +11,26 @@ use App\Libraries\Sima; //Carrega Model SQL
 
 class Api extends ResourceController
 {
+  public function removerPet($id_pet){
+    $pet = new Pets;
+    $data['usuario']  =  session()->get('id_usuario');
+    $exclusao = $pet->setExcluido($id_pet, $data['usuario']);
+
+    if($exclusao == 1){
+      $data['exclusao'] = 1;
+      $data['status']   = 1;
+      $data['mensagem']   = 'Sucesso na exclusão';
+    }else{
+      $data['exclusao'] = 0;
+      $data['status']   = 0;
+      $data['mensagem']   = 'Nada aconteceu';
+    }
+    return $this->respond($data);
+  }
   public function alterarStatusPet($id_pet){
     $pet = new Pets;
     $data['usuario']  =  session()->get('id_usuario');
     $status = $pet->getAdotado($id_pet);
-
     if($status->adotado == 0){
       $pet->setAdotado($id_pet,$data['usuario'],1);
       $data['status']   = 1;

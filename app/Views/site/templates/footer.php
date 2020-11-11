@@ -46,7 +46,7 @@
 <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
 <script src="<?= base_url('assets/js/'); ?>/material-kit.js?v=2.0.7" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.1/bootbox.min.js" integrity="sha512-eoo3vw71DUo5NRvDXP/26LFXjSFE1n5GQ+jZJhHz+oOTR4Bwt7QBCjsgGvuVMQUMMMqeEvKrQrNEI4xQMXp3uA==" crossorigin="anonymous"></script>
 <script>
   $(function() {
     var hash = window.location.hash;
@@ -70,13 +70,39 @@
         $("#ajax").load(host+"/debug/cadastrarPetAjax");
     });
 
-   // $(".btn-success").click(function(){
+      $(document).on("click", ".remover", function(e){
+        var _this = this;//Chamada no acesso interno da callback
+        bootbox.confirm({
+    message: "Você tem certeza que deseja remover este Pet do site ?",
+    buttons: {
+        confirm: {
+            label: '<i class="fa fa-check"></i>Confirmar',
+            className: 'btn btn btn-primary'
+        },
+        cancel: {
+            label: '<i class="fa fa-times"></i> Cancelar',
+            className: 'btn btn btn-secondary'
+        }
+    },
+    callback: function (result) {
+       if(result == true){
+        var id_pet  = $(_this).attr('id');
+        const $el = $(`#${id_pet}`);
+        $(_this).tooltip('hide');
+        $el.closest('.col-12').html('Removendo...').remove().fadeOut();
+        if ($('#lista').children().length == 0){
+          $('#lista').append("<div class='col'>	<div class='alert alert-primary' role='alert'>	Nenhum pet cadastrado no momento.</div></div>");
+        }
+       }
+    }
+});
+
+
+      });
+
+      /* AÇÃO STATUS */
       $(document).on("click", ".adotar", function(e){
-      
-    var id_pet = $(this).attr('id');
-    var valor = $('#'+id_pet).closest('.card').attr('class');
-    console.log(valor);
-    
+        var id_pet  = $(this).attr('id');
     $.ajax({
           url: host+'/api/alterarStatusPet/'+id_pet,
           type: 'GET',
@@ -111,7 +137,7 @@
       });
     });
 
-    $(".solicitar_adocao").click(function(){
+      $(".solicitar_adocao").click(function(){
       $(".solicitar_adocao").text('enviando...');
       $(".solicitar_adocao").prop('disabled', true);
       var telefone  = $("input[id='telefone_interessado']").val();
@@ -120,7 +146,6 @@
       var nome_pet  = $("input[name='nome_pet']").val();
       var nome_interessado  = $("input[name='nome_interessado']").val();
       var nome_protetor  = $("input[name='nome_protetor']").val();
-      
       
       $.ajax({
           url: host+'/api/solicitarAdocao',

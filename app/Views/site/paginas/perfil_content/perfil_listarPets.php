@@ -1,4 +1,5 @@
 <?= $this->extend('site/paginas/perfil_content/perfil_template') ?>
+
 <?php $this->section('content_perfil'); ?>
 
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
@@ -6,8 +7,7 @@
 <div class="tab-pane active show" id="listarPetsCadastrados">
 <form>
     <div class="container">
-    	<div class="row">
-
+    	<div class="row" id="lista">
 		<?php if(empty($listaPets)):
 		?>
 			<div class="col">
@@ -57,7 +57,7 @@
 						<a href="<?= base_url('pet')."/".$value->id_pet?>" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Visualizar informações do PET">Ver</a>
 						<?php  //base_url('/perfil')."/{$status}"."/".$value->id_pet?>
 						<span id="<?= $value->id_pet?>" class="btn <?= $mark ?> adotar" data-toggle="tooltip" data-placement="top" title="<?= $tootip ?>"><?=$btnstatus?></span>
-						<a href="<?= base_url('/perfil/removerpet')."/".$value->id_pet?>" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="remover pet do site">Remover</a>
+						<span id="<?= $value->id_pet?>" class="btn btn-danger remover" data-toggle="tooltip" data-placement="top" title="remover pet do site">Remover</span>
 					</div>
 				</div>
     		</div>
