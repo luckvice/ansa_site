@@ -15,6 +15,7 @@ class Pets extends Controller
 		//echo $details->region . ' | ' . $details->city;
 		
 		$pets = new Pets_model;
+		
 		helper('form');
 		//Configurações de pagina
 		$data['title'] = 'Ver Pets';
@@ -34,12 +35,11 @@ class Pets extends Controller
 			session()->set('especie', 4);
 			$data['all'] = true;
 			$data['listaPets'] = $pets->getPets($details->city, false, false, true, null, true, null, true, null);
-
 		}else{
 			$data['listaPets'] = $pets->getPets($details->city, false, false, true, null, true, null, true, null);
 
 		}
-	
+
 		echo view('site/paginas/pets', $data);
 	}
 	public function alterarPetStatus($status)
@@ -77,6 +77,7 @@ class Pets extends Controller
 		//Configurações de pagina
 		$data['title'] = 'Ver Pets';
 		$data['menuTransparent'] = False;
+		
 		$pets = new Pets_model;
 
 		/* Filtros consulta */
@@ -89,7 +90,9 @@ class Pets extends Controller
 		} else if (session()->get('especie') == 4) {
 			$data['all'] = true;
 			$data['listaPets'] = $pets->getPets($estado_cidade, $limiteEstado, true, true, null, $todosSexos, $sexo, $todosTamanhos, $tamanho);
+		
 		}
+		
 		echo view('site/paginas/pets', $data);
 	}
 

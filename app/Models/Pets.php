@@ -32,7 +32,7 @@ class Pets extends Model
                 ->join('sexo',                  'sexo.id_sexo                   = pet.id_sexo',         'left')
                 ->join('faixa_etaria',          'faixa_etaria.id_faixa_etaria   = pet.id_faixa_etaria', 'left')
                 ->join('municipio',             'municipio.id_municipio         = pet.id_municipio',    'left')
-                ->join('estado',                'estado.id_estado               = pet.id_estado',    'left')
+                ->join('estado',                'estado.id_estado               = pet.id_estado',       'left')
                 ->join('saude',                 'saude.id_pet                   = pet.id_pet',          'left')
                 ->join('personalidade',         'personalidade.id_pet           = pet.id_pet',          'left')
                 ->join('galeria',               'galeria.id_pet                 = pet.id_pet',          'left')
@@ -62,6 +62,7 @@ class Pets extends Model
                 if($todosTamanhos == false):
                     $resultados = $resultados->where('pet.id_porte',$tamanho);
                 endif;              
+                 //   $resultados = $resultados->paginate(10);
                     $resultados = $resultados->get()->getResultObject();
         $db->close();
         return $resultados;
