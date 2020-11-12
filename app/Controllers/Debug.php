@@ -9,29 +9,16 @@ use App\Models\Cidades; //Carrega Model SQL
 use App\Models\Estados; //Carrega Model SQL
 use App\Models\Pets; //Carrega Model SQL
 use App\Libraries\Sima;
-use App\Helpers\Crypton;
 class Debug extends Controller
 {
 
 
     public function chaves(){
-        $config         = new \Config\Encryption();
-        $config->key    = 'aBigsecret_ofAtleast32Characters';
-        $config->driver = 'AES';
-        
-        $encrypter = \Config\Services::encrypter($config);
-        $plainText = 'This is a plain-text message!';
-        $ciphertext = $encrypter->encrypt($plainText);
 
-// Outputs: This is a plain-text message!
-echo $ciphertext;
-        echo $encrypter->decrypt($ciphertext);
     }
     public function conversarComInteressado($id_pet){
         //Montar a mensagem aqui
         $usuario = new Pets;
-
-       
         $usuario = $usuario->getUserByIdPet($id_pet);
       var_dump($usuario);
      
@@ -39,8 +26,6 @@ echo $ciphertext;
     
     public function getAdotado(){
         $pet = new Pets;
-       
-      
         var_dump($pet->getAdotado(67));
     }
     public function  enviarMensagemEmail(){
