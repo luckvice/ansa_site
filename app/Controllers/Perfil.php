@@ -7,6 +7,7 @@ use App\Models\Usuarios; //Carrega Model SQL
 use App\Models\Pets; //Carrega Model SQL
 use App\Models\Estados; //Carrega Model SQL
 use App\Models\Cidades; //Carrega Model SQL
+use App\Models\Ongs; //Carrega Model SQL
 
 /*
 
@@ -263,20 +264,22 @@ class Perfil extends Controller
             return redirect()->to(base_url('/'));
         }
         
-        $usuario   = new Usuarios;
+        $ong   = new Ongs;
 
-        $dados = $usuario->getUsuarioById(session()->get('id_usuario'));
+        $dados = $ong->getOngByIdUsuario(session()->get('id_usuario'));
 
         helper('form');
+
         $data['title']              = 'Minha ONG';
         $data['tabOng']          = 'active now'; //Fica selecionado a Tab
         $data['bodyPageProfile']    = True;
         $data['menuTransparent']    = False;
-        $data['usuario']            = $dados;
+        $data['ong']            = $dados;
 
         if (session()->has('erro')) { //se na sessao tem a variavel erro.
             $data['erro'] = session('erro');
         }
+
         echo view('site/paginas/perfil_content/perfil_ong', $data);
     }
 }
