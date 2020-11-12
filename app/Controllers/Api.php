@@ -27,6 +27,7 @@ class Api extends ResourceController
     }
     return $this->respond($data);
   }
+
   public function alterarStatusPet($id_pet){
     $pet = new Pets;
     $data['usuario']  =  session()->get('id_usuario');
@@ -40,7 +41,9 @@ class Api extends ResourceController
     }
    return $this->respond($data);
   }
+
   public function solicitarAdocao(){
+    $encrypter = \Config\Services::encrypter();
 
     $data['telefone']           = $this->request->getPostGet('telefone');
     $data['telefone_protetor']  = session()->get('telefone_usuario');
@@ -51,6 +54,12 @@ class Api extends ResourceController
     $data['nome_interessado']   = $this->request->getPostGet('nome_interessado');
     $data['msg_opcional']       = $this->request->getPostGet('msg_opcional');
 
+    $id_pet = $data['id_pet'];
+    $telefone = $data['telefone'];
+    $nome_pet = $data['nome_pet'];
+    $nome_interessado = $data['nome_interessado'];
+    $url = $id_pet.'/'.$encrypter->encrypt($telefone).'/'.$nome_pet.'/'.$nome_interessado;
+  
     if(empty($data['msg_opcional'])){
       $data['msg_opcional'] = 'Não deixou recado.';
     }
@@ -59,6 +68,11 @@ class Api extends ResourceController
       $data['mensagem'] = '* É Obrigatorio o Telefone';  
     }else if(session()->has('criptopost')){
 
+      //$id_pet, $telefone_interessado, $nome_pet, $nome_interessado
+    
+   //   $url = $data['id_pet'].'/'.$data['telefone'].'/'.$data['nome_pet'].'/'.$data['nome_interessado'];
+    //  $url = $encrypter->encrypt('tste');
+
       $mensagem = new Sima;
       $mensagem->enviarMensagemWa($data['telefone_protetor'] , 
       'Oieeee '.$data['nome_protetor'].' a(o) '.$data['nome_interessado'].' está interessado em adotar o pet 
@@ -66,7 +80,8 @@ class Api extends ResourceController
       Telefone: '.$data['telefone'].' 
       Mensagem: '.$data['msg_opcional'].'
       Para conversar com o protedor clique no link abaixo:
-
+      
+      amignonaoseabandona.com.br/api/c/
       
       ');
 
@@ -79,18 +94,46 @@ class Api extends ResourceController
       $data['mensagem'] = 'Espertinho você não ? Vá Hackear em outro lugar';
     }
 
+/*
+
+Protetor recebe mensagem
+
+link de resposta:
+
+mande uma mensagem para o solicitante XXXX Clicando no link abaixo:
+
+
+
+para: o solicitante
+
+Dados do solicitante: [Telefone, Nome_solicitante]
+Informações do Pet: [Nome do Pet, id_pet]
+
+Mensagem para o solicitante
+
+Oieeee Sou o protetor(a) XX do pet: XXX 
+Recebi sua solicitação de adoção, podemos conversar ?
+
+*/
 
     return $this->respond($data);
   }
 
-  public function conversarComInteressado($id_pet){
-    //Montar a mensagem aqui
-    $pet_usuario = new Pets;
+  public function c($url){
+
+    $encrypter = \Config\Services::encrypter();
+    $ciphertext = $encrypter->encrypt($url);
+
+    $url =  $encrypter->decrypt($url);
+    $string = explode('/',$url);
+    echo $string[0];
+    return $this->conversar($string[0],$string[1],$string[2],$string[3]);
+  }
+  public function conversar($id_pet, $telefone_interessado, $nome_pet, $nome_interessado){
     $mensagem = new Sima;
-   
-    $id_usuario = $pet_usuario->getAdotado($id_pet);
-   echo $id_usuario;
-   //$mensagem->conversarComInteressado($telefone, $mensagem_pronta);
+    $mensagem_pronta = 'Oieeee'.$nome_interessado.' sou o '.$nome_interessado.' protedor do pet: '.$nome_pet;
+    echo 'redirecionando aguarde...';
+   return $mensagem->conversarComInteressado($telefone_interessado, $mensagem_pronta);
 }
   
   public function getPets($limit){
