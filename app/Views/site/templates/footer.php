@@ -74,26 +74,40 @@
       $(document).on("click", ".remover", function(e){
         var _this = this;//Chamada no acesso interno da callback
         bootbox.confirm({
-    message: "Você tem certeza que deseja remover este Pet do site ?",
-    buttons: {
-        confirm: {
-            label: '<i class="fa fa-check"></i>Confirmar',
-            className: 'btn btn btn-primary'
-        },
-        cancel: {
-            label: '<i class="fa fa-times"></i> Cancelar',
-            className: 'btn btn btn-secondary'
-        }
+                message: "Você tem certeza que deseja remover este Pet do site ?",
+                buttons: {
+                    confirm: {
+                        label: '<i class="fa fa-check"></i>Confirmar',
+                        className: 'btn btn btn-primary'
+                    },
+                    cancel: {
+                        label: '<i class="fa fa-times"></i> Cancelar',
+                        className: 'btn btn btn-secondary'
+                    }
     },
     callback: function (result) {
        if(result == true){
         var id_pet  = $(_this).attr('id');
         const $el = $(`#${id_pet}`);
-        $(_this).tooltip('hide');
-        $el.closest('.col-12').html('Removendo...').remove().fadeOut();
-        if ($('#lista').children().length == 0){
-          $('#lista').append("<div class='col'>	<div class='alert alert-primary' role='alert'>	Nenhum pet cadastrado no momento.</div></div>");
-        }
+        //BLOCO AJAX
+
+        $.ajax({
+          url: host+'/api/removerPet/'+id_pet,
+          type: 'GET',
+
+          error: function() {
+            alert('Ocorreu um erro com a comunicação da API');
+          },
+          success: function(data) { 
+            $(_this).tooltip('hide');
+            $el.closest('.col-12').html('Removendo...').remove().fadeOut();
+            if ($('#lista').children().length == 0){
+              $('#lista').append("<div class='col'>	<div class='alert alert-primary' role='alert'>	Nenhum pet cadastrado no momento.</div></div>");
+            }
+          }
+         });
+
+         //BLOCO UI
        }
     }
 });

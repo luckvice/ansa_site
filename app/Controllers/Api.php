@@ -14,8 +14,8 @@ class Api extends ResourceController
 {
   public function removerPet($id_pet){
     $pet = new Pets;
-    $data['usuario']  =  session()->get('id_usuario');
-    $exclusao = $pet->setExcluido($id_pet, $data['usuario']);
+    $usuario  =  session()->get('id_usuario');
+    $exclusao = $pet->setExcluido($id_pet, $usuario);
 
     if($exclusao == 1){
       $data['exclusao'] = 1;
