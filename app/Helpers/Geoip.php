@@ -1,8 +1,7 @@
 <?php
 namespace App\Helpers;
 /*
-    [A.N.S.A Project]
-    
+    [A.N.S.A Project] Documentação da API https://ipinfo.io/developers
     Library para search IP Locate
 */
 class Geoip
