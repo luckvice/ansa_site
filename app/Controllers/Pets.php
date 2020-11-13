@@ -5,13 +5,14 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use App\Models\Pets as Pets_model; //Carrega Model SQL | alias para não repetir o nome da Classe
 use App\Libraries\Waintegracao;
+use App\Helpers\Geoip;
 
 class Pets extends Controller
 {
 	public function index($especie = '', $tamanho = '', $sexo = '')
 	{
-		$ip = $_SERVER['REMOTE_ADDR'];
-        $details = json_decode(file_get_contents("http://ipinfo.io/187.113.226.25/json"));
+		/*$ip = $_SERVER['REMOTE_ADDR'];
+        $details = json_decode(file_get_contents("http://ipinfo.io/187.113.226.25/json"));*/
 		//echo $details->region . ' | ' . $details->city;
 		
 		$pets = new Pets_model;
@@ -20,23 +21,24 @@ class Pets extends Controller
 		//Configurações de pagina
 		$data['title'] = 'Ver Pets';
 		$data['menuTransparent'] = False;
-	
+		$regiao = new Geoip;
+		$regiao = $regiao->getCidadePorIp();
 		/* Filtros consulta */
 		if ($especie == 'caes') {
 			session()->set('especie', 1);
 			$data['dogs'] = true;
 		
-			$data['listaPets'] = $pets->getPets($details->city, false, false, false, 1, true, null, true, null);
+			$data['listaPets'] = $pets->getPets($regiao, false, false, false, 1, true, null, true, null);
 		} else if ($especie == 'gatos') {
 			session()->set('especie', 2);
 			$data['cats'] = true;
-			$data['listaPets'] = $pets->getPets($details->city, false, false, false, 2, true, null, true, null);
+			$data['listaPets'] = $pets->getPets($regiao, false, false, false, 2, true, null, true, null);
 		} else if ($especie == 'todos') {
 			session()->set('especie', 4);
 			$data['all'] = true;
-			$data['listaPets'] = $pets->getPets($details->city, false, false, true, null, true, null, true, null);
+			$data['listaPets'] = $pets->getPets($regiao, false, false, true, null, true, null, true, null);
 		}else{
-			$data['listaPets'] = $pets->getPets($details->city, false, false, true, null, true, null, true, null);
+			$data['listaPets'] = $pets->getPets($regiao, false, false, true, null, true, null, true, null);
 
 		}
 
