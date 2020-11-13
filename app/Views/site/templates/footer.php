@@ -56,6 +56,17 @@
     $('#telefone_interessado').mask('(00) 00000-00009');
     var hash = window.location.hash;
 
+
+    $('#cadastrar_pet').click(function() {
+    if (!$("input[name='especie']:checked").val()) {
+       alert('Nothing is checked!');
+        return false;
+    }
+    else {
+      alert('One of the radio buttons is checked!');
+    }
+  });
+
    if(hash == '#minhaong'){
 
     $("#ajax").html('CARREGANDO...')

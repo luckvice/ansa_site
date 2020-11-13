@@ -13,16 +13,6 @@ class Debug extends Controller
 {
 
 
-    public function chaves(){
-
-    }
-    public function conversarComInteressado($id_pet){
-        //Montar a mensagem aqui
-        $usuario = new Pets;
-        $usuario = $usuario->getUserByIdPet($id_pet);
-      var_dump($usuario);
-     
-    }
     
     public function getAdotado(){
         $pet = new Pets;
