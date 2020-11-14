@@ -36,9 +36,11 @@ class Api extends ResourceController
     if($status->adotado == 0){
       $pet->setAdotado($id_pet, $usuario, 1);
       $data['status']   = 1;
+      $data['mensagem']   = 'Marcado como adotado';
     }elseif($status->adotado  == 1){
       $pet->setAdotado($id_pet, $usuario,0);
       $data['status']   = 0;
+      $data['mensagem']   = 'Desmarcado como adotado';
     }
    return $this->respond($data);
   }
@@ -66,20 +68,21 @@ class Api extends ResourceController
       $data['status']   = 2;
       $data['mensagem'] = '* É Obrigatorio o Telefone';  
     }else if(session()->has('criptopost')){
-      //$id_pet, $telefone_interessado, $nome_pet, $nome_interessado
-    
+      //$id_pet, $telefone_interessado, $nome_pet, $nome_interessado 
       $url = $data['id_pet'].'/'.$data['telefone'].'/'.$data['nome_pet'].'/'.$data['nome_interessado'];
       $mensagem = new Sima;
       $urlEnc = new Urlencode;
       
       $mensagem->enviarMensagemWa($data['telefone_protetor'] , 
-      'Oieeee '.$data['nome_protetor'].' a(o) '.$data['nome_interessado'].' está interessado em adotar o pet 
-      '.$data['nome_pet'].'
-      Telefone: '.$data['telefone'].' 
-      Mensagem: '.$data['msg_opcional'].'
-      Para conversar com o protedor clique no link abaixo:
-      
-      amigonaoseabandona.com.br/solicitante/'.$urlEnc->urlsafeB64Encode($url).'
+      'Oieeee '.$data['nome_protetor'].' o(a) '.$data['nome_interessado'].' está interessado em adotar o pet
+
+🐾'.$data['nome_pet'].'🐾
+
+📩 Mensagem: '.$data['msg_opcional'].'
+
+📤 Para conversar com o interessado clique no link abaixo:
+
+📲 amigonaoseabandona.com.br/solicitante/'.$urlEnc->urlsafeB64Encode($url).'
       
       ');
 
@@ -117,31 +120,27 @@ Recebi sua solicitação de adoção, podemos conversar ?
     return $this->respond($data);
   }
 
-  public function conversarComSolicitante($url){
-
+  public function conversarComSolicitante($url){//recebe url encrypt decrypt e retorna um metodo de conversa
     $urlDec = new Urlencode;
     $url = $urlDec->urlsafeB64Decode($url);
-   // $url = base64_decode($url);
-   $string = explode('/',$url);
-  //  echo $string[0];
-  
+    $string = explode('/',$url);
      return $this->conversar($string[0],$string[1],$string[2],$string[3]);
   }
 
 
-  public function conversar($id_pet, $telefone_interessado, $nome_pet, $nome_interessado){
+  public function conversar($id_pet, $telefone_interessado, $nome_pet, $nome_interessado){//Prepara conversa para envio via SIMA
     $mensagem = new Sima;
     $mensagem_pronta = 'Oieeee!
 '.$nome_interessado.' sou o '.$nome_interessado.' protedor do pet: '.$nome_pet. '
 
 Podemos conversar ?';
-    echo 'redirecionando aguarde...';
+   echo 'redirecionando aguarde...';
    return $mensagem->conversarComInteressado($telefone_interessado, urlencode($mensagem_pronta));
 }
   
-  public function getPets($limit){
+  public function getPets(){
     $model = new Pets();
-    $data  = $model->getPets($limit);
+    $data  = $model->getPets(false,false);
     return $this->respond($data);
   }
 
@@ -157,21 +156,6 @@ Podemos conversar ?';
     return $this->respond($data);
   }
 
-  public function index()
-  {
-    $model = new Usuarios();
-    $data['dados'] = $model->getUsuarioById(1);
-    return $this->respond($data);
-  }
-
-  public function testApi()
-  {
-    $client = \Config\Services::curlrequest();
-    $teste = $client->request('GET', 'http://34.74.113.195:5000/contact/isregistereduser/5551999930495', ['allow_redirects' => true]);
-    $teste = json_decode($teste->getBody());
-    var_dump($teste->{'status'});
-  
-  }
 
   public function disparaSugestoes(){
 
@@ -203,28 +187,6 @@ Podemos conversar ?';
 */
   public function enviarVerificaTelefone(){
 
-    $lastID = 1;
-    $telefone = '5551999930495';  
-    //$link = base_url('confirmar').'/'.$lastID;
-    $link = 'http://amigonaoseabandona.com.br/confirmarsugestoes/1';
-    $client = \Config\Services::curlrequest();
-    $response = $client->request('POST', "http://34.74.113.195:5000/chat/sendmessage/{$telefone}",   
-    ['form_params' => ['message'=>
-    "-----------🐾[ANSA]🐾----------
-Oiiiieee 
-      
-Para confirmar que você quer receber sugestões de até 3 pets 
-*gatos, pequeno porte, macho*
-que residem em Viamão / RS
-
-      Acesse o link abaixo:
-
-      {$link}
-    "
-    ]]);
-
-    $response = json_decode($response->getBody());
-    echo $response->status.' | '.$response->message;
   }
 
   public function enviarMensagem($telefone = '5551999930495', $mensagem = '', $foto = '', $temFoto = false)
