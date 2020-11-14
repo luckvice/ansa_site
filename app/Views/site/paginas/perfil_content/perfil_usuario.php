@@ -99,7 +99,7 @@
 	<hr>
 	<div class="row">
 		<div class="col-12 col-lg-4 perfil-cabecalho-item">
-			<div class="perfil-pic shadow">
+			<div class="perfil-pic">
 				<img src="https://blog.humanesociety.org/wp-content/uploads/2017/12/india-dog-e1512757920691.jpg">
 			</div>
 		</div>
@@ -108,7 +108,7 @@
 				<div class="card-body">
 					<h4 class="card-title flex-justify-center"><i class="material-icons">check</i>Pets Divulgados</h4>
 					<p class="card-text">
-						<h3>0</h3>
+						<h3><?= $pets_divulgados ?></h3>
 					</p>
 				</div>
 			</div>
@@ -118,7 +118,7 @@
 				<div class="card-body">
 					<h4 class="card-title flex-justify-center"><i class="material-icons">pets</i>Pets Adotados</h4>
 					<p class="card-text">
-						<h3>0</h3>
+						<h3><?= $pets_adotados ?></h3>
 					</p>
 				</div>
 			</div>

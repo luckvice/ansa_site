@@ -282,4 +282,18 @@ class Pets extends Model
         $db->close();
         return $resultados;
     }
+
+    public function getAdotadosByIdUsuario($id_usuario){
+        $db = db_connect();
+        $resultados = $db->table('pet')->where('id_usuario', $id_usuario)->where('adotado',1)->countAllResults();
+        $db->close();
+        return $resultados;
+    }
+
+    public function getDivulgadosByIdUsuario($id_usuario){
+        $db = db_connect();
+        $resultados = $db->table('pet')->where('id_usuario', $id_usuario)->where('adotado',0)->countAllResults();
+        $db->close();
+        return $resultados;    
+    }
 }
