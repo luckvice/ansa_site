@@ -175,8 +175,4 @@ class Pets extends Controller
 
 		echo view('site/paginas/pet', $data);
 	}
-
-	public function adotarPet(){
-
-	}
 }

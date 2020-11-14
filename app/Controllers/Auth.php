@@ -64,21 +64,20 @@ class Auth extends Controller
             return redirect()->to('/');
         } else {
             $validacao = $this->validate([ //Validação Server Side Form
-                'nome'      => 'required',
+                'nome'      => 'required|min_length[2]|max_length[15]',
                 'email'     => 'required|valid_email', //Obriga o preeenchimento do Form
-                'telefone'  => 'required',
-                'senha'     => 'required',
-                'senha_r'   => 'required',
-
+                'telefone'  => 'required|max_length[15]',
+                'senha'     => 'required|min_length[6]|max_length[10]',
+                'senha_r'   => 'required|matches[senha]',
             ]);
             if (!$validacao) {
                 //Cria uma Sessao chamada 'erro' com a mensagem de erro padrão do validator
-                $error = [
+               /* $error = [
                     'codigo' => 1,
                     'mensagem' =>
                     'Verifique se todos os campos estão preenchidos.'
-                ];
-                return redirect()->back()->withInput()->with('erro_registrar', $error);
+                ];*/
+                return redirect()->back()->withInput()->with('erro_registrar', $this->validator);
             } else {
                 $dados = $this->request->getPostGet();
                 $url = "https://www.google.com/recaptcha/api/siteverify";
@@ -137,7 +136,7 @@ Att. Equipe ANSA.
                    $mensagem->enviarMensagemWa($dados['telefone'],$wa_message);
                    $mensagem->enviarMensagemEmail('Cadastro Efetuado com sucesso!',view('site/templates/email/sucesso_cadastro'), $dados['email']);
 
-                   return redirect()->route('perfil'); //Redireciona para rota perfil
+                   return redirect()->to(base_url('perfil')); //Redireciona para rota perfil
                 }
                 else{
                     $error = [
@@ -146,9 +145,7 @@ Att. Equipe ANSA.
                         'Por favor marque a opção não sou um robô.'
                     ];
                     return redirect()->back()->withInput()->with('erro_registrar', $error);
-                }
-
-                         
+                }           
             }
         }
     }

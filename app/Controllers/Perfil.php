@@ -8,7 +8,7 @@ use App\Models\Pets; //Carrega Model SQL
 use App\Models\Estados; //Carrega Model SQL
 use App\Models\Cidades; //Carrega Model SQL
 use App\Models\Ongs; //Carrega Model SQL
-
+use App\Libraries\Sima; //Carrega Model SQL
 /*
 
     [CONFIGURAÇÕES]
@@ -28,9 +28,16 @@ class Perfil extends Controller
             return redirect()->to(base_url('/'));
         }
 
+<<<<<<< HEAD
         $usuario   = new Usuarios;
         $dados = $usuario->getUsuarioById(session()->get('id_usuario'));
         
+=======
+        $usuario    = new Usuarios;
+        $adotados   = new Pets;
+        $id_usuario = session()->get('id_usuario');
+        $dados      = $usuario->getUsuarioById($id_usuario);
+>>>>>>> baf3b137d88a8b28a7ef18b122a0934c9d4640da
         helper('form');
         
         $data['title']              = 'Meu Perfil';
@@ -38,7 +45,9 @@ class Perfil extends Controller
         $data['bodyPageProfile']    = True;
         $data['menuTransparent']    = False;
         $data['usuario']            = $dados;
-
+        $data['pets_divulgados']    = $adotados->getDivulgadosByIdUsuario($id_usuario);
+        $data['pets_adotados']      = $adotados->getAdotadosByIdUsuario($id_usuario);
+        
         if (session()->has('erro')) { //se na sessao tem a variavel erro.
             $data['erro'] = session('erro');
         }
@@ -52,9 +61,9 @@ class Perfil extends Controller
         if ($this->request->getMethod() !== 'post') { //Valida se página veio de um POST | Proteção contra direct Access
             return redirect()->to('/');
         } else{
-            $dados = $this->request->getPostGet();
-            $usuario   = new Usuarios;
-            var_dump($dados);
+            $dados      = $this->request->getPostGet();
+            $usuario    = new Usuarios;
+            //var_dump($dados);
         }
     }
 
@@ -125,7 +134,6 @@ class Perfil extends Controller
             ]);
             if (!$validacao) {
             $data['validator'] = $this->validator;
-            
             return redirect()->to('/perfil/cadastrarpet')->withInput()->with('erro', $data['validator']->listErrors());
             } else {
                 
@@ -151,15 +159,9 @@ class Perfil extends Controller
                    'imagem3' => $imagem3,
                    'imagem4' => $imagem4,
                ];
-
-          //    $teste =  $this->request->getFile('imagem1');
-            //   echo $teste->guessExtension('imagem1');
                $pet->insertPet($dados, $galeria, $id_usuario, date("Y-m-d H:i:s"));
-
                $mensagem = ['codigo' => 1,'mensagem'=>'Sucesso!'];
-                return redirect()->to(base_url('perfil/listarpets'))->with('mensagem', $mensagem);//Redireciona para rota perfil
-
-
+               return redirect()->to(base_url('perfil/listarpets'))->with('mensagem', $mensagem);//Redireciona para rota perfil
             }
         }
     }
@@ -169,8 +171,8 @@ class Perfil extends Controller
         if (!session()->has('logado')) {
             return redirect()->to(base_url('/'));
         }
-        $pets = new Pets;
-        $dados = $pets->setExcluido($id_pet, session()->get('id_usuario'),1);
+        $pets   = new Pets;
+        $dados  = $pets->setExcluido($id_pet, session()->get('id_usuario'),1);
 
         if($dados == 1){
             $mensagem = ['codigo' => 1, 'mensagem'=>'Pet Excluido com sucesso'];
@@ -185,7 +187,6 @@ class Perfil extends Controller
         if (!session()->has('logado')) {
             return redirect()->to(base_url('/'));
         }
-
             $pets = new Pets;
             $dados = $pets->setAdotado($id_pet, session()->get('id_usuario'),1);
 
@@ -195,14 +196,12 @@ class Perfil extends Controller
             }else{
                 return redirect()->to(base_url('/perfil/listarpets'));
             }
-        
     }
     public function desmarcarAdotado($id_pet) //function
     {
         if (!session()->has('logado')) {
             return redirect()->to(base_url('/'));
         }
-
             $pets = new Pets;
             $dados = $pets->setAdotado($id_pet, session()->get('id_usuario'), 0);
 
@@ -212,14 +211,12 @@ class Perfil extends Controller
             }else{
                 return redirect()->to(base_url('/perfil/listarpets'));
             }
-        
     }
     public function getPaginaAjax(){
         $data['title']              = 'Ajax';
         $data['tabListarPets']      = '';
         $data['bodyPageProfile']    = True;
         $data['menuTransparent']    = False;
-       // echo $icons->teste();
       echo view('site/paginas/perfil_content/perfil_ajax',$data);
     }
 
@@ -239,8 +236,6 @@ class Perfil extends Controller
         if (session()->has('erro')) {
             $data['erro'] = session('erro');
         }
-
-     
        // echo $icons->teste();
       echo view('site/paginas/perfil_content/perfil_listarPets', $data);
     }

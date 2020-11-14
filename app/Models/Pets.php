@@ -62,7 +62,6 @@ class Pets extends Model
                 if($todosTamanhos == false):
                     $resultados = $resultados->where('pet.id_porte',$tamanho);
                 endif;              
-                 //   $resultados = $resultados->paginate(10);
                     $resultados = $resultados->get()->getResultObject();
         $db->close();
         return $resultados;
@@ -97,7 +96,6 @@ class Pets extends Model
         foreach($colNames as $key=>$value){
           if(!isset($dados[$value])){
              $dados[$value] = 0;
-        
           }
           echo $value.' '.$dados[$value].'<br>';
           $data[$value] = $dados[$value];
@@ -283,5 +281,19 @@ class Pets extends Model
         $resultados = $db->table('galeria')->where('id_pet', $id_pet)->where('capa',0)->get()->getResultObject();
         $db->close();
         return $resultados;
+    }
+
+    public function getAdotadosByIdUsuario($id_usuario){
+        $db = db_connect();
+        $resultados = $db->table('pet')->where('id_usuario', $id_usuario)->where('adotado',1)->countAllResults();
+        $db->close();
+        return $resultados;
+    }
+
+    public function getDivulgadosByIdUsuario($id_usuario){
+        $db = db_connect();
+        $resultados = $db->table('pet')->where('id_usuario', $id_usuario)->where('adotado',0)->countAllResults();
+        $db->close();
+        return $resultados;    
     }
 }
