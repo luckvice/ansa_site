@@ -14,7 +14,10 @@ use App\Libraries\Sima;
 class Debug extends Controller
 {
 
-
+    public function adotados(){
+        $adotados = new pets;
+        var_dump($adotados->getDivulgadosByIdUsuario(11));
+    }
     
     public function getAdotado(){
         $pet = new Pets;
