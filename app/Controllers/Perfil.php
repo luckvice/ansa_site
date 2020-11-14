@@ -115,9 +115,9 @@ class Perfil extends Controller
                 'sexo'      => 'required', 
                 'idade'     => 'required', 
                 'descricao' => 'required', 
-                'imagem1'   => 'uploaded[imagem1]|is_image[imagem1]|max_size[imagem1, 8048]|ext_in[imagem1,jpg,png]',
-                'imagem2'   => 'is_image[imagem2]|max_size[imagem2, 2048]|ext_in[imagem2,jpg,png]',
-                'imagem3'   => 'is_image[imagem3]|max_size[imagem3, 2048]|ext_in[imagem3,jpg,png]',
+                'imagem1'   => 'uploaded[imagem1]|is_image[imagem1]|max_size[imagem1, 8048]|ext_in[imagem1,jpg,jpeg,png]',
+                'imagem2'   => 'is_image[imagem2]|max_size[imagem2, 5048]|ext_in[imagem2,jpg,jpeg,png]',
+                'imagem3'   => 'is_image[imagem3]|max_size[imagem3, 5048]|ext_in[imagem3,jpg,jpeg,png]',
             ]);
             if (!$validacao) {
             $data['validator'] = $this->validator;

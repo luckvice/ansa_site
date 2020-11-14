@@ -8,13 +8,13 @@
                 <br>
                 <div class="form-group">
                     <label for="nomePet">Nome do Pet</label>
-                    <input type="text" class="form-control" name="nome" id="nomePet" placeholder="Informe o nome do Pet" required>
+                    <input type="text" class="form-control" name="nome" id="nomePet" placeholder="Informe o nome do Pet" value="<?= old('nome'); ?>"  required>
                 </div>
                 <div class="form-check text-left">
                     <label style="margin-bottom: 0px !important; width: 70px;">Especie:</label>
                     <div class="form-check form-check-radio form-check-inline" style="margin-bottom: 15px;">
                         <label class="form-check-label">
-                            <input class="form-check-input" type="radio" name="especie" id="gato" value="2" required> Gato
+                            <input class="form-check-input" type="radio" name="especie" id="gato" value="2" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?" aria-required="true" required="true"/> Gato
                             <span class="circle">
                                 <span class="check"></span>
                             </span>
@@ -64,7 +64,7 @@
                     <label style="margin-bottom: 0px !important; width: 70px;">Sexo:</label>
                     <div class="form-check form-check-radio form-check-inline" style="margin-bottom: 15px;">
                         <label class="form-check-label">
-                            <input class="form-check-input" type="radio" name="sexo" id="macho" value="1" required> Macho
+                            <input class="form-check-input" type="radio" name="sexo" id="macho" value="1"> Macho
                             <span class="circle">
                                 <span class="check"></span>
                             </span>
@@ -109,7 +109,7 @@
 
                 <div class="form-group">
                     <label for="descricao">Uma breve descrição do pet</label>
-                    <textarea class="form-control" name="descricao" id="descricao" rows="3" required></textarea>
+                    <textarea class="form-control" name="descricao" id="descricao" rows="3" required><?= old('descricao'); ?></textarea>
                 </div>
             </div>
             <div class="col-12 col-md-6">
@@ -359,7 +359,13 @@
                 <?= $erro ?>
             </div>
         <?php endif; ?>
-        <button type="submit" class="btn btn-primary" style="margin: 20px;">Cadastrar Pet</button>
+        <div style="display:none" id="erro_campos" class="alert alert-primary" role="alert">
+        Verifique se todos os campos estão preenchidos
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="false">&times;</span>
+            </button>
+        </div>
+        <button type="submit" id="cadastrar_pet" class="btn btn-primary" style="margin: 20px;">Cadastrar Pet</button>
     </form>
 </div>
 <?php $this->endSection() ?>

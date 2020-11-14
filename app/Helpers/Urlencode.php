@@ -2,11 +2,8 @@
 namespace App\Helpers;
 /*
     [A.N.S.A Project]
-    SIMA Library
-
-    Sistema Integrado de Mensagens Autonomas.
     
-    Library para Envio de mensagens
+    Library para encoding de urls
 */
 class Urlencode
 {  

@@ -11,10 +11,10 @@ class Pets extends Model
         get de todas as informações de todos os pets com filtros
 
         $estado_cidade Pode ser id ou nome de estado e cidade
-        $limiteEstado tipo bool True lista pets por estado False lista pets por municipio
+        $filtrarEstado tipo bool True lista pets por estado False lista pets por municipio
         $filtros tipo bool True ativa modo filtro Por ID Municipio ou ID Estado  
     */
-    public function getPets($estado_cidade, $limiteEstado = true, $filtros = false ,$todasEspecies = true, $especie = null, $todosSexos = true, $sexo = null, $todosTamanhos = true, $tamanho = null, $adotado = 0){
+    public function getPets($estado_cidade, $filtrarEstado = true, $filtros = false ,$todasEspecies = true, $especie = null, $todosSexos = true, $sexo = null, $todosTamanhos = true, $tamanho = null, $adotado = 0){
         $db = db_connect();
         $resultados = $db->table('pet')
             ->select('pet.*')
@@ -40,7 +40,7 @@ class Pets extends Model
                 ->where('adotado',$adotado)
                 ->where('pet.excluido',0);
                 
-                if($limiteEstado == true):
+                if($filtrarEstado == true):
                     if($filtros == true):
                         $resultados = $resultados->where('pet.id_estado',$estado_cidade);
                     else:

@@ -47,7 +47,7 @@ class Auth extends Controller
                     'id_usuario' => $usuario->id_usuario,
                     'id_nivel'   => $usuario->id_nivel
                 ]);
-                return redirect()->route('perfil'); //Redireciona para rota perfil
+                return redirect()->to(base_url('perfil')); //Redireciona para rota perfil
             }
         }
     }
