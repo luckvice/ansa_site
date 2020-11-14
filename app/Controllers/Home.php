@@ -21,6 +21,9 @@ class Home extends Controller
 		if (session()->has('erro')) { //se na sessao tem a variavel erro.
 			$data['erro'] = session('erro');
 		}
+		if (session()->has('erro_registrar')) { //se na sessao tem a variavel erro.
+			$data['erro_registrar'] = session('erro_registrar');
+		}
 		$imagens = [
 			base_url('assets/img/dog1.jpg'),
 			base_url('assets/img/dog2.jpg'),

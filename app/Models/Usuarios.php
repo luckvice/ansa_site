@@ -2,7 +2,12 @@
 
 namespace App\Models;
 
+/*
+[ANSA Project]
 
+Model Usuário.
+
+*/
 class Usuarios
 {
     public function inserirUsuario($id_nivel, $nome, $login, $senha, $email, $telefone, $data_cadastro)

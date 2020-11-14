@@ -131,10 +131,10 @@
 
                     <?php
                     $erroeRegistrar = session()->get('erro_registrar');
-                    if (isset($erroeRegistrar['codigo']) == 1) : ?>
+                    if (isset($erroeRegistrar)) : ?>
 
                       <div class="alert alert-danger" role="alert">
-                        <?= $erroeRegistrar['mensagem'] ?>
+                        <?= $erro_registrar->listErrors() ?>
                       </div>
                       <?= $this->section('openRegistrarModal') ?>
                       <script>

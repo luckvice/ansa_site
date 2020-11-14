@@ -62,7 +62,6 @@ class Pets extends Model
                 if($todosTamanhos == false):
                     $resultados = $resultados->where('pet.id_porte',$tamanho);
                 endif;              
-                 //   $resultados = $resultados->paginate(10);
                     $resultados = $resultados->get()->getResultObject();
         $db->close();
         return $resultados;
@@ -97,7 +96,6 @@ class Pets extends Model
         foreach($colNames as $key=>$value){
           if(!isset($dados[$value])){
              $dados[$value] = 0;
-        
           }
           echo $value.' '.$dados[$value].'<br>';
           $data[$value] = $dados[$value];
