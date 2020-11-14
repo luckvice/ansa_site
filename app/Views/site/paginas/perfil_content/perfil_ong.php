@@ -11,35 +11,58 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<form method="POST" action="perfil/editarOng">
+			<form method="POST" action="<?=base_url('perfil/editarOng');?>" enctype="multipart/form-data">
 				<div class="modal-body">
 					<div class="form-row">
 						<div class="form-group col-12">
 							<label class="control-label" for="nome">Nome</label>
-							<input type="text" class="form-control is-invalid" name="nome" id="nome" required>
+							<input type="text" class="form-control is-invalid" name="nome" id="nome" value="<?=$ong->nome?>" required>
 						</div>
 						<div class="form-group col-6">
 							<label class="control-label" for="site">Site</label>
-							<input type="text" class="form-control is-invalid" name="site" id="site" required>
+							<input type="text" class="form-control is-invalid" name="site" id="site" value="<?=$ong->site?>" required>
 						</div>
 						<div class="form-group col-6">
 							<label class="control-label" for="facebook">Facebook</label>
-							<input type="text" class="form-control is-invalid" name="facebook" id="facebook" required>
+							<input type="text" class="form-control is-invalid" name="facebook" id="facebook" value="<?=$ong->facebook?>" required>
 						</div>
 						<div class="form-group col-6">
 							<label class="control-label" for="instagram">Instagram</label>
-							<input type="text" class="form-control is-invalid" name="instagram" id="instagram" required>
+							<input type="text" class="form-control is-invalid" name="instagram" id="instagram" value="<?=$ong->instagram?>" required>
 						</div>
 						<div class="form-group col-6">
 							<label class="control-label" for="twitter">Twitter</label>
-							<input type="text" class="form-control is-invalid" name="twitter" id="twitter" required>
+							<input type="text" class="form-control is-invalid" name="twitter" id="twitter" value="<?=$ong->twitter?>" required>
 						</div>
-						<div class="form-group col-12" style="margin-top: 20px;">
+						<div class="form-group col-12" style="margin-top: 10px;">
 							<label class="control-label" for="descricao">Descrição da ONG (Descreva informações que ajudem o usuário a conhecer melhor a sua ONG!)</label>
-                    		<textarea class="form-control" name="descricao" id="descricao" rows="3" required></textarea>
+                    		<textarea class="form-control" style="margin-top: 15px;" name="descricao" id="descricao" rows="3" required><?=$ong->descricao?></textarea>
+						</div>
+						<div class="col-12" style="margin-top: 10px;">
+							<div>
+								<label class="control-label" for="avatar">Foto de Perfil:</label>
+							</div>
+							<div class="fileinput fileinput-<?=$ong->avatar ? 'exists' : 'new'?> text-center flex-justify-center" data-provides="fileinput" style="flex-direction: column;">
+								<div class="fileinput-new thumbnail img-circle img-raised" style="max-width: 220px !important;">
+									<img src="https://epicattorneymarketing.com/wp-content/uploads/2016/07/Headshot-Placeholder-1.png" alt="Foto de Perfil">
+								</div>
+								<div class="fileinput-preview fileinput-exists thumbnail img-raised" style="max-width: 220px !important;">
+									<?php if($ong->avatar):?>
+										<img src="data:image/png;base64,<?=$ong->avatar?>">
+									<?php endif;?>
+								</div>
+								<div>
+									<span class="btn btn-raised btn-round btn-default btn-file">
+										<span class="fileinput-new">Selecionar Imagem</span>
+										<span class="fileinput-exists">Alterar</span>
+										<input name="avatar" type="file" />
+									</span>
+									<a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput">
+									<i class="fa fa-times"></i> Remover</a>
+								</div>
+							</div>
 						</div>
 					</div>
-
 				</div>
 				<div class="modal-footer">
 					<button type="submit" class="btn btn-primary">Salvar</button>
@@ -57,22 +80,32 @@
 	<h3 class="text-left font-weight-bold">Minha ONG</h3>
 	<hr>
 	
-	<div class="row">
-		<div class="col">
-			<div class="alert alert-success" role="alert">
-				Erro Teste
-			</div>
-		</div>
+	<?php $mensagem = session()->get('mensagem');
 
-	</div>
-	<div class="row">
-		<div class="col">
-			<div class="alert alert-danger" role="alert">
-				Erro Teste
-			</div>
-		</div>
+		if(isset($mensagem)): 
+			if($mensagem['codigo'] == 1): 
 
-	</div>
+				?>
+				<div class="row">
+					<div class="col">
+						<div class="alert alert-success" role="alert">
+							<?= $mensagem['mensagem'] ?>
+						</div>
+					</div>
+
+				</div>
+				<?php elseif($mensagem['codigo'] == 2): ?>
+					<div class="row">
+						<div class="col">
+							<div class="alert alert-danger" role="alert">
+								<?= $mensagem['mensagem'] ?>
+							</div>
+						</div>
+
+					</div>
+	<?php	endif;
+		endif;
+	?>
 
 	<form method="POST" action="<?= base_url('perfil/alterar') ?>">
 
@@ -83,7 +116,7 @@
 				<div class="col-12 col-md-3" style="display: flex; align-items: center; padding: 20px;">
 
 					<div class="perfil-pic">
-						<img src="<?=$avatar_src?>">
+						<img src="data:image/jpeg;base64,<?=$avatar_src?>">
 					</div>
 
 				</div>

@@ -35,17 +35,18 @@ class Ongs
         return $resultados;
     }
 
-    public function updateOng($id_ong, $avatar, $nome, $site, $facebook, $twitter, $instagram, $data_alteracao)
+    public function updateOng($id_ong, $dados)
     {
         $db = db_connect();
         $data = [
-            'avatar'            => $avatar,
-            'nome'              => $nome,
-            'site'              => $site,
-            'facebook'          => $facebook,
-            'twitter'           => $twitter,
-            'instagram'         => $instagram,
-            'data_alteracao'    => $data_alteracao
+            'avatar'            => $dados['avatar'],
+            'nome'              => $dados['nome'],
+            'site'              => $dados['site'],
+            'facebook'          => $dados['facebook'],
+            'twitter'           => $dados['twitter'],
+            'instagram'         => $dados['instagram'],
+            'descricao'         => $dados['descricao'],
+            'data_alteracao'    => date("Y-m-d")
         ];
 
         $db->table('ong')->where('id_ong', $id_ong)->update($data);

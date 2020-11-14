@@ -17,6 +17,7 @@ use App\Models\Ongs; //Carrega Model SQL
         tabCadastrarPet
         tabListarPets
         tabCriarDepoimento
+    
 */
 
 class Perfil extends Controller
@@ -26,9 +27,12 @@ class Perfil extends Controller
         if (!session()->has('logado')) {
             return redirect()->to(base_url('/'));
         }
+
         $usuario   = new Usuarios;
         $dados = $usuario->getUsuarioById(session()->get('id_usuario'));
+        
         helper('form');
+        
         $data['title']              = 'Meu Perfil';
         $data['tabPerfil']          = 'active now'; //Fica selecionado a Tab
         $data['bodyPageProfile']    = True;
@@ -41,7 +45,7 @@ class Perfil extends Controller
         echo view('site/paginas/perfil_content/perfil_usuario', $data);
     }
 
-    public function alterar(){
+    public function alterar() {
         if (!session()->has('logado')) {
             return redirect()->to(base_url('/'));
         }
@@ -130,7 +134,6 @@ class Perfil extends Controller
              
                $dados = $this->request->getPostGet();
 
-               
                $imagem1 = base64_encode(file_get_contents($this->request->getFile('imagem1')));//Primeira imagem é obrigatoria
                $imagem2 = $this->request->getFile('imagem2');
                $imagem3 = $this->request->getFile('imagem3');
@@ -298,23 +301,25 @@ class Perfil extends Controller
         } else {
             
             $validacao = $this->validate([ //Validação Server Side Form
-                'senha'     => 'required',
-                'senha_r'   => 'required' //Obriga o preeenchimento do Form
+                'nome'     => 'required', //Obriga o preeenchimento do Form
+                'avatar'   => 'uploaded[avatar]|is_image[avatar]|max_size[avatar, 8048]|ext_in[avatar,jpg,jpeg,png]'
             ]);
             
             if (!$validacao) {
                 $mensagem = ['codigo' => 2, 'mensagem' => 'Verifique se os campos estão completos'];
-                return redirect()->to(base_url('perfil'))->withInput()->with('mensagem', $mensagem);
+                return redirect()->to(base_url('perfil/ong'))->withInput()->with('mensagem', $mensagem);
             } else {
-                $dados      = $this->request->getPostGet();
-                $usuario    = new Usuarios;
-                if($dados['senha'] == $dados['senha_r']){
-                    $usuario->updateSenha(session()->get('id_usuario'), md5($dados['senha']));
-                    $mensagem = ['codigo' => 1, 'mensagem' => 'Senha alterada com sucesso'];
-                    return redirect()->to(base_url('perfil'))->with('mensagem', $mensagem);
-                }
-                $mensagem = ['codigo' => 2, 'mensagem' => 'As senhas não são iguais'];
-                return redirect()->to(base_url('perfil'))->with('mensagem', $mensagem);
+                $dados  = $this->request->getPostGet();
+                $ong    = new Ongs;
+                
+                $avatar = base64_encode(file_get_contents($this->request->getFile('avatar')));
+                $dados['avatar'] = $avatar;
+                
+                $ong->updateOng(session()->get('id_ong'), $dados);
+
+                $mensagem = ['codigo' => 1, 'mensagem' => 'Dados alterados com sucesso!'];
+
+                return redirect()->to(base_url('perfil/ong'))->with('mensagem', $mensagem);
             }
         }
     }
