@@ -10,7 +10,8 @@ namespace App\Helpers;
 */
 class Urlencode
 {  
-public static function urlsafeB64Encode($input)
+    
+    public static function urlsafeB64Encode($input)
     {
         return \str_replace('=', '', \strtr(\base64_encode($input), '+/', '-_'));
     }

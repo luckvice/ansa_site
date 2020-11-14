@@ -266,7 +266,10 @@ class Perfil extends Controller
         
         $ong   = new Ongs;
 
-        $dados = $ong->getOngByIdUsuario(session()->get('id_usuario'));
+        $ong = $ong->getOngByIdUsuario(session()->get('id_usuario'));
+
+        // Seta o ID da ONG selecionada
+        session()->set('id_ong', $ong->id_ong);
 
         helper('form');
 
@@ -274,12 +277,45 @@ class Perfil extends Controller
         $data['tabOng']          = 'active now'; //Fica selecionado a Tab
         $data['bodyPageProfile']    = True;
         $data['menuTransparent']    = False;
-        $data['ong']            = $dados;
+        $data['ong']            = $ong;
+        $data['avatar_src']     = !$ong->avatar ? base_url('assets/img/404.jpg') : $ong->avatar;
 
         if (session()->has('erro')) { //se na sessao tem a variavel erro.
             $data['erro'] = session('erro');
         }
 
         echo view('site/paginas/perfil_content/perfil_ong', $data);
+    }
+
+    public function editarOng(){
+
+        if (!session()->has('logado')) {
+            return redirect()->to(base_url('/'));
+        }
+        
+        if ($this->request->getMethod() !== 'post') { //Valida se página veio de um POST | Proteção contra direct Access
+            return redirect()->to('/');
+        } else {
+            
+            $validacao = $this->validate([ //Validação Server Side Form
+                'senha'     => 'required',
+                'senha_r'   => 'required' //Obriga o preeenchimento do Form
+            ]);
+            
+            if (!$validacao) {
+                $mensagem = ['codigo' => 2, 'mensagem' => 'Verifique se os campos estão completos'];
+                return redirect()->to(base_url('perfil'))->withInput()->with('mensagem', $mensagem);
+            } else {
+                $dados      = $this->request->getPostGet();
+                $usuario    = new Usuarios;
+                if($dados['senha'] == $dados['senha_r']){
+                    $usuario->updateSenha(session()->get('id_usuario'), md5($dados['senha']));
+                    $mensagem = ['codigo' => 1, 'mensagem' => 'Senha alterada com sucesso'];
+                    return redirect()->to(base_url('perfil'))->with('mensagem', $mensagem);
+                }
+                $mensagem = ['codigo' => 2, 'mensagem' => 'As senhas não são iguais'];
+                return redirect()->to(base_url('perfil'))->with('mensagem', $mensagem);
+            }
+        }
     }
 }

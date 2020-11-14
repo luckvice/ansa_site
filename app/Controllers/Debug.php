@@ -3,12 +3,14 @@
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
+use App\Models\Ongs;
 use App\Models\ModelTest; //Carrega Model SQL
 use App\Models\Usuarios; //Carrega Model SQL
 use App\Models\Cidades; //Carrega Model SQL
 use App\Models\Estados; //Carrega Model SQL
 use App\Models\Pets; //Carrega Model SQL
 use App\Libraries\Sima;
+
 class Debug extends Controller
 {
 
@@ -158,6 +160,15 @@ class Debug extends Controller
         echo '<pre>';
         print_r($resultados);
     }
+
+    public function listarOng($par, $par1)
+    {
+        $ongs = new Ongs;
+        $resultados = $ongs->getOngsByIdUsuario(3);
+        echo '<pre>';
+        print_r($resultados);
+    }
+
     public function checkUsuario()
     {
         $usuarios = new ModelTest;

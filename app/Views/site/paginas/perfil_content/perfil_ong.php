@@ -1,6 +1,6 @@
 <?= $this->extend('site/paginas/perfil_content/perfil_template') ?>
 
-<?php $this->section('content_perfil'); ?>
+<?php $this->section('modalEditarOng'); ?>
 
 <div class="modal fade" tabindex="-1" role="dialog" id="editarOng">
 	<div class="modal-dialog" role="document">
@@ -11,7 +11,7 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<form method="POST" action="perfil/editarong">
+			<form method="POST" action="perfil/editarOng">
 				<div class="modal-body">
 					<div class="form-row">
 						<div class="form-group col-12">
@@ -49,49 +49,40 @@
 		</div>
 	</div>
 </div>
+<?php $this->endSection(); ?>
+
+<?php $this->section('content_perfil'); ?>
 
 <div class="tab-pane active show" id="profile">
 	<h3 class="text-left font-weight-bold">Minha ONG</h3>
 	<hr>
-	<?php $mensagem = session()->get('mensagem');
-
-	if(isset($mensagem)): 
-		if($mensagem['codigo'] == 1): 
-
-			?>
-			<div class="row">
-				<div class="col">
-					<div class="alert alert-success" role="alert">
-						<?= $mensagem['mensagem'] ?>
-					</div>
-				</div>
-
+	
+	<div class="row">
+		<div class="col">
+			<div class="alert alert-success" role="alert">
+				Erro Teste
 			</div>
-			<?php elseif($mensagem['codigo'] == 2): ?>
-				<div class="row">
-					<div class="col">
-						<div class="alert alert-danger" role="alert">
-							<?= $mensagem['mensagem'] ?>
-						</div>
-					</div>
+		</div>
 
-				</div>
-<?php	endif;
-	 endif;
-?>
+	</div>
+	<div class="row">
+		<div class="col">
+			<div class="alert alert-danger" role="alert">
+				Erro Teste
+			</div>
+		</div>
+
+	</div>
+
 	<form method="POST" action="<?= base_url('perfil/alterar') ?>">
-
-		 
-		<input type="hidden" id="id_ong" value="<?= $ong->id_ong ?>">
 
 		<div class="container">
 
 			<div class="row">
-		
+				
 				<div class="col-12 col-md-3" style="display: flex; align-items: center; padding: 20px;">
 
 					<div class="perfil-pic">
-	 					<? $avatar_src = !$ong->avatar ? base_url('assets/img/404.jpg') : $ong->avatar?>
 						<img src="<?=$avatar_src?>">
 					</div>
 

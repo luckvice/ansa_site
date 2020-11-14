@@ -1,4 +1,5 @@
 <?= $this->extend('site/paginas/perfil_content/perfil_template') ?>
+
 <?php $this->section('modalsenha'); ?>
 
 <div class="modal fade" tabindex="-1" role="dialog" id="trocarsenha">
