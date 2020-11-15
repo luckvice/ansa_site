@@ -261,6 +261,8 @@ class Perfil extends Controller
 
         $ong = $ong->getOngByIdUsuario(session()->get('id_usuario'));
 
+        //var_dump($ong);
+
         // Seta o ID da ONG selecionada
         session()->set('id_ong', $ong->id_ong);
 
@@ -271,7 +273,7 @@ class Perfil extends Controller
         $data['bodyPageProfile']    = True;
         $data['menuTransparent']    = False;
         $data['ong']            = $ong;
-        $data['avatar_src']     = !$ong->avatar ? base_url('assets/img/404.jpg') : $ong->avatar;
+        $data['avatar_src']     = !$ong->avatar ? base_url('assets/img/404.jpg') : 'data:image/jpeg;base64,' . $ong->avatar;
 
         if (session()->has('erro')) { //se na sessao tem a variavel erro.
             $data['erro'] = session('erro');
