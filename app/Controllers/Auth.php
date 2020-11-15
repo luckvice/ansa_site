@@ -9,6 +9,10 @@ use App\Libraries\Sima;
 class Auth extends Controller
 {
 
+    public function esqueciMinhaSenha($token){
+    
+    }
+
     public function login() //Realizar Login do usuario
     {
         if ($this->request->getMethod() !== 'post') { //Valida se página veio de um POST | Proteção contra direct Access

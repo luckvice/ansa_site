@@ -25,7 +25,7 @@
                   <div class="input-group-prepend">
                     <div class="input-group-text"><i class="material-icons">email</i></div>
                   </div>
-                  <input type="text" name="email" class="form-control" placeholder="Email..." value="<?= old('email'); ?>">
+                  <input type="email" name="email" class="form-control" placeholder="Email..." value="<?= old('email'); ?>">
                 </div>
               </div>
 
@@ -35,7 +35,17 @@
                     <div class="input-group-text"><i class="material-icons">lock_outline</i></div>
                   </div>
                   <input type="password" name="senha" placeholder="Senha" class="form-control" value="<?= old('senha'); ?>">
+          
                 </div>
+                <br>
+                  <a id="esqueciSenha" class="esqueciSenha" data-toggle="collapse" href="#colesqueciSenha" aria-expanded="false" aria-controls="colesqueciSenha">Esqueci Minha senha</a>
+          
+              </div>
+              <div class="collapse" id="colesqueciSenha">
+        
+              <input id="esqueci_email" type="email" name="esqueci_email" class="form-control" placeholder="Informe o Email para recuperação" value="<?= old('email'); ?>">
+              <button id="solicitarSenha" type="button" class="btn btn-primary">Enviar solicitação</button> 
+              <div id="resposta" role="alert" > </div>
               </div>
               <!-- Exibe Mensagem de erro Abre Modal -->
               <?php

@@ -57,11 +57,44 @@
     $('#telefone_interessado').mask('(00) 00000-00009');
     var hash = window.location.hash;
 
-$('#termos').click(function(){
-  $(this).val('1');
-});
-   
-    
+    $('#termos').click(function(){
+      $(this).val('1');
+    });
+      
+    $('#solicitarSenha').click(function(){
+      const email = $('#esqueci_email').val();
+      $("#solicitarSenha").prop('disabled', true);
+      $("#solicitarSenha").text('Solicitando...');
+
+      $.ajax({
+          url: host+'/api/solicitarSenha',
+          type: 'POST',
+          data: {
+                  esqueci_email        : email
+                },
+          error: function() {
+            $("#resposta").addClass('alert alert-danger');    
+            $("#resposta").html('Ocorreu um erro com a API');    
+            $("#resposta").fadeIn();  
+          },
+          success: function(data) {
+            if(data.status == 1){
+              $("#resposta").removeClass('alert alert-danger');    
+              $("#resposta").addClass('alert alert-success');    
+              $("#resposta").html(data.mensagem);    
+              $("#resposta").fadeIn();    
+              $("#solicitarSenha").prop('disabled', false);
+              $("#solicitarSenha").text('Enviar solicitação');
+            }else if(data.status == 2){
+              $("#resposta").addClass('alert alert-danger');    
+              $("#resposta").html(data.mensagem);    
+              $("#resposta").fadeIn();    
+              $("#solicitarSenha").prop('disabled', false);
+              $("#solicitarSenha").text('Enviar solicitação');
+            }
+          }
+      });
+    });    
     
     $('#estado').change(function(){
       const id_estado = $(this).val();
@@ -94,12 +127,22 @@ $('#termos').click(function(){
        
     });
     $('#cadastrar_pet').click(function() {
-      alert('?');
+      $('#erro_campos').fadeOut();
     if (!$("input[name='especie']:checked").val()) {
+       $("#erro_campos").html('Marque o campo Espécie');
        $('#erro_campos').fadeIn();
         return false;
     }
-  
+    if (!$("input[name='porte']:checked").val()) {
+       $('#erro_campos').fadeIn();
+       $("#erro_campos").html('Marque o campo Porte');
+        return false;
+    }
+    if (!$("input[name='sexo']:checked").val()) {
+      $("#erro_campos").html('Marque o campo Sexo');
+       $('#erro_campos').fadeIn();
+        return false;
+    }
   });
 
    if(hash == '#minhaong'){

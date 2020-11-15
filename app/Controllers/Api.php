@@ -12,6 +12,28 @@ use App\Helpers\Urlencode; //Carrega Model SQL
 
 class Api extends ResourceController
 {
+
+
+  public function solicitarSenha(){
+    $usuario  = new Usuarios;
+    $mensagem = new Sima;
+
+    $email = $this->request->getPostGet('esqueci_email');
+    if (!$usuario->checkExistsEmail($email) == null) {
+      $chars      = '0123456789abcdefghijklmnopqrstuvwxyz';
+      $novaSenha  = substr(str_shuffle($chars), 0, 6);
+      $id_usuario = $usuario->checkExistsEmail($email);
+      $usuario->updateSenha($id_usuario->id_usuario, md5($novaSenha));
+      $mensagem->enviarMensagemEmail("Solicitação de Nova Senha", "Sua nova senha é ".$novaSenha." Mude em sua conta a senha", $email);
+      $data['status']   = 1;
+      $data['mensagem'] = 'Sucesso !';
+    }else{
+      $data['status']   = 2;
+      $data['mensagem'] = 'Este e-mail não existe';
+    }
+    return $this->respond($data);
+  }
+
   public function removerPet($id_pet){
     $pet = new Pets;
     $usuario  =  session()->get('id_usuario');
