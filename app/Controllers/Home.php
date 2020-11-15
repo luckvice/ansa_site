@@ -13,8 +13,8 @@ class Home extends Controller
 	{
 		$estados = new Estados();
 		$cidades = new Cidades();
-		$data['estados']         = $estados->getEstadoById(21);
-        $data['cidades']         = $cidades->getCidadesByEstadoId(21);   
+		$data['estados']         	= $estados->getEstados();
+        //$data['cidades']          = $cidades->getCidadesByEstadoId(21);   
 		helper('form');
 		$data['title'] = 'A.N.S.A | Página Inicial';
 		$data['menuTransparent'] = True;

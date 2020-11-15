@@ -83,16 +83,18 @@
                           <div class="input-group-text"><i class="material-icons">place</i></div>
                             <select id="estado" class="selectpicker text-left" data-style="select-with-transition" title="Selecione o estado" data-size="7" name="estado">
                                 <option selected>Selecione o Estado</option>
-                                <option value="<?= $estados->id_estado?>"><?= $estados->nome?></option>
+                                <?php foreach($estados as $row=>$value){?>
+                                <option value="<?= $value->id_estado?>"><?= $value->nome?></option>
+                                <?php }?>
                             </select>
                         </div>
                       </div>
                     </div>
-                    <div class="form-group text-left">
+                    <div id="selectcidade" style="display:none" class="form-group text-left">
                           <div class="input-group">
                               <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="material-icons">house</i></div>
-                                  <select class="selectpicker text-left" data-style="select-with-transition" title="Selecione a cidade" data-size="7" name="cidade">
+                                  <select id="cidade" class="text-left" data-style="select-with-transition" title="Selecione a cidade" data-size="7" name="cidade">
                                     <option selected>Selecione a cidade</option>
                             
                                 </select>

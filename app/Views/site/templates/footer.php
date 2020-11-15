@@ -58,7 +58,34 @@
     var hash = window.location.hash;
 
     $('#estado').change(function(){
-      console.log($(this).val());
+      const id_estado = $(this).val();
+
+      $.ajax({
+          url: host+'/api/getCidadesByEstadoId/'+id_estado,
+          type: 'GET',
+
+          error: function() {
+            alert('Ocorreu um erro com a comunicação da API');
+          },
+          success: function(data) { 
+            
+            var options = '<option value="">Selecione a cidade</option>';
+       
+            for (var i = 0; i < data.length; i++) {
+              options += '<option value="' +
+              data[i].id_municipio + '">' +
+              data[i].nome + '</option>';
+            }
+          
+            $('#selectcidade').fadeIn();
+            $('#cidade').html(options).show();
+       
+            $('#cidade').selectpicker();
+            $('#cidade').selectpicker('refresh');
+          }
+        
+         });
+       
     });
     $('#cadastrar_pet').click(function() {
       alert('?');
