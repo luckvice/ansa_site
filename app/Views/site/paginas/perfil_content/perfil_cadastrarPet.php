@@ -14,7 +14,7 @@
                     <label style="margin-bottom: 0px !important; width: 70px;">Especie:</label>
                     <div class="form-check form-check-radio form-check-inline" style="margin-bottom: 15px;">
                         <label class="form-check-label">
-                            <input class="form-check-input" type="radio" name="especie" id="gato" value="2" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?" aria-required="true" required="true"/> Gato
+                            <input class="form-check-input" type="radio" name="especie" id="gato" value="2" data-toggle="popover" data-trigger="focus" aria-required="true" required/> Gato
                             <span class="circle">
                                 <span class="check"></span>
                             </span>
@@ -360,10 +360,8 @@
             </div>
         <?php endif; ?>
         <div style="display:none" id="erro_campos" class="alert alert-primary" role="alert">
-        Verifique se todos os campos estão preenchidos
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="false">&times;</span>
-            </button>
+        
+           
         </div>
         <button type="submit" id="cadastrar_pet" class="btn btn-primary" style="margin: 20px;">Cadastrar Pet</button>
     </form>
