@@ -57,6 +57,12 @@
     $('#telefone_interessado').mask('(00) 00000-00009');
     var hash = window.location.hash;
 
+$('#termos').click(function(){
+  $(this).val('1');
+});
+   
+    
+    
     $('#estado').change(function(){
       const id_estado = $(this).val();
 

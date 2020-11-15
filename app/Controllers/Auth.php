@@ -67,8 +67,11 @@ class Auth extends Controller
                 'nome'      => 'required|min_length[2]|max_length[15]',
                 'email'     => 'required|valid_email', //Obriga o preeenchimento do Form
                 'telefone'  => 'required|max_length[15]',
+                'termos'    => 'required',
                 'senha'     => 'required|min_length[6]|max_length[10]',
                 'senha_r'   => 'required|matches[senha]',
+                'cidade'    => 'required',
+                'termos'    => 'required'
             ]);
             if (!$validacao) {
                 //Cria uma Sessao chamada 'erro' com a mensagem de erro padrão do validator

@@ -95,7 +95,7 @@
                               <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="material-icons">house</i></div>
                                   <select id="cidade" class="text-left" data-style="select-with-transition" title="Selecione a cidade" data-size="7" name="cidade">
-                                    <option selected>Selecione a cidade</option>
+                                 
                             
                                 </select>
                         </div>
@@ -130,7 +130,7 @@
                     </div>
                     <div class="form-check">
                       <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" nome="termos" id="termos" value="" checked required>
+                        <input class="form-check-input" type="checkbox" name="termos" id="termos">
                         <span class="form-check-sign">
                           <span class="check"></span>
                         </span>
