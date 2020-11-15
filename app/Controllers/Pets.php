@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 use App\Models\Pets as Pets_model; //Carrega Model SQL | alias para não repetir o nome da Classe
+use App\Models\Estados;
 use App\Libraries\Waintegracao;
 use App\Helpers\Geoip;
 
@@ -14,7 +15,8 @@ class Pets extends Controller
 		/*$ip = $_SERVER['REMOTE_ADDR'];
         $details = json_decode(file_get_contents("http://ipinfo.io/187.113.226.25/json"));*/
 		//echo $details->region . ' | ' . $details->city;
-		
+		$estados = new Estados();
+		$data['estados']         	= $estados->getEstados();
 		$pets = new Pets_model;
 		
 		helper('form');
@@ -50,6 +52,9 @@ class Pets extends Controller
 	}
 	public function buscar($especie = '')
 	{
+		$estados = new Estados();
+		$data['estados']         	= $estados->getEstados();
+
 		$estado 	= $this->request->getPostGet('estado_pet');
 		$cidade 	= $this->request->getPostGet('cidade_pet');
 		$tamanho 	= $this->request->getPostGet('porte');
@@ -101,6 +106,8 @@ class Pets extends Controller
 
 	public function pet($id_pet)
 	{
+		$estados = new Estados();
+		$data['estados']         	= $estados->getEstados();
 		$pet = new Pets_model;
 		helper('form');
 		helper('text');
