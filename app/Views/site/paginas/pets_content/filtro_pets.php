@@ -24,28 +24,60 @@
 
         </ul>
         <hr>
+
+        <a data-toggle="collapse" href="#buscaavancada" aria-expanded="false" aria-controls="buscaavancada">
+            <i class="far fa-search"></i> Busca Avançada
+        </a>
+        
         <?php
 
         $ip = $_SERVER['REMOTE_ADDR'];
         $details = json_decode(file_get_contents("http://ipinfo.io/187.113.226.25/json"));
-        echo $details->region . ' | ' . $details->city;
+        echo 'Mostrando pets proximos a sua região '.$details->region . ' | ' . $details->city;
 
         ?>
-        <a data-toggle="collapse" href="#buscaavancada" aria-expanded="false" aria-controls="buscaavancada">
-            <i class="far fa-search"></i> Busca Avançada
-        </a>
-
          <form method="POST" action="<?= base_url('/pets/buscar') ?>">                               
             <div class="collapse" id="buscaavancada">
 
-                <select class="selectpicker " data-style="select-with-transition" name="estado_pet" title="Estado" data-size="7" required>
-              
-                    <option value="21">Rio Grande do Sul</option>
+                <select id="filtro_estado" class="selectpicker " data-style="select-with-transition" name="estado_pet" title="Estado" data-size="7" required>
+                <option>Selecione o Estado</option>
+                                <?php foreach($estados as $row=>$value){
+                                    $selected = '';
+                                     if(session()->has('estado')){
+                                       
+                                         if(session()->get('estado') == $value->id_estado){
+                                            $selected = 'selected';
+                                            
+                                        }
+                                        echo " <option value=".$value->id_estado." ".$selected.">" .$value->nome. "</option>";
+                                    }else{
+                                        echo " <option value=".$value->id_estado." ".$selected.">" .$value->nome. "</option>";
+                                    }
+                                    ?>
+
+                               
+                                <?php 
+                            }?>
                 </select>
-                <select class="selectpicker " data-style="select-with-transition" name="cidade_pet" title="Single Select" data-size="7">
-                    <option value="0"selected>Cidade</option>
-                    <option value="4932">Porto alegre</option>
-                    <option value="5091">Viamão</option>
+                <select id="filtro_cidade" class="selectpicker " data-style="select-with-transition" name="cidade_pet" title="Selecione Cidade" data-size="7">
+                <?php foreach($cidades as $row=>$value){
+                                    $selected = '';
+                                     if(session()->has('estado')){
+                                       
+                                         if(session()->get('cidade') == $value->id_municipio){
+                                            $selected = 'selected';
+                                            
+                                        }
+                                        echo " <option value=".$value->id_municipio." ".$selected.">" .$value->nome. "</option>";
+                                    }else{
+                                        echo " <option value=".$value->id_municipio." ".$selected.">" .$value->nome. "</option>";
+                                    }
+                                    ?>
+
+                               
+                                <?php 
+                            }?>
+
                 </select>
                 <select class="selectpicker " data-style="select-with-transition" name="porte" title="Single Select" data-size="7">
                     <option value="0" selected>Tamanho</option>

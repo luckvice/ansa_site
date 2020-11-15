@@ -5,6 +5,7 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use App\Models\Pets as Pets_model; //Carrega Model SQL | alias para não repetir o nome da Classe
 use App\Models\Estados;
+use App\Models\Cidades;
 use App\Libraries\Waintegracao;
 use App\Helpers\Geoip;
 
@@ -16,9 +17,15 @@ class Pets extends Controller
         $details = json_decode(file_get_contents("http://ipinfo.io/187.113.226.25/json"));*/
 		//echo $details->region . ' | ' . $details->city;
 		$estados = new Estados();
+		$cidades = new Cidades();
 		$data['estados']         	= $estados->getEstados();
 		$pets = new Pets_model;
-		
+
+		//session()->set('estado', $estado);
+		//session()->set('cidade', $cidade);
+
+		$data['cidades'] = $cidades->getCidadesByEstadoId(session()->get('estado'));
+
 		helper('form');
 		//Configurações de pagina
 		$data['title'] = 'Ver Pets';
@@ -68,6 +75,7 @@ class Pets extends Controller
 			$data['erro_registrar'] = session('erro_registrar');
 		}
 		$estados 	= new Estados();
+		$cidades 	= new Cidades();
 		$pets 		= new Pets_model;
 		helper('form');
 		$data['title'] 				= 'Ver Pets';
@@ -78,6 +86,13 @@ class Pets extends Controller
 		$cidade 	= $this->request->getPostGet('cidade_pet');
 		$tamanho 	= $this->request->getPostGet('porte');
 		$sexo 		= $this->request->getPostGet('sexo');
+
+		
+		session()->set('estado', $estado);
+		session()->set('cidade', $cidade);
+
+
+		$data['cidades'] = $cidades->getCidadesByEstadoId($estado);
 
 		if($cidade == 0) : $limiteEstado = true; 
 			$estado_cidade = $estado;
@@ -110,6 +125,9 @@ class Pets extends Controller
 			$data['all'] = true;
 			$data['listaPets'] = $pets->getPets($estado_cidade, $limiteEstado, true, true, null, $todosSexos, $sexo, $todosTamanhos, $tamanho);
 		
+		}else{
+			$data['all'] = true;
+			$data['listaPets'] = $pets->getPets($estado_cidade, $limiteEstado, true, true, null, $todosSexos, $sexo, $todosTamanhos, $tamanho);	
 		}
 		echo view('site/paginas/pets', $data);
 	}

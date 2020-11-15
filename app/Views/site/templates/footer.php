@@ -98,7 +98,6 @@
     
     $('#estado').change(function(){
       const id_estado = $(this).val();
-
       $.ajax({
           url: host+'/api/getCidadesByEstadoId/'+id_estado,
           type: 'GET',
@@ -107,25 +106,44 @@
             alert('Ocorreu um erro com a comunicação da API');
           },
           success: function(data) { 
-            
             var options = '<option value="">Selecione a cidade</option>';
-       
             for (var i = 0; i < data.length; i++) {
               options += '<option value="' +
               data[i].id_municipio + '">' +
               data[i].nome + '</option>';
             }
-          
             $('#selectcidade').fadeIn();
             $('#cidade').html(options).show();
-       
             $('#cidade').selectpicker();
             $('#cidade').selectpicker('refresh');
           }
-        
          });
-       
     });
+
+    $('#filtro_estado').change(function(){
+      const id_estado = $(this).val();
+      $.ajax({
+          url: host+'/api/getCidadesByEstadoId/'+id_estado,
+          type: 'GET',
+
+          error: function() {
+            alert('Ocorreu um erro com a comunicação da API');
+          },
+          success: function(data) { 
+            var options = '<option value="">Selecione a cidade</option>';
+            for (var i = 0; i < data.length; i++) {
+              options += '<option value="' +
+              data[i].id_municipio + '">' +
+              data[i].nome + '</option>';
+            }
+            $('#filtro_selectcidade').fadeIn();
+            $('#filtro_cidade').html(options).show();
+            $('#filtro_cidade').selectpicker();
+            $('#filtro_cidade').selectpicker('refresh');
+          }
+         });
+    });
+
     $('#cadastrar_pet').click(function() {
       $('#erro_campos').fadeOut();
     if (!$("input[name='especie']:checked").val()) {
