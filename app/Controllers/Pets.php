@@ -23,6 +23,14 @@ class Pets extends Controller
 		//Configurações de pagina
 		$data['title'] = 'Ver Pets';
 		$data['menuTransparent'] = False;
+
+				//Verifica Mensagem de erro do Login Auth Controller
+		if (session()->has('erro')) { //se na sessao tem a variavel erro.
+			$data['erro'] = session('erro');
+		}
+		if (session()->has('erro_registrar')) { //se na sessao tem a variavel erro.
+			$data['erro_registrar'] = session('erro_registrar');
+		}
 		$regiao = new Geoip;
 		$regiao = $regiao->getCidadePorIp();
 		/* Filtros consulta */
@@ -52,8 +60,19 @@ class Pets extends Controller
 	}
 	public function buscar($especie = '')
 	{
-		$estados = new Estados();
-		$data['estados']         	= $estados->getEstados();
+				//Verifica Mensagem de erro do Login Auth Controller
+		if (session()->has('erro')) { //se na sessao tem a variavel erro.
+			$data['erro'] = session('erro');
+		}
+		if (session()->has('erro_registrar')) { //se na sessao tem a variavel erro.
+			$data['erro_registrar'] = session('erro_registrar');
+		}
+		$estados 	= new Estados();
+		$pets 		= new Pets_model;
+		helper('form');
+		$data['title'] 				= 'Ver Pets';
+		$data['menuTransparent'] 	= False;
+		$data['estados'] 			= $estados->getEstados();
 
 		$estado 	= $this->request->getPostGet('estado_pet');
 		$cidade 	= $this->request->getPostGet('cidade_pet');
@@ -80,13 +99,6 @@ class Pets extends Controller
 			$todosSexos = false;
 		endif;
 		
-		helper('form');
-		//Configurações de pagina
-		$data['title'] = 'Ver Pets';
-		$data['menuTransparent'] = False;
-		
-		$pets = new Pets_model;
-
 		/* Filtros consulta */
 		if (session()->get('especie') == 1) {
 			$data['dogs'] = true;
@@ -99,7 +111,6 @@ class Pets extends Controller
 			$data['listaPets'] = $pets->getPets($estado_cidade, $limiteEstado, true, true, null, $todosSexos, $sexo, $todosTamanhos, $tamanho);
 		
 		}
-		
 		echo view('site/paginas/pets', $data);
 	}
 
@@ -117,13 +128,19 @@ class Pets extends Controller
 		//Configurações de pagina
 		$data['title'] 				= 	'Ver Pets';
 		$data['menuTransparent'] 	= 	False;
-		
+				//Verifica Mensagem de erro do Login Auth Controller
+		if (session()->has('erro')) { //se na sessao tem a variavel erro.
+			$data['erro'] = session('erro');
+		}
+		if (session()->has('erro_registrar')) { //se na sessao tem a variavel erro.
+			$data['erro_registrar'] = session('erro_registrar');
+		}
+
 		if(empty($pet)){
 			return view('errors/html/production');
 		}
 		$petGaleria					=	$pet->getGaleria($id_pet);
 		$pet						= 	$pet->getPet($id_pet);
-		
 
 		if($pet->id_porte 		== 1){$data['porte'] = 'P';}
 		elseif($pet->id_porte 	== 2){$data['porte'] = 'M';}
