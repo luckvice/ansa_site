@@ -4,15 +4,17 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 use App\Models\UsuariosModel; //Carrega Model SQL
+use App\Models\Estados;
+use App\Models\Cidades;
 
 class Home extends Controller
 {
 	public function index()
 	{
-		/*	$model = new UsuariosModel();
-		$data = [
-			'DEBUG' => $model->getUsuarios()
-		];*/
+		$estados = new Estados();
+		$cidades = new Cidades();
+		$data['estados']         = $estados->getEstadoById(21);
+        $data['cidades']         = $cidades->getCidadesByEstadoId(21);   
 		helper('form');
 		$data['title'] = 'A.N.S.A | Página Inicial';
 		$data['menuTransparent'] = True;

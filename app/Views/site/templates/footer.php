@@ -57,6 +57,9 @@
     $('#telefone_interessado').mask('(00) 00000-00009');
     var hash = window.location.hash;
 
+    $('#estado').change(function(){
+      console.log($(this).val());
+    });
     $('#cadastrar_pet').click(function() {
       alert('?');
     if (!$("input[name='especie']:checked").val()) {

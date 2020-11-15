@@ -77,6 +77,29 @@
                         <input type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone/Whats" value="<?= old('telefone'); ?>" required>
                       </div>
                     </div>
+                    <div class="form-group text-left">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text"><i class="material-icons">place</i></div>
+                            <select id="estado" class="selectpicker text-left" data-style="select-with-transition" title="Selecione o estado" data-size="7" name="estado">
+                                <option selected>Selecione o Estado</option>
+                                <option value="<?= $estados->id_estado?>"><?= $estados->nome?></option>
+                            </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group text-left">
+                          <div class="input-group">
+                              <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="material-icons">house</i></div>
+                                  <select class="selectpicker text-left" data-style="select-with-transition" title="Selecione a cidade" data-size="7" name="cidade">
+                                    <option selected>Selecione a cidade</option>
+                            
+                                </select>
+                        </div>
+                      </div>
+                    </div>
+
                     <div class="form-group">
                       <div class="input-group">
                         <div class="input-group-prepend">
@@ -111,6 +134,7 @@
                         </span>
                         Concordo com os <a href="#something">termos de uso</a>.
                       </label>
+                      <br>
                       <br>
                       <div class="g-recaptcha" name="g-recaptcha" data-sitekey="6LfkfN8ZAAAAAP2Ga-3TPRIOlUqVCYiAkOPMoh-i"></div>
                     </div>

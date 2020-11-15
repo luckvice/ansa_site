@@ -28,16 +28,11 @@ class Perfil extends Controller
             return redirect()->to(base_url('/'));
         }
 
-<<<<<<< HEAD
-        $usuario   = new Usuarios;
-        $dados = $usuario->getUsuarioById(session()->get('id_usuario'));
-        
-=======
         $usuario    = new Usuarios;
         $adotados   = new Pets;
+        
         $id_usuario = session()->get('id_usuario');
         $dados      = $usuario->getUsuarioById($id_usuario);
->>>>>>> baf3b137d88a8b28a7ef18b122a0934c9d4640da
         helper('form');
         
         $data['title']              = 'Meu Perfil';
