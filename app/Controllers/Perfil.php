@@ -28,16 +28,10 @@ class Perfil extends Controller
             return redirect()->to(base_url('/'));
         }
 
-<<<<<<< HEAD
-        $usuario   = new Usuarios;
-        $dados = $usuario->getUsuarioById(session()->get('id_usuario'));
-        
-=======
         $usuario    = new Usuarios;
         $adotados   = new Pets;
         $id_usuario = session()->get('id_usuario');
         $dados      = $usuario->getUsuarioById($id_usuario);
->>>>>>> baf3b137d88a8b28a7ef18b122a0934c9d4640da
         helper('form');
         
         $data['title']              = 'Meu Perfil';
@@ -266,6 +260,8 @@ class Perfil extends Controller
 
         $ong = $ong->getOngByIdUsuario(session()->get('id_usuario'));
 
+        //var_dump($ong);
+
         // Seta o ID da ONG selecionada
         session()->set('id_ong', $ong->id_ong);
 
@@ -276,7 +272,7 @@ class Perfil extends Controller
         $data['bodyPageProfile']    = True;
         $data['menuTransparent']    = False;
         $data['ong']            = $ong;
-        $data['avatar_src']     = !$ong->avatar ? base_url('assets/img/404.jpg') : $ong->avatar;
+        $data['avatar_src']     = !$ong->avatar ? base_url('assets/img/404.jpg') : 'data:image/jpeg;base64,' . $ong->avatar;
 
         if (session()->has('erro')) { //se na sessao tem a variavel erro.
             $data['erro'] = session('erro');

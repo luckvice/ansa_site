@@ -33,6 +33,11 @@
                 <a href="/perfil" class="dropdown-item">
                   <i class="material-icons">face</i> Perfil
                 </a>
+                <?php if (session()->get('id_nivel') == 3) : ?>
+                <a href="/perfil/ong" class="dropdown-item">
+                  <i class="material-icons">house</i> Minha ONG
+                </a>
+                <?php endif; ?>
                 <a href="/perfil/cadastrarpet" class="dropdown-item">
                   <i class="material-icons">add</i> Cadastrar pet
                 </a>

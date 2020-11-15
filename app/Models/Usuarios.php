@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Ongs;
+
 /*
 [ANSA Project]
 
@@ -24,13 +26,26 @@ class Usuarios
         ];
 
         $db->table('usuario')->insert($data);
+
         $resultados = $db->error();
+        
         if ($resultados['code'] == 0) { //Se nao teve erros
             $lastId = $db->insertID();
             $db->close();
+
+            // Insere a ONG caso a checkbox esteja marcada
+            if($id_nivel == 3) {
+
+                $ong = new Ongs;
+
+                $ong->inserirOng($lastId, '', '', '', '', '', '', date("Y-m-d H:i:s"), '', 0);
+            }
+            
             return $lastId;
         }
+
         $db->close();
+
         return $resultados;
     }
 

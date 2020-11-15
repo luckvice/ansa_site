@@ -116,7 +116,7 @@
 				<div class="col-12 col-md-3" style="display: flex; align-items: center; padding: 20px;">
 
 					<div class="perfil-pic">
-						<img src="data:image/jpeg;base64,<?=$avatar_src?>">
+						<img src="<?=$avatar_src?>">
 					</div>
 
 				</div>
