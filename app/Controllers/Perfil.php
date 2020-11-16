@@ -102,8 +102,8 @@ class Perfil extends Controller
         $data['tabCadastrarPet'] = 'active now'; //Fica selecionado a Tab
         $data['bodyPageProfile'] = True;
         $data['menuTransparent'] = False;
-        $data['estados']         = $estados->getEstadoById(21);
-        $data['cidades']         = $cidades->getCidadesByEstadoId(21);   
+        $data['estados']         = $estados->getEstados();
+        //$data['cidades']         = $cidades->getCidadesByEstadoId(21);   
 
         if (session()->has('erro')) {
             $data['erro'] = session('erro');

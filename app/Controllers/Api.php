@@ -117,7 +117,7 @@ class Api extends ResourceController
       
       ');
 
-   //   $mensagem->enviarMensagemEmail('Solicitação de Adoção',view('site/templates/email/solicitacao_adocao',$data),$data['email_usuario']);
+      $mensagem->enviarMensagemEmail('Solicitação de Adoção',view('site/templates/email/solicitacao_adocao',$data),$data['email_usuario']);
       
       $data['status']   = 1;
       $data['mensagem'] = 'Mensagem enviada com sucesso!';

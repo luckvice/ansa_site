@@ -39,7 +39,7 @@ class Pets extends Model
                 ->where('capa',1)
                 ->where('adotado',$adotado)
                 ->where('pet.excluido',0);
-                
+                //$resultados = $resultados->limit(1);
                 if($filtrarEstado == true):
                     if($filtros == true):
                         $resultados = $resultados->where('pet.id_estado',$estado_cidade);
