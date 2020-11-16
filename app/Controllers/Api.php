@@ -119,12 +119,12 @@ class Api extends ResourceController
 
       $mensagem->enviarMensagemEmail('Solicitação de Adoção',view('site/templates/email/solicitacao_adocao',$data),$data['email_usuario']);
       
-      $data['status']   = 1;
-      $data['mensagem'] = 'Mensagem enviada com sucesso!';
+      $datas['status']   = 1;
+      $datas['mensagem'] = 'Mensagem enviada com sucesso!';
 
     }else{
-      $data['status']   = 4;
-      $data['mensagem'] = 'Espertinho você não ? Vá Hackear em outro lugar';
+      $datas['status']   = 4;
+      $datas['mensagem'] = 'Espertinho você não ? Vá Hackear em outro lugar';
     }
 
 /*
@@ -149,7 +149,7 @@ Recebi sua solicitação de adoção, podemos conversar ?
 
 */
 
-    return $this->respond($data);
+    return $this->respond($datas);
   }
 
   public function conversarComSolicitante($url){//recebe url encrypt decrypt e retorna um metodo de conversa
