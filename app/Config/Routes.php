@@ -32,9 +32,10 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('home', 'Home::index');
-$routes->add('ong(:num)', 'Home::ong/$1');
+//$routes->add('ong(:num)', 'Home::ong/$1');
 $routes->get('pets/(:any)', 'Pets::index/$1');
 $routes->get('pet/(:num)', 'Pets::pet/$1');
+$routes->get('ong/(:num)', 'Ongs::ong/$1');
 $routes->post('buscar/filtrar', 'Pets::buscar');
 $routes->get('solicitante/(:any)', 'Api::conversarComSolicitante/$1');
 $routes->get('perfil', 'Perfil::index');

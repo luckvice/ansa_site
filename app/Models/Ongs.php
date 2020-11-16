@@ -58,7 +58,7 @@ class Ongs
     {
         $db = db_connect();
 
-        $resultados = $db->table('usuario')->where('id_usuario', $id_usuario)->get()->getRowObject();
+        $resultados = $db->table('ong')->where('id_ong', $id_ong)->get()->getRowObject();
         
         $db->close();
         

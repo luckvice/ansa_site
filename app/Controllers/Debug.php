@@ -198,6 +198,7 @@ class Debug extends Controller
         // Solicitação de adoção
         $data['genero'] = 'o'; // o: se for macho / a: se for fêmea
         $data['nome_pet'] = 'Bethoven';
+        $data['novasenha'] = '126515615';
         $data['imagem_pet'] = 'https://static1.patasdacasa.com.br/articles/7/44/7/@/1498-algumas-racas-de-cachorro-sao-mais-indep-articles_media_mobile-1.jpg';
 
         $data['nome_interessado'] = 'Jady Maia';
@@ -205,6 +206,9 @@ class Debug extends Controller
         $data['email_interessado'] = 'jady@hotmail.com';
         $data['mensagem_interessado'] = 'Olá, gostaria de saber como posso pegar o cachorrinho! Você poderia me dizer onde posso encontrá-lo? Fico no aguardo!';
         
+        // Sugestão de adoção
+        $data['id_pet'] = 3;
+
         if (session()->has('erro')) {
             $data['erro'] = session('erro');
         }

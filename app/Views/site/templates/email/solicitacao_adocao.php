@@ -3,7 +3,7 @@
           <head>
             <meta name='viewport' content='width=device-width' />
             <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
-            <title>Solicitação de Adoção | ANSA</title>
+            <title>Solicitação de Adoção | Amigo Não se Abandona</title>
             <style>
               /* -------------------------------------
                   GLOBAL RESETS
@@ -397,9 +397,9 @@
                                 <p>Sendo assim, aqui estão as informações de contato do interessado d<?=$genero?><span class='purple-span'> <?=$nome_pet?></span>:</p>
                                 <ul>
                                   <li><span class='purple-span'>Nome:</span> <?=$nome_interessado?></li>
-                                  <li><span class='purple-span'>Telefone/WhatsApp</span>: <?=$telefone_interessado?></li>
-                                  <li><span class='purple-span'>E-mail</span>: <?=$email_interessado?></li>
-                                  <li><span class='purple-span'>Mensagem</span>: "<?=$mensagem_interessado?>"</li>
+                                  <li><span class='purple-span'>Telefone/WhatsApp</span>: <?=$telefone?></li>
+                                  <?php if($email_interessado) : ?><li><span class='purple-span'>E-mail</span>: <?=$email_interessado?></li> <?php endif; ?>
+                                  <li><span class='purple-span'>Mensagem</span>: "<?=$msg_opcional?>"</li>
                                 </ul>
                                 <hr>
                                 <p style="color: gray; text-align: center;">📌 Nós do ANSA temos o objetivo de facilitar a aproximação de animais abandonados aos seus futuros lares. Nossa meta é proporcionar um maior alcance e visibilidade para estes animais, através de todas funcionalidades disponbilizadas em nossa plataforma!</p>
@@ -409,11 +409,11 @@
                           </table>
                         </td>
                       </tr>
-        
+                      
                     <!-- END MAIN CONTENT AREA -->
                     </table>
                     <!-- END CENTERED WHITE CONTAINER -->
-        
+                    
                     <!-- START FOOTER -->
                     <div class='footer'>
                       <table role='presentation' border='0' cellpadding='0' cellspacing='0'>

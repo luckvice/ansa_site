@@ -3,7 +3,7 @@
           <head>
             <meta name='viewport' content='width=device-width' />
             <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
-            <title>Sugestão de Adoção | ANSA</title>
+            <title>Sugestão de Adoção | Amigo Não se Abandona</title>
             <style>
               /* -------------------------------------
                   GLOBAL RESETS
@@ -21,7 +21,7 @@
               .pet-profile-pic img {
                   max-height: 100%;
                   max-width: 100%;
-                  border: 3px solid #843ec1;
+                  border: 3px dotted #843ec1;
                   border-radius: 20px;
               }
 
@@ -402,12 +402,13 @@
                             <tr>
                               <td>
                                 <p>Olá, <span class="purple-span"><?=$usuario?></span> 😊</p>
-                                <p><?=strtoupper($genero)?> <span class='purple-span'><?=$nome_pet?></span> chegou no <a href='https://amigonaoseabandona.com.br' target="_blank"><span class='purple-span'>Amigo Não se Abandona</span></a> e está esperando por você! Identificamos que este lindo amiguinho corresponde a todas as características que você estava procurando! 😻</p>
-                                <p><span class='purple-span'>Lembre-se</span>: É muito importante que você tenha todos os cuidados no momento da adoção. Abaixo, listamos algumas dicas importantes:</p>
+                                <p><?=strtoupper($genero)?> <span class='purple-span'><?=$nome_pet?></span> chegou no <a href='<?=base_url('/')?>' target="_blank"><span class='purple-span'>Amigo Não se Abandona</span></a> e está esperando por você! Identificamos que este lindo amiguinho corresponde a todas as características que você estava procurando! 😻</p>
             
                                 <div class="pet-profile-pic">
                                   <img src="<?=$imagem_pet?>" alt="Foto do <?=$nome_pet?>">
                                 </div>
+
+                                <p><span class='purple-span'>Lembre-se</span>: É muito importante que você tenha todos os cuidados no momento da adoção. Abaixo, listamos algumas dicas importantes:</p>
             
                                 <ul class="lista">
                                   <li>Esteja preparado para atender a todas as necessidades do animal.</li>
@@ -422,7 +423,7 @@
                                         <table role='presentation' border='0' cellpadding='0' cellspacing='0'>
                                           <tbody>
                                             <tr>
-                                              <td> <a href='<?=$link_acesso?>' target='_blank'>Acesso o Perfil d<?=$genero?> <?=$nome_pet?></a> </td>
+                                              <td> <a href='<?=base_url("/pet/" . $id_pet)?>' target='_blank'>Acesso o Perfil d<?=$genero?> <?=$nome_pet?></a> </td>
                                             </tr>
                                           </tbody>
                                         </table>

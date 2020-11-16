@@ -61,10 +61,12 @@ class Pets extends Controller
 
 		echo view('site/paginas/pets', $data);
 	}
+
 	public function alterarPetStatus($status)
 	{
 
 	}
+
 	public function buscar($especie = '')
 	{
 				//Verifica Mensagem de erro do Login Auth Controller
@@ -146,10 +148,12 @@ class Pets extends Controller
 		//Configurações de pagina
 		$data['title'] 				= 	'Ver Pets';
 		$data['menuTransparent'] 	= 	False;
-				//Verifica Mensagem de erro do Login Auth Controller
+		
+		//Verifica Mensagem de erro do Login Auth Controller
 		if (session()->has('erro')) { //se na sessao tem a variavel erro.
 			$data['erro'] = session('erro');
 		}
+
 		if (session()->has('erro_registrar')) { //se na sessao tem a variavel erro.
 			$data['erro_registrar'] = session('erro_registrar');
 		}
@@ -157,6 +161,7 @@ class Pets extends Controller
 		if(empty($pet)){
 			return view('errors/html/production');
 		}
+		
 		$petGaleria					=	$pet->getGaleria($id_pet);
 		$pet						= 	$pet->getPet($id_pet);
 
