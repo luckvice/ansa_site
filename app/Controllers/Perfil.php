@@ -30,7 +30,8 @@ class Perfil extends Controller
 
         $usuario    = new Usuarios;
         $adotados   = new Pets;
-        
+        $cidade     = new Cidades;
+        $estados    = new Estados;
         $id_usuario = session()->get('id_usuario');
         $dados      = $usuario->getUsuarioById($id_usuario);
         helper('form');
@@ -41,8 +42,10 @@ class Perfil extends Controller
         $data['menuTransparent']    = False;
         $data['usuario']            = $dados;
         $data['pets_divulgados']    = $adotados->getDivulgadosByIdUsuario($id_usuario);
-        $data['pets_adotados']      = $adotados->getAdotadosByIdUsuario($id_usuario);
-        
+        $data['pets_adotados']      = $adotados->getAdotadosByIdUsuario($id_usuario); 
+        $data['estados']            = $estados->getEstados();
+        $data['cidade']             = $cidade->getCidadesById($dados->id_cidade);
+
         if (session()->has('erro')) { //se na sessao tem a variavel erro.
             $data['erro'] = session('erro');
         }
@@ -58,7 +61,10 @@ class Perfil extends Controller
         } else{
             $dados      = $this->request->getPostGet();
             $usuario    = new Usuarios;
-            //var_dump($dados);
+            $id_usuario = session()->get('id_usuario');
+            
+            $resultado = $usuario->updateUsuario($id_usuario,  $dados);
+            var_dump($resultado);
         }
     }
 
@@ -71,7 +77,7 @@ class Perfil extends Controller
         } else{
             $validacao = $this->validate([ //Validação Server Side Form
                 'senha'     => 'required',
-                'senha_r'   => 'required' //Obriga o preeenchimento do Form
+                'senha_r'   => 'required|matches[senha]' //Obriga o preeenchimento do Form
             ]);
             if (!$validacao) {
                 $mensagem = ['codigo' => 2, 'mensagem' => 'Verifique se os campos estão completos'];
@@ -102,8 +108,7 @@ class Perfil extends Controller
         $data['tabCadastrarPet'] = 'active now'; //Fica selecionado a Tab
         $data['bodyPageProfile'] = True;
         $data['menuTransparent'] = False;
-        $data['estados']         = $estados->getEstados();
-        //$data['cidades']         = $cidades->getCidadesByEstadoId(21);   
+        $data['estados']         = $estados->getEstados();   
 
         if (session()->has('erro')) {
             $data['erro'] = session('erro');

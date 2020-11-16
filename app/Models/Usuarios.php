@@ -51,18 +51,22 @@ class Usuarios
         $db->close();
     }
 
-    public function updateUsuario($id_usuario, $email, $telefone, $id_cidade, $data_alteracao)
+    public function updateUsuario($id_usuario, $dados)
     {
         $db = db_connect();
-        $data = [
-            'login'             => $email,
-            'email'             => $email,
-            'telefone'          => $telefone,
-            'data_alteracao'    => $data_alteracao,
-            'id_cidade'         => $id_cidade
+        $dados = [
+            'nome'              => $dados['nome'],
+            'telefone'          => $dados['telefone'],
+            'email'             => $dados['email'],
+            'login'             => $dados['email'],
+            'id_cidade'         => $dados['cidade'],
+            'data_alteracao'    => date("Y-m-d H:i:s"),
+
         ];
-        $db->table('usuario')->where('id_usuario', $id_usuario)->update($data);
+        $db->table('usuario')->where('id_usuario', $id_usuario)->update($dados);
+        $resultados = $db->affectedRows();
         $db->close();
+        return $resultados;
     }
 
     public function getUsuarioById($id_usuario)

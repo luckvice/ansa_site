@@ -46,40 +46,31 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<form method="POST" action="perfil/editarperfil">
+			<form method="POST" action="<?=base_url('perfil/alterar')?>">
 				<div class="modal-body">
 					<div class="form-row">
 						<div class="form-group col-12">
 							<label class="control-label" for="nome">Nome</label>
-							<input type="text" class="form-control is-invalid" name="nome" id="nome" required>
+							<input type="text" class="form-control is-invalid" name="nome" id="nome" value="<?=$usuario->nome?>" required>
 						</div>
 						<div class="form-group col-6">
 							<label class="control-label" for="telefone">Telefone/WhatsApp</label>
-							<input type="text" class="form-control is-invalid" name="telefone" id="telefone" required>
+							<input type="text" class="form-control is-invalid" name="telefone" id="telefone" value="<?=$usuario->telefone?>" required>
 						</div>
 						<div class="form-group col-6">
-							<label class="control-label" for="cep">CEP</label>
-							<input type="text" class="form-control is-invalid" name="cep" id="cep" required>
+							<label class="control-label" for="email">E-mail</label>
+							<input type="email" class="form-control is-invalid" name="email" id="email" value="<?= $usuario->email?>" required>
 						</div>
-						<div class="form-group col-6">
-							<label class="control-label" for="cidade">Cidade</label>
-							<input type="text" class="form-control is-invalid" name="cidade" id="cidade" required>
-						</div>
-						<div class="form-group col-6">
-							<label class="control-label" for="estado">Estado</label>
-							<input type="text" class="form-control is-invalid" name="estado" id="estado" required>
-						</div>
-						<div class="form-group col-12" style="margin-top: 15px;">
-							<div class="form-check">
-								<label class="form-check-label">
-									<input class="form-check-input" type="checkbox" name="dadosPrivados" value="">
-									Deixar meus dados de contato visíveis (Maiores chances de adoção)
-									<span class="form-check-sign">
-										<span class="check"></span>
-									</span>
-								</label>
-							</div>
-						</div>
+						<div class="form-group text-left" style="margin-top: 15px;">
+							<select id="estado" class="selectpicker text-left" data-style="select-with-transition" title="Selecione o estado" data-size="7" name="estado" required>
+							<option selected>Selecione o Estado</option>
+										<?php foreach($estados as $row=>$value){?>
+										<option value="<?= $value->id_estado?>"><?= $value->nome?></option>
+										<?php }?>
+							</select>
+							<select id="cidade" class="selectpicker text-left" data-style="select-with-transition" title="Seleciona a cidade" data-size="7" name="cidade" required>
+							</select> 
+                		</div>
 					</div>
 
 				</div>
@@ -176,27 +167,11 @@
 
 		<div class="form-row">
 			<div class="form-group col-md-4">
-				<label for="cep" class="font-weight-bold">CEP</label>
-				<input type="text" class="form-control readonly-input" readonly id="cep">
-			</div>
-			<div class="form-group col-md-4">
-				<label for="estado" class="font-weight-bold">Estado</label>
-				<input type="text" class="form-control readonly-input" readonly id="estado">
-			</div>
-			<div class="form-group col-md-4">
-				<label for="cidade" class="font-weight-bold">Cidade</label>
-				<input type="text" class="form-control readonly-input" readonly id="cidade">
+				<label for="cidade" class="font-weight-bold">Sou de</label>
+				<input type="text" class="form-control readonly-input" readonly id="cidade" value="<?= $cidade->nome?>/<?=$cidade->uf?>">
 			</div>
 		</div>
-		<div class="form-check">
-			<label class="form-check-label">
-				<input class="form-check-input" type="checkbox" name="dadosPrivados" value="" onclick="return false;">
-				Deixar meus dados de contato visíveis (Maiores chances de adoção)
-				<span class="form-check-sign">
-					<span class="check"></span>
-				</span>
-			</label>
-		</div>
+
 
 		<?php if (isset($erro)) : ?>
 
