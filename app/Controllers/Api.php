@@ -22,10 +22,13 @@ class Api extends ResourceController
     if (!$usuario->checkExistsEmail($email) == null) {
       $chars      = '0123456789abcdefghijklmnopqrstuvwxyz';
       $novaSenha  = substr(str_shuffle($chars), 0, 6);
-      $id_usuario = $usuario->checkExistsEmail($email);
-      $usuario->updateSenha($id_usuario->id_usuario, md5($novaSenha));
-      $enviamensagem['img_header'] = base_url('assets/img/dog_perfil.jpg');    
-      $enviamensagem['novasenha'] = $novaSenha;
+      $checkmail  = $usuario->checkExistsEmail($email);
+      $usuario->updateSenha($checkmail->id_usuario, md5($novaSenha));
+
+      $enviamensagem['img_header']  = base_url('assets/img/dog_perfil.jpg');    
+      $enviamensagem['novasenha']   = $novaSenha;
+      $enviamensagem['usuario']     = $checkmail->nome;
+
       $mensagem->enviarMensagemEmail("Solicitação de Nova Senha", view('site/templates/email/senha_alterada', $enviamensagem), $email);
       $data['status']   = 1;
       $data['mensagem'] = 'Sucesso !';
@@ -63,7 +66,7 @@ class Api extends ResourceController
       $data['mensagem']   = 'Marcado como adotado';
     }elseif($status->adotado  == 1){
       $pet->setAdotado($id_pet, $usuario,0);
-      $data['status']   = 0;
+      $data['status']     = 0;
       $data['mensagem']   = 'Desmarcado como adotado';
     }
    return $this->respond($data);
@@ -71,6 +74,7 @@ class Api extends ResourceController
 
   public function solicitarAdocao(){
 
+    $data['genero']             = $this->request->getPostGet('pet_genero');
     $data['telefone']           = $this->request->getPostGet('telefone');//Telefone do Solicitante/Interessado
     $data['telefone_usuario']   = session()->get('telefone_usuario');//Telefone do protetor
     $data['email_usuario']      = session()->get('email_usuario');
@@ -79,13 +83,13 @@ class Api extends ResourceController
     $data['nome_pet']           = $this->request->getPostGet('nome_pet');
     $data['nome_interessado']   = $this->request->getPostGet('nome_interessado');
     $data['msg_opcional']       = $this->request->getPostGet('msg_opcional');
-    $data['genero']             = $this->request->getPostGet('genero');
-    $data['img_header']         = base_url('assets/img/dog_perfil.jpg');     
+    $data['email_interessado']  = $this->request->getPostGet('email_interessado');
+    $data['img_header']         = base_url('assets/img/dog_perfil.jpg');  
 
-    $id_pet                       = $data['id_pet'];
+   /* $id_pet                       = $data['id_pet'];
     $telefone                     = $data['telefone'];
     $nome_pet                     = $data['nome_pet'];
-    $nome_interessado             = $data['nome_interessado'];
+    $nome_interessado             = $data['nome_interessado'];*/
     $enviamensagem['img_header']  = base_url('assets/img/dog_perfil.jpg');   
 
     if(empty($data['msg_opcional'])){
@@ -95,7 +99,7 @@ class Api extends ResourceController
       $data['status']   = 2;
       $data['mensagem'] = '* É Obrigatorio o Telefone';  
     }else if(session()->has('criptopost')){
-      //$id_pet, $telefone_interessado, $nome_pet, $nome_interessado 
+      //$id_pet, $telefone_usuario, $nome_pet, $nome_interessado 
       $url      = $data['id_pet'].'/'.$data['telefone'].'/'.$data['nome_pet'].'/'.$data['nome_interessado'];
       $mensagem = new Sima;
       $urlEnc   = new Urlencode;
@@ -113,7 +117,7 @@ class Api extends ResourceController
       
       ');
 
-      $mensagem->enviarMensagemEmail('Solicitação de Adoção',view('site/templates/email/solicitacao_adocao',$data),$data['email_usuario']);
+   //   $mensagem->enviarMensagemEmail('Solicitação de Adoção',view('site/templates/email/solicitacao_adocao',$data),$data['email_usuario']);
       
       $data['status']   = 1;
       $data['mensagem'] = 'Mensagem enviada com sucesso!';

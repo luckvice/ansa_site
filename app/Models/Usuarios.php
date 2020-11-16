@@ -80,7 +80,7 @@ class Usuarios
     public function checkExistsEmail($email)
     {
         $db = db_connect();
-        $resultados = $db->table('usuario')->select('usuario.email, usuario.id_usuario')->getWhere(['email' => $email])->getRow();
+        $resultados = $db->table('usuario')->select('usuario.email, usuario.id_usuario, usuario.nome')->getWhere(['email' => $email])->getRow();
         $db->close();
         return $resultados;
     }
