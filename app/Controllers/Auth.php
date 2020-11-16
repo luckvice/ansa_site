@@ -118,6 +118,7 @@ class Auth extends Controller
                         md5($dados['senha']),
                         $dados['email'],
                         $dados['telefone'],
+                        $dados['cidade'],
                         date("Y-m-d H:i:s")
                     );
     

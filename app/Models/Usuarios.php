@@ -12,7 +12,7 @@ Model Usuário.
 */
 class Usuarios
 {
-    public function inserirUsuario($id_nivel, $nome, $login, $senha, $email, $telefone, $data_cadastro)
+    public function inserirUsuario($id_nivel, $nome, $login, $senha, $email, $telefone, $id_cidade, $data_cadastro)
     {
         $db = db_connect();
         $data = [
@@ -22,6 +22,7 @@ class Usuarios
             'senha'         => $senha,
             'email'         => $email,
             'telefone'      => $telefone,
+            'id_cidade'     => $id_cidade,
             'data_cadastro' => $data_cadastro
         ];
 
@@ -32,20 +33,14 @@ class Usuarios
         if ($resultados['code'] == 0) { //Se nao teve erros
             $lastId = $db->insertID();
             $db->close();
-
             // Insere a ONG caso a checkbox esteja marcada
             if($id_nivel == 3) {
-
                 $ong = new Ongs;
-
                 $ong->inserirOng($lastId, '', '', '', '', '', '', date("Y-m-d H:i:s"), '', 0);
             }
-            
             return $lastId;
         }
-
         $db->close();
-
         return $resultados;
     }
 
@@ -56,14 +51,15 @@ class Usuarios
         $db->close();
     }
 
-    public function updateUsuario($id_usuario, $email, $telefone, $data_alteracao)
+    public function updateUsuario($id_usuario, $email, $telefone, $id_cidade, $data_alteracao)
     {
         $db = db_connect();
         $data = [
             'login'             => $email,
             'email'             => $email,
             'telefone'          => $telefone,
-            'data_alteracao'    => $data_alteracao
+            'data_alteracao'    => $data_alteracao,
+            'id_cidade'         => $id_cidade
         ];
         $db->table('usuario')->where('id_usuario', $id_usuario)->update($data);
         $db->close();
