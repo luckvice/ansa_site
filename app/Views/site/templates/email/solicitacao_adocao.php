@@ -3,7 +3,7 @@
           <head>
             <meta name='viewport' content='width=device-width' />
             <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
-            <title>Cadastro Realizado | ANSA</title>
+            <title>Solicitação de Adoção | ANSA</title>
             <style>
               /* -------------------------------------
                   GLOBAL RESETS
@@ -18,6 +18,19 @@
               .btn-acessar-site {
                 margin-top: 20px;
                 margin-bottom: 20px;
+              }
+
+              ul {
+                list-style: none;
+              }
+
+              ul li::before {
+                content: "\2022";
+                color: #843ec1;
+                font-weight: bold;
+                display: inline-block; 
+                width: 1em;
+                margin-left: -1em;
               }
 
               img {
@@ -151,7 +164,7 @@
                 font-size: 14px;
                 font-weight: normal;
                 margin: 0;
-                margin-bottom: 15px; 
+                margin-bottom: 15px;
                 color: #3c3c3c;
               }
                 p li,
@@ -159,6 +172,7 @@
                 ol li {
                   list-style-position: inside;
                   margin-left: 5px; 
+                  line-height: 1.5rem;
               }
         
               a {
@@ -354,7 +368,7 @@
             </style>
           </head>
           <body class=''>
-            <span class='preheader'>Seu cadastro foi efetuado com sucesso!</span>
+            <span class='preheader'>Solicitação de Adoção d<?=$genero?> <?=$nome_pet?></span>
             <table role='presentation' border='0' cellpadding='0' cellspacing='0' class='body'>
               <tr>
                 <td>&nbsp;</td>
@@ -373,28 +387,23 @@
                             <tr>
                               <td>
                                 <p>Olá, <span class="purple-span"><?=$usuario?></span> 😊</p>
-                                <p>Bem-vindo ao <span class="purple-span">Amigo Não se Abandona</span>. Seu cadastro foi criado com sucesso!</p>
-                                <p>A partir de agora, você poderá cadastrar, adotar ou divulgar animais que estão em busca de um novo lar! 🥰</p>
-                                <table role='presentation' border='0' cellpadding='0' cellspacing='0' class='btn btn-primary btn-acessar-site'>
-                                  <tbody>
-                                    <tr>
-                                      <td align='center'>
-                                        <table role='presentation' border='0' cellpadding='0' cellspacing='0'>
-                                          <tbody>
-                                            <tr>
-                                              <td> <a href='<?=$link_acesso?>' target='_blank'>Acessar Perfil</a> </td>
-                                            </tr>
-                                          </tbody>
-                                        </table>
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                                
+                                <p>Você recebeu uma solicitação de adoção d<?=$genero?><span class='purple-span'> <?=$nome_pet?></span>! Agora basta você entrar em contato com o interessado e combinar todos os detalhes da adoção! 😻</p>
+                                <p><span class='purple-span'>Lembre-se</span>: É muito importante que você tenha todos os cuidados no momento da adoção. Abaixo, listamos algumas dicas para te auxiliar:</p>
+                                <ul class="lista">
+                                  <li>Busque verificar se o novo lar do animal é adequado para o seu convívio.</li>
+                                  <li>Informe detalhademente ao novo tutor todas as características conhecidas sobre o animal.</li>
+                                  <li>Se possível, faça perguntas básicas ao novo tutor para averiguar se o mesmo é capaz de adotar o animal.</li>
+                                </ul>
+                                <p>Sendo assim, aqui estão as informações de contato do interessado d<?=$genero?><span class='purple-span'> <?=$nome_pet?></span>:</p>
+                                <ul>
+                                  <li><span class='purple-span'>Nome:</span> <?=$nome_interessado?></li>
+                                  <li><span class='purple-span'>Telefone/WhatsApp</span>: <?=$telefone_interessado?></li>
+                                  <li><span class='purple-span'>E-mail</span>: <?=$email_interessado?></li>
+                                  <li><span class='purple-span'>Mensagem</span>: "<?=$mensagem_interessado?>"</li>
+                                </ul>
                                 <hr>
-                                
                                 <p style="color: gray; text-align: center;">📌 Nós do ANSA temos o objetivo de facilitar a aproximação de animais abandonados aos seus futuros lares. Nossa meta é proporcionar um maior alcance e visibilidade para estes animais, através de todas funcionalidades disponbilizadas em nossa plataforma!</p>
-                                <p style="color: gray; text-align: center;">🐶 Fique mais próximo de nós siga nosso <a href='https://instagram.com/amigonaoseabandona' target='_blank'><span class="purple-span">Instagram</span></a> 😻</p>
+                                <p style="color: gray; text-align: center;">🐶 Fique mais próximo de nós e siga nosso <a href='https://instagram.com/amigonaoseabandona' target='_blank'><span class="purple-span">Instagram</span></a> 😻</p>
                               </td>
                             </tr>
                           </table>

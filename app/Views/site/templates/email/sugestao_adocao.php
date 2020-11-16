@@ -3,13 +3,28 @@
           <head>
             <meta name='viewport' content='width=device-width' />
             <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
-            <title>Cadastro Realizado | ANSA</title>
+            <title>Sugestão de Adoção | ANSA</title>
             <style>
               /* -------------------------------------
                   GLOBAL RESETS
               ------------------------------------- */
               
               /*All the styling goes here*/
+              .pet-profile-pic {
+                  display: flex;
+                  height: 200px;
+                  overflow: hidden;
+                  justify-content: center;
+                  margin: 25px 0px;
+              }
+
+              .pet-profile-pic img {
+                  max-height: 100%;
+                  max-width: 100%;
+                  border: 3px solid #843ec1;
+                  border-radius: 20px;
+              }
+
               .purple-span {
                 font-weight: bold;
                 color: #843ec1;
@@ -18,6 +33,19 @@
               .btn-acessar-site {
                 margin-top: 20px;
                 margin-bottom: 20px;
+              }
+
+              ul {
+                list-style: none;
+              }
+
+              ul li::before {
+                content: "\2022";
+                color: #843ec1;
+                font-weight: bold;
+                display: inline-block; 
+                width: 1em;
+                margin-left: -1em;
               }
 
               img {
@@ -151,7 +179,7 @@
                 font-size: 14px;
                 font-weight: normal;
                 margin: 0;
-                margin-bottom: 15px; 
+                margin-bottom: 15px;
                 color: #3c3c3c;
               }
                 p li,
@@ -159,6 +187,7 @@
                 ol li {
                   list-style-position: inside;
                   margin-left: 5px; 
+                  line-height: 1.5rem;
               }
         
               a {
@@ -354,7 +383,7 @@
             </style>
           </head>
           <body class=''>
-            <span class='preheader'>Seu cadastro foi efetuado com sucesso!</span>
+            <span class='preheader'>Sugestão de Adoção</span>
             <table role='presentation' border='0' cellpadding='0' cellspacing='0' class='body'>
               <tr>
                 <td>&nbsp;</td>
@@ -373,8 +402,19 @@
                             <tr>
                               <td>
                                 <p>Olá, <span class="purple-span"><?=$usuario?></span> 😊</p>
-                                <p>Bem-vindo ao <span class="purple-span">Amigo Não se Abandona</span>. Seu cadastro foi criado com sucesso!</p>
-                                <p>A partir de agora, você poderá cadastrar, adotar ou divulgar animais que estão em busca de um novo lar! 🥰</p>
+                                <p><?=strtoupper($genero)?> <span class='purple-span'><?=$nome_pet?></span> chegou no <a href='https://amigonaoseabandona.com.br' target="_blank"><span class='purple-span'>Amigo Não se Abandona</span></a> e está esperando por você! Identificamos que este lindo amiguinho corresponde a todas as características que você estava procurando! 😻</p>
+                                <p><span class='purple-span'>Lembre-se</span>: É muito importante que você tenha todos os cuidados no momento da adoção. Abaixo, listamos algumas dicas importantes:</p>
+            
+                                <div class="pet-profile-pic">
+                                  <img src="<?=$imagem_pet?>" alt="Foto do <?=$nome_pet?>">
+                                </div>
+            
+                                <ul class="lista">
+                                  <li>Esteja preparado para atender a todas as necessidades do animal.</li>
+                                  <li>Escolha a ração de acordo com o peso, porte e idade do seu novo amiguinho.</li>
+                                  <li>Adapte a sua rotina à do seu PET. Ele precisa de carinho, cuidados e dedicação.</li>
+                                  <li>Ele será o novo membro de sua família. Dê todo amor que ele merece! ❤🐶😻</li>
+                                </ul>
                                 <table role='presentation' border='0' cellpadding='0' cellspacing='0' class='btn btn-primary btn-acessar-site'>
                                   <tbody>
                                     <tr>
@@ -382,7 +422,7 @@
                                         <table role='presentation' border='0' cellpadding='0' cellspacing='0'>
                                           <tbody>
                                             <tr>
-                                              <td> <a href='<?=$link_acesso?>' target='_blank'>Acessar Perfil</a> </td>
+                                              <td> <a href='<?=$link_acesso?>' target='_blank'>Acesso o Perfil d<?=$genero?> <?=$nome_pet?></a> </td>
                                             </tr>
                                           </tbody>
                                         </table>
@@ -390,11 +430,9 @@
                                     </tr>
                                   </tbody>
                                 </table>
-                                
                                 <hr>
-                                
                                 <p style="color: gray; text-align: center;">📌 Nós do ANSA temos o objetivo de facilitar a aproximação de animais abandonados aos seus futuros lares. Nossa meta é proporcionar um maior alcance e visibilidade para estes animais, através de todas funcionalidades disponbilizadas em nossa plataforma!</p>
-                                <p style="color: gray; text-align: center;">🐶 Fique mais próximo de nós siga nosso <a href='https://instagram.com/amigonaoseabandona' target='_blank'><span class="purple-span">Instagram</span></a> 😻</p>
+                                <p style="color: gray; text-align: center;">🐶 Fique mais próximo de nós e siga nosso <a href='https://instagram.com/amigonaoseabandona' target='_blank'><span class="purple-span">Instagram</span></a> 😻</p>
                               </td>
                             </tr>
                           </table>

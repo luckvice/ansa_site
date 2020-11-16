@@ -187,4 +187,30 @@ class Debug extends Controller
         $resultados = $usuarios->updateSenha(2, 'novasenha');
         print_r($resultados);
     }
+
+    public function templateEmail($template) {
+
+        // Todos
+        $data['usuario'] = 'Felipe Pereira';
+        $data['link_acesso'] = 'https://amigonaoseabandona.com.br';
+        $data['img_header'] = 'http://localhost:8080/assets/img/dog_perfil.jpg';
+
+        // Solicitação de adoção
+        $data['genero'] = 'o'; // o: se for macho / a: se for fêmea
+        $data['nome_pet'] = 'Bethoven';
+        $data['imagem_pet'] = 'https://static1.patasdacasa.com.br/articles/7/44/7/@/1498-algumas-racas-de-cachorro-sao-mais-indep-articles_media_mobile-1.jpg';
+
+        $data['nome_interessado'] = 'Jady Maia';
+        $data['telefone_interessado'] = '(51) 99999-8888';
+        $data['email_interessado'] = 'jady@hotmail.com';
+        $data['mensagem_interessado'] = 'Olá, gostaria de saber como posso pegar o cachorrinho! Você poderia me dizer onde posso encontrá-lo? Fico no aguardo!';
+        
+        if (session()->has('erro')) {
+            $data['erro'] = session('erro');
+        }
+
+        // echo $icons->teste();
+        echo view('site/templates/email/'.$template.'.php',$data);
+
+    }
 }

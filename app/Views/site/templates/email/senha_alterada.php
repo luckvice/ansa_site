@@ -3,7 +3,7 @@
           <head>
             <meta name='viewport' content='width=device-width' />
             <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
-            <title>Cadastro Realizado | ANSA</title>
+            <title>Senha Alterada | ANSA</title>
             <style>
               /* -------------------------------------
                   GLOBAL RESETS
@@ -354,7 +354,7 @@
             </style>
           </head>
           <body class=''>
-            <span class='preheader'>Seu cadastro foi efetuado com sucesso!</span>
+            <span class='preheader'>Sua senha foi alterada com sucesso!</span>
             <table role='presentation' border='0' cellpadding='0' cellspacing='0' class='body'>
               <tr>
                 <td>&nbsp;</td>
@@ -373,8 +373,7 @@
                             <tr>
                               <td>
                                 <p>Olá, <span class="purple-span"><?=$usuario?></span> 😊</p>
-                                <p>Bem-vindo ao <span class="purple-span">Amigo Não se Abandona</span>. Seu cadastro foi criado com sucesso!</p>
-                                <p>A partir de agora, você poderá cadastrar, adotar ou divulgar animais que estão em busca de um novo lar! 🥰</p>
+                                <p><span class='purple-span'>✔ Sua senha foi alterada com sucesso</span>! Agora você pode ajudar um animalzinho a encontrar um novo lar com total segurança! 😻</p>
                                 <table role='presentation' border='0' cellpadding='0' cellspacing='0' class='btn btn-primary btn-acessar-site'>
                                   <tbody>
                                     <tr>
@@ -390,11 +389,9 @@
                                     </tr>
                                   </tbody>
                                 </table>
-                                
                                 <hr>
-                                
                                 <p style="color: gray; text-align: center;">📌 Nós do ANSA temos o objetivo de facilitar a aproximação de animais abandonados aos seus futuros lares. Nossa meta é proporcionar um maior alcance e visibilidade para estes animais, através de todas funcionalidades disponbilizadas em nossa plataforma!</p>
-                                <p style="color: gray; text-align: center;">🐶 Fique mais próximo de nós siga nosso <a href='https://instagram.com/amigonaoseabandona' target='_blank'><span class="purple-span">Instagram</span></a> 😻</p>
+                                <p style="color: gray; text-align: center;">🐶 Fique mais próximo de nós e siga nosso <a href='https://instagram.com/amigonaoseabandona' target='_blank'><span class="purple-span">Instagram</span></a> 😻</p>
                               </td>
                             </tr>
                           </table>
