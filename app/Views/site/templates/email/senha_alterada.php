@@ -3,13 +3,32 @@
           <head>
             <meta name='viewport' content='width=device-width' />
             <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
-            <title>Senha Alterada | ANSA</title>
+            <title>Senha Alterada | Amigo Não se Abandona</title>
             <style>
               /* -------------------------------------
                   GLOBAL RESETS
               ------------------------------------- */
               
               /*All the styling goes here*/
+              .nova-senha {
+                text-align: center;
+                margin: 30px 0px;
+                font-size: 22px;
+              }
+
+              ul {
+                list-style: none;
+              }
+
+              ul li::before {
+                content: "\2022";
+                color: #843ec1;
+                font-weight: bold;
+                display: inline-block; 
+                width: 1em;
+                margin-left: -1em;
+              }
+
               .purple-span {
                 font-weight: bold;
                 color: #843ec1;
@@ -374,6 +393,10 @@
                               <td>
                                 <p>Olá, <span class="purple-span"><?=$usuario?></span> 😊</p>
                                 <p><span class='purple-span'>✔ Sua senha foi alterada com sucesso</span>! Agora você pode ajudar um animalzinho a encontrar um novo lar com total segurança! 😻</p>
+                                
+                                <p class="nova-senha"><span class="purple-span">Nova Senha:</span> <?=$novasenha?></p>
+                                
+                                <p>💡 Por questões de segurança, altere sua senha por uma de sua preferência após logar no site.</p>
                                 <table role='presentation' border='0' cellpadding='0' cellspacing='0' class='btn btn-primary btn-acessar-site'>
                                   <tbody>
                                     <tr>
