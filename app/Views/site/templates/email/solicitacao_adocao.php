@@ -386,7 +386,7 @@
                           <table role='presentation' border='0' cellpadding='0' cellspacing='0'>
                             <tr>
                               <td>
-                                <p>Olá, <span class="purple-span"><?=$usuario?></span> 😊</p>
+                                <p>Olá, <span class="purple-span"><?=$nome_protetor?></span> 😊</p>
                                 <p>Você recebeu uma solicitação de adoção d<?=$genero?><span class='purple-span'> <?=$nome_pet?></span>! Agora basta você entrar em contato com o interessado e combinar todos os detalhes da adoção! 😻</p>
                                 <p><span class='purple-span'>Lembre-se</span>: É muito importante que você tenha todos os cuidados no momento da adoção. Abaixo, listamos algumas dicas para te auxiliar:</p>
                                 <ul class="lista">

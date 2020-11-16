@@ -140,8 +140,10 @@ Agradecemos seu interesse.
 
 Att. Equipe ANSA.
 ';
+                   $enviamensagem['img_header'] = base_url('assets/img/dog_perfil.jpg');     
+                   $enviamensagem['usuario']    = $dados['nome'];
                    $mensagem->enviarMensagemWa($dados['telefone'],$wa_message);
-                   $mensagem->enviarMensagemEmail('Cadastro Efetuado com sucesso!',view('site/templates/email/sucesso_cadastro'), $dados['email']);
+                   $mensagem->enviarMensagemEmail('Cadastro Efetuado com sucesso!', view('site/templates/email/sucesso_cadastro', $enviamensagem), $dados['email']);
 
                    return redirect()->to(base_url('perfil')); //Redireciona para rota perfil
                 }

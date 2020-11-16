@@ -165,7 +165,7 @@ class Pets extends Controller
 		elseif($pet->id_porte 	== 3){$data['porte'] = 'G';}
 		if($pet->id_sexo 		== 1){$data['sexo']  = 'Macho'; $data['icon'] = 'fas fa-mars';}
 		elseif($pet->id_sexo 	== 2){$data['sexo']  = 'Fêmea'; $data['icon'] = 'fas fa-venus';}
-
+		
 		$caracteristica = [
 			'Dócil' 		=> ['fas fa-paw'					,$pet->docil],
 			'Sociável'		=> ['fas fa-hand-peace'				,$pet->sociavel],
@@ -197,6 +197,7 @@ class Pets extends Controller
 		$data['cidade']			= $pet->municipio_nome;
 		$data['uf']				= $pet->uf;
 		$data['nome_protetor']	= $pet->usuario_nome;
+		$data['genero'] 		= $pet->id_sexo == 1 ? 'o' : 'a';
 
 		if(!empty($petGaleria)):
 			if(isset($petGaleria[0]->imagem)):

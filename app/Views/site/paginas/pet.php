@@ -24,6 +24,8 @@
 							<input type="hidden" name="id_pet" id="id_pet" value="<?= $id_pet?>"/>
 							<input type="hidden" name="nome_pet" id="nome_pet" value="<?= $nome?>"/>
 							<input type="hidden" name="nome_protetor" id="nome_protetor" value="<?= $nome_protetor?>"/>
+							<input type="hidden" name="genero" id="genero" value="<?= $genero?>"/>
+							
 						</div>
 						<div class="form-group col-md-12">
 							<label class="control-label" for="msg_opcional">Recado (Opcional)</label>

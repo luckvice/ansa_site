@@ -381,7 +381,7 @@
                                         <table role='presentation' border='0' cellpadding='0' cellspacing='0'>
                                           <tbody>
                                             <tr>
-                                              <td> <a href='<?=$link_acesso?>' target='_blank'>Acessar Perfil</a> </td>
+                                              <td> <a href='<?=base_url('/')?>' target='_blank'>Acessar site</a> </td>
                                             </tr>
                                           </tbody>
                                         </table>
