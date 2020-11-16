@@ -50,7 +50,7 @@
 				<div class="modal-body">
 					<div class="form-row">
 						<div class="form-group col-12">
-							<label class="control-label" for="nome">Nome</label>
+							<label class="control-label" for="nome">Nome </label>
 							<input type="text" class="form-control is-invalid" name="nome" id="nome" value="<?=$usuario->nome?>" required>
 						</div>
 						<div class="form-group col-6">
@@ -74,6 +74,19 @@
 					</div>
 
 				</div>
+				<?php
+                    $erro_alterar = session()->get('erro_alterar');
+                    if (isset($erro_alterar)) : ?>
+
+                      <div class="alert alert-danger" role="alert">
+                        <?= $erro_alterar->listErrors() ?>
+                      </div>
+            
+                      <script>
+                        $('#editarPerfil').modal();
+                      </script>
+                    
+                    <?php endif; ?>
 				<div class="modal-footer">
 					<button type="submit" class="btn btn-primary">Salvar</button>
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -143,24 +156,23 @@
 ?>
 	<hr>
 
-	<form method="POST" action="<?= base_url('perfil/alterar') ?>">
 
 		<div class="form-row">
 
 			<div class="form-group col-12 col-md-4">
 				<label for="nome" class="font-weight-bold">Nome</label>
-				<input type="text" readonly class="form-control readonly-input" id="nome" value="<?= $usuario->nome ?>">
+				<input type="text" readonly class="form-control readonly-input" value="<?= $usuario->nome ?>">
 			</div>
 
 			<div class="form-group col-12 col-md-4">
 				<label for="email" class="font-weight-bold">E-mail</label>
 				<input type="hidden" id="id_usuario" value="<?= $usuario->id_usuario ?>">
-				<input type="email" readonly class="form-control readonly-input  readonlyreadonly-input" id="email" placeholder="E-mail" value="<?= $usuario->email ?>" required>
+				<input type="email" readonly class="form-control readonly-input  readonlyreadonly-input"  placeholder="E-mail" value="<?= $usuario->email ?>" required>
 			</div>
 
 			<div class="form-group col-12 col-md-4">
 				<label for="telefone" class="font-weight-bold">Telefone/WhatsApp</label>
-				<input type="tel" class="form-control readonly-input" readonly id="telefone" value="<?= $usuario->telefone ?>">
+				<input type="tel" class="form-control readonly-input" readonly value="<?= $usuario->telefone ?>">
 			</div>
 
 		</div>
@@ -168,7 +180,7 @@
 		<div class="form-row">
 			<div class="form-group col-md-4">
 				<label for="cidade" class="font-weight-bold">Sou de</label>
-				<input type="text" class="form-control readonly-input" readonly id="cidade" value="<?= $cidade->nome?>/<?=$cidade->uf?>">
+				<input type="text" class="form-control readonly-input" readonly value="<?= $cidade->nome?>/<?=$cidade->uf?>">
 			</div>
 		</div>
 
@@ -184,6 +196,6 @@
 		<a href="#" data-toggle="modal" data-target="#editarPerfil"><button type="button" class="btn btn-primary">Editar</button></a>
 		<a href="#" data-toggle="modal" data-target="#trocarsenha"><button type="button" class="btn btn-primary">Alterar Senha</button></a>
 
-	</form>
+	
 </div>
 <?php $this->endSection()?>

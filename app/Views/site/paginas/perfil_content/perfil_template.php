@@ -1,6 +1,6 @@
 <?= $this->extend('site/templates/base_template') ?>
 
-<?php $this->section('content'); ?>
+<?= $this->section('content'); ?>
 <?= $this->renderSection('modalsenha') ?>
 <?= $this->renderSection('modalEditarPerfil') ?>
 <?= $this->renderSection('modalEditarOng') ?>

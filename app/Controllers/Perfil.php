@@ -45,7 +45,7 @@ class Perfil extends Controller
         $data['pets_adotados']      = $adotados->getAdotadosByIdUsuario($id_usuario); 
         $data['estados']            = $estados->getEstados();
         $data['cidade']             = $cidade->getCidadesById($dados->id_cidade);
-
+        
         if (session()->has('erro')) { //se na sessao tem a variavel erro.
             $data['erro'] = session('erro');
         }
@@ -59,12 +59,31 @@ class Perfil extends Controller
         if ($this->request->getMethod() !== 'post') { //Valida se página veio de um POST | Proteção contra direct Access
             return redirect()->to('/');
         } else{
+            $validacao = $this->validate([ //Validação Server Side Form
+                'nome'      => 'required|min_length[2]|max_length[15]',
+                'email'     => 'required|valid_email', //Obriga o preeenchimento do Form
+                'telefone'  => 'required|max_length[15]'
+            ]);
+            if (!$validacao) {
+                //Cria uma Sessao chamada 'erro' com a mensagem de erro padrão do validator
+               /* $error = [
+                    'codigo' => 1,
+                    'mensagem' =>
+                    'Verifique se todos os campos estão preenchidos.'
+                ];*/
+               //print_r($this->validator->listErrors());
+               $mensagem = ['codigo' => 2, 'mensagem'=> $this->validator->listErrors()];
+               return redirect()->back()->with('mensagem', $mensagem);
+            }else{
             $dados      = $this->request->getPostGet();
             $usuario    = new Usuarios;
             $id_usuario = session()->get('id_usuario');
-            
             $resultado = $usuario->updateUsuario($id_usuario,  $dados);
-            var_dump($resultado);
+              if($resultado == 1){
+                    $mensagem = ['codigo' => 1, 'mensagem' => 'Dados alterados com sucesso'];
+                    return redirect()->to(base_url('perfil'))->with('mensagem', $mensagem);
+                }
+            }
         }
     }
 
