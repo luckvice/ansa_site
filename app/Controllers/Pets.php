@@ -13,16 +13,10 @@ class Pets extends Controller
 {
 	public function index($especie = '', $tamanho = '', $sexo = '')
 	{
-		/*$ip = $_SERVER['REMOTE_ADDR'];
-        $details = json_decode(file_get_contents("http://ipinfo.io/187.113.226.25/json"));*/
-		//echo $details->region . ' | ' . $details->city;
 		$estados = new Estados();
 		$cidades = new Cidades();
 		$data['estados']         	= $estados->getEstados();
 		$pets = new Pets_model;
-
-		//session()->set('estado', $estado);
-		//session()->set('cidade', $cidade);
 
 		$data['cidades'] = $cidades->getCidadesByEstadoId(session()->get('estado'));
 
@@ -88,11 +82,9 @@ class Pets extends Controller
 		$cidade 	= $this->request->getPostGet('cidade_pet');
 		$tamanho 	= $this->request->getPostGet('porte');
 		$sexo 		= $this->request->getPostGet('sexo');
-
-		
+			
 		session()->set('estado', $estado);
 		session()->set('cidade', $cidade);
-
 
 		$data['cidades'] = $cidades->getCidadesByEstadoId($estado);
 

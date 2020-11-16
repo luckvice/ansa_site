@@ -152,8 +152,8 @@ class Perfil extends Controller
                 'imagem3'   => 'is_image[imagem3]|max_size[imagem3, 5048]|ext_in[imagem3,jpg,jpeg,png]',
             ]);
             if (!$validacao) {
-            $data['validator'] = $this->validator;
-            return redirect()->to('/perfil/cadastrarpet')->withInput()->with('erro', $data['validator']->listErrors());
+            $data['validator'] = $this->validator->listErrors();
+            return redirect()->to('/perfil/cadastrarpet')->withInput()->with('erro', $data['validator']);
             } else {
                 
                $pet = new Pets();
@@ -323,6 +323,7 @@ class Perfil extends Controller
             
             if (!$validacao) {
                 $mensagem = ['codigo' => 2, 'mensagem' => 'Verifique se os campos estão completos'];
+                
                 return redirect()->to(base_url('perfil/ong'))->withInput()->with('mensagem', $mensagem);
             } else {
                 $dados  = $this->request->getPostGet();
