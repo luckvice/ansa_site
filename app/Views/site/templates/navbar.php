@@ -31,7 +31,7 @@
             <div class="dropdown-menu dropdown-with-icons">
               <?php if (session()->has('logado')) : ?>
                 <a href="/perfil" class="dropdown-item">
-                  <i class="material-icons">face</i> Perfil
+                  <i class="material-icons"></i> Perfil
                 </a>
                 <?php if (session()->get('id_nivel') == 3) : ?>
                 <a href="/perfil/ong" class="dropdown-item">
@@ -61,19 +61,19 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="#" target="_blank" data-original-title="Sega nos no Twitter rel=" nofollow">
-              <i class="fa fa-twitter"></i>
+            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="#" target="_blank" data-original-title="Siga-nos no Twitter" rel="nofollow">
+              <i class="fab fa-facebook-square" style="font-size: 16px;"></i>
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="#" target="_blank" data-original-title="Curta nossa pagina no Facebook" rel="nofollow">
-              <i class="fa fa-facebook-square"></i>
+            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="#" target="_blank" data-original-title="Curta nossa página no Facebook" rel="nofollow">
+              <i class="fab fa-instagram" style="font-size: 16px;"></i>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="#" target="_blank" data-original-title="Siga nos no Instagram" rel="nofollow">
-              <i class="fa fa-instagram"></i>
+            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="#" target="_blank" data-original-title="Siga-nos no Instagram" rel="nofollow">
+              <i class="fab fa-twitter-square" style="font-size: 16px;"></i>
             </a>
           </li>
         </ul>

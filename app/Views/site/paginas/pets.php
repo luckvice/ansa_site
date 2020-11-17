@@ -43,7 +43,7 @@
 <div class="main">
   <div class="section">
     <div class="container">
-      <h2 class="section-title">Encontre o fofuxo perfeito</h2>
+      <h2 class="section-title" style="margin-bottom: 20px;">• Encontre o amigo perfeito!</h2>
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="display:none">
         Launch demo modal
@@ -56,9 +56,9 @@
         <div class="col-md-12">
        
           <div class="row">
-          <?php foreach($listaPets as $key=>$value){ ?>
+          <?php foreach($listaPets as $key=>$value) { ?>
             <div class="col-md-4">
-              <div class="card" style="width: 20rem;">
+              <div class="card">
                 <a href="<?=base_url("pet/".$value->id_pet)?>">
                   <div class="content">
                     <div class="content-overlay"></div>

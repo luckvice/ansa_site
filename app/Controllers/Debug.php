@@ -217,4 +217,14 @@ class Debug extends Controller
         echo view('site/templates/email/'.$template.'.php',$data);
 
     }
+
+    function getCidade($id_cidade) {
+
+        $cidade = new Cidades;
+
+        $cidade = $cidade->getCidadesById($id_cidade);
+
+        var_dump($cidade);
+
+    }
 }

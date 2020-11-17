@@ -74,7 +74,7 @@ class Pets extends Controller
 		$cidades 	= new Cidades();
 		$pets 		= new Pets_model;
 		helper('form');
-		$data['title'] 				= 'Ver Pets';
+		$data['title'] 				= 'Pets | Amigo Não se Abandona';
 		$data['menuTransparent'] 	= False;
 		$data['estados'] 			= $estados->getEstados();
 

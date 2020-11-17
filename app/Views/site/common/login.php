@@ -38,14 +38,23 @@
           
                 </div>
                 <br>
-                  <a id="esqueciSenha" class="esqueciSenha" data-toggle="collapse" href="#colesqueciSenha" aria-expanded="false" aria-controls="colesqueciSenha">Esqueci Minha senha</a>
-          
+                <div class="input-group text-center">
+                
+                  <a id="esqueciSenha" class="esqueciSenha" data-toggle="collapse" href="#colesqueciSenha" aria-expanded="false" aria-controls="colesqueciSenha" style="margin: 0 auto;">Esqueci Minha senha</a>
+                </div>
               </div>
-              <div class="collapse" id="colesqueciSenha">
-        
-              <input id="esqueci_email" type="email" name="esqueci_email" class="form-control" placeholder="Informe o Email para recuperação" value="<?= old('email'); ?>">
-              <button id="solicitarSenha" type="button" class="btn btn-primary">Enviar solicitação</button> 
-              <div id="resposta" role="alert" > </div>
+              <div class="text-center collapse" id="colesqueciSenha">
+                
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text"><i class="material-icons">email</i></div>
+                    </div>
+                    <input id="esqueci_email" type="email" name="esqueci_email" class="form-control" placeholder="Informe o Email para recuperação" value="<?= old('email'); ?>">
+                </div>
+
+                <button id="solicitarSenha" type="button" class="btn btn-primary" style="margin-top: 20px;">Enviar solicitação</button> 
+                
+                <div id="resposta" role="alert" > </div>
               </div>
               <!-- Exibe Mensagem de erro Abre Modal -->
               <?php

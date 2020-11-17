@@ -15,7 +15,7 @@ class Home extends Controller
 		$data['estados']         	= $estados->getEstados();
 ;   
 		helper('form');
-		$data['title'] = 'A.N.S.A | Página Inicial';
+		$data['title'] = 'Amigo Não se Abandona | Página Inicial';
 		$data['menuTransparent'] = True;
 
 		//Verifica Mensagem de erro do Login Auth Controller

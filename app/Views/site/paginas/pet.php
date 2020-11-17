@@ -115,15 +115,23 @@
 	    				<div class="pet-item">
 							<div class="card-body text-left">
 								<div class="pet-title">
-									<h5 class="card-title"><i class="fas fa-paw"></i> Características</h5>
+									<h5 class="card-title"><i class="fas fa-paw"></i> <span style="color: purple;">Características</span</h5>
 								</div>
 								<hr>
 								<?php
-								foreach($caracteristica as $key=>$value){
-									if($value[1] == 1){ ?>
-										<p class="card-text"><i class="<?=$value[0]?>"></i><?=$key?></p>		
-						    <?php	}
+								
+								$count_caracteristicas = 0;
+
+								foreach($caracteristica as $key=>$value) {
+									if($value[1] == 1) { 
+										$count_caracteristicas++; 
+										?><p class="card-text"><i class="<?=$value[0]?>"></i><?=$key?></p><?php	
+									}
 								}
+
+								if(!$count_caracteristicas) :
+									?><p class="card-text"><i class="fas fa-times"></i> Não há informações sobre as características desse animal</p><?php
+								endif;
 								?>
 							</div>
 						</div>
@@ -134,17 +142,25 @@
 	    				<div class="pet-item">
 							<div class="card-body text-left">
 								<div class="pet-title">
-									<h5 class="card-title"><i class="fas fa-heartbeat"></i> Saúde</h5>
+									<h5 class="card-title"><i class="fas fa-heartbeat"></i> <span style="color: purple;">Saúde</span></h5>
 								</div>
 								
 								<hr>
 
 								<?php
-								foreach($saude as $key=>$value){
-									if($value[1] == 1){ ?>
-										<p class="card-text"><i class="<?=$value[0]?>"></i><?=$key?></p>		
-						    <?php	}
-								}
+
+									$count_saude = 0;
+
+									foreach($saude as $key=>$value){
+										if($value[1] == 1){ 
+											$count_saude++; 
+											?><p class="card-text"><i class="<?=$value[0]?>"></i><?=$key?></p><?php	
+										}
+									}
+
+									if(!$count_saude) : ?>
+										<p class="card-text"><i class="fas fa-times"></i> Não há informações sobre a saúde desse animal</p><?php
+									endif;
 								?>
 
 							</div>
@@ -156,7 +172,7 @@
 	    				<div class="pet-item">
 							<div class="card-body text-left">
 								<div class="pet-title">
-									<h5 class="card-title"><i class="fas fa-map-marker-alt"></i> Onde estou</h5>
+									<h5 class="card-title"><i class="fas fa-map-marker-alt"></i> <span style="color: purple;">Onde estou</span></h5>
 								</div>
 								
 								<hr>

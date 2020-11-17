@@ -279,7 +279,6 @@
             <div class="col">
                 <h3 class="font-weight-bold">Adicione fotos do Pet</h3>
                 <hr>
-
             </div>
         </div>
         <div class="row" style="margin: 20px;">

@@ -20,19 +20,19 @@
 						</div>
 						<div class="form-group col-6">
 							<label class="control-label" for="site">Site</label>
-							<input type="text" class="form-control is-invalid" name="site" id="site" value="<?=$ong->site?>" required>
+							<input type="url" placeholder="Ex: https://meusite.com" class="form-control is-invalid" name="site" id="site" value="<?=$ong->site?>">
 						</div>
 						<div class="form-group col-6">
 							<label class="control-label" for="facebook">Facebook</label>
-							<input type="text" class="form-control is-invalid" name="facebook" id="facebook" value="<?=$ong->facebook?>" required>
+							<input type="url" placeholder="Ex: https://facebook.com/meuface" class="form-control is-invalid" name="facebook" id="facebook" value="<?=$ong->facebook?>">
 						</div>
 						<div class="form-group col-6">
 							<label class="control-label" for="instagram">Instagram</label>
-							<input type="text" class="form-control is-invalid" name="instagram" id="instagram" value="<?=$ong->instagram?>" required>
+							<input type="url" placeholder="https://instagram.com/meuinsta" class="form-control is-invalid" name="instagram" id="instagram" value="<?=$ong->instagram?>">
 						</div>
 						<div class="form-group col-6">
 							<label class="control-label" for="twitter">Twitter</label>
-							<input type="text" class="form-control is-invalid" name="twitter" id="twitter" value="<?=$ong->twitter?>" required>
+							<input type="url" placeholder="https://twitter.com/meutwitter" class="form-control is-invalid" name="twitter" id="twitter" value="<?=$ong->twitter?>">
 						</div>
 						<div class="form-group col-12" style="margin-top: 10px;">
 							<label class="control-label" for="descricao">Descrição da ONG (Descreva informações que ajudem o usuário a conhecer melhor a sua ONG!)</label>
@@ -172,6 +172,7 @@
 					<?php endif; ?>
 					<br>
 					<a href="#" data-toggle="modal" data-target="#editarOng"><button type="button" class="btn btn-primary">Editar</button></a>
+					<a href="<?= base_url('ong')."/".$ong->id_ong?>" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Visualizar informações da ONG">Ver</a>
 				</div>
 
 			</div>

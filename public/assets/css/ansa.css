@@ -4,6 +4,12 @@
 
 
 /* CUSTOM Styles */
+
+.external-link {
+    text-decoration: none;
+    color: #575757;
+}
+
 .info p.purple{
     color:#9c27b0;
 }

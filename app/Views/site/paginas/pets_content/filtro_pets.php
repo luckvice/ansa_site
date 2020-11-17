@@ -9,7 +9,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link <?php if (isset($dogs)) : echo 'active';
-                                    endif; ?>" href="/pets/caes" data-toggle="tooltip" data-placement="top" title="Listar cães">
+                                    endif; ?>" href="/pets/caes" data-toggle="tooltip" data-placement="top" title="Listar Cães">
                     <i class="fas fa-dog"></i>
 
                 </a>
