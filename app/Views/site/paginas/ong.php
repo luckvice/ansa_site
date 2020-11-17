@@ -34,16 +34,16 @@
 								<?php if(count($campos_contato)) : ?>
 									
 									<?php foreach ($campos_contato as $campo) { ?>
-										<p class="card-text"><a class="external-link" href="<?=$ong->$campo?>" target="_blank"><i class="fas fa-desktop"></i> <?=$ong->$campo?></a></p><?
+										<p class="card-text"><a class="external-link" href="<?=$ong->$campo?>" target="_blank"><i class="fas fa-desktop"></i> <?=$ong->$campo?></a></p><?php
 									}
 
 								?>
 
-								<? else : ?>
+								<?php else : ?>
 
 									<p class="card-text"><i class="fas fa-times"></i> Não há informações sobre o contato dessa ONG</p>
 
-								<? endif; ?>
+								<?php endif; ?>
 							</div>
 						</div>
 					</div>
