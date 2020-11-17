@@ -1,7 +1,5 @@
 <?= $this->extend('site/templates/base_template') ?>
 <?= $this->section('content') ?>
-
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -29,7 +27,6 @@
       <div class="col-md-6">
         <h1 class="title">20 Novos Pets <br>Adicionados</h1>
         <h4>Algum texto aqui</h4>
-
       </div>
       <div class="col-md-5 ml-auto">
         <h1 class="title">15 Pets <br>Adotados</h1>
@@ -37,7 +34,6 @@
         <br>
       </div>
     </div>
-
   </div>
 </div>
 <div class="main">
@@ -52,9 +48,7 @@
         <div class="col-md-12">
           <?= $this->include('site/paginas/pets_content/filtro_pets') ?>
         </div>
-
         <div class="col-md-12">
-       
           <div class="row">
           <?php foreach($listaPets as $key=>$value) { ?>
             <div class="col-md-4">
@@ -91,7 +85,6 @@
                       <p class="card-text"><i class="fas fa-dumbbell"></i><?= $value->porte_descricao?></p>
                     </div>
                     <div class="col">
-
                     </div>
                   </div>
                   <div class="row">
@@ -121,9 +114,7 @@
         </div>
       </div>
       <br>
-
     </div>
   </div><!-- section -->
-
 </div>
 <?= $this->endSection() ?>

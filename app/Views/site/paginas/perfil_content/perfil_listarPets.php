@@ -1,6 +1,6 @@
 <?= $this->extend('site/paginas/perfil_content/perfil_template') ?>
 
-<?php $this->section('content_perfil'); ?>
+<?= $this->section('content_perfil') ?>
 
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 

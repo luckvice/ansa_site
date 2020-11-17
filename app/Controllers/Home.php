@@ -11,12 +11,11 @@ class Home extends Controller
 {
 	public function index()
 	{
-		$estados = new Estados();
-		$data['estados']         	= $estados->getEstados();
-;   
 		helper('form');
-		$data['title'] = 'Amigo Não se Abandona | Página Inicial';
-		$data['menuTransparent'] = True;
+		$estados 					= new Estados();
+		$data['estados']    		= $estados->getEstados();
+		$data['title'] 				= 'Amigo Não se Abandona | Página Inicial';
+		$data['menuTransparent'] 	= True;
 
 		//Verifica Mensagem de erro do Login Auth Controller
 		if (session()->has('erro')) { //se na sessao tem a variavel erro.
@@ -32,15 +31,8 @@ class Home extends Controller
 			base_url('assets/img/dog4.jpg'),
 			base_url('assets/img/gato1.jpg')			
 		];
-			
-		$numRamdom = array_rand($imagens);
-		
-		$data['backgroud'] = $imagens[$numRamdom];
-
-			echo view('site/paginas/home', $data);
+		$numRamdom 			= array_rand($imagens);
+		$data['backgroud'] 	= $imagens[$numRamdom];
+		echo view('site/paginas/home', $data);
 	}
-
-
-	//--------------------------------------------------------------------
-
 }

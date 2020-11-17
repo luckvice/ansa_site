@@ -1,7 +1,5 @@
 <?= $this->extend('site/paginas/perfil_content/perfil_template') ?>
-
-<?php $this->section('modalsenha'); ?>
-
+<?= $this->section('modalsenha') ?>
 <div class="modal fade" tabindex="-1" role="dialog" id="trocarsenha">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
@@ -23,7 +21,6 @@
 							<input type="password" class="form-control" name="senha_r" required>
 						</div>
 					</div>
-
 				</div>
 				<div class="modal-footer">
 					<button type="submit" class="btn btn-primary">Salvar</button>
@@ -33,10 +30,8 @@
 		</div>
 	</div>
 </div>
-<?php $this->endSection(); ?>
-
-<?php $this->section('modalEditarPerfil'); ?>
-
+<?= $this->endSection() ?>
+<?= $this->section('modalEditarPerfil') ?>
 <div class="modal fade" tabindex="-1" role="dialog" id="editarPerfil">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
@@ -95,9 +90,9 @@
 		</div>
 	</div>
 </div>
-<?php $this->endSection(); ?>
+<?= $this->endSection() ?>
 
-<?php $this->section('content_perfil'); ?>
+<?= $this->section('content_perfil') ?>
 <div class="tab-pane active show" id="profile">
 	<h3 class="text-left font-weight-bold">Olá, <?= $usuario->nome ?>!</h3>
 	<hr>
@@ -154,9 +149,7 @@
 <?php	endif;
 	 endif;
 ?>
-	<hr>
-
-
+		<hr>
 		<div class="form-row">
 
 			<div class="form-group col-12 col-md-4">
@@ -198,4 +191,4 @@
 
 	
 </div>
-<?php $this->endSection()?>
+<?= $this->endSection()?>

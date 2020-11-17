@@ -42,23 +42,18 @@ class Pets extends Controller
 			$data['listaPets'] = $pets->getPets($regiao, false, false, false, 1, true, null, true, null);
 		} else if ($especie == 'gatos') {
 			session()->set('especie', 2);
-			$data['cats'] = true;
-			$data['listaPets'] = $pets->getPets($regiao, false, false, false, 2, true, null, true, null);
+			$data['cats'] 		= true;
+			$data['listaPets'] 	= $pets->getPets($regiao, false, false, false, 2, true, null, true, null);
 		} else if ($especie == 'todos') {
 			session()->set('especie', 4);
-			$data['all'] = true;
-			$data['listaPets'] = $pets->getPets($regiao, false, false, true, null, true, null, true, null);
+			$data['all'] 		= true;
+			$data['listaPets'] 	= $pets->getPets($regiao, false, false, true, null, true, null, true, null);
 		}else{
-			$data['listaPets'] = $pets->getPets($regiao, false, false, true, null, true, null, true, null);
+			$data['listaPets'] 	= $pets->getPets($regiao, false, false, true, null, true, null, true, null);
 
 		}
 
 		echo view('site/paginas/pets', $data);
-	}
-
-	public function alterarPetStatus($status)
-	{
-
 	}
 
 	public function buscar($especie = '')
@@ -110,30 +105,30 @@ class Pets extends Controller
 		
 		/* Filtros consulta */
 		if (session()->get('especie') == 1) {
-			$data['dogs'] = true;
-			$data['listaPets'] = $pets->getPets($estado_cidade, $limiteEstado, true, false, 1, $todosSexos, $sexo, $todosTamanhos, $tamanho);
+			$data['dogs'] 		= true;
+			$data['listaPets']	= $pets->getPets($estado_cidade, $limiteEstado, true, false, 1, $todosSexos, $sexo, $todosTamanhos, $tamanho);
 		} else if (session()->get('especie') == 2) {
-			$data['cats'] = true;
-			$data['listaPets'] = $pets->getPets($estado_cidade, $limiteEstado, true, false, 2, $todosSexos, $sexo, $todosTamanhos, $tamanho);
+			$data['cats'] 		= true;
+			$data['listaPets'] 	= $pets->getPets($estado_cidade, $limiteEstado, true, false, 2, $todosSexos, $sexo, $todosTamanhos, $tamanho);
 		} else if (session()->get('especie') == 4) {
-			$data['all'] = true;
-			$data['listaPets'] = $pets->getPets($estado_cidade, $limiteEstado, true, true, null, $todosSexos, $sexo, $todosTamanhos, $tamanho);
+			$data['all'] 		= true;
+			$data['listaPets'] 	= $pets->getPets($estado_cidade, $limiteEstado, true, true, null, $todosSexos, $sexo, $todosTamanhos, $tamanho);
 		
 		}else{
-			$data['all'] = true;
-			$data['listaPets'] = $pets->getPets($estado_cidade, $limiteEstado, true, true, null, $todosSexos, $sexo, $todosTamanhos, $tamanho);	
+			$data['all'] 		= true;
+			$data['listaPets'] 	= $pets->getPets($estado_cidade, $limiteEstado, true, true, null, $todosSexos, $sexo, $todosTamanhos, $tamanho);	
 		}
 		echo view('site/paginas/pets', $data);
 	}
 
-
 	public function pet($id_pet)
 	{
-		$estados = new Estados();
-		$data['estados']         	= $estados->getEstados();
-		$pet = new Pets_model;
 		helper('form');
 		helper('text');
+		$estados 	= new Estados();
+		$pet 		= new Pets_model;
+		$data['estados']         	= $estados->getEstados();
+
 		session()->set('criptopost',random_string('sha1',150));//Cria sessão criptografada
 		session()->markAsFlashdata('criptopost');//marca como sessao temporaria
 
