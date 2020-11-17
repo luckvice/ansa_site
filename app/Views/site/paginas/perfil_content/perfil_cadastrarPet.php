@@ -1,5 +1,5 @@
 <?= $this->extend('site/paginas/perfil_content/perfil_template') ?>
-<?php $this->section('content_perfil'); ?>
+<?= $this->section('content_perfil') ?>
 <div class="tab-pane active show" id="cadastrarPet">
     <form method="POST" enctype="multipart/form-data" action="/perfil/addPet">
         <div class="row">
@@ -30,7 +30,6 @@
                     </div>
 
                 </div>
-
                 <div class="form-check text-left">
                     <label style="margin-bottom: 0px !important; width: 70px;">Porte:</label>
                     <div class="form-check form-check-radio form-check-inline" style="margin-bottom: 15px;">
@@ -59,7 +58,6 @@
                     </div>
 
                 </div>
-
                 <div class="form-check text-left">
                     <label style="margin-bottom: 0px !important; width: 70px;">Sexo:</label>
                     <div class="form-check form-check-radio form-check-inline" style="margin-bottom: 15px;">
@@ -79,7 +77,6 @@
                         </label>
                     </div>
                 </div>
-                
                 <div class="form-group text-left" style="margin-top: 15px;">
                     <select id="estado" class="selectpicker text-left" data-style="select-with-transition" title="Selecione o estado" data-size="7" name="estado">
                     <option selected>Selecione o Estado</option>
@@ -87,12 +84,9 @@
                                 <option value="<?= $value->id_estado?>"><?= $value->nome?></option>
                                 <?php }?>
                     </select>
-
                     <select id="cidade" class="selectpicker text-left" data-style="select-with-transition" title="Seleciona a cidade" data-size="7" name="cidade">
-
                     </select> 
                 </div>
-
                 <div class="form-group text-left" style="margin-top: 15px;">
                     <label for="idade">Qual a idade do pet:</label>
                     <select class="selectpicker text-left" data-style="select-with-transition" name="idade" title="Idade" data-size="7" required>
@@ -356,8 +350,7 @@
             </div>
         <?php endif; ?>
         <div style="display:none" id="erro_campos" class="alert alert-primary" role="alert">
-        
-           
+
         </div>
         <button type="submit" id="cadastrar_pet" class="btn btn-primary" style="margin: 20px;">Cadastrar Pet</button>
     </form>

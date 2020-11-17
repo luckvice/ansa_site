@@ -7,13 +7,13 @@ namespace App\Helpers;
 class Geoip
 {  
     function __construct() {
-        $this->ip = $_SERVER['REMOTE_ADDR'];
-        $this->server_api = json_decode(file_get_contents('http://ipinfo.io/187.113.226.25/json'));
+        $this->ip = $_SERVER['REMOTE_ADDR'];//http://ipinfo.io/187.113.226.25/json | region | city | hash 4feb9b44b1832a35c4e57e8e7e63bd73
+        $this->server_api = json_decode(file_get_contents('http://api.ipstack.com/187.113.226.25?access_key='));
     }
 
     public function getRegiaoPorIp(){
         $response = $this->server_api;
-        return $response->region;
+        return $response->region_name;
     }
 
     public function getCidadePorIp(){

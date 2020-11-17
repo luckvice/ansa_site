@@ -8,11 +8,6 @@ use App\Libraries\Sima;
 
 class Auth extends Controller
 {
-
-    public function esqueciMinhaSenha($token){
-    
-    }
-
     public function login() //Realizar Login do usuario
     {
         if ($this->request->getMethod() !== 'post') { //Valida se página veio de um POST | Proteção contra direct Access
@@ -78,12 +73,6 @@ class Auth extends Controller
                 'termos'    => 'required'
             ]);
             if (!$validacao) {
-                //Cria uma Sessao chamada 'erro' com a mensagem de erro padrão do validator
-               /* $error = [
-                    'codigo' => 1,
-                    'mensagem' =>
-                    'Verifique se todos os campos estão preenchidos.'
-                ];*/
                 return redirect()->back()->withInput()->with('erro_registrar', $this->validator);
             } else {
                 $dados = $this->request->getPostGet();
@@ -98,9 +87,8 @@ class Auth extends Controller
 
                     if (!$usuarios->checkExistsEmail($dados['email']) == null) {
                         $error = [
-                            'codigo' => 1,
-                            'mensagem' =>
-                            'Esse E-mail já se encontra cadastrado.'
+                            'codigo'    => 1,
+                            'mensagem'  => 'Esse E-mail já se encontra cadastrado.'
                         ];
                         return redirect()->back()->withInput()->with('erro_mail', $error);
                     }

@@ -46,7 +46,8 @@ class Ongs
             'twitter'           => $dados['twitter'],
             'instagram'         => $dados['instagram'],
             'descricao'         => $dados['descricao'],
-            'data_alteracao'    => date("Y-m-d")
+            'data_alteracao'    => date("Y-m-d"),
+            'excluido'          => 0
         ];
 
         $db->table('ong')->where('id_ong', $id_ong)->update($data);
@@ -76,4 +77,15 @@ class Ongs
         return $resultados;
     }
 
+    public function getOngsByCidade($nome_cidade){
+        $db = db_connect();
+        $resultados = $db->table('ong')
+                            ->select('ong.id_ong, ong.nome, ong.avatar, municipio.nome as nome_cidade, municipio.uf, usuario.id_cidade')
+                            ->join('usuario','usuario.id_usuario = ong.id_usuario','LEFT')
+                            ->join('municipio','municipio.id_municipio = usuario.id_cidade','LEFT')
+                            ->where('ong.excluido',0)
+                            ->like('municipio.nome', $nome_cidade)->get()->getResultObject();
+        $db->close();
+        return $resultados;
+    }
 }

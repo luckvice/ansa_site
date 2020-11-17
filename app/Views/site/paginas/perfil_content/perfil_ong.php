@@ -1,6 +1,6 @@
 <?= $this->extend('site/paginas/perfil_content/perfil_template') ?>
 
-<?php $this->section('modalEditarOng'); ?>
+<?= $this->section('modalEditarOng') ?>
 
 <div class="modal fade" tabindex="-1" role="dialog" id="editarOng">
 	<div class="modal-dialog" role="document">
@@ -72,19 +72,16 @@
 		</div>
 	</div>
 </div>
-<?php $this->endSection(); ?>
+<?= $this->endSection() ?>
 
-<?php $this->section('content_perfil'); ?>
+<?= $this->section('content_perfil') ?>
 
 <div class="tab-pane active show" id="profile">
 	<h3 class="text-left font-weight-bold">Minha ONG</h3>
 	<hr>
-	
 	<?php $mensagem = session()->get('mensagem');
-
 		if(isset($mensagem)): 
 			if($mensagem['codigo'] == 1): 
-
 				?>
 				<div class="row">
 					<div class="col">
@@ -106,21 +103,14 @@
 	<?php	endif;
 		endif;
 	?>
-
 	<form method="POST" action="<?= base_url('perfil/alterar') ?>">
-
 		<div class="container">
-
 			<div class="row">
-				
 				<div class="col-12 col-md-3" style="display: flex; align-items: center; padding: 20px;">
-
 					<div class="perfil-pic">
 						<img src="<?=$avatar_src?>">
 					</div>
-
 				</div>
-
 				<div class="col-12 col-md-9">
 					<div class="form-row">
 
@@ -135,7 +125,6 @@
 						</div>
 
 					</div>
-
 					<div class="form-row">
 						<div class="form-group col-md-4">
 							<label for="facebook" class="font-weight-bold">Facebook</label>
@@ -150,7 +139,6 @@
 							<input type="text" class="form-control readonly-input" readonly id="twitter" value="<?=$ong->twitter?>">
 						</div>
 					</div>
-
 					<div class="form-row">
 						<div class="form-group col-md-12">
 							<label for="descricao">Descrição da ONG (Informações para que os usuários conheçam sua ONG)</label>
@@ -159,12 +147,9 @@
 					</div>
 				</div>
 			</div>
-
 			<div class="row">
-
 	 			<div class="col-12">
 					<?php if (isset($erro)) : ?>
-
 						<div class="alert alert-danger" role="alert">
 							<?= $erro->listErrors() ?>
 							<?php echo $erro->listErrors() ?>
@@ -174,10 +159,9 @@
 					<a href="#" data-toggle="modal" data-target="#editarOng"><button type="button" class="btn btn-primary">Editar</button></a>
 					<a href="<?= base_url('ong')."/".$ong->id_ong?>" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Visualizar informações da ONG">Ver</a>
 				</div>
-
 			</div>
 		</div>
 	</form>
 </div>
 
-<?php $this->endSection()?>
+<?= $this->endSection()?>

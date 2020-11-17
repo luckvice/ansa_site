@@ -13,18 +13,15 @@ use App\Helpers\Geoip;
 
 class Ongs extends Controller
 {
-    public function index()
-    {
-        
-    }
-
     public function ong($id_ong)
     {
-        
-        $pet = new Pets_model;
-        $ong = new Ongs_model;
-        $cidade = new Cidades;
-
+        helper('form');
+        $pet        = new Pets_model;
+        $ong        = new Ongs_model;
+        $estados    = new Estados;
+        $cidade     = new Cidades;
+        $data['estados'] = $estados->getEstados();
+       // $data['cidades'] = $cidade->getCi;
         //Configurações de pagina
 		$data['title'] 				= 	'ONG | Amigo Não se Abandona';
         $data['menuTransparent'] 	= 	False;
@@ -41,30 +38,22 @@ class Ongs extends Controller
 		if(empty($ong)){
 			return view('errors/html/production');
         }
-        
+    
         // ONG e seus campos
-        $ong = $ong->getOngById($id_ong);
-
-        $data['ong'] = $ong;
-
+        $ong            = $ong->getOngById($id_ong);
+        $data['ong']    = $ong;
         $campos_contato = array();
 
-        if($ong->site) $campos_contato[] = 'site';
-        if($ong->facebook) $campos_contato[] = 'facebook';
-        if($ong->twitter) $campos_contato[] = 'twitter';
+        if($ong->site)      $campos_contato[] = 'site';
+        if($ong->facebook)  $campos_contato[] = 'facebook';
+        if($ong->twitter)   $campos_contato[] = 'twitter';
         if($ong->instagram) $campos_contato[] = 'instagram';
 
         $data['campos_contato'] = $campos_contato;
-        
-        // Lista de Pets
-        $data['listaPets'] = $pet->getPetsByUsuario($ong->id_usuario);
-
-        // Cidade da ONG
-        $usuario = new Usuarios;
-        $usuario = $usuario->getUsuarioById($ong->id_usuario);
-        
-        $data['cidade'] = $cidade->getCidadesById($usuario->id_cidade);
-        
+        $data['listaPets']      = $pet->getPetsByUsuario($ong->id_usuario); // Lista de Pets
+        $usuario                = new Usuarios; // Cidade da ONG
+        $usuario                = $usuario->getUsuarioById($ong->id_usuario);
+        $data['cidade']         = $cidade->getCidadesById($usuario->id_cidade);
         echo view('site/paginas/ong', $data);
     }
 }

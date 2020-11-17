@@ -1,5 +1,4 @@
 <?= $this->extend('site/templates/base_template') ?>
-
 <?= $this->section('content') ?>
 
 <div class="modal fade" tabindex="-1" role="dialog" id="solicitarAdocao">
@@ -57,9 +56,7 @@
 		</div>
 	</div>
 </div>
-
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-
 <div class="page-header pet-cover" data-parallax="true"></div>
 <div class="main main-raised">
 	<div class="profile-content">
@@ -96,7 +93,6 @@
 									</div>
 								</div>
 							</div>
-
 							<h6>Mostre <?=$nome?> aos seus amigos!</h6>
 							<div class="sharethis-inline-share-buttons" style="display: flex; justify-content: center; margin: 20px;"></div>
 						<!--	<a href="#pablo" class="btn btn-just-icon btn-link btn-facebook"><i class="fab fa-facebook"></i></a>
@@ -119,16 +115,13 @@
 								</div>
 								<hr>
 								<?php
-								
 								$count_caracteristicas = 0;
-
 								foreach($caracteristica as $key=>$value) {
 									if($value[1] == 1) { 
 										$count_caracteristicas++; 
 										?><p class="card-text"><i class="<?=$value[0]?>"></i><?=$key?></p><?php	
 									}
 								}
-
 								if(!$count_caracteristicas) :
 									?><p class="card-text"><i class="fas fa-times"></i> Não há informações sobre as características desse animal</p><?php
 								endif;
@@ -144,25 +137,19 @@
 								<div class="pet-title">
 									<h5 class="card-title"><i class="fas fa-heartbeat"></i> <span style="color: purple;">Saúde</span></h5>
 								</div>
-								
 								<hr>
-
 								<?php
-
 									$count_saude = 0;
-
 									foreach($saude as $key=>$value){
 										if($value[1] == 1){ 
 											$count_saude++; 
 											?><p class="card-text"><i class="<?=$value[0]?>"></i><?=$key?></p><?php	
 										}
 									}
-
 									if(!$count_saude) : ?>
 										<p class="card-text"><i class="fas fa-times"></i> Não há informações sobre a saúde desse animal</p><?php
 									endif;
 								?>
-
 							</div>
 						</div>
 					</div>
@@ -174,9 +161,7 @@
 								<div class="pet-title">
 									<h5 class="card-title"><i class="fas fa-map-marker-alt"></i> <span style="color: purple;">Onde estou</span></h5>
 								</div>
-								
 								<hr>
-								
 								<p class="card-text"><i class="fas fa-map-marker-alt"></i><?=$cidade?>/<?=$uf?></p>
 								<p class="card-text"><i class="fas fa-user"></i>Protetor: <?=$nome_protetor?></p>
 							</div>
@@ -190,11 +175,9 @@
 		            </div>
             	</div>
             </div>
-
             <div class="row" style="margin-bottom: 30px;">
                 <div class="col-md-6 ml-auto mr-auto"><hr></div>
             </div>
-
 			<div class="row">
 				<div class="col-md-6 ml-auto mr-auto">
                     <div class="profile-tabs">
@@ -221,10 +204,8 @@
                     </div>
 	    		</div>
         	</div>
-    		
     		<div class="row">
 				<div class="col-12 col-md-6 ml-auto mr-auto">
-
 					<div class="tab-content tab-space">
 						<div class="tab-pane active text-center gallery" id="studio">
 							<div class="row">

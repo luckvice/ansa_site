@@ -14,6 +14,17 @@ use App\Libraries\Sima;
 class Debug extends Controller
 {
 
+    public function debugview(){
+        return View('site/geolocate');
+    }
+    public function getOng(){
+        $ongs = new Ongs;
+
+       $listOngs = $ongs->getOngsByCidade('porto alegre');
+
+        print_r($listOngs);
+    }
+
     public function adotados(){
         $adotados = new pets;
         var_dump($adotados->getDivulgadosByIdUsuario(11));

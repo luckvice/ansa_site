@@ -1,5 +1,5 @@
 <?= $this->extend('site/paginas/perfil_content/perfil_template') ?>
-<?php $this->section('content_perfil'); ?>
+<?= $this->section('content_perfil') ?>
 
     <div class="tab-pane active show" id="criarDepoimento"> 
         <form>
@@ -28,4 +28,4 @@
         </form>
     </div>
 
-<?php $this->endSection(); ?>
+<?= $this->endSection() ?>
