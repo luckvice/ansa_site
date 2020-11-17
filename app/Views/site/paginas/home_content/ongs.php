@@ -5,8 +5,8 @@
         <div class="container">
           <div class="row">
             <div class="col-md-8 ml-auto mr-auto text-center">
-              <h2 class="title">Ongs que ja fazem parte do nosso projeto</h2>
-              <h5 class="description">Venha fazer parte, cadastre sua ONG <a href="#" data-toggle="modal" data-target="#signupModal"> aqui.</a></h5>
+              <h2 class="title">Ongs que ja fazem parte do nosso projeto em sua cidade</h2>
+              <h5 class="description">Venha fazer parte, Se você não é cadastrado cadastre - se <a href="#" data-toggle="modal" data-target="#signupModal"> aqui.</a></h5>
             </div>
           </div>
           <div class="row">

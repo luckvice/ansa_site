@@ -13,7 +13,7 @@ use App\Helpers\Urlencode; //Carrega Model SQL
 class Api extends ResourceController
 {
 
-
+//AIzaSyAHiOaxuvg0fgK3RZx7a8xJM7lF1VFmzsY
   public function solicitarSenha(){
     $usuario  = new Usuarios;
     $mensagem = new Sima;

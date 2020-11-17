@@ -14,6 +14,9 @@ use App\Libraries\Sima;
 class Debug extends Controller
 {
 
+    public function debugview(){
+        return View('site/geolocate');
+    }
     public function getOng(){
         $ongs = new Ongs;
 
