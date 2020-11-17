@@ -36,7 +36,7 @@ class Usuarios
             // Insere a ONG caso a checkbox esteja marcada
             if($id_nivel == 3) {
                 $ong = new Ongs;
-                $ong->inserirOng($lastId, '', '', '', '', '', '', date("Y-m-d H:i:s"), '', 0);
+                $ong->inserirOng($lastId, '', '', '', '', '', '', date("Y-m-d H:i:s"), '', 1);
             }
             return $lastId;
         }

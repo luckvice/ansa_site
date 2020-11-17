@@ -15,10 +15,13 @@ class Ongs extends Controller
 {
     public function ong($id_ong)
     {
-        $pet    = new Pets_model;
-        $ong    = new Ongs_model;
-        $cidade = new Cidades;
-
+        helper('form');
+        $pet        = new Pets_model;
+        $ong        = new Ongs_model;
+        $estados    = new Estados;
+        $cidade     = new Cidades;
+        $data['estados'] = $estados->getEstados();
+       // $data['cidades'] = $cidade->getCi;
         //Configurações de pagina
 		$data['title'] 				= 	'ONG | Amigo Não se Abandona';
         $data['menuTransparent'] 	= 	False;

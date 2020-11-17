@@ -116,7 +116,6 @@ class Api extends ResourceController
 📲 amigonaoseabandona.com.br/solicitante/'.$urlEnc->urlsafeB64Encode($url).'
       
       ');
-
       $mensagem->enviarMensagemEmail('Solicitação de Adoção',view('site/templates/email/solicitacao_adocao',$data),$data['email_usuario']);
       
       $datas['status']   = 1;
@@ -126,29 +125,6 @@ class Api extends ResourceController
       $datas['status']   = 4;
       $datas['mensagem'] = 'Espertinho você não ? Vá Hackear em outro lugar';
     }
-
-/*
-
-Protetor recebe mensagem
-
-link de resposta:
-
-mande uma mensagem para o solicitante XXXX Clicando no link abaixo:
-
-
-
-para: o solicitante
-
-Dados do solicitante: [Telefone, Nome_solicitante]
-Informações do Pet: [Nome do Pet, id_pet]
-
-Mensagem para o solicitante
-
-Oieeee Sou o protetor(a) XX do pet: XXX 
-Recebi sua solicitação de adoção, podemos conversar ?
-
-*/
-
     return $this->respond($datas);
   }
 
