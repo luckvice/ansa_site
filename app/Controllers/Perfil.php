@@ -53,6 +53,7 @@ class Perfil extends Controller
     }
 
     public function alterar() {
+        $usuario    = new Usuarios;
         if (!session()->has('logado')) {
             return redirect()->to(base_url('/'));
         }
@@ -64,25 +65,33 @@ class Perfil extends Controller
                 'email'     => 'required|valid_email', //Obriga o preeenchimento do Form
                 'telefone'  => 'required|max_length[15]'
             ]);
+           
             if (!$validacao) {
-                //Cria uma Sessao chamada 'erro' com a mensagem de erro padrão do validator
-               /* $error = [
-                    'codigo' => 1,
-                    'mensagem' =>
-                    'Verifique se todos os campos estão preenchidos.'
-                ];*/
-               //print_r($this->validator->listErrors());
+
+   
                $mensagem = ['codigo' => 2, 'mensagem'=> $this->validator->listErrors()];
                return redirect()->back()->with('mensagem', $mensagem);
             }else{
+                
             $dados      = $this->request->getPostGet();
-            $usuario    = new Usuarios;
             $id_usuario = session()->get('id_usuario');
-            $resultado = $usuario->updateUsuario($id_usuario,  $dados);
-              if($resultado == 1){
-                    $mensagem = ['codigo' => 1, 'mensagem' => 'Dados alterados com sucesso'];
-                    return redirect()->to(base_url('perfil'))->with('mensagem', $mensagem);
-                }
+            $email = $usuario->checkExistsEmail($dados['email']);
+            if($usuario->checkExistsEmail($dados['email']) == null){
+                $resultado = $usuario->updateUsuario($id_usuario,  $dados);
+                  if($resultado == 1){
+                        $mensagem = ['codigo' => 1, 'mensagem' => 'Dados alterados com sucesso'];
+                        return redirect()->to(base_url('perfil'))->with('mensagem', $mensagem);
+                    }
+            }else if($email->id_usuario == $id_usuario){
+                $resultado = $usuario->updateUsuario($id_usuario,  $dados);
+                if($resultado == 1){
+                      $mensagem = ['codigo' => 1, 'mensagem' => 'Dados alterados com sucesso'];
+                      return redirect()->to(base_url('perfil'))->with('mensagem', $mensagem);
+                  }
+                 }else{
+                        $mensagem = ['codigo' => 2, 'mensagem' => 'Esse E-mail pertence a outra conta.'];
+                        return redirect()->to(base_url('perfil'))->with('mensagem', $mensagem);
+                 }
             }
         }
     }
@@ -323,7 +332,7 @@ class Perfil extends Controller
             
             if (!$validacao) {
                 $mensagem = ['codigo' => 2, 'mensagem' => 'Verifique se os campos estão completos'];
-                
+
                 return redirect()->to(base_url('perfil/ong'))->withInput()->with('mensagem', $mensagem);
             } else {
                 $dados  = $this->request->getPostGet();
