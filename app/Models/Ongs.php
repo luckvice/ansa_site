@@ -49,7 +49,7 @@ class Ongs
             'data_alteracao'    => date("Y-m-d"),
             'excluido'          => 0
         ];
-
+        if($dados['avatar'] == null):unset($dados['avatar']);endif;
         $db->table('ong')->where('id_ong', $id_ong)->update($data);
 
         $db->close();

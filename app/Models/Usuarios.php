@@ -54,6 +54,7 @@ class Usuarios
     public function updateUsuario($id_usuario, $dados)
     {
         $db = db_connect();
+
         $dados = [
             'nome'              => $dados['nome'],
             'telefone'          => $dados['telefone'],
@@ -64,7 +65,8 @@ class Usuarios
             'avatar'            => $dados['avatar']
 
         ];
-        
+        if($dados['avatar'] == null):unset($dados['avatar']);endif;
+      
         $db->table('usuario')->where('id_usuario', $id_usuario)->update($dados);
         $resultados = $db->affectedRows();
         $db->close();

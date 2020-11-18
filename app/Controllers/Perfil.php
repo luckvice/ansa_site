@@ -65,7 +65,7 @@ class Perfil extends Controller
                 'nome'      => 'required|min_length[2]|max_length[15]',
                 'email'     => 'required|valid_email', //Obriga o preeenchimento do Form
                 'telefone'  => 'required|max_length[15]',
-                'avatar'    => 'uploaded[avatar]|is_image[avatar]|max_size[avatar, 8048]|ext_in[avatar,jpg,jpeg,png]'
+                'avatar'    => 'is_image[avatar]|max_size[avatar, 8048]|ext_in[avatar,jpg,jpeg,png]'
             ]);
            
             if (!$validacao) {
@@ -79,9 +79,15 @@ class Perfil extends Controller
             $dados      = $this->request->getPostGet();
             $id_usuario = session()->get('id_usuario');
             $email      = $usuario->checkExistsEmail($dados['email']);
-
-            $avatar             = base64_encode(file_get_contents($this->request->getFile('avatar')));
-            $dados['avatar']    = $avatar;
+            
+            $upload = $this->request->getFile('avatar');
+            
+            if(!$upload->getSize() == 0){
+                $avatar             = base64_encode(file_get_contents($upload));
+                $dados['avatar']    = $avatar;
+            }else{
+                $dados['avatar']    = null;
+            } 
 
             if($usuario->checkExistsEmail($dados['email']) == null){
                 $resultado = $usuario->updateUsuario($id_usuario,  $dados);
@@ -356,7 +362,7 @@ class Perfil extends Controller
         } else {
             $validacao = $this->validate([ //Validação Server Side Form
                 'nome'     => 'required', //Obriga o preeenchimento do Form
-                'avatar'   => 'uploaded[avatar]|is_image[avatar]|max_size[avatar, 8048]|ext_in[avatar,jpg,jpeg,png]'
+                'avatar'   => 'is_image[avatar]|max_size[avatar, 8048]|ext_in[avatar,jpg,jpeg,png]'
             ]);
             if (!$validacao) {
                 $mensagem = [
@@ -367,8 +373,16 @@ class Perfil extends Controller
             } else {
                 $dados              = $this->request->getPostGet();
                 $ong                = new Ongs;
-                $avatar             = base64_encode(file_get_contents($this->request->getFile('avatar')));
-                $dados['avatar']    = $avatar;
+   
+                $upload = $this->request->getFile('avatar');
+            
+                if(!$upload->getSize() == 0){
+                    $avatar             = base64_encode(file_get_contents($upload));
+                    $dados['avatar']    = $avatar;
+                }else{
+                    $dados['avatar']    = null;
+                } 
+    
     
                 $ong->updateOng(session()->get('id_ong'), $dados);
                 $mensagem = [
