@@ -14,6 +14,14 @@ use App\Helpers\Geopets;
 
 class Debug extends Controller
 {
+
+    public function titletest(){
+        $title     = "What's wrong with CSS?";
+      echo  $url_title = url_title($title, '_');
+      echo str_replace("_", " ",$url_title);
+    
+   //   echo  mb_url_title($url_title, ' ');
+    }
     public function geoip(){
         $geo = new Geopets;
         $data       = $geo->getLocalizacaoUser('-30.0691857', '-51.169006499999995');

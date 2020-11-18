@@ -11,12 +11,29 @@ use App\Helpers\Geopets;
 
 class Pets extends Controller
 {
-	public function index($especie = '', $tamanho = '', $sexo = '')
+	public function index($especie = 'todos', $tamanho = 'todos', $sexo = 'todos')
 	{
 		$estados = new Estados();
 		$cidades = new Cidades();
 		$data['estados']         	= $estados->getEstados();
 		$pets = new Pets_model;
+
+		if ($this->request->getMethod() == 'post') { //Valida se página veio de um POST | Proteção contra direct Access
+			$estado 	= $this->request->getPostGet('estado_pet');
+			$cidade 	= $this->request->getPostGet('cidade_pet');
+			$tamanho 	= $this->request->getPostGet('porte');
+			$sexo 		= $this->request->getPostGet('sexo');
+			session()->set('filtro_estado', $estado);
+			session()->set('filtro_cidade', $cidade);
+			$especie = session()->get('especieNome');
+			if($especie != 'caes' && $especie != 'gatos' ){
+				$especie = 'todos';
+			}
+			
+
+			return redirect()->to('/pets'.'/'.$especie.'/'.$tamanho.'/'.$sexo.'/'.$estado.'/'.$cidade);
+		}
+
 
 		$data['cidades'] = $cidades->getCidadesByEstadoId(session()->get('estado'));
 
@@ -42,11 +59,13 @@ class Pets extends Controller
 		/* Filtros consulta */
 		if ($especie == 'caes') {
 			session()->set('especie', 1);
+			session()->set('especieNome', 'caes');
 			$data['dogs'] = true;
 		
 			$data['listaPets'] = $pets->getPets($regiao, false, false, false, 1, true, null, true, null);
 		} else if ($especie == 'gatos') {
 			session()->set('especie', 2);
+			session()->set('especieNome', 'gatos');
 			$data['cats'] 		= true;
 			$data['listaPets'] 	= $pets->getPets($regiao, false, false, false, 2, true, null, true, null);
 		} else if ($especie == 'todos') {
@@ -83,8 +102,8 @@ class Pets extends Controller
 		$tamanho 	= $this->request->getPostGet('porte');
 		$sexo 		= $this->request->getPostGet('sexo');
 			
-		session()->set('estado', $estado);
-		session()->set('cidade', $cidade);
+		session()->set('filtro_estado', $estado);
+		session()->set('filtro_cidade', $cidade);
 
 		$data['cidades'] = $cidades->getCidadesByEstadoId($estado);
 

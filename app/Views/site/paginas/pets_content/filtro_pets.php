@@ -27,7 +27,7 @@
         <?php
             echo 'Mostrando pets proximos a sua região ';
         ?>
-         <form method="POST" action="<?= base_url('/pets/buscar') ?>">                               
+         <form method="POST" action="<?= base_url('/pets') ?>">                               
             <div class="collapse" id="buscaavancada">
 
                 <select id="filtro_estado" class="selectpicker " data-style="select-with-transition" name="estado_pet" title="Estado" data-size="7" required>
@@ -47,8 +47,8 @@
                 <select id="filtro_cidade" class="selectpicker " data-style="select-with-transition" name="cidade_pet" title="Selecione Cidade" data-size="7">
                 <?php foreach($cidades as $row=>$value){
                     $selected = '';
-                        if(session()->has('estado')){
-                            if(session()->get('cidade') == $value->id_municipio){
+                        if(session()->has('filtro_estado')){
+                            if(session()->get('filtro_cidade') == $value->id_municipio){
                             $selected = 'selected';
                         }
                         echo " <option value=".$value->id_municipio." ".$selected.">" .$value->nome. "</option>";
