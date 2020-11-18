@@ -24,10 +24,11 @@ class Home extends Controller
 		
 		
 		if(!session()->has('gps')){
-			$data['ongs']				= $ongs->getOngsByCidade($geoip->getCidadePorIp());
+			$localizacao = $geoip->getLocalizacaoUserByIp();
+			$data['ongs']				= $ongs->getOngsByIdCidade($localizacao['id_cidade']);
 		}else{
-			
-			$data['ongs']				= $ongs->getOngsByCidade(session()->get('cidade'));
+		
+			$data['ongs']				= $ongs->getOngsByIdCidade(session()->get('id_cidade'));
 		}
 		//Verifica Mensagem de erro do Login Auth Controller
 		if (session()->has('erro')) { //se na sessao tem a variavel erro.

@@ -22,6 +22,14 @@ class Cidades extends Model
         return $resultados;
     }
 
+    public function getCidadeByNome($nome){
+        
+        $db = db_connect();
+        $resultados = $db->table('municipio')->like('nome',$nome)->get()->getRowObject();
+        $db->close();
+        return $resultados;
+    }
+
     public function getCidadesByEstadoId($id_estado){
         
         $db = db_connect();
