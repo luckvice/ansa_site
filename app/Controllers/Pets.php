@@ -11,29 +11,12 @@ use App\Helpers\Geopets;
 
 class Pets extends Controller
 {
-	public function index($especie = 'todos', $tamanho = 'todos', $sexo = 'todos')
+	public function index($especie = 'todos', $tamanho = 'todos', $sexo = 'todos', $estado = '', $cidade)
 	{
 		$estados = new Estados();
 		$cidades = new Cidades();
 		$data['estados']         	= $estados->getEstados();
 		$pets = new Pets_model;
-
-		if ($this->request->getMethod() == 'post') { //Valida se página veio de um POST | Proteção contra direct Access
-			$estado 	= $this->request->getPostGet('estado_pet');
-			$cidade 	= $this->request->getPostGet('cidade_pet');
-			$tamanho 	= $this->request->getPostGet('porte');
-			$sexo 		= $this->request->getPostGet('sexo');
-			session()->set('filtro_estado', $estado);
-			session()->set('filtro_cidade', $cidade);
-			$especie = session()->get('especieNome');
-			if($especie != 'caes' && $especie != 'gatos' ){
-				$especie = 'todos';
-			}
-			
-
-			return redirect()->to('/pets'.'/'.$especie.'/'.$tamanho.'/'.$sexo.'/'.$estado.'/'.$cidade);
-		}
-
 
 		$data['cidades'] = $cidades->getCidadesByEstadoId(session()->get('estado'));
 
@@ -75,6 +58,22 @@ class Pets extends Controller
 		}else{
 			$data['listaPets'] 	= $pets->getPets($regiao, false, false, true, null, true, null, true, null);
 
+		}
+		
+		if ($this->request->getMethod() == 'post') { //Valida se página veio de um POST | Proteção contra direct Access
+			$estado 	= $this->request->getPostGet('estado_pet');
+			$cidade 	= $this->request->getPostGet('cidade_pet');
+			$tamanho 	= $this->request->getPostGet('porte');
+			$sexo 		= $this->request->getPostGet('sexo');
+			session()->set('filtro_estado', $estado);
+			session()->set('filtro_cidade', $cidade);
+			$especie = session()->get('especieNome');
+			if($especie != 'caes' && $especie != 'gatos' ){
+				$especie = 'todos';
+			}
+			
+
+			return redirect()->to('/pets'.'/'.$especie.'/'.$tamanho.'/'.$sexo.'/'.$estado.'/'.$cidade);
 		}
 
 		echo view('site/paginas/pets', $data);
