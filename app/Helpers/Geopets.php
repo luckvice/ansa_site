@@ -24,11 +24,11 @@ class Geopets
     public function getLocalizacaoUser($positionLatidude, $positionLongitude){
         $server = json_decode(
                     file_get_contents(
-                        'https://maps.googleapis.com/maps/api/geocode/json?latlng=' .$positionLatidude. '%2C' .$positionLongitude.'&language=pt&key=AIzaSyAHiOaxuvg0fgK3RZx7a8xJM7lF1VFmzsY'
+                        'https://maps.googleapis.com/maps/api/geocode/json?latlng=' .$positionLatidude. '%2C' .$positionLongitude.'&language=pt&result_type=locality&key=AIzaSyAHiOaxuvg0fgK3RZx7a8xJM7lF1VFmzsY'
                     ));
         $localizacao = [
-            'cidade'=> $server->results[3]->address_components[3]->long_name,
-            'estado'=> $server->results[3]->address_components[4]->long_name
+            'cidade'=> $server->results[0]->address_components[1]->long_name,
+            'estado'=> $server->results[0]->address_components[2]->long_name
         ];
         return $localizacao;
     }

@@ -17,7 +17,7 @@ class Debug extends Controller
     public function geoip(){
         $geo = new Geopets;
         $data       = $geo->getLocalizacaoUser('-30.0691857', '-51.169006499999995');
-
+        echo '<pre>';
         var_dump($data);
 
     }
