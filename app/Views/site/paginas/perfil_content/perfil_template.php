@@ -50,13 +50,14 @@
                           Meus Pets Cadastrados
                           <div class="ripple-container"></div></a>
                       </li>
-                      <li class="nav-item">
+                      <!--<li class="nav-item">
                         <a class="nav-link <?php if (isset($tabCriarDepoimento)) : echo $tabCriarDepoimento;
                                             endif; ?>" href="/perfil/criardepoimento">
                           <i class="material-icons">comment</i>
                           Criar depoimento
                           <div class="ripple-container"></div></a>
                       </li>
+                      -->
                     </ul>
                   </div>
                 </div>

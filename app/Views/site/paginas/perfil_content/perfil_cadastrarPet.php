@@ -1,5 +1,6 @@
 <?= $this->extend('site/paginas/perfil_content/perfil_template') ?>
 <?= $this->section('content_perfil') ?>
+
 <div class="tab-pane active show" id="cadastrarPet">
     <form method="POST" enctype="multipart/form-data" action="/perfil/addPet">
         <div class="row">
@@ -312,30 +313,74 @@
                 <div class="tab-content">
                     <!-- Array Images Gallery -->
                     <div class="tab-pane text-center" id="pic1">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <input type='file' name="imagem1" id="imagem1" required/>
+                        <div class="fileinput fileinput-new text-center flex-justify-center" data-provides="fileinput" style="flex-direction: column;">
+                            <div class="fileinput-new thumbnail img-circle img-raised" style="max-width: 150px !important;">
+                                <img src="<?=base_url('/assets/img/headshot-placeholder.png')?>" alt="Foto de Perfil do Pet">
+                            </div>
+                            <div class="fileinput-preview fileinput-exists thumbnail img-raised" style="max-width: 220px !important;">
+                            </div>
+                            <div>
+                                <span class="btn btn-raised btn-round btn-default btn-file">
+                                    <span class="fileinput-new">Selecionar Imagem</span>
+                                    <span class="fileinput-exists">Alterar</span>
+                                    <input name="imagem1" type="file" />
+                                </span>
+                                <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput">
+                                <i class="fa fa-times"></i> Remover</a>
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane text-center" id="pic2">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <input type='file' name="imagem2" id="imagem2" />
+                        <div class="fileinput fileinput-new text-center flex-justify-center" data-provides="fileinput" style="flex-direction: column;">
+                            <div class="fileinput-new thumbnail img-circle img-raised" style="max-width: 150px !important;">
+                                <img src="<?=base_url('/assets/img/headshot-placeholder.png')?>" alt="Foto de Perfil do Pet">
+                            </div>
+                            <div class="fileinput-preview fileinput-exists thumbnail img-raised" style="max-width: 220px !important;">
+                            </div>
+                            <div>
+                                <span class="btn btn-raised btn-round btn-default btn-file">
+                                    <span class="fileinput-new">Selecionar Imagem</span>
+                                    <span class="fileinput-exists">Alterar</span>
+                                    <input name="imagem2" type="file" />
+                                </span>
+                                <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput">
+                                <i class="fa fa-times"></i> Remover</a>
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane text-center" id="pic3">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <input type='file' name="imagem3" id="imagem3" />
+                        <div class="fileinput fileinput-new text-center flex-justify-center" data-provides="fileinput" style="flex-direction: column;">
+                            <div class="fileinput-new thumbnail img-circle img-raised" style="max-width: 150px !important;">
+                                <img src="<?=base_url('/assets/img/headshot-placeholder.png')?>" alt="Foto de Perfil do Pet">
+                            </div>
+                            <div class="fileinput-preview fileinput-exists thumbnail img-raised" style="max-width: 220px !important;">
+                            </div>
+                            <div>
+                                <span class="btn btn-raised btn-round btn-default btn-file">
+                                    <span class="fileinput-new">Selecionar Imagem</span>
+                                    <span class="fileinput-exists">Alterar</span>
+                                    <input name="imagem3" type="file" />
+                                </span>
+                                <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput">
+                                <i class="fa fa-times"></i> Remover</a>
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane text-center" id="pic4">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <input type='file' name="imagem4" id="imagem3" />
+                        <div class="fileinput fileinput-new text-center flex-justify-center" data-provides="fileinput" style="flex-direction: column;">
+                            <div class="fileinput-new thumbnail img-circle img-raised" style="max-width: 150px !important;">
+                                <img src="<?=base_url('/assets/img/headshot-placeholder.png')?>" alt="Foto de Perfil do Pet">
+                            </div>
+                            <div class="fileinput-preview fileinput-exists thumbnail img-raised" style="max-width: 220px !important;">
+                            </div>
+                            <div>
+                                <span class="btn btn-raised btn-round btn-default btn-file">
+                                    <span class="fileinput-new">Selecionar Imagem</span>
+                                    <span class="fileinput-exists">Alterar</span>
+                                    <input name="imagem4" type="file" />
+                                </span>
+                                <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput">
+                                <i class="fa fa-times"></i> Remover</a>
                             </div>
                         </div>
                     </div>

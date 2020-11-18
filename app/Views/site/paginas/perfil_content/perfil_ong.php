@@ -44,7 +44,7 @@
 							</div>
 							<div class="fileinput fileinput-<?=$ong->avatar ? 'exists' : 'new'?> text-center flex-justify-center" data-provides="fileinput" style="flex-direction: column;">
 								<div class="fileinput-new thumbnail img-circle img-raised" style="max-width: 220px !important;">
-									<img src="https://epicattorneymarketing.com/wp-content/uploads/2016/07/Headshot-Placeholder-1.png" alt="Foto de Perfil">
+									<img src="<?=base_url('/assets/img/headshot-placeholder.png')?>" alt="Foto de Perfil">
 								</div>
 								<div class="fileinput-preview fileinput-exists thumbnail img-raised" style="max-width: 220px !important;">
 									<?php if($ong->avatar):?>

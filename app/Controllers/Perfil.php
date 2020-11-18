@@ -36,7 +36,7 @@ class Perfil extends Controller
         $id_usuario = session()->get('id_usuario');
         $dados      = $usuario->getUsuarioById($id_usuario);
 
-        $data['title']              = 'Meu Perfil';
+        $data['title']              = 'Meu Perfil | Amigo Não se Abandona';
         $data['tabPerfil']          = 'active now'; //Fica selecionado a Tab
         $data['bodyPageProfile']    = True;
         $data['menuTransparent']    = False;
@@ -45,6 +45,7 @@ class Perfil extends Controller
         $data['pets_adotados']      = $adotados->getAdotadosByIdUsuario($id_usuario); 
         $data['estados']            = $estados->getEstados();
         $data['cidade']             = $cidade->getCidadesById($dados->id_cidade);
+        $data['avatar_src']         = !$dados->avatar ? base_url('assets/img/404.jpg') : 'data:image/jpeg;base64,' . $dados->avatar;
         
         if (session()->has('erro')) { //se na sessao tem a variavel erro.
             $data['erro'] = session('erro');
@@ -63,7 +64,8 @@ class Perfil extends Controller
             $validacao = $this->validate([ //Validação Server Side Form
                 'nome'      => 'required|min_length[2]|max_length[15]',
                 'email'     => 'required|valid_email', //Obriga o preeenchimento do Form
-                'telefone'  => 'required|max_length[15]'
+                'telefone'  => 'required|max_length[15]',
+                'avatar'    => 'uploaded[avatar]|is_image[avatar]|max_size[avatar, 8048]|ext_in[avatar,jpg,jpeg,png]'
             ]);
            
             if (!$validacao) {
@@ -77,6 +79,9 @@ class Perfil extends Controller
             $dados      = $this->request->getPostGet();
             $id_usuario = session()->get('id_usuario');
             $email      = $usuario->checkExistsEmail($dados['email']);
+
+            $avatar             = base64_encode(file_get_contents($this->request->getFile('avatar')));
+            $dados['avatar']    = $avatar;
 
             if($usuario->checkExistsEmail($dados['email']) == null){
                 $resultado = $usuario->updateUsuario($id_usuario,  $dados);
@@ -152,7 +157,7 @@ class Perfil extends Controller
         $estados = new Estados();
         $cidades = new Cidades();
         helper('form');
-        $data['title']           = 'Cadastrar um pet';
+        $data['title']           = 'Cadastrar Pet | Amigo Não se Abandona';
         $data['tabCadastrarPet'] = 'active now'; //Fica selecionado a Tab
         $data['bodyPageProfile'] = True;
         $data['menuTransparent'] = False;
@@ -282,7 +287,7 @@ class Perfil extends Controller
         if (!session()->has('logado')) {
             return redirect()->to(base_url('/'));
         }
-        $data['title']              = 'Listar pets';
+        $data['title']              = 'Listar Pets | Amigo Não se Abandona';
         $data['tabListarPets']      = 'active now';
         $data['bodyPageProfile']    = True;
         $data['menuTransparent']    = False;
@@ -296,17 +301,23 @@ class Perfil extends Controller
 
     public function criarDepoimento() //View
     {
+        $pets = new Pets;
+        
         if (!session()->has('logado')) {
             return redirect()->to(base_url('/'));
         }
+
         helper('form');
-        $data['title']              = 'Criar depoimento';
+
+        $data['title']              = 'Criar Depoimento | Amigo Não se Abandona';
         $data['tabCriarDepoimento'] = 'active now';
         $data['bodyPageProfile']    = True;
         $data['menuTransparent']    = False;
+
         if (session()->has('erro')) {
             $data['erro'] = session('erro');
         }
+
         echo view('site/paginas/perfil_content/perfil_criarDepoimento', $data);
     }
 
@@ -322,7 +333,7 @@ class Perfil extends Controller
         session()->set('id_ong', $ong->id_ong);
 
         helper('form');
-        $data['title']              = 'Minha ONG';
+        $data['title']              = 'Minha ONG | Amigo Não se Abandona';
         $data['tabOng']             = 'active now'; //Fica selecionado a Tab
         $data['bodyPageProfile']    = True;
         $data['menuTransparent']    = False;
@@ -368,4 +379,41 @@ class Perfil extends Controller
             }
         }
     }
+
+    public function enviarDepoimento(){
+
+        if (!session()->has('logado')) {
+            return redirect()->to(base_url('/'));
+        }
+
+        if ($this->request->getMethod() !== 'post') { //Valida se página veio de um POST | Proteção contra direct Access
+            return redirect()->to('/');
+        } else {
+
+            $validacao = $this->validate([ //Validação Server Side Form
+                'nome'     => 'required', //Obriga o preeenchimento do Form
+                'avatar'   => 'uploaded[avatar]|is_image[avatar]|max_size[avatar, 8048]|ext_in[avatar,jpg,jpeg,png]'
+            ]);
+            if (!$validacao) {
+                $mensagem = [
+                    'codigo'    => 2, 
+                    'mensagem'  => 'Verifique se os campos estão completos'
+                ];
+                return redirect()->to(base_url('perfil/ong'))->withInput()->with('mensagem', $mensagem);
+            } else {
+                $dados              = $this->request->getPostGet();
+                $ong                = new Ongs;
+                $avatar             = base64_encode(file_get_contents($this->request->getFile('avatar')));
+                $dados['avatar']    = $avatar;
+    
+                $ong->updateOng(session()->get('id_ong'), $dados);
+                $mensagem = [
+                    'codigo'    => 1, 
+                    'mensagem'  => 'Dados alterados com sucesso!'
+                ];
+                return redirect()->to(base_url('perfil/ong'))->with('mensagem', $mensagem);
+            }
+        }
+    }
+
 }

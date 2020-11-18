@@ -31,7 +31,7 @@
             <div class="dropdown-menu dropdown-with-icons">
               <?php if (session()->has('logado')) : ?>
                 <a href="/perfil" class="dropdown-item">
-                  <i class="material-icons"></i> Perfil
+                  <i class="material-icons">face</i> Perfil
                 </a>
                 <?php if (session()->get('id_nivel') == 3) : ?>
                 <a href="/perfil/ong" class="dropdown-item">

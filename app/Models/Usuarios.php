@@ -61,8 +61,10 @@ class Usuarios
             'login'             => $dados['email'],
             'id_cidade'         => $dados['cidade'],
             'data_alteracao'    => date("Y-m-d H:i:s"),
+            'avatar'            => $dados['avatar']
 
         ];
+        
         $db->table('usuario')->where('id_usuario', $id_usuario)->update($dados);
         $resultados = $db->affectedRows();
         $db->close();

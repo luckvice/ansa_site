@@ -22,7 +22,7 @@ class Pets extends Controller
 
 		helper('form');
 		//Configurações de pagina
-		$data['title'] = 'Ver Pets';
+		$data['title'] = 'Pets | Amigo Não se Abandona';
 		$data['menuTransparent'] = False;
 
 				//Verifica Mensagem de erro do Login Auth Controller
@@ -138,7 +138,7 @@ class Pets extends Controller
 		session()->markAsFlashdata('criptopost');//marca como sessao temporaria
 
 		//Configurações de pagina
-		$data['title'] 				= 	'Ver Pets';
+		$data['title'] 				= 	'Pets | Amigo Não se Abandona';
 		$data['menuTransparent'] 	= 	False;
 		
 		//Verifica Mensagem de erro do Login Auth Controller
