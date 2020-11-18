@@ -10,9 +10,17 @@ use App\Models\Cidades; //Carrega Model SQL
 use App\Models\Estados; //Carrega Model SQL
 use App\Models\Pets; //Carrega Model SQL
 use App\Libraries\Sima;
+use App\Helpers\Geopets;
 
 class Debug extends Controller
 {
+    public function geoip(){
+        $geo = new Geopets;
+        $data       = $geo->getLocalizacaoUser('-30.0691857', '-51.169006499999995');
+
+        var_dump($data);
+
+    }
 
     public function debugview(){
         return View('site/geolocate');

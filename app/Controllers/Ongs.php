@@ -9,7 +9,7 @@ use App\Models\Estados;
 use App\Models\Usuarios;
 use App\Models\Cidades;
 use App\Libraries\Waintegracao;
-use App\Helpers\Geoip;
+use App\Helpers\Geopets;
 
 class Ongs extends Controller
 {

@@ -7,7 +7,7 @@ use App\Models\Pets as Pets_model; //Carrega Model SQL | alias para não repetir
 use App\Models\Estados;
 use App\Models\Cidades;
 use App\Libraries\Waintegracao;
-use App\Helpers\Geoip;
+use App\Helpers\Geopets;
 
 class Pets extends Controller
 {
@@ -32,8 +32,13 @@ class Pets extends Controller
 		if (session()->has('erro_registrar')) { //se na sessao tem a variavel erro.
 			$data['erro_registrar'] = session('erro_registrar');
 		}
-		$regiao = new Geoip;
-		$regiao = $regiao->getCidadePorIp();
+		$regiao = new Geopets;
+		if(!session()->has('gps')){
+			$regiao = $regiao->getCidadePorIp();
+		}else{
+			$regiao = session()->get('cidade');
+		}
+		
 		/* Filtros consulta */
 		if ($especie == 'caes') {
 			session()->set('especie', 1);
