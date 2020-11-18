@@ -8,7 +8,7 @@ class Geopets
 {  
     function __construct() {
         $this->ip = $_SERVER['REMOTE_ADDR'];//http://ipinfo.io/187.113.226.25/json | region | city | hash 4feb9b44b1832a35c4e57e8e7e63bd73
-        $this->server_api = json_decode(file_get_contents('http://api.ipstack.com/187.113.226.25?access_key='));
+        $this->server_api = json_decode(file_get_contents('http://api.ipstack.com/187.113.226.25?access_key=4feb9b44b1832a35c4e57e8e7e63bd73'));
     }
 
     public function getRegiaoPorIp(){
@@ -24,11 +24,11 @@ class Geopets
     public function getLocalizacaoUser($positionLatidude, $positionLongitude){
         $server = json_decode(
                     file_get_contents(
-                        'https://maps.googleapis.com/maps/api/geocode/json?latlng=' .$positionLatidude. '%2C' .$positionLongitude.'&language=pt&key='
+                        'https://maps.googleapis.com/maps/api/geocode/json?latlng=' .$positionLatidude. '%2C' .$positionLongitude.'&language=pt&result_type=locality&key=AIzaSyAHiOaxuvg0fgK3RZx7a8xJM7lF1VFmzsY'
                     ));
         $localizacao = [
-            'cidade'=> $server->results[3]->address_components[3]->long_name,
-            'estado'=> $server->results[3]->address_components[4]->long_name
+            'cidade'=> $server->results[0]->address_components[1]->long_name,
+            'estado'=> $server->results[0]->address_components[2]->long_name
         ];
         return $localizacao;
     }
