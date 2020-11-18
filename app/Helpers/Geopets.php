@@ -16,9 +16,6 @@ class Geopets
     public function getLocalizacaoUserByIp(){
        $estados = new Estados;
        $IP_API = 'http://api.ipstack.com/187.113.226.25?access_key=4feb9b44b1832a35c4e57e8e7e63bd73';
-
-       if(!session()->has('usuario_loc')){
-        session()->set('usuario_loc',true);
         session()->set('gps',false);
         $server_api     = json_decode(file_get_contents($IP_API));
         $response       = $server_api;
@@ -35,7 +32,7 @@ class Geopets
          'id_cidade' => $dados_cidade->id_municipio,
          'id_estado' => $dados_cidade->id_estado
         ];
-       }
+       
       
        return $localizacao;
     }
@@ -43,8 +40,6 @@ class Geopets
     public function getLocalizacaoUser($positionLatidude, $positionLongitude){
 
         $estados = new Estados;
-        if(!session()->has('usuario_loc')){
-            session()->set('usuario_loc',true);
             session()->set('gps',true);
         $server = json_decode(
                     file_get_contents(
@@ -63,7 +58,7 @@ class Geopets
             'id_cidade' => $dados_cidade->id_municipio,
             'id_estado' => $dados_cidade->id_estado
         ];
-    }
+    
         return $localizacao;
     }
 }
