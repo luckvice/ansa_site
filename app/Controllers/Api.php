@@ -9,9 +9,26 @@ use App\Models\Cidades; //Carrega Model SQL
 use App\Models\Pets; //Carrega Model SQL
 use App\Libraries\Sima; //Carrega Model SQL
 use App\Helpers\Urlencode; //Carrega Model SQL
+use App\Helpers\Geopets; //Carrega Model SQL
 
 class Api extends ResourceController
 {
+  public function getPosition(){
+    $localizar  = new Geopets;
+    $latitude   = $this->request->getPostGet('latitude');
+    $longitude  = $this->request->getPostGet('longitude');
+    $data       = $localizar->getLocalizacaoUser($latitude, $longitude);
+    session()->set('gps',true);
+    session()->set('cidade', $data['cidade']);
+    session()->set('estado', $data['estado']);
+    if(!session()->has('redireciona')){
+      session()->set('redireciona', true);
+      $response['codigo'] = 1;
+    }else{
+      $response['codigo'] = 0;
+    }
+    return $this->respond($response);
+  }
 
 //AIzaSyAHiOaxuvg0fgK3RZx7a8xJM7lF1VFmzsY
   public function solicitarSenha(){
