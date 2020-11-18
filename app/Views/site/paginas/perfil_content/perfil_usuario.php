@@ -58,12 +58,19 @@
 						</div>
 						<div class="form-group text-left" style="margin-top: 15px;">
 							<select id="estado" class="selectpicker text-left" data-style="select-with-transition" title="Selecione o estado" data-size="7" name="estado" required>
-							<option selected>Selecione o Estado</option>
-										<?php foreach($estados as $row=>$value){?>
-										<option value="<?= $value->id_estado?>"><?= $value->nome?></option>
+							
+										<?php
+										foreach($estados as $row=>$value){?>
+										<?php if($cidade->id_estado == $value->id_estado){
+											$selected = 'selected';
+										}else{
+											$selected = '';	
+										} ?>
+										<option value="<?= $value->id_estado?>" <?=$selected?>><?= $value->nome?></option>
 										<?php }?>
 							</select>
 							<select id="cidade" class="selectpicker text-left" data-style="select-with-transition" title="Seleciona a cidade" data-size="7" name="cidade" required>
+							<option value="<?=$cidade->id_municipio?>" selected><?=$cidade->nome?></option>
 							</select> 
                 		</div>
 						<div class="col-12" style="margin-top: 10px;">

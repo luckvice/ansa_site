@@ -45,8 +45,9 @@ class Perfil extends Controller
         $data['pets_adotados']      = $adotados->getAdotadosByIdUsuario($id_usuario); 
         $data['estados']            = $estados->getEstados();
         $data['cidade']             = $cidade->getCidadesById($dados->id_cidade);
+        $data['id_cidade']          = $dados->id_cidade;
         $data['avatar_src']         = !$dados->avatar ? base_url('assets/img/404.jpg') : 'data:image/jpeg;base64,' . $dados->avatar;
-        
+
         if (session()->has('erro')) { //se na sessao tem a variavel erro.
             $data['erro'] = session('erro');
         }
