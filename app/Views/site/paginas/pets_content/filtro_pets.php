@@ -46,6 +46,7 @@
              <?php }?>
                 </select>
                 <select id="filtro_cidade" class="selectpicker " data-style="select-with-transition" name="cidade_pet" title="Selecione Cidade" data-size="7">
+                <option value="0">Todos</option>
                 <?php foreach($cidades as $row=>$value){
                     $selected = '';
                         if(session()->has('filtrar')){
