@@ -35,11 +35,6 @@ class Home extends Controller
 		else
 			$data['titulo_ongs'] = "ONGs que já fazem parte do nosso projeto em sua cidade =)";
 		
-<<<<<<< HEAD
-=======
-			//Verifica Mensagem de erro do Login Auth Controller
-		
->>>>>>> 05046a08016465260818948307d0f534a798f9a4
 		//Verifica Mensagem de erro do Login Auth Controller
 		if (session()->has('erro')) { //se na sessao tem a variavel erro.
 			$data['erro'] = session('erro');
