@@ -215,17 +215,21 @@ class Pets extends Controller
 		$data['nome_protetor']	= $pet->usuario_nome;
 		$data['genero'] 		= $pet->id_sexo == 1 ? 'o' : 'a';
 
+		$imagens_pet = array();
+
 		if(!empty($petGaleria)):
 			if(isset($petGaleria[0]->imagem)):
-					$data['img_opcional1'] = $petGaleria[0]->imagem;
+					$imagens_pet[] = $petGaleria[0]->imagem;
 				endif;
 			if(isset($petGaleria[1]->imagem)):
-					$data['img_opcional2'] = $petGaleria[1]->imagem;
+					$imagens_pet[] = $petGaleria[1]->imagem;
 				endif;
 				if(isset($petGaleria[2]->imagem)):
-					$data['img_opcional3'] = $petGaleria[2]->imagem;
+					$imagens_pet[] = $petGaleria[2]->imagem;
 				endif;
 		endif;
+
+		$data['imagens_pet'] = $imagens_pet;
 
 		session()->set('email_usuario',$pet->email);
 		session()->markAsFlashdata('email_usuario');

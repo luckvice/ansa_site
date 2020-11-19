@@ -5,6 +5,14 @@
 
 /* CUSTOM Styles */
 
+.footer-link:hover {
+    color: #131212;
+}
+
+.footer-link:focus {
+    color: #131212;
+}
+
 .external-link {
     text-decoration: none;
     color: #575757;

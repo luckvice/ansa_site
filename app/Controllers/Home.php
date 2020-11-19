@@ -29,7 +29,13 @@ class Home extends Controller
 			
 			$data['ongs']				= $ongs->getOngsByCidade(session()->get('cidade'));
 		}
-		//Verifica Mensagem de erro do Login Auth Controller
+
+		if(!count($data['ongs']))
+			$data['titulo_ongs'] = "Não há ONGs registradas em sua região =(";
+		else
+			$data['titulo_ongs'] = "ONGs que já fazem parte do nosso projeto em sua cidade =)";
+		
+			//Verifica Mensagem de erro do Login Auth Controller
 		if (session()->has('erro')) { //se na sessao tem a variavel erro.
 			$data['erro'] = session('erro');
 		}

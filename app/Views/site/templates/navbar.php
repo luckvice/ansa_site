@@ -15,8 +15,8 @@
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="" target="_blank">
-              <i class="material-icons">text_snippet</i> Sobre o projeto
+            <a class="nav-link" href="/sobre">
+              <i class="material-icons">text_snippet</i> Sobre o Projeto
             </a>
           </li>
           <li class="nav-item">
@@ -61,19 +61,19 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="#" target="_blank" data-original-title="Siga-nos no Twitter" rel="nofollow">
-              <i class="fab fa-facebook-square" style="font-size: 16px;"></i>
+            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="<?=prep_url('twitter.com/naoseabandona')?>" target="_blank" data-original-title="Siga-nos no Twitter" rel="nofollow">
+              <i class="fab fa-twitter-square" style="font-size: 16px;"></i>
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="#" target="_blank" data-original-title="Curta nossa página no Facebook" rel="nofollow">
+            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="<?=prep_url('instagram.com/amigonaoseabandona')?>" target="_blank" data-original-title="Curta nossa página no Facebook" rel="nofollow">
               <i class="fab fa-instagram" style="font-size: 16px;"></i>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="#" target="_blank" data-original-title="Siga-nos no Instagram" rel="nofollow">
-              <i class="fab fa-twitter-square" style="font-size: 16px;"></i>
+            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="<?=prep_url('facebook.com/amigonaoseabandona')?>" target="_blank" data-original-title="Siga-nos no Instagram" rel="nofollow">
+              <i class="fab fa-facebook-square" style="font-size: 16px;"></i>
             </a>
           </li>
         </ul>

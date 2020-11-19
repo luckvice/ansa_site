@@ -4,15 +4,15 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 
-class Contato extends Controller
+class Sobre extends Controller
 {
 	public function index()
 	{
         $data = array();
         
-        $data['title'] 				= 'Fale Conosco | Amigo Não se Abandona';
+        $data['title'] 				= 'Sobre Nós | Amigo Não se Abandona';
         $data['menuTransparent'] 	= false;
         
-		echo view('site/paginas/home_content/contato', $data);
+		echo view('site/paginas/home_content/sobre', $data);
 	}
 }

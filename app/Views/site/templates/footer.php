@@ -3,22 +3,12 @@
     <nav class="float-left">
       <ul>
         <li>
-          <a href="#">
-            A.N.S.A Project
+          <a class="footer-link" href="/sobre">
+            Sobre Nós
           </a>
         </li>
         <li>
-          <a href="#">
-            Sobre nós
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            Noticias
-          </a>
-        </li>
-        <li>
-          <a href="#">
+          <a class="footer-link" href="/contato">
             Fale conosco
           </a>
         </li>
@@ -29,7 +19,7 @@
       <script>
         document.write(new Date().getFullYear())
       </script> By
-      <a href="#" target="_blank">Lucas M. & Felipe</a>
+      <span class="font-weight-bold">Lucas M. & Felipe Pereira</span>
     </div>
   </div>
 </footer>

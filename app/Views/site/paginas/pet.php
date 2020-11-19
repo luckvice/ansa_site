@@ -178,75 +178,47 @@
             <div class="row" style="margin-bottom: 30px;">
                 <div class="col-md-6 ml-auto mr-auto"><hr></div>
             </div>
-			<div class="row">
-				<div class="col-md-6 ml-auto mr-auto">
-                    <div class="profile-tabs">
-                      	<ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
-	                        <li class="nav-item">
-	                            <a class="nav-link active" href="#studio" role="tab" data-toggle="tab">
-	                              	<i class="material-icons">photo</i>
-	                              	Olha eu!
-	                            </a>
-	                        </li>
-                        	<li class="nav-item">
-                            	<a class="nav-link" href="#works" role="tab" data-toggle="tab">
-                              		<i class="material-icons">camera_alt</i>
-                                	Olá!
-                            	</a>
-	                        </li>
-	                        <li class="nav-item">
-	                            <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
-	                              	<i class="material-icons">photo</i>
-	                                Amei essa!
-	                            </a>
-	                        </li>
-                      	</ul>
-                    </div>
-	    		</div>
-        	</div>
+			
     		<div class="row">
-				<div class="col-12 col-md-6 ml-auto mr-auto">
-					<div class="tab-content tab-space">
-						<div class="tab-pane active text-center gallery" id="studio">
-							<div class="row">
-								<div class="col-md-12">
-									<?php 
-									if(!isset($img_opcional1)):
-										echo '<p><h4><b>ohh :( O protetor não postou mais fotos</b></h4></p>';
-									else:
-									?>
-										<img src="data:image/jpeg;base64,<?= $img_opcional1?>" class="rounded" style="width: 100%;">
-									<?php endif?>
-								</div>
-							</div>
+				<div class="col-12 col-md-6 ml-auto mr-auto" style="margin-bottom: 40px; text-align: center;">
+
+					<?php 
+						if(count($imagens_pet)) :
+					?>
+					<h3 class="text-center title" style="margin-top: 0px !important; margin-bottom: 30px;"><i class="fas fa-camera"></i> Minhas fotos!</h3>
+					<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+						<ol class="carousel-indicators">
+							<?php 
+								for ($i = 0; $i < count($imagens_pet); $i++) { ?>
+									
+									<li data-target="#carouselExampleIndicators" data-slide-to="<?=$i?>" <?php if(!$i) echo 'class="active"';?> ></li>
+							<?php
+								}
+							?>
+						</ol>
+						<div class="carousel-inner">
+							<?php 
+								foreach ($imagens_pet as $key => $imagem) { ?>
+									
+									<div class="carousel-item <?php if(!$key) echo 'active'?>">
+										<img src="data:image/jpeg;base64,<?= $imagem?>" class="rounded" style="width: 100%;">
+									</div>
+							<?php
+								}
+							?>
 						</div>
-						<div class="tab-pane text-center gallery" id="works">
-							<div class="row">
-								<div class="col-md-12">
-								<?php 
-									if(!isset($img_opcional2)):
-										echo '<p><h4><b>ohh :( O protetor não postou mais fotos</b></h4></p>';
-									else:
-									?>
-										<img src="data:image/jpeg;base64,<?= $img_opcional2?>" class="rounded" style="width: 100%;">
-									<?php endif?>
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane text-center gallery" id="favorite">
-							<div class="row">
-								<div class="col-md-12">
-								<?php 
-									if(!isset($img_opcional3)):
-										echo '<p><h4><b>ohh :( O protetor não postou mais fotos</b></h4></p>';
-									else:
-									?>
-										<img src="data:image/jpeg;base64,<?= $img_opcional3?>" class="rounded" style="width: 100%;">
-									<?php endif?>
-								</div>
-							</div>
-						</div>
+						<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="sr-only">Anterior</span>
+						</a>
+						<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="sr-only">Próximo</span>
+						</a>
 					</div>
+					<?php else : ?>
+						<h4><b>ohh :( O protetor não postou mais fotos</b></h4>
+					<?php endif; ?>
 				</div>
 			</div>  
         </div>
