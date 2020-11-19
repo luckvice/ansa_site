@@ -25,9 +25,9 @@ class Home extends Controller
 		
 		if(!session()->has('gps')){
 			$localizacao = $geoip->getLocalizacaoUserByIp();
-			$data['ongs']				= $ongs->getOngsByIdCidade($localizacao['id_cidade']);
+			$data['ongs'] = $ongs->getOngsByIdCidade($localizacao['id_cidade']);
 		}else{
-			$data['ongs']				= $ongs->getOngsByIdCidade(session()->get('id_cidade'));
+			$data['ongs'] = $ongs->getOngsByIdCidade(session()->get('id_cidade'));
 		}
 
 		if(!count($data['ongs']))
