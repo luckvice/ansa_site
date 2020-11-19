@@ -49,8 +49,6 @@ class Pets extends Controller
 			$data['erro_registrar'] = session('erro_registrar');
 		}
 
-		
-
 		if ($this->request->getMethod() == 'post') { //Valida se página veio de um POST | Proteção contra direct Access
 			
 			session()->set('filtrar',true);
@@ -94,11 +92,9 @@ class Pets extends Controller
 		
 		else: $filtrar_estado = false; $regiao = $cidade; 
 		endif;
-		echo $filtrar_estado;
 		if($sexo == 0){$filtrar_sexo = True; $sexo = 'null';}else{ $filtrar_sexo = False; }
 
 		if($tamanho == 0 || $tamanho == 'todos'){$filtrar_tamanho = True; }else{$filtrar_tamanho = False; echo $filtrar_tamanho;}
-		echo 'lala: '.$filtrar_sexo;
 		if($especie == 'caes'){
 			$data['caes'] = true;
 			session()->set('especieNome','caes');
