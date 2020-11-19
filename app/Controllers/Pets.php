@@ -11,31 +11,30 @@ use App\Helpers\Geopets;
 
 class Pets extends Controller
 {
-	public function index($especie = 'todos', $tamanho = 'todos', $sexo = 'todos')
+	public function index($especie = 'todos', $tamanho = 'todos', $sexo = 'todos', $estado = '', $cidade = '')
 	{
 		$estados = new Estados();
 		$cidades = new Cidades();
 		$data['estados']         	= $estados->getEstados();
 		$pets = new Pets_model;
 
-		if ($this->request->getMethod() == 'post') { //Valida se página veio de um POST | Proteção contra direct Access
-			$estado 	= $this->request->getPostGet('estado_pet');
-			$cidade 	= $this->request->getPostGet('cidade_pet');
-			$tamanho 	= $this->request->getPostGet('porte');
-			$sexo 		= $this->request->getPostGet('sexo');
-			session()->set('filtro_estado', $estado);
-			session()->set('filtro_cidade', $cidade);
-			$especie = session()->get('especieNome');
-			if($especie != 'caes' && $especie != 'gatos' ){
-				$especie = 'todos';
-			}
+		$loc = new Geopets;
+		if(session()->get('gps') == false){
 			
-
-			return redirect()->to('/pets'.'/'.$especie.'/'.$tamanho.'/'.$sexo.'/'.$estado.'/'.$cidade);
+			$regiao = $loc->getLocalizacaoUserByIp();
+			$id_cidade = $regiao['id_cidade'];
+			$id_estado = $regiao['id_estado'];
+		
+		//	if(empty($regiao)){return redirect()->to('pets');}
+		}else{
+			if(session()->get('gps') == true){
+				$id_cidade = session()->get('id_cidade');
+				$id_estado = session()->get('id_estado');
+			}
+		//	if(empty($regiao)){return redirect()->to('pets');}
 		}
 
-
-		$data['cidades'] = $cidades->getCidadesByEstadoId(session()->get('estado'));
+		$data['cidades'] = $cidades->getCidadesByEstadoId(session()->get('id_estado'));
 
 		helper('form');
 		//Configurações de pagina
@@ -49,34 +48,63 @@ class Pets extends Controller
 		if (session()->has('erro_registrar')) { //se na sessao tem a variavel erro.
 			$data['erro_registrar'] = session('erro_registrar');
 		}
-		$regiao = new Geopets;
-		if(!session()->has('gps')){
-			$regiao = $regiao->getCidadePorIp();
-		}else{
-			$regiao = session()->get('cidade');
+
+		
+
+		if ($this->request->getMethod() == 'post') { //Valida se página veio de um POST | Proteção contra direct Access
+			
+			//session()->set('filtrar',true);
+			$estado 	= $this->request->getPostGet('estado_pet');
+			$cidade 	= $this->request->getPostGet('cidade_pet');
+			$tamanho 	= $this->request->getPostGet('porte');
+			$sexo 		= $this->request->getPostGet('sexo');
+			
+			return redirect()->to('/pets'.'/'.session()->get('especieNome').'/'.$tamanho.'/'.$sexo.'/'.$estado.'/'.$cidade);
 		}
 		
-		/* Filtros consulta */
-		if ($especie == 'caes') {
-			session()->set('especie', 1);
-			session()->set('especieNome', 'caes');
-			$data['dogs'] = true;
+		if(empty($cidade)): $cidade = $id_cidade; endif;
+		if(empty($estado)): $estado = $id_estado; endif;
+		if($estado != 0  && $cidade == 0 || $estado != 'todos' && $cidade == 0) : 
+			$filtrar_estado = true; 
+			if($estado == ''): $regiao = $cidade;
+			$filtrar_estado = false; 
+			else:  
+			$regiao = $estado; 
+		endif;
 		
-			$data['listaPets'] = $pets->getPets($regiao, false, false, false, 1, true, null, true, null);
-		} else if ($especie == 'gatos') {
-			session()->set('especie', 2);
-			session()->set('especieNome', 'gatos');
-			$data['cats'] 		= true;
-			$data['listaPets'] 	= $pets->getPets($regiao, false, false, false, 2, true, null, true, null);
-		} else if ($especie == 'todos') {
-			session()->set('especie', 4);
-			$data['all'] 		= true;
-			$data['listaPets'] 	= $pets->getPets($regiao, false, false, true, null, true, null, true, null);
-		}else{
-			$data['listaPets'] 	= $pets->getPets($regiao, false, false, true, null, true, null, true, null);
+		else: $filtrar_estado = false; $regiao = $cidade; 
+		endif;
+		echo $filtrar_estado;
+		if($sexo == 0){$filtrar_sexo = True; $sexo = 'null';}else{ $filtrar_sexo = False; }
 
+		if($tamanho == 0 || $tamanho == 'todos'){$filtrar_tamanho = True; }else{$filtrar_tamanho = False; echo $filtrar_tamanho;}
+		echo 'lala: '.$filtrar_sexo;
+		if($especie == 'caes'){
+			
+			session()->set('especieNome','caes');
+			//echo $tamanho;
+			//echo 'tam'.$filtrar_tamanho.'?';
+			//echo '/pets'.'/'.$especie.'/'.$tamanho.'/'.$sexo.'/'.$estado.'/'.$cidade.'/'.$regiao;		
+			//http://localhost:8080/pets/caes/0/0/21/
+			echo 'sex'.$filtrar_sexo;
+			//echo $regiao .'|'. $filtrar_estado.'|'. true.'|'. false.'|'. $filtrar_sexo.'|'. $sexo.'|'. $filtrar_tamanho.'|'. $tamanho;
+			$data['listaPets'] = $pets->getPets($regiao, $filtrar_estado, true, false, 1, $filtrar_sexo, $sexo, $filtrar_tamanho, $tamanho);	
+	
+		}elseif($especie == 'gatos'){
+			session()->set('especieNome','gatos');
+			$data['listaPets'] = $pets->getPets($regiao, $filtrar_estado, true, false, 2, $filtrar_sexo, $sexo, $filtrar_tamanho, $tamanho);	
 		}
-
+		elseif($especie == 'todos'){
+			session()->set('especieNome','todos');
+			echo $filtrar_estado;	
+			echo 'tamanho '.$filtrar_tamanho. ' | '.$tamanho;
+			//$data['listaPets'] = $pets->getPets($regiao, $filtrar_estado, true, true, true, true, null, true, null);
+			$data['listaPets'] = $pets->getPets($regiao, $filtrar_estado, true, true, true, $filtrar_sexo, $sexo, $filtrar_tamanho, $tamanho);
+		}else{
+			
+			$data['listaPets'] = $pets->getPets($regiao, false, true, true, true, true, null, true, null);
+		}
+		
 		echo view('site/paginas/pets', $data);
 	}
 
@@ -97,51 +125,6 @@ class Pets extends Controller
 		$data['menuTransparent'] 	= False;
 		$data['estados'] 			= $estados->getEstados();
 
-		$estado 	= $this->request->getPostGet('estado_pet');
-		$cidade 	= $this->request->getPostGet('cidade_pet');
-		$tamanho 	= $this->request->getPostGet('porte');
-		$sexo 		= $this->request->getPostGet('sexo');
-			
-		session()->set('filtro_estado', $estado);
-		session()->set('filtro_cidade', $cidade);
-
-		$data['cidades'] = $cidades->getCidadesByEstadoId($estado);
-
-		if($cidade == 0) : $limiteEstado = true; 
-			$estado_cidade = $estado;
-		else:
-			$estado_cidade = $cidade;
-			$limiteEstado = false;
-		endif;
-
-		if($tamanho == 0):
-			$todosTamanhos = true;
-			$tamanho = null;
-		else: 
-			$todosTamanhos = false;
-		endif;
-		if($sexo == 0):
-			$todosSexos = true;
-			$sexo = null;
-		else:
-			$todosSexos = false;
-		endif;
-		
-		/* Filtros consulta */
-		if (session()->get('especie') == 1) {
-			$data['dogs'] 		= true;
-			$data['listaPets']	= $pets->getPets($estado_cidade, $limiteEstado, true, false, 1, $todosSexos, $sexo, $todosTamanhos, $tamanho);
-		} else if (session()->get('especie') == 2) {
-			$data['cats'] 		= true;
-			$data['listaPets'] 	= $pets->getPets($estado_cidade, $limiteEstado, true, false, 2, $todosSexos, $sexo, $todosTamanhos, $tamanho);
-		} else if (session()->get('especie') == 4) {
-			$data['all'] 		= true;
-			$data['listaPets'] 	= $pets->getPets($estado_cidade, $limiteEstado, true, true, null, $todosSexos, $sexo, $todosTamanhos, $tamanho);
-		
-		}else{
-			$data['all'] 		= true;
-			$data['listaPets'] 	= $pets->getPets($estado_cidade, $limiteEstado, true, true, null, $todosSexos, $sexo, $todosTamanhos, $tamanho);	
-		}
 		echo view('site/paginas/pets', $data);
 	}
 

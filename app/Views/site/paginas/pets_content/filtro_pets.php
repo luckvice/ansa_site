@@ -34,8 +34,8 @@
                 <option>Selecione o Estado</option>
                 <?php foreach($estados as $row=>$value){
                     $selected = '';
-                   if(session()->has('estado')){
-                        if(session()->get('estado') == $value->id_estado){
+                   if(session()->has('id_estado')){
+                        if(session()->get('id_estado') == $value->id_estado){
                             $selected = 'selected';
                         }
                         echo " <option value=".$value->id_estado." ".$selected.">" .$value->nome. "</option>";

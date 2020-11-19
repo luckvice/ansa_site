@@ -18,9 +18,6 @@ class Api extends ResourceController
     $latitude   = $this->request->getPostGet('latitude');
     $longitude  = $this->request->getPostGet('longitude');
     $data       = $localizar->getLocalizacaoUser($latitude, $longitude);
-    session()->set('gps',true);
-    session()->set('cidade', $data['cidade']);
-    session()->set('estado', $data['estado']);
     if(!session()->has('redireciona')){
       session()->set('redireciona', true);
       $response['codigo'] = 1;
