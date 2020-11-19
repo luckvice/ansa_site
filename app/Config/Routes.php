@@ -39,6 +39,7 @@ $routes->get('ong/(:num)', 'Ongs::ong/$1');
 $routes->post('buscar/filtrar', 'Pets::buscar');
 $routes->get('solicitante/(:any)', 'Api::conversarComSolicitante/$1');
 $routes->get('perfil', 'Perfil::index');
+$routes->get('redefinir', 'Pets::redefinir');
 /**
  * --------------------------------------------------------------------
  * Additional Routing
