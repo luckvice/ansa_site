@@ -53,17 +53,31 @@ class Pets extends Controller
 
 		if ($this->request->getMethod() == 'post') { //Valida se página veio de um POST | Proteção contra direct Access
 			
-			//session()->set('filtrar',true);
+			session()->set('filtrar',true);
 			$estado 	= $this->request->getPostGet('estado_pet');
 			$cidade 	= $this->request->getPostGet('cidade_pet');
 			$tamanho 	= $this->request->getPostGet('porte');
 			$sexo 		= $this->request->getPostGet('sexo');
-			
+
+			session()->set('filtrar_id_cidade',	$cidade);
+			session()->set('filtrar_id_estado',	$estado);
+			session()->set('filtrar_tamanho',	$tamanho);
+			session()->set('filtrar_sexo',		$sexo);
+
 			return redirect()->to('/pets'.'/'.session()->get('especieNome').'/'.$tamanho.'/'.$sexo.'/'.$estado.'/'.$cidade);
 		}
-		
-		if(empty($cidade)): $cidade = $id_cidade; endif;
-		if(empty($estado)): $estado = $id_estado; endif;
+		if(session()->has('filtrar')){
+			$cidade 					= session()->get('filtrar_id_cidade');
+			$estado 					= session()->get('filtrar_id_estado');
+			$tamanho					= session()->get('filtrar_tamanho');
+			$sexo						= session()->get('filtrar_sexo');
+			$data['mensagem_filtro'] 	= 'Filtrando pets'; 
+		}else{
+			if(empty($cidade)): $cidade = $id_cidade; endif;
+			if(empty($estado)): $estado = $id_estado; endif;
+			$data['mensagem_filtro'] 	= 'Mostrando pets próximos a sua região '.session()->get('estado').' '.session()->get('cidade'); 
+		}
+
 		if($estado != 0  && $cidade == 0 || $estado != 'todos' && $cidade == 0) : 
 			$filtrar_estado = true; 
 			if($estado == ''): $regiao = $cidade;
@@ -108,24 +122,10 @@ class Pets extends Controller
 		echo view('site/paginas/pets', $data);
 	}
 
-	public function buscar($especie = '')
+	public function redefinir()
 	{
-				//Verifica Mensagem de erro do Login Auth Controller
-		if (session()->has('erro')) { //se na sessao tem a variavel erro.
-			$data['erro'] = session('erro');
-		}
-		if (session()->has('erro_registrar')) { //se na sessao tem a variavel erro.
-			$data['erro_registrar'] = session('erro_registrar');
-		}
-		$estados 	= new Estados();
-		$cidades 	= new Cidades();
-		$pets 		= new Pets_model;
-		helper('form');
-		$data['title'] 				= 'Pets | Amigo Não se Abandona';
-		$data['menuTransparent'] 	= False;
-		$data['estados'] 			= $estados->getEstados();
-
-		echo view('site/paginas/pets', $data);
+		session()->remove('filtrar');
+		return redirect()->to(base_url('pets'));
 	}
 
 	public function pet($id_pet)

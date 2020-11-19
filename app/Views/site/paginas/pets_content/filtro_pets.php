@@ -22,11 +22,9 @@
         </ul>
         <hr>
         <a data-toggle="collapse" href="#buscaavancada" aria-expanded="false" aria-controls="buscaavancada">
-            <i class="far fa-search"></i> Busca Avançada
+            <i class="far fa-search"></i> Busca Avançada  <?php if(session()->has('filtrar')): echo ' | <a href ="'.base_url('redefinir').'">Redefinir Filtros</a>'; endif; ?>
         </a>
-        <?php
-            echo 'Mostrando pets proximos a sua região ';
-        ?>
+        <?=$mensagem_filtro?>
          <form method="POST" action="<?= base_url('/pets') ?>">                               
             <div class="collapse" id="buscaavancada">
 
