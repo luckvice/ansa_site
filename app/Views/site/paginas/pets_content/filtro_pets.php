@@ -32,12 +32,15 @@
                 <option>Selecione o Estado</option>
                 <?php foreach($estados as $row=>$value){
                     $selected = '';
-                   if(session()->has('id_estado')){
-                        if(session()->get('id_estado') == $value->id_estado){
+                   if(session()->has('filtrar')){
+                        if(session()->get('filtrar_id_estado') == $value->id_estado){
                             $selected = 'selected';
                         }
                         echo " <option value=".$value->id_estado." ".$selected.">" .$value->nome. "</option>";
                     }else{
+                        if(session()->get('id_estado') == $value->id_estado){
+                            $selected = 'selected';
+                        }
                         echo " <option value=".$value->id_estado." ".$selected.">" .$value->nome. "</option>";
                     }?>
              <?php }?>
@@ -45,12 +48,15 @@
                 <select id="filtro_cidade" class="selectpicker " data-style="select-with-transition" name="cidade_pet" title="Selecione Cidade" data-size="7">
                 <?php foreach($cidades as $row=>$value){
                     $selected = '';
-                        if(session()->has('filtro_estado')){
-                            if(session()->get('filtro_cidade') == $value->id_municipio){
-                            $selected = 'selected';
-                        }
+                        if(session()->has('filtrar')){
+                            if(session()->get('filtrar_id_cidade') == $value->id_municipio){
+                                $selected = 'selected';
+                             }
                         echo " <option value=".$value->id_municipio." ".$selected.">" .$value->nome. "</option>";
                       }else{
+                        if(session()->get('id_cidade') == $value->id_municipio){
+                            $selected = 'selected';
+                        }
                         echo " <option value=".$value->id_municipio." ".$selected.">" .$value->nome. "</option>";
                       }?>
                <?php }?>

@@ -24,13 +24,9 @@ $(function () {
         }
       }
     });
-    /*
-    console.log(position);
-    console.log(position.coords.latitude) +
-      "<br>Longitude: " + position.coords.longitude;*/
   }
   function error(err) {
-    alert('Infelizmente não poderemos encontrar os pets pela sua localização :( ');
+    console.log('Infelizmente não poderemos encontrar os pets pela sua localização :( ');
   }
 
   var hash = window.location.hash;

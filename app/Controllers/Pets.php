@@ -120,6 +120,10 @@ class Pets extends Controller
 	public function redefinir()
 	{
 		session()->remove('filtrar');
+		session()->remove('filtrar_id_cidade');
+		session()->remove('filtrar_id_estado');
+		session()->remove('filtrar_tamanho');
+		session()->remove('filtrar_sexo');
 		return redirect()->to(base_url('pets'));
 	}
 
