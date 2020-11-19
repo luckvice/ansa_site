@@ -2,19 +2,19 @@
     <div class="col">
         <ul class="nav nav-pills nav-pills-icons" role="tablist">
             <li class="nav-item">
-                <a class="nav-link <?php if (isset($all)) : echo 'active';
+                <a class="nav-link <?php if (isset($todos)) : echo 'active';
                                     endif; ?>" href="/pets/todos" data-toggle="tooltip" data-placement="top" title="Listar Todos">
                     <i class="fas fa-paw"></i>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?php if (isset($dogs)) : echo 'active';
+                <a class="nav-link <?php if (isset($caes)) : echo 'active';
                                     endif; ?>" href="/pets/caes" data-toggle="tooltip" data-placement="top" title="Listar Cães">
                     <i class="fas fa-dog"></i>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?php if (isset($cats)) : echo 'active';
+                <a class="nav-link <?php if (isset($gatos)) : echo 'active';
                                     endif; ?>" href="/pets/gatos" data-toggle="tooltip" data-placement="top" title="Listar Gatos">
                     <i class="fas fa-cat"></i>
                 </a>

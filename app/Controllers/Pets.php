@@ -71,7 +71,13 @@ class Pets extends Controller
 			$estado 					= session()->get('filtrar_id_estado');
 			$tamanho					= session()->get('filtrar_tamanho');
 			$sexo						= session()->get('filtrar_sexo');
-			$data['mensagem_filtro'] 	= 'Filtrando pets'; 
+			$nome_cidade				= $cidades->getCidadesById($cidade);
+			$nome_estado				= $estados->getEstadoById($estado);
+			if(!empty($nome_cidade)){
+				$nome_cidade = $nome_cidade->nome;
+			}
+
+			$data['mensagem_filtro'] 	= 'Filtrando pets na região de '.$nome_estado->nome.' / '.$nome_cidade; 
 		}else{
 			if(empty($cidade)): $cidade = $id_cidade; endif;
 			if(empty($estado)): $estado = $id_estado; endif;
@@ -94,31 +100,24 @@ class Pets extends Controller
 		if($tamanho == 0 || $tamanho == 'todos'){$filtrar_tamanho = True; }else{$filtrar_tamanho = False; echo $filtrar_tamanho;}
 		echo 'lala: '.$filtrar_sexo;
 		if($especie == 'caes'){
-			
+			$data['caes'] = true;
 			session()->set('especieNome','caes');
-			//echo $tamanho;
-			//echo 'tam'.$filtrar_tamanho.'?';
-			//echo '/pets'.'/'.$especie.'/'.$tamanho.'/'.$sexo.'/'.$estado.'/'.$cidade.'/'.$regiao;		
-			//http://localhost:8080/pets/caes/0/0/21/
-			echo 'sex'.$filtrar_sexo;
-			//echo $regiao .'|'. $filtrar_estado.'|'. true.'|'. false.'|'. $filtrar_sexo.'|'. $sexo.'|'. $filtrar_tamanho.'|'. $tamanho;
 			$data['listaPets'] = $pets->getPets($regiao, $filtrar_estado, true, false, 1, $filtrar_sexo, $sexo, $filtrar_tamanho, $tamanho);	
 	
 		}elseif($especie == 'gatos'){
+			$data['gatos'] = true;
 			session()->set('especieNome','gatos');
 			$data['listaPets'] = $pets->getPets($regiao, $filtrar_estado, true, false, 2, $filtrar_sexo, $sexo, $filtrar_tamanho, $tamanho);	
 		}
 		elseif($especie == 'todos'){
+			$data['todos'] = true;
 			session()->set('especieNome','todos');
-			echo $filtrar_estado;	
-			echo 'tamanho '.$filtrar_tamanho. ' | '.$tamanho;
-			//$data['listaPets'] = $pets->getPets($regiao, $filtrar_estado, true, true, true, true, null, true, null);
 			$data['listaPets'] = $pets->getPets($regiao, $filtrar_estado, true, true, true, $filtrar_sexo, $sexo, $filtrar_tamanho, $tamanho);
 		}else{
 			
 			$data['listaPets'] = $pets->getPets($regiao, false, true, true, true, true, null, true, null);
 		}
-		
+
 		echo view('site/paginas/pets', $data);
 	}
 
