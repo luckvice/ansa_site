@@ -2,19 +2,19 @@
     <div class="col">
         <ul class="nav nav-pills nav-pills-icons" role="tablist">
             <li class="nav-item">
-                <a class="nav-link <?php if (isset($all)) : echo 'active';
+                <a class="nav-link <?php if (isset($todos)) : echo 'active';
                                     endif; ?>" href="/pets/todos" data-toggle="tooltip" data-placement="top" title="Listar Todos">
                     <i class="fas fa-paw"></i>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?php if (isset($dogs)) : echo 'active';
+                <a class="nav-link <?php if (isset($caes)) : echo 'active';
                                     endif; ?>" href="/pets/caes" data-toggle="tooltip" data-placement="top" title="Listar Cães">
                     <i class="fas fa-dog"></i>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?php if (isset($cats)) : echo 'active';
+                <a class="nav-link <?php if (isset($gatos)) : echo 'active';
                                     endif; ?>" href="/pets/gatos" data-toggle="tooltip" data-placement="top" title="Listar Gatos">
                     <i class="fas fa-cat"></i>
                 </a>
@@ -32,25 +32,32 @@
                 <option>Selecione o Estado</option>
                 <?php foreach($estados as $row=>$value){
                     $selected = '';
-                   if(session()->has('id_estado')){
-                        if(session()->get('id_estado') == $value->id_estado){
+                   if(session()->has('filtrar')){
+                        if(session()->get('filtrar_id_estado') == $value->id_estado){
                             $selected = 'selected';
                         }
                         echo " <option value=".$value->id_estado." ".$selected.">" .$value->nome. "</option>";
                     }else{
+                        if(session()->get('id_estado') == $value->id_estado){
+                            $selected = 'selected';
+                        }
                         echo " <option value=".$value->id_estado." ".$selected.">" .$value->nome. "</option>";
                     }?>
              <?php }?>
                 </select>
                 <select id="filtro_cidade" class="selectpicker " data-style="select-with-transition" name="cidade_pet" title="Selecione Cidade" data-size="7">
+                <option value="0">Todos</option>
                 <?php foreach($cidades as $row=>$value){
                     $selected = '';
-                        if(session()->has('filtro_estado')){
-                            if(session()->get('filtro_cidade') == $value->id_municipio){
-                            $selected = 'selected';
-                        }
+                        if(session()->has('filtrar')){
+                            if(session()->get('filtrar_id_cidade') == $value->id_municipio){
+                                $selected = 'selected';
+                             }
                         echo " <option value=".$value->id_municipio." ".$selected.">" .$value->nome. "</option>";
                       }else{
+                        if(session()->get('id_cidade') == $value->id_municipio){
+                            $selected = 'selected';
+                        }
                         echo " <option value=".$value->id_municipio." ".$selected.">" .$value->nome. "</option>";
                       }?>
                <?php }?>
