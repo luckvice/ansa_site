@@ -195,6 +195,7 @@ class Pets extends Controller
 		$data['uf']				= $pet->uf;
 		$data['nome_protetor']	= $pet->usuario_nome;
 		$data['genero'] 		= $pet->id_sexo == 1 ? 'o' : 'a';
+		$data['adotado']		= $pet->adotado;
 
 		$imagens_pet = array();
 

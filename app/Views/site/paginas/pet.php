@@ -79,7 +79,7 @@
                         	<img src="data:image/jpeg;base64,<?=$imagem?>">
                         </div>
                         <div class="name">
-                            <h2 class="title"><?=$nome?></h2>
+                            <h2 class="title"><?=$nome?> <?=$adotado?></h2>
 							<div class="card">
 			    				<div class="pet-item">
 									<div class="card-body text-left ">
