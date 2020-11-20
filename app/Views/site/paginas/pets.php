@@ -70,7 +70,7 @@
                     </a>
                     <div class="card-body">
                       <div class="pet-title">
-                        <h5 class="card-title"><i class="fas fa-dog"></i> <?= $value->nome?> </h5>
+                        <h5 class="card-title"><i class="fas <?php if($value->id_especie == 1): echo 'fa-dog'; else: echo 'fa-cat'; endif; ?>"></i> <?= $value->nome?> </h5>
                       </div>
                       <hr>
                       <div class="row">
