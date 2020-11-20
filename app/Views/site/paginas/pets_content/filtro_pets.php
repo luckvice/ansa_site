@@ -65,7 +65,7 @@
                 <select class="selectpicker " data-style="select-with-transition" name="porte" title="Single Select" data-size="7">
                     <option value="0" selected>Tamanho</option>
                     <option value="1">Pequeno</option>
-                    <option value="2">Medio</option>
+                    <option value="2">Médio</option>
                     <option value="3">Grande</option>
                 </select>
                 <select class="selectpicker " data-style="select-with-transition" name="sexo" title="Single Select" data-size="7">

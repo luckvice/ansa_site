@@ -50,53 +50,64 @@
         </div>
         <div class="col-md-12">
           <div class="row">
-          <?php foreach($listaPets as $key=>$value) { ?>
-            <div class="col-md-4">
-              <div class="card">
-                <a href="<?=base_url("pet/".$value->id_pet)?>">
-                  <div class="content">
-                    <div class="content-overlay"></div>
-                    <div class="pet-full-pic">
-                      <img src="data:image/jpeg;base64,<?= $value->imagem?>" alt="Card image cap">
-                    </div>
-                    <div class="content-details fadeIn-bottom">
-                      <h3 class="content-title"><?= $value->nome?></h3>
-                      <p class="content-text">Conhecer</p>
-                    </div>
-                  </div>
-                </a>
-                <div class="card-body">
-                  <div class="pet-title">
-                    <h5 class="card-title"><i class="fas fa-dog"></i> <?= $value->nome?> </h5>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col">
-                      <p class="card-text"><i class="fas fa-history"></i><?= $value->faixa_etaria_descricao?></p>
-                    </div>
-                    <div class="col">
-                      <p class="card-text">
-                        <i class="fas <?php if($value->id_sexo == 1): echo 'fa-mars'; else: echo 'fa-venus'; endif; ?>"></i> <?=  $value->sexo_descricao?>
-                      </p>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col">
-                      <p class="card-text"><i class="fas fa-dumbbell"></i><?= $value->porte_descricao?></p>
-                    </div>
-                    <div class="col">
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col"><br>
-                      <p class="card-text text-center"> <i class="fas fa-map-marker-alt"></i><?= $value->municipio_nome?>/<?= $value->uf?></p>
+          <?php 
+
+            if(count($listaPets)) : 
+              foreach($listaPets as $key=>$value) { ?>
+                <div class="col-md-4">
+                  <div class="card">
+                    <a href="<?=base_url("pet/".$value->id_pet)?>">
+                      <div class="content">
+                        <div class="content-overlay"></div>
+                        <div class="pet-full-pic">
+                          <img src="data:image/jpeg;base64,<?= $value->imagem?>" alt="Card image cap">
+                        </div>
+                        <div class="content-details fadeIn-bottom">
+                          <h3 class="content-title"><?= $value->nome?></h3>
+                          <p class="content-text">Conhecer</p>
+                        </div>
+                      </div>
+                    </a>
+                    <div class="card-body">
+                      <div class="pet-title">
+                        <h5 class="card-title"><i class="fas fa-dog"></i> <?= $value->nome?> </h5>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col">
+                          <p class="card-text"><i class="fas fa-history"></i><?= $value->faixa_etaria_descricao?></p>
+                        </div>
+                        <div class="col">
+                          <p class="card-text">
+                            <i class="fas <?php if($value->id_sexo == 1): echo 'fa-mars'; else: echo 'fa-venus'; endif; ?>"></i> <?=  $value->sexo_descricao?>
+                          </p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <p class="card-text"><i class="fas fa-dumbbell"></i><?= $value->porte_descricao?></p>
+                        </div>
+                        <div class="col">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col"><br>
+                          <p class="card-text text-center"> <i class="fas fa-map-marker-alt"></i><?= $value->municipio_nome?>/<?= $value->uf?></p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
+          <?php 
+              }
+            else : ?>
+              <div class="col-md-12 text-center">
+                <h2 class="title">Não há pets disponíveis no momento =(</h2>
+                <h5 class="description">Gostaria de receber aviso quando chegar um novo amiguinho? <a href="#"> Clique aqui!</a></h5>
               </div>
-
-            </div>
-          <?php }?>
+          <?php
+            endif;
+          ?>
           </div>
           <div class="row">
             <div class="col text-center" style="display: flex;">

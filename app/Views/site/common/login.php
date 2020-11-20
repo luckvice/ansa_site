@@ -25,7 +25,7 @@
                   <div class="input-group-prepend">
                     <div class="input-group-text"><i class="material-icons">email</i></div>
                   </div>
-                  <input type="email" name="email" class="form-control" placeholder="Email..." value="<?= old('email'); ?>">
+                  <input type="email" name="email" class="form-control" placeholder="Email" value="<?= old('email'); ?>">
                 </div>
               </div>
 

@@ -66,7 +66,7 @@
                         <div class="input-group-prepend">
                           <div class="input-group-text"><i class="material-icons">email</i></div>
                         </div>
-                        <input type="mail" class="form-control" name="email" id="email" placeholder="Seu E-mail." value="<?= old('email'); ?>" required>
+                        <input type="mail" class="form-control" name="email" id="email" placeholder="Seu E-mail" value="<?= old('email'); ?>" required>
                       </div>
                     </div>
                     <div class="form-group">

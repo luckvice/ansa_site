@@ -20,22 +20,46 @@
                 <div class="col-md-6">
                     <p class="description">Informe seus dados e envie sua sugestão, dúvida ou qualquer outra necessidade. Responderemos o mais breve possível.<br><br></p>
                     
-                    <form role="form" id="contact-form" method="post">
+                    <form method="POST" action="/contato/enviar">
+                            <?php $mensagem = session()->get('mensagem');
+                                if(isset($mensagem)): 
+                                    if($mensagem['success']): 
+                                        ?>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="alert alert-success" role="alert">
+                                                    <?= $mensagem['mensagem'] ?>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <?php else : ?>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="alert alert-danger" role="alert">
+                                                        <?= $mensagem['mensagem'] ?>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                            <?php	endif;
+                                endif;
+                            ?>
                         <div class="form-group bmd-form-group">
                             <label for="name" class="bmd-label-floating">Seu Nome</label>
-                            <input type="text" class="form-control" id="name" name="nome">
+                            <input type="text" class="form-control" id="name" name="nome" required>
                         </div>
                         <div class="form-group bmd-form-group">
                             <label for="exampleInputEmails" class="bmd-label-floating">E-mail</label>
-                            <input type="email" class="form-control" id="exampleInputEmails" name="email">
+                            <input type="email" class="form-control" id="exampleInputEmails" name="email" required>
                         </div>
                         <div class="form-group bmd-form-group">
-                            <label for="phone" class="bmd-label-floating">Telefone</label>
-                            <input type="text" class="form-control" id="phone" name="telefone">
+                            <label for="phone" class="bmd-label-floating">Telefone (Opcional)</label>
+                            <input type="tel" class="form-control is-invalid" id="telefone" name="telefone">
                         </div>
                         <div class="form-group label-floating bmd-form-group">
-                            <label class="form-control-label bmd-label-floating" for="message"> Sua Mensagem</label>
-                            <textarea class="form-control" rows="6" id="message" name="mensagem"></textarea>
+                            <label class="form-control-label bmd-label-floating" for="message">Sua Mensagem</label>
+                            <textarea class="form-control" rows="6" id="message" name="mensagem" required></textarea>
                         </div>
                         <div class="submit text-center">
                             <input type="submit" class="btn btn-primary btn-raised btn-round" value="Enviar">

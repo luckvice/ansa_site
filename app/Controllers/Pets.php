@@ -139,7 +139,6 @@ class Pets extends Controller
 		session()->markAsFlashdata('criptopost');//marca como sessao temporaria
 
 		//Configurações de pagina
-		$data['title'] 				= 	'Pets | Amigo Não se Abandona';
 		$data['menuTransparent'] 	= 	False;
 		
 		//Verifica Mensagem de erro do Login Auth Controller
@@ -212,6 +211,7 @@ class Pets extends Controller
 		endif;
 
 		$data['imagens_pet'] = $imagens_pet;
+		$data['title'] 		 = 'Conheça '.$data['genero'].' '. $pet->nome .' | Amigo Não se Abandona';
 
 		session()->set('email_usuario',$pet->email);
 		session()->markAsFlashdata('email_usuario');
