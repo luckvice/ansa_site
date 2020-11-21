@@ -32,8 +32,8 @@ $(function () {
   var hash = window.location.hash;
   hash && $('ul.nav a[href="' + hash + '"]').tab('show');
   var host = window.location.origin;
-  $('#telefone').mask('(00) 00000-00009');
-  $('#telefone_interessado').mask('(00) 00000-00009');
+  $('#telefone').mask('(00) 00000-0009');
+  $('#telefone_interessado').mask('(00) 00000-0009');
   var hash = window.location.hash;
 
   $('#termos').click(function () {
