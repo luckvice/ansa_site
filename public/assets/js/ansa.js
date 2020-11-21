@@ -249,7 +249,7 @@ $(function () {
     var nome_protetor = $("input[name='nome_protetor']").val();
     var email_interessado = $("input[name='email_interessado']").val();
     var pet_genero = $("input[name='pet_genero']").val();
-
+    console.log(telefone);
     if (email_interessado == '' || isValidEmailAddress(email_interessado)) {
       $.ajax({
         url: host + '/api/solicitarAdocao',

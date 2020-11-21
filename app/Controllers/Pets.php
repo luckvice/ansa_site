@@ -215,9 +215,8 @@ class Pets extends Controller
 		$data['title'] 		 = 'Conheça '.$data['genero'].' '. $pet->nome .' | Amigo Não se Abandona';
 
 		session()->set('email_usuario',$pet->email);
-		session()->markAsFlashdata('email_usuario');
 		session()->set('telefone_usuario',$pet->telefone);
-		session()->markAsFlashdata('telefone_usuario');
+		
 
 		echo view('site/paginas/pet', $data);
 	}

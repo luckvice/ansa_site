@@ -117,7 +117,7 @@ class Api extends ResourceController
       $url      = $data['id_pet'].'/'.$data['telefone'].'/'.$data['nome_pet'].'/'.$data['nome_interessado'];
       $mensagem = new Sima;
       $urlEnc   = new Urlencode;
-
+   
       $mensagem->enviarMensagemWa($data['telefone_usuario'] , 
       'Olá, '.$data['nome_protetor'].'! 🐶😸
 
