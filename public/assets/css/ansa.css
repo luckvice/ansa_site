@@ -4,6 +4,9 @@
 
 
 /* CUSTOM Styles */
+.tag-adotado {
+    background-color: #28a745 !important;
+}
 
 .footer-link:hover {
     color: #131212;

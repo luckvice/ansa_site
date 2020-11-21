@@ -64,10 +64,23 @@
 			<ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
                 <li class="nav-item">
                     <!--<a class="nav-link active" href="https://wa.me/+55519620-3669?text=ANSA Quero adotar o Niko, http://amigonaoseabandona.com.br/pets/niko, Meu Nome é Lucas Soares">-->
-					<a class="nav-link active" href="#" data-toggle="modal" data-target="#solicitarAdocao">
-                		<i class="material-icons">favorite</i>
-                        Adotar
-                    </a>
+					<?php
+						if($adotado) :
+					?>
+						<a class="nav-link active" href="#" data-toggle="modal" data-target="#solicitarAdocao">
+							<i class="material-icons">favorite</i>
+							Adotar
+						</a>
+					<?php
+						else :
+					?>
+						<a class="nav-link active tag-adotado">
+							<i class="material-icons">check</i>
+							Adotado
+						</a>
+					<?php
+						endif;
+					?>
                 </li>
             </ul>
 		</div>
@@ -79,7 +92,7 @@
                         	<img src="data:image/jpeg;base64,<?=$imagem?>">
                         </div>
                         <div class="name">
-                            <h2 class="title"><?=$nome?> <?=$adotado?></h2>
+                            <h2 class="title"><?=$nome?></h2>
 							<div class="card">
 			    				<div class="pet-item">
 									<div class="card-body text-left ">
