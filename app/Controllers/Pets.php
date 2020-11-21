@@ -11,27 +11,38 @@ use App\Helpers\Geopets;
 
 class Pets extends Controller
 {
-	public function index($especie = 'todos', $tamanho = 'todos', $sexo = 'todos', $estado = '', $cidade = '')
+	public function index($especie = 'todos', $paginacao = 1, $tamanho = 'todos', $sexo = 'todos', $estado = '', $cidade = '')
 	{
 		$estados = new Estados();
 		$cidades = new Cidades();
 		$data['estados']         	= $estados->getEstados();
-		$pets = new Pets_model;
+		$pets 	= new Pets_model;
+		$loc 	= new Geopets;
 
-		$loc = new Geopets;
+		$totalPorPagina = 12;
+		$proximo 	= 	$paginacao+$totalPorPagina;
+		$anterior	=	$paginacao-$totalPorPagina;
+		if($anterior >=0){
+			$data['anterior'] = $especie.'/'.$anterior;
+		}else{
+			$data['anterior'] = '';
+		}
+
+		$data['proximo'] = $especie.'/'.$proximo;
+
+		
+		
 		if(session()->get('gps') == false){
 			
 			$regiao = $loc->getLocalizacaoUserByIp();
 			$id_cidade = $regiao['id_cidade'];
 			$id_estado = $regiao['id_estado'];
 		
-		//	if(empty($regiao)){return redirect()->to('pets');}
 		}else{
 			if(session()->get('gps') == true){
 				$id_cidade = session()->get('id_cidade');
 				$id_estado = session()->get('id_estado');
 			}
-		//	if(empty($regiao)){return redirect()->to('pets');}
 		}
 
 		$data['cidades'] = $cidades->getCidadesByEstadoId(session()->get('id_estado'));
@@ -52,6 +63,7 @@ class Pets extends Controller
 		if ($this->request->getMethod() == 'post') { //Valida se página veio de um POST | Proteção contra direct Access
 			
 			session()->set('filtrar',true);
+
 			$estado 	= $this->request->getPostGet('estado_pet');
 			$cidade 	= $this->request->getPostGet('cidade_pet');
 			$tamanho 	= $this->request->getPostGet('porte');
@@ -62,7 +74,7 @@ class Pets extends Controller
 			session()->set('filtrar_tamanho',	$tamanho);
 			session()->set('filtrar_sexo',		$sexo);
 
-			return redirect()->to('/pets'.'/'.session()->get('especieNome').'/'.$tamanho.'/'.$sexo.'/'.$estado.'/'.$cidade);
+			return redirect()->to('/pets'.'/'.session()->get('especieNome').'/'.$paginacao.'/'.$tamanho.'/'.$sexo.'/'.$estado.'/'.$cidade);
 		}
 		if(session()->has('filtrar')){
 			$cidade 					= session()->get('filtrar_id_cidade');
@@ -98,23 +110,28 @@ class Pets extends Controller
 		if($especie == 'caes'){
 			$data['caes'] = true;
 			session()->set('especieNome','caes');
-			$data['listaPets'] = $pets->getPets($regiao, $filtrar_estado, true, false, 1, $filtrar_sexo, $sexo, $filtrar_tamanho, $tamanho);	
+			$data['listaPets'] = $pets->getPets($regiao, $filtrar_estado, true, false, 1, $filtrar_sexo, $sexo, $filtrar_tamanho, $tamanho,0,$paginacao);	
+			$total = $pets->getPets($regiao, $filtrar_estado, true, false, 1, $filtrar_sexo, $sexo, $filtrar_tamanho, $tamanho,0,99999, 99999, true);	
 	
 		}elseif($especie == 'gatos'){
 			$data['gatos'] = true;
 			session()->set('especieNome','gatos');
-			$data['listaPets'] = $pets->getPets($regiao, $filtrar_estado, true, false, 2, $filtrar_sexo, $sexo, $filtrar_tamanho, $tamanho);	
+			$data['listaPets'] = $pets->getPets($regiao, $filtrar_estado, true, false, 2, $filtrar_sexo, $sexo, $filtrar_tamanho, $tamanho,0, $paginacao);	
+			$total = $pets->getPets($regiao, $filtrar_estado, true, false, 2, $filtrar_sexo, $sexo, $filtrar_tamanho, $tamanho,0,99999, 99999, true);	
 		}
 		elseif($especie == 'todos'){
 			$data['todos'] = true;
 			session()->set('especieNome','todos');
-			$data['listaPets'] = $pets->getPets($regiao, $filtrar_estado, true, true, true, $filtrar_sexo, $sexo, $filtrar_tamanho, $tamanho);
+			
+			$data['listaPets'] = $pets->getPets($regiao, $filtrar_estado, true, true, true, $filtrar_sexo, $sexo, $filtrar_tamanho, $tamanho,0 , $paginacao);
+			$total = $pets->getPets($regiao, $filtrar_estado, true, true, true, $filtrar_sexo, $sexo, $filtrar_tamanho, $tamanho,0,99999, 99999, true);	
 		}else{
 			
-			$data['listaPets'] = $pets->getPets($regiao, false, true, true, true, true, null, true, null);
+			$data['listaPets'] = $pets->getPets($regiao, false, true, true, true, true, null, true, null, 0 , $paginacao);
+			$total = $pets->getPets($regiao, false, true, true, true, true, null, true, null, 0 ,99999, 99999, true);	
 		}
-
-		echo view('site/paginas/pets', $data);
+		var_dump($total);
+	echo view('site/paginas/pets', $data);
 	}
 
 	public function redefinir()

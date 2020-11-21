@@ -143,6 +143,10 @@ class Debug extends Controller
         echo '<pre>';
         var_dump($resultados);
     }
+    public function getPetsRecords(){
+        $pets = new Pets;
+        var_dump($pets->getNumPets(1,1));
+    }
     public function listarEstados()
     {
         $estados = new Estados;

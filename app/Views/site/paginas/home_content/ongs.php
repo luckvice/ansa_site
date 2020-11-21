@@ -15,7 +15,7 @@
               <div class="card card-profile card-plain">
                 <div class="row">
                   <div class="col-md-5">
-                  <a href="<?=base_url()?>">
+                  <a href="<?=base_url('ong/'.$value->id_ong)?>">
                   <div class="content">
                     <div class="content-overlay"></div>
                     <div class="pet-full-pic">
