@@ -53,7 +53,7 @@ class Debug extends Controller
     public function  enviarMensagemEmail(){
         $mensagem = new Sima;
       
-        return $mensagem->enviarMensagemEmail('Teste',$html,'lucasmarcelo93@gmail.com');
+        return $mensagem->enviarMensagemEmail('Teste','FOii','lucasmarcelo93@gmail.com');
     }
     
     public function adotar(){

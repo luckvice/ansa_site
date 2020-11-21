@@ -65,7 +65,7 @@
                 <li class="nav-item">
                     <!--<a class="nav-link active" href="https://wa.me/+55519620-3669?text=ANSA Quero adotar o Niko, http://amigonaoseabandona.com.br/pets/niko, Meu Nome é Lucas Soares">-->
 					<?php
-						if($adotado) :
+						if($adotado == 0) :
 					?>
 						<a class="nav-link active" href="#" data-toggle="modal" data-target="#solicitarAdocao">
 							<i class="material-icons">favorite</i>

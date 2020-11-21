@@ -136,7 +136,7 @@ class Pets extends Controller
 		$data['estados']         	= $estados->getEstados();
 
 		session()->set('criptopost',random_string('sha1',150));//Cria sessão criptografada
-		session()->markAsFlashdata('criptopost');//marca como sessao temporaria
+	//	session()->markAsFlashdata('criptopost');//marca como sessao temporaria
 
 		//Configurações de pagina
 		$data['menuTransparent'] 	= 	False;
