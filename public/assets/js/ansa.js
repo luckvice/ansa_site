@@ -279,6 +279,7 @@ $(function () {
             $(".alert-danger").fadeIn();
             $(".response_erro").text(data.mensagem);
             $(".solicitar_adocao").prop('disabled', false);
+            $(".solicitar_adocao").text('Tentar novamente!');
           }
         }
       });

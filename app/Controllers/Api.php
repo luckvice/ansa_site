@@ -110,8 +110,8 @@ class Api extends ResourceController
       $data['msg_opcional'] = 'Não deixou recado.';
     }
     if(empty($data['telefone'])){
-      $data['status']   = 2;
-      $data['mensagem'] = '* É Obrigatorio o Telefone';  
+      $datas['status']   = 2;
+      $datas['mensagem'] = '* É Obrigatorio o Telefone';  
     }else if(session()->has('criptopost')){
       //$id_pet, $telefone_usuario, $nome_pet, $nome_interessado 
       $url      = $data['id_pet'].'/'.$data['telefone'].'/'.$data['nome_pet'].'/'.$data['nome_interessado'];
