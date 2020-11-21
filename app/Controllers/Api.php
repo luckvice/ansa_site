@@ -117,15 +117,15 @@ class Api extends ResourceController
       $url      = $data['id_pet'].'/'.$data['telefone'].'/'.$data['nome_pet'].'/'.$data['nome_interessado'];
       $mensagem = new Sima;
       $urlEnc   = new Urlencode;
-      
+
       $mensagem->enviarMensagemWa($data['telefone_usuario'] , 
-      'Oieeee '.$data['nome_protetor'].' o(a) '.$data['nome_interessado'].' está interessado em adotar o pet
+      'Olá, '.$data['nome_protetor'].'! 🐶😸
 
-🐾'.$data['nome_pet'].'🐾
+'.$data['nome_interessado'].' está interessado em adotar o 🐾 '.$data['nome_pet'].' 🐾
 
-📩 Mensagem: '.$data['msg_opcional'].'
+📩 Mensagem: ' . $data['msg_opcional'] . '
 
-📤 Para conversar com o interessado clique no link abaixo:
+📤 Para conversar com o interessado, clique no link abaixo:
 
 📲 amigonaoseabandona.com.br/solicitante/'.$urlEnc->urlsafeB64Encode($url).'
       

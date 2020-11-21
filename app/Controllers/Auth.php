@@ -116,18 +116,18 @@ class Auth extends Controller
                         'id_nivel'      => $nivel
                     ]);
                     $wa_message = '
------------🐾[ANSA]🐾----------
+🐾🐾 Amigo Não se Abandona 🐾🐾 
 
-Oiiiieee Bem vindo(a) '.$dados['nome'].'
+Olá, '.$dados['nome'].'! Seja bem-vindo! 🐶😸
 
-Seu cadastro foi efetuado com sucesso! 
+✔ Seu cadastro foi efetuado com sucesso!
 
-Agora você pode cadastrar um Pet para adoção!
-Acelere o processo de adoção usando nossa plataforma.
+◾ Agora você pode cadastrar um pet para adoção!
+◾ Utilizando a nossa plataforma, esse processo será mais ágil, simples e fácil!
 
-Agradecemos seu interesse.
+Qualquer dúvida, estaremos à disposição!
 
-Att. Equipe ANSA.
+📌 Atenciosamente, Equipe A.N.S.A.
 ';
                    $enviamensagem['img_header'] = base_url('assets/img/dog_perfil.jpg');     
                    $enviamensagem['usuario']    = $dados['nome'];
