@@ -9,11 +9,20 @@ use App\Models\Usuarios; //Carrega Model SQL
 use App\Models\Cidades; //Carrega Model SQL
 use App\Models\Estados; //Carrega Model SQL
 use App\Models\Pets; //Carrega Model SQL
+use App\Models\Recomendacao;
 use App\Libraries\Sima;
 use App\Helpers\Geopets;
 
 class Debug extends Controller
 {
+
+    public function recomendacaotest(){
+    $recomenda = new Recomendacao;
+
+
+    $recomenda->inserirRecomedacao(1,1,1,1,51999930495,'teste@teste.com');
+
+    }
 
     public function titletest(){
         $title     = "What's wrong with CSS?";
