@@ -20,6 +20,7 @@
   <!-- Abre Modal Caso Tenha Falha na validação -->
   <?= $this->renderSection('openLoginModal') ?>
   <?= $this->renderSection('openRegistrarModal') ?>
+  <?= $this->renderSection('openModalRecomendar') ?>
   <!-- Seleciona a Tab em caso de erro Perfil/cadastrarPet -->
 </body>
 

@@ -1,23 +1,51 @@
 <?= $this->extend('site/templates/base_template') ?>
 <?= $this->section('content') ?>
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalRecomendar" tabindex="-1" role="dialog" aria-labelledby="modalRecomendar" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Atenção</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h3>Infelizmente não encontramos o pet que você queria, gostaria que nossa equipe mande sugestões para você ?</h3>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Não Obrigado</button>
-        <button type="button" class="btn btn-primary">Eu quero</button>
-      </div>
-    </div>
+  <div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title font-weight-bold">Recomendação de pets</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			<form method="POST" action="">
+				<div class="modal-body">
+					<div class="form-row">
+						<div class="form-group col-md-12 bmd-form-group">
+							<label class="control-label bmd-label-static" for="telefone_interessado">Informe seu telefone/Whatsapp</label>
+							<input type="phone" class="form-control is-invalid" name="telefone" id="telefone_interessado" max-lengh="14" required="" maxlength="15">
+							<input type="hidden" name="id_pet" id="id_pet" value="72">
+							<input type="hidden" name="nome_pet" id="nome_pet" value="Pudin">
+							<input type="hidden" name="nome_protetor" id="nome_protetor" value="Luckx">
+							<input type="hidden" name="pet_genero" id="pet_genero" value="o">
+							
+						</div>
+						<div class="form-group col-md-12 bmd-form-group">
+							<label class="control-label bmd-label-static" for="senha">E-mail (Opcional)</label>
+							<input type="email" class="form-control is-invalid" name="email_interessado" id="email_interessado">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="alert alert-success" style="display:none" role="alert">
+								<div class="response_sucesso">
+							
+								</div>
+							</div>
+							<div class="alert alert-danger" style="display:none" role="alert">
+								<div class="response_erro"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary solicitar_recomendacao">Solicitar recomendação</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+				</div>
+			</form>
+		</div>
   </div>
 </div>
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
@@ -100,10 +128,13 @@
                 </div>
           <?php 
               }
-            else : ?>
+            else :
+            $proximo = -1;
+            ?>
+
               <div class="col-md-12 text-center">
                 <h2 class="title">Não há pets disponíveis no momento =(</h2>
-                <h5 class="description">Gostaria de receber aviso quando chegar um novo amiguinho? <a href="#"> Clique aqui!</a></h5>
+                <h5 class="description">Gostaria de receber aviso quando chegar um novo amiguinho? <a href="#" data-toggle="modal" data-target="#modalRecomendar"> Clique aqui!</a></h5>
               </div>
           <?php
             endif;
@@ -119,7 +150,7 @@
                 <a href="<?= base_url('pets/'.$anterior)?>" id="verMais" class="btn btn-primary">Anterior</a> | 
                 <?php }?>
             
-                <?php if(!empty($proximo)){
+                <?php if(!empty($proximo) && $proximo != -1){
 
               ?>
               <a href="<?= base_url('pets/'.$proximo)?>" id="verMais" class="btn btn-primary">Proximo</a>

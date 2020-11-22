@@ -13,6 +13,8 @@ use App\Helpers\Geopets; //Carrega Model SQL
 
 class Api extends ResourceController
 {
+
+  
   public function getPosition(){
     $localizar  = new Geopets;
     $latitude   = $this->request->getPostGet('latitude');

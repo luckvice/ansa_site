@@ -248,6 +248,46 @@ $(function () {
     });
   });
 
+  $(".solicitar_recomendacao").click(function () {
+    $(".solicitar_recomendacao").text('enviando...');
+    $(".solicitar_recomendacao").prop('disabled', true);
+    var telefone = $("input[id='telefone_interessado']").val();
+    var email_interessado = $("input[name='email_interessado']").val();
+
+    if (email_interessado == '' || isValidEmailAddress(email_interessado)) {
+      $.ajax({
+        url: host + '/api/solicitarRecomendacao',
+        type: 'POST',
+        data: {
+          telefone: telefone,
+          email_interessado: email_interessado
+        },
+        error: function () {
+          $(".alert-danger").fadeIn();
+          $(".solicitar_recomendacao").prop('disabled', false);
+          $(".response_erro").text('Ocorreu um erro em sua Solicitação com a API');
+          $(".solicitar_recomendacao").text('Tentar novamente!');
+        },
+        success: function (data) {
+          if (data.status == 1) {
+            $(".alert-success").fadeIn();
+            $(".response_sucesso").text(data.mensagem);
+            $(".solicitar_recomendacao").text('Enviado!');
+          } else if (data.status == 2) {
+            $(".alert-danger").fadeIn();
+            $(".response_erro").text(data.mensagem);
+            $(".solicitar_recomendacao").prop('disabled', false);
+            $(".solicitar_recomendacao").text('Tentar novamente!');
+          }
+        }
+      });
+    } else {
+      $(".response_erro").text('Informe um E-mail válido');
+    }
+
+
+  });
+
   $(".solicitar_adocao").click(function () {
     $(".solicitar_adocao").text('enviando...');
     $(".solicitar_adocao").prop('disabled', true);
@@ -259,7 +299,7 @@ $(function () {
     var nome_protetor = $("input[name='nome_protetor']").val();
     var email_interessado = $("input[name='email_interessado']").val();
     var pet_genero = $("input[name='pet_genero']").val();
-    console.log(telefone);
+
     if (email_interessado == '' || isValidEmailAddress(email_interessado)) {
       $.ajax({
         url: host + '/api/solicitarAdocao',
@@ -295,7 +335,6 @@ $(function () {
       });
     } else {
       $(".response_erro").text('Informe um E-mail válido');
-
     }
 
 
