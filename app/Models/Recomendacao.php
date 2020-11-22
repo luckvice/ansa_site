@@ -15,11 +15,13 @@ class Recomendacao
             'id_sexo'        => $id_sexo,
             'telefone'       => $telefone,
             'email'          => $email,
+            'data_cadastro' => date("Y-m-d H:i:s")
         ];
 
         $db->table('recomendacao')->insert($data);
         $resultados = $db->error();
         $lastId     = $db->insertID();
+        $resultados = $db->affectedRows();
         $db->table('disparo_recomendacao')->insert($data = ['id_recomendacao'=> $lastId]);
         $db->close();
 

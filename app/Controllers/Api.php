@@ -7,6 +7,7 @@ use CodeIgniter\API\ResponseTrait;
 use App\Models\Usuarios; //Carrega Model SQL
 use App\Models\Cidades; //Carrega Model SQL
 use App\Models\Pets; //Carrega Model SQL
+use App\Models\Recomendacao;
 use App\Libraries\Sima; //Carrega Model SQL
 use App\Helpers\Urlencode; //Carrega Model SQL
 use App\Helpers\Geopets; //Carrega Model SQL
@@ -14,7 +15,35 @@ use App\Helpers\Geopets; //Carrega Model SQL
 class Api extends ResourceController
 {
 
-  
+  public function solicitarRecomendacao(){
+
+    $recomendacao = new Recomendacao;
+
+    if(!session()->has('filtrar_id_cidade')): $id_cidade  = session()->get('id_cidade');
+    else: $id_cidade  = session()->get('filtrar_id_cidade');endif;
+    if(!session()->has('filtrar_tamanho')):   $id_porte = 0;
+    else: $id_porte   = session()->get('filtrar_tamanho');  endif;
+    if(!session()->has('filtrar_sexo')):      $id_sexo = 0;
+    else: $id_sexo    = session()->get('filtrar_sexo');     endif;
+
+    $id_especie = session()->get('especie');
+    $telefone   = $this->request->getPostGet('telefone');
+    $email      = $this->request->getPostGet('email_interessado');
+
+    $retorno = $recomendacao->inserirRecomedacao($id_cidade, $id_especie, $id_porte, $id_sexo, $telefone, $email);
+    if(empty($telefone)){
+      $data['status']   = 2;
+      $data['mensagem'] = 'Informe o telefone!';
+    }elseif(empty($email)){
+      $data['status']   = 2;
+      $data['mensagem'] = 'Informe o E-mail!';
+    }else{
+      $data['status']   = 1;
+      $data['mensagem'] = 'Assim que um novo pet chegar mandaremos uma mensagem!'; 
+    }
+    return $this->respond($data);
+  }
+
   public function getPosition(){
     $localizar  = new Geopets;
     $latitude   = $this->request->getPostGet('latitude');

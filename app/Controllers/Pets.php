@@ -110,23 +110,25 @@ class Pets extends Controller
 		if($especie == 'caes'){
 			$data['caes'] = true;
 			session()->set('especieNome','caes');
+			session()->set('especie',1);
 			$data['listaPets'] = $pets->getPets($regiao, $filtrar_estado, true, false, 1, $filtrar_sexo, $sexo, $filtrar_tamanho, $tamanho,0,$paginacao);	
 			$total = $pets->getPets($regiao, $filtrar_estado, true, false, 1, $filtrar_sexo, $sexo, $filtrar_tamanho, $tamanho,0,99999, 99999, true);	
 	
 		}elseif($especie == 'gatos'){
 			$data['gatos'] = true;
 			session()->set('especieNome','gatos');
+			session()->set('especie',2);
 			$data['listaPets'] = $pets->getPets($regiao, $filtrar_estado, true, false, 2, $filtrar_sexo, $sexo, $filtrar_tamanho, $tamanho,0, $paginacao);	
 			$total = $pets->getPets($regiao, $filtrar_estado, true, false, 2, $filtrar_sexo, $sexo, $filtrar_tamanho, $tamanho,0,99999, 99999, true);	
 		}
 		elseif($especie == 'todos'){
 			$data['todos'] = true;
 			session()->set('especieNome','todos');
-			
+			session()->set('especie',0);
 			$data['listaPets'] = $pets->getPets($regiao, $filtrar_estado, true, true, true, $filtrar_sexo, $sexo, $filtrar_tamanho, $tamanho,0 , $paginacao);
 			$total = $pets->getPets($regiao, $filtrar_estado, true, true, true, $filtrar_sexo, $sexo, $filtrar_tamanho, $tamanho,0,99999, 99999, true);	
 		}else{
-			
+			session()->set('especie',0);
 			$data['listaPets'] = $pets->getPets($regiao, false, true, true, true, true, null, true, null, 0 , $paginacao);
 			$total = $pets->getPets($regiao, false, true, true, true, true, null, true, null, 0 ,99999, 99999, true);	
 		}

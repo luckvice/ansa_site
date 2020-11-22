@@ -27,7 +27,7 @@ class Debug extends Controller
     $recomenda = new Recomendacao;
 
 
-    $recomenda->inserirRecomedacao(1,1,1,1,51999930495,'teste@teste.com');
+   echo $recomenda->inserirRecomedacao(1,1,1,1,51999930495,'teste@teste.com');
 
     }
 

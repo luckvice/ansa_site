@@ -24,7 +24,7 @@
 						</div>
 						<div class="form-group col-md-12 bmd-form-group">
 							<label class="control-label bmd-label-static" for="senha">E-mail (Opcional)</label>
-							<input type="email" class="form-control is-invalid" name="email_interessado" id="email_interessado">
+							<input type="email" class="form-control is-invalid" name="email_interessado" id="email_interessado" required>
 						</div>
 					</div>
 					<div class="row">
