@@ -140,6 +140,16 @@ $(function () {
       $('#erro_campos').fadeIn();
       return false;
     }
+    if ($('#estado').val() == 0) {
+      $("#erro_campos").html('Marque o campo cidade');
+      $('#erro_campos').fadeIn();
+      return false;
+    }
+    if ($('#cidade').val() == 0) {
+      $("#erro_campos").html('Marque o campo cidade');
+      $('#erro_campos').fadeIn();
+      return false;
+    }
   });
 
   if (hash == '#minhaong') {
