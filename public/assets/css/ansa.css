@@ -4,6 +4,17 @@
 
 
 /* CUSTOM Styles */
+
+.logo-navbar {
+    display: flex;
+    align-items: center;
+}
+
+.logo-navbar > img {
+    height: 3rem;
+    box-shadow: 0 0 black;
+}
+
 .tag-adotado {
     background-color: #28a745 !important;
 }
@@ -310,9 +321,4 @@ i {
     -ms-transform: scale(1.5); /* IE 9 */
     -webkit-transform: scale(1.5); /* Safari 3-8 */
     transform: scale(1.5); 
-}
-
-.logo-nav {
-    height: 80px;
-    border-radius: 20px;
 }
