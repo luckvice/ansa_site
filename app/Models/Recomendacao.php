@@ -7,6 +7,7 @@ class Recomendacao
     public function inserirRecomedacao($id_cidade, $id_especie, $id_porte, $id_sexo, $telefone, $email)
     {
         $db = db_connect();
+
         $data = [
             'id_cidade'      => $id_cidade,
             'id_especie'     => $id_especie,
@@ -25,4 +26,10 @@ class Recomendacao
         return $resultados;
     }
 
+
+    public function removerRecomendacao($id_recomendacao){
+        $db = db_connect();
+        $db->table('recomendacao')->where('id_recomendacao', $id_recomendacao)->delete();
+        $db->close();
+    }
 }

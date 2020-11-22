@@ -16,6 +16,13 @@ use App\Helpers\Geopets;
 class Debug extends Controller
 {
 
+    public function removerrecomendacaotest(){
+        $recomenda = new Recomendacao;
+    
+    
+        $recomenda->removerRecomendacao(2);
+    
+        }
     public function recomendacaotest(){
     $recomenda = new Recomendacao;
 
