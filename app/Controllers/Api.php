@@ -154,11 +154,13 @@ class Api extends ResourceController
 
   public function conversar($id_pet, $telefone_interessado, $nome_pet, $nome_interessado){//Prepara conversa para envio via SIMA
     $mensagem = new Sima;
-    $mensagem_pronta = 'Oieeee!
-'.$nome_interessado.' sou o '.$nome_interessado.' protedor do pet: '.$nome_pet. '
+    $mensagem_pronta = 'Olá,' .$nome_interessado.'! 😊
 
-Podemos conversar ?';
+Sou o protedor do pet '.$nome_pet. '!
+
+Podemos conversar?';
    echo 'redirecionando aguarde...';
+
    return $mensagem->conversarComInteressado($telefone_interessado, urlencode($mensagem_pronta));
 }
   
