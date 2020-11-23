@@ -14,7 +14,7 @@ class Pets extends Model
         $filtrarEstado tipo bool True lista pets por estado False lista pets por municipio
         $filtros tipo bool True ativa modo filtro Por ID Municipio ou ID Estado  
     */
-    public function getPets($estado_cidade, $filtrarEstado = true, $filtros = false ,$todasEspecies = true, $especie = null, $todosSexos = true, $sexo = null, $todosTamanhos = true, $tamanho = null, $adotado = 0, $paginacao = 1, $limit = 12, $numRows = false){
+    public function getPets($estado_cidade, $filtrarEstado = true, $filtros = false ,$todasEspecies = true, $especie = null, $todosSexos = true, $sexo = null, $todosTamanhos = true, $tamanho = null, $adotado = 0, $paginacao = 4, $limit = 0, $numRows = false){
         $db = db_connect();
         $resultados = $db->table('pet')
             ->select('pet.*')
@@ -39,7 +39,7 @@ class Pets extends Model
                 ->where('capa',1)
                 ->where('adotado',$adotado)
                 ->where('pet.excluido',0);
-                $resultados = $resultados->limit($limit,$paginacao);
+           //>limit     $resultados = $resultados->limit($limit,$paginacao);
                 if($filtrarEstado == true):
                     if($filtros == true):
                         $resultados = $resultados->where('pet.id_estado',$estado_cidade);
@@ -63,7 +63,7 @@ class Pets extends Model
                     $resultados = $resultados->where('pet.id_porte',$tamanho);
                 endif;              
                     if($numRows == false):
-                    $resultados = $resultados->get()->getResultObject();
+                    $resultados = $resultados->get($paginacao, $limit)->getResultObject();
                     else:
                         $resultados = $resultados->countAllResults();    
                     endif;
