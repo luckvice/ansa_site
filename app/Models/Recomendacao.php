@@ -28,19 +28,28 @@ class Recomendacao
         return $resultados;
     }
 
-    public function removerRecomendacao($id_recomendacao){
+    public function limpar($recomendacoes_para_excluir){
         $db = db_connect();
-        $db->table('recomendacao')->where('id_recomendacao', $id_recomendacao)->delete();
+
+        foreach ($recomendacoes_para_excluir as $id_disparo_recomendacao) {
+            $db->table('disparo_recomendacao')->where('id_disparo_recomendacao', $id_disparo_recomendacao)->delete();
+        }
+
         $db->close();
     }
 
     public function listarRecomendacoes() {
         
         $db = db_connect();
-        $resultados = $db->table('recomendacao')->select('recomendacao.*')->get()->getResultObject();
+        $resultados = $db->table('disparo_recomendacao')
+            ->select('disparo_recomendacao.id_disparo_recomendacao')
+            ->select('recomendacao.*')
+            ->join('recomendacao', 'disparo_recomendacao.id_recomendacao = recomendacao.id_recomendacao', 'left');
+            
+        $resultados = $resultados->get()->getResultObject();
+        
         $db->close();
 
         return $resultados;
-
     }
 }

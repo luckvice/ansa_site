@@ -431,7 +431,7 @@
                         <tr>
                           <td class='content-block'>
                             <span class='apple-link'>Amigo Não Se Abandona | Porto Alegre - RS</span>
-                            <br> Quer nos conhecer mais? <a href='https://amigonaoseabandona.com.br/quemsomos' target='_blank'>Veja quem somos!</a>
+                            <br> Quer nos conhecer mais? <a href='<?=base_url('/sobre')?>' target='_blank'>Veja quem somos!</a>
                           </td>
                         </tr>
                       </table>

@@ -401,12 +401,26 @@
                           <table role='presentation' border='0' cellpadding='0' cellspacing='0'>
                             <tr>
                               <td>
-                                <p>Olá, <span class="purple-span"><?=$usuario?></span> 😊</p>
-                                <p><?=strtoupper($genero)?> <span class='purple-span'><?=$nome_pet?></span> chegou no <a href='<?=base_url('/')?>' target="_blank"><span class='purple-span'>Amigo Não se Abandona</span></a> e está esperando por você! Identificamos que este lindo amiguinho corresponde a todas as características que você estava procurando! 😻</p>
-            
-                                <div class="pet-profile-pic">
-                                  <img src="<?=$imagem_pet?>" alt="Foto do <?=$nome_pet?>">
-                                </div>
+                                <p>Oie! 😊</p>
+                                <p>Venho aqui para te informar que um novo amiguinho que você procurava chegou no <a href="<?=base_url('/')?>" target="_blank"><span class="purple-span">Amigo Não se Abandona</span></a>! 🐶😸</p>
+                                
+                                <p>Estamos enviando essa recomendação de acordo com todas as características as quais você estava procurando! 😻</p>
+
+                                <table role='presentation' border='0' cellpadding='0' cellspacing='0' class='btn btn-primary btn-acessar-site'>
+                                  <tbody>
+                                    <tr>
+                                      <td align='center'>
+                                        <table role='presentation' border='0' cellpadding='0' cellspacing='0'>
+                                          <tbody>
+                                            <tr>
+                                              <td> <a href='<?=$link?>' target='_blank'>Visualizar Pets</a> </td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
 
                                 <p><span class='purple-span'>Lembre-se</span>: É muito importante que você tenha todos os cuidados no momento da adoção. Abaixo, listamos algumas dicas importantes:</p>
             
@@ -416,21 +430,6 @@
                                   <li>Adapte a sua rotina à do seu PET. Ele precisa de carinho, cuidados e dedicação.</li>
                                   <li>Ele será o novo membro de sua família. Dê todo amor que ele merece! ❤🐶😻</li>
                                 </ul>
-                                <table role='presentation' border='0' cellpadding='0' cellspacing='0' class='btn btn-primary btn-acessar-site'>
-                                  <tbody>
-                                    <tr>
-                                      <td align='center'>
-                                        <table role='presentation' border='0' cellpadding='0' cellspacing='0'>
-                                          <tbody>
-                                            <tr>
-                                              <td> <a href='<?=base_url("/pet/" . $id_pet)?>' target='_blank'>Acesso o Perfil d<?=$genero?> <?=$nome_pet?></a> </td>
-                                            </tr>
-                                          </tbody>
-                                        </table>
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
                                 <hr>
                                 <p style="color: gray; text-align: center;">📌 Nós do ANSA temos o objetivo de facilitar a aproximação de animais abandonados aos seus futuros lares. Nossa meta é proporcionar um maior alcance e visibilidade para estes animais, através de todas funcionalidades disponbilizadas em nossa plataforma!</p>
                                 <p style="color: gray; text-align: center;">🐶 Fique mais próximo de nós e siga nosso <a href='https://instagram.com/amigonaoseabandona' target='_blank'><span class="purple-span">Instagram</span></a> 😻</p>
@@ -450,7 +449,7 @@
                         <tr>
                           <td class='content-block'>
                             <span class='apple-link'>Amigo Não Se Abandona | Porto Alegre - RS</span>
-                            <br> Quer nos conhecer mais? <a href='https://amigonaoseabandona.com.br/quemsomos' target='_blank'>Veja quem somos!</a>
+                            <br> Quer nos conhecer mais? <a href='<?=base_url('/sobre')?>' target='_blank'>Veja quem somos!</a>
                           </td>
                         </tr>
                       </table>
