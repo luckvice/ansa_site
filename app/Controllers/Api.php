@@ -39,7 +39,7 @@ class Api extends ResourceController
       $data['mensagem'] = 'Informe o E-mail!';
     }else{
       $data['status']   = 1;
-      $data['mensagem'] = 'Assim que um novo pet chegar mandaremos uma mensagem!'; 
+      $data['mensagem'] = 'Solicitação registrada com sucesso! Assim que um novo pet chegar com suas características desejadas, enviaremos uma mensagem para você!'; 
     }
     return $this->respond($data);
   }

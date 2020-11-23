@@ -28,10 +28,19 @@ class Recomendacao
         return $resultados;
     }
 
-
     public function removerRecomendacao($id_recomendacao){
         $db = db_connect();
         $db->table('recomendacao')->where('id_recomendacao', $id_recomendacao)->delete();
         $db->close();
+    }
+
+    public function listarRecomendacoes() {
+        
+        $db = db_connect();
+        $resultados = $db->table('recomendacao')->select('recomendacao.*')->get()->getResultObject();
+        $db->close();
+
+        return $resultados;
+
     }
 }
