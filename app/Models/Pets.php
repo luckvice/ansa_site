@@ -307,4 +307,31 @@ class Pets extends Model
         $db->close();
         return $resultados;
     }
+
+    public function getPetsByRecomendacao($desejo) {
+        
+        $db = db_connect();
+        $resultados = $db->table('pet')
+            ->select('pet.*')
+                ->where('pet.adotado',0)
+                ->where('pet.excluido',0);
+
+                if($desejo->id_cidade != '0')
+                    $resultados = $resultados->where('pet.id_municipio', $desejo->id_cidade);
+
+                if($desejo->id_sexo != '0')
+                    $resultados = $resultados->where('pet.id_sexo', $desejo->id_sexo);
+
+                if($desejo->id_porte != '0')
+                    $resultados = $resultados->where('pet.id_porte', $desejo->id_porte);                    
+
+                if($desejo->id_especie != '0')
+                    $resultados = $resultados->where('pet.id_especie', $desejo->id_especie);
+                    
+                $resultados = $resultados->get()->getResultObject();
+
+        $db->close();
+
+        return $resultados;
+    }
 }

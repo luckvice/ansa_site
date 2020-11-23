@@ -274,4 +274,46 @@ class Debug extends Controller
         var_dump($cidade);
 
     }
+
+    function recomendar() {
+
+        $recomendacao = new Recomendacao;
+        $pets = new Pets;
+
+        $desejos = $recomendacao->listarRecomendacoes();
+        echo "<pre>";
+        print_r($desejos);
+        echo "</pre>";
+
+        $consultas_realizadas = array();
+
+        foreach ($desejos as $key => $desejo) {
+            
+            $caracteristicas_hash = md5($desejo->id_cidade . $desejo->id_porte . $desejo->id_sexo . $desejo->id_especie);
+
+            if (!array_key_exists($caracteristicas_hash, $consultas_realizadas)) :
+                
+                $consulta = $pets->getPetsByRecomendacao($desejo);
+                
+                $consultas_realizadas[$caracteristicas_hash] = $consulta;
+
+            else :
+                
+                $consulta = $consultas_realizadas[$caracteristicas_hash];
+            
+            endif;
+
+            if(count($consulta) > 0) {
+                // Envia recomendação
+                echo "tem pet para esse desejo";
+                echo "<pre>";
+                print_r($desejo);
+                echo "</pre>";
+
+            }
+
+        }
+
+
+    }
 }
