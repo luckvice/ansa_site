@@ -48,7 +48,7 @@ class Recomendar
             $data['img_header'] = base_url('assets/img/dog_perfil.jpg');
             
             if($desejo->email)
-                $mensagem->enviarMensagemEmail('Sugestão de Adoção | Amigo Não se Abandona', view('site/templates/email/sugestao_adocao',$data), $desejo->email);
+                $mensagem->enviarMensagemEmail('Sugestão de Adoção', view('site/templates/email/sugestao_adocao',$data), $desejo->email);
 
             // Como a recomendação foi enviada, adicionamos a lista de exclusão
             $recomendacoes_para_excluir[] = $desejo->id_disparo_recomendacao;

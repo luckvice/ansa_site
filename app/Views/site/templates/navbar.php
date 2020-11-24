@@ -44,9 +44,6 @@
                 <a href="/perfil/listarpets" class="dropdown-item">
                   <i class="material-icons">pets</i> Meus pets cadastrados
                 </a>
-                <a href="/perfil/criardepoimento" class="dropdown-item">
-                  <i class="material-icons">comment</i> Criar depoimento
-                </a>
                 <a href="/auth/sair" class="dropdown-item">
                   <i class="material-icons">clear</i> Sair
                 </a>

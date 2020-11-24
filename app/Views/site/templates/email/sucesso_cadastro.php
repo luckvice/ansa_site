@@ -394,7 +394,7 @@
                                 <hr>
                                 
                                 <p style="color: gray; text-align: center;">📌 Nós do ANSA temos o objetivo de facilitar a aproximação de animais abandonados aos seus futuros lares. Nossa meta é proporcionar um maior alcance e visibilidade para estes animais, através de todas funcionalidades disponbilizadas em nossa plataforma!</p>
-                                <p style="color: gray; text-align: center;">🐶 Fique mais próximo de nós siga nosso <a href='https://instagram.com/amigonaoseabandona' target='_blank'><span class="purple-span">Instagram</span></a> 😻</p>
+                                <p style="color: gray; text-align: center;">🐶 Fique mais próximo de nós e siga nosso <a href='https://instagram.com/amigonaoseabandona' target='_blank'><span class="purple-span">Instagram</span></a> 😻</p>
                               </td>
                             </tr>
                           </table>

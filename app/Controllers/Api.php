@@ -76,10 +76,10 @@ class Api extends ResourceController
 
       $mensagem->enviarMensagemEmail("Solicitação de Nova Senha", view('site/templates/email/senha_alterada', $enviamensagem), $email);
       $data['status']   = 1;
-      $data['mensagem'] = 'Sucesso !';
+      $data['mensagem'] = 'Sua nova senha foi enviada para o seu e-mail com sucesso!';
     }else{
       $data['status']   = 2;
-      $data['mensagem'] = 'Este e-mail não existe';
+      $data['mensagem'] = 'Este e-mail não existe!';
     }
     return $this->respond($data);
   }
@@ -92,11 +92,11 @@ class Api extends ResourceController
     if($exclusao == 1){
       $data['exclusao'] = 1;
       $data['status']   = 1;
-      $data['mensagem']   = 'Sucesso na exclusão';
+      $data['mensagem']   = 'Sucesso na exclusão!';
     }else{
       $data['exclusao'] = 0;
       $data['status']   = 0;
-      $data['mensagem']   = 'Nada aconteceu';
+      $data['mensagem']   = 'Nada aconteceu!';
     }
     return $this->respond($data);
   }
@@ -142,7 +142,7 @@ class Api extends ResourceController
     }
     if(empty($data['telefone'])){
       $datas['status']   = 2;
-      $datas['mensagem'] = '* É Obrigatorio o Telefone';  
+      $datas['mensagem'] = '* É obrigatório o telefone';  
     }else if(session()->has('criptopost')){
       //$id_pet, $telefone_usuario, $nome_pet, $nome_interessado 
       $url      = $data['id_pet'].'/'.$data['telefone'].'/'.$data['nome_pet'].'/'.$data['nome_interessado'];
@@ -168,7 +168,7 @@ class Api extends ResourceController
 
     }else{
       $datas['status']   = 4;
-      $datas['mensagem'] = 'Espertinho você não ? Vá Hackear em outro lugar';
+      $datas['mensagem'] = 'Espertinho você não? Vá Hackear em outro lugar';
     }
     return $this->respond($datas);
   }
@@ -183,15 +183,15 @@ class Api extends ResourceController
 
   public function conversar($id_pet, $telefone_interessado, $nome_pet, $nome_interessado){//Prepara conversa para envio via SIMA
     $mensagem = new Sima;
-    $mensagem_pronta = 'Olá,' .$nome_interessado.'! 😊
+    $mensagem_pronta = 'Olá, ' .$nome_interessado.'!
 
-Sou o protedor do pet '.$nome_pet. '!
+Sou o protedor do pet '.$nome_pet. ' e recebi a sua solicitação de adoção!
 
 Podemos conversar?';
    echo 'redirecionando aguarde...';
 
-   return $mensagem->conversarComInteressado($telefone_interessado, urlencode($mensagem_pronta));
-}
+    return $mensagem->conversarComInteressado($telefone_interessado, urlencode($mensagem_pronta));
+  }
   
   public function getPets(){
     $model = new Pets();
