@@ -34,6 +34,7 @@ class Estados extends Model
         $db->close();
         return $resultados;
     }
+    
     public function getEstadoById($id_estado){
         
         $db = db_connect();

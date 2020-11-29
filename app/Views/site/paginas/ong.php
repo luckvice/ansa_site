@@ -51,7 +51,7 @@
 									<h5 class="card-title"><i class="fas fa-paw"></i> <span style="color: purple;">Quem Somos</span</h5>
 								</div>
 								<hr>
-								<p class="card-text">" Resgatar animais em situação de abandono, proporcionando o atendimento veterinário necessário até estarem prontos para a adoção, buscando conscientizar a população da importância da adoção responsável. "</p>
+								<p class="card-text"><?= $ong->descricao?></p>
 							</div>
 						</div>
 					</div>

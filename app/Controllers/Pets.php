@@ -19,8 +19,7 @@ class Pets extends Controller
 		$pets 	= new Pets_model;
 		$loc 	= new Geopets;
 		$paginacao = 4;
-	//	$limit = 0;
-		//$totalPorPagina = 12;
+
 		$proximo 	= 	$limit + $paginacao;
 		$anterior	=	$limit - $paginacao;
 		
@@ -32,8 +31,6 @@ class Pets extends Controller
 
 		$data['proximo'] = $especie.'/'.$proximo;
 
-		
-		
 		if(session()->get('gps') == false){
 			
 			$regiao = $loc->getLocalizacaoUserByIp();
@@ -237,7 +234,6 @@ class Pets extends Controller
 
 		session()->set('email_usuario',$pet->email);
 		session()->set('telefone_usuario',$pet->telefone);
-		
 
 		echo view('site/paginas/pet', $data);
 	}

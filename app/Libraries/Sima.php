@@ -61,7 +61,7 @@ class Sima
         $config['newline']      = "\r\n";
 
         $email->initialize($config)
-                ->setFrom('amigonaoseabandona@gmail.com', 'ANSA')
+                ->setFrom('amigonaoseabandona@gmail.com', 'Amigo Não Se Abandona')
                 ->setTo($para) 
                 ->setSubject($assunto)
                 ->setMessage($mensagem)
