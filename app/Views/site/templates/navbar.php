@@ -64,12 +64,12 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="<?=prep_url('instagram.com/amigonaoseabandona')?>" target="_blank" data-original-title="Curta nossa página no Facebook" rel="nofollow">
+            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="<?=prep_url('instagram.com/amigonaoseabandona')?>" target="_blank" data-original-title="Siga-nos no Instagram" rel="nofollow">
               <i class="fab fa-instagram" style="font-size: 16px;"></i>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="<?=prep_url('facebook.com/amigonaoseabandona')?>" target="_blank" data-original-title="Siga-nos no Instagram" rel="nofollow">
+            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="<?=prep_url('facebook.com/amigonaoseabandona')?>" target="_blank" data-original-title="Curta nossa página no Facebook" rel="nofollow">
               <i class="fab fa-facebook-square" style="font-size: 16px;"></i>
             </a>
           </li>

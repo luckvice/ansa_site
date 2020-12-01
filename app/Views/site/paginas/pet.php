@@ -177,6 +177,13 @@
 								<hr>
 								<p class="card-text"><i class="fas fa-map-marker-alt"></i><?=$cidade?>/<?=$uf?></p>
 								<p class="card-text"><i class="fas fa-user"></i>Protetor: <?=$nome_protetor?></p>
+								<?php 
+									if($ong) :
+								?>
+									<p class="card-text"><i class="fas fa-home"></i>ONG: <a href="<?=base_url('/ong/' . $ong->id_ong);?>" target="_blank"><?=$ong->nome?></a></p>
+								<?php 
+									endif;
+								?>
 							</div>
 						</div>
 					</div>

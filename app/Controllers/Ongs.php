@@ -54,6 +54,8 @@ class Ongs extends Controller
         $usuario                = new Usuarios; // Cidade da ONG
         $usuario                = $usuario->getUsuarioById($ong->id_usuario);
         $data['cidade']         = $cidade->getCidadesById($usuario->id_cidade);
+        $data['avatar_src']     = !$ong->avatar ? base_url('assets/img/404.jpg') : 'data:image/jpeg;base64,' . $ong->avatar;
+
         echo view('site/paginas/ong', $data);
     }
 }

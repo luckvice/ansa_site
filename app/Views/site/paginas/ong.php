@@ -10,7 +10,7 @@
                 <div class="col-md-12 ml-auto mr-auto">
     	           <div class="pet-profile">
                         <div class="pet-profile-pic">
-                        	<img src="data:image/jpeg;base64,<?=$ong->avatar?>">
+                        	<img src="<?=$avatar_src?>">
                         </div>
                         <div class="name">
                             <h2 class="title"><?=$ong->nome?></h2>

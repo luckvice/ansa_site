@@ -6,6 +6,7 @@ use CodeIgniter\Controller;
 use App\Models\Pets as Pets_model; //Carrega Model SQL | alias para não repetir o nome da Classe
 use App\Models\Estados;
 use App\Models\Cidades;
+use App\Models\Ongs;
 use App\Libraries\Waintegracao;
 use App\Helpers\Geopets;
 
@@ -151,6 +152,7 @@ class Pets extends Controller
 		helper('text');
 		$estados 	= new Estados();
 		$pet 		= new Pets_model;
+		$ong 		= new Ongs;
 		$data['estados']         	= $estados->getEstados();
 
 		session()->set('criptopost',random_string('sha1',150));//Cria sessão criptografada
@@ -214,6 +216,7 @@ class Pets extends Controller
 		$data['nome_protetor']	= $pet->usuario_nome;
 		$data['genero'] 		= $pet->id_sexo == 1 ? 'o' : 'a';
 		$data['adotado']		= $pet->adotado;
+		$data['ong']            = $ong->getOngByIdUsuario($pet->id_usuario);
 
 		$imagens_pet = array();
 
